@@ -3,7 +3,9 @@
 Private trip planner for Rob and Danielle. First trip: Lisbon, Oct 9–12, 2026.
 
 - Plan: [`docs/TECHNICAL_APPROACH.md`](docs/TECHNICAL_APPROACH.md) · Screens: [`docs/LISBON_SITEMAP.md`](docs/LISBON_SITEMAP.md)
-- Design system: `design/` (tokens.json → tokens.css via `npm run tokens`; component rules in `design/README.md`, `design/WRITING.md`, `design/components/`)
+- Design system: `design/` (tokens.json → tokens.css via `npm run tokens`; component rules in `design/README.md`, `design/WRITING.md`, `design/components/`; open wireframe fixes in `design/WIREFRAME_CHANGES.md`)
+- Family trip preferences: [`docs/travel_context.md`](docs/travel_context.md)
+- **This repo is the source of truth.** Project docs in claude.ai are read-only mirrors; edit here and push (Vercel deploys `main`).
 - Trip content: `content/trips/<slug>/` — `picks.md` (places), `trip.json` (flights, days, clusters, to-dos), `enrichment.json` (map pins + Wikimedia photos)
 
 ## Run locally
