@@ -1,0 +1,86 @@
+import type { DayRule, Place, SlotKind } from "../content/types";
+import { weekdayOf, ymdIn } from "../format";
+
+export interface Slot {
+  id: string;
+  date: string;
+  dayLabel: string;
+  kind: SlotKind;
+  optional: boolean;
+  locked: string | null;
+}
+
+/** slotId → placeId (null/absent = empty). */
+export type Assignments = Record<string, string | null>;
+
+export const SLOT_LABEL: Record<SlotKind, string> = {
+  early: "Early arrival",
+  morning: "Morning",
+  lunch: "Lunch",
+  afternoon: "Afternoon",
+  dinner: "Dinner",
+  night: "Night",
+};
+
+export function slotId(date: string, kind: SlotKind): string {
+  return `${date}:${kind}`;
+}
+
+export function buildSlots(days: DayRule[]): Slot[] {
+  return days.flatMap((d) =>
+    d.slots.map((kind) => ({
+      id: slotId(d.date, kind),
+      date: d.date,
+      dayLabel: d.label,
+      kind,
+      optional: d.optional?.includes(kind) ?? false,
+      locked: d.locked?.find((l) => l.kind === kind)?.reason ?? null,
+    })),
+  );
+}
+
+const DAY_NAMES = ["Sundays", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays"];
+const SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+/** Warnings to show when a place is dropped on a given date. They inform; they never block. */
+export function warningsFor(place: Place, date: string): string[] {
+  const out: string[] = [];
+  const wd = weekdayOf(date);
+  if (place.openDays && !place.openDays.includes(wd as never)) {
+    if (place.openDays.length >= 5) {
+      const closed = [0, 1, 2, 3, 4, 5, 6].filter((d) => !place.openDays!.includes(d as never));
+      out.push(`Closed ${closed.map((d) => DAY_NAMES[d]).join(" & ")}`);
+    } else {
+      out.push(`${place.openDays.map((d) => SHORT[d]).join(" & ")} only`);
+    }
+  }
+  if (place.category === "art" && /galer/i.test(place.name) && (wd === 0 || wd === 1)) {
+    out.push("Galleries often closed Sun–Mon");
+  }
+  if (!place.hoursConfirmed) out.push("Hours unconfirmed");
+  if (place.needsBooking) out.push("Needs a booking");
+  return out;
+}
+
+export function placedIds(a: Assignments): Set<string> {
+  return new Set(Object.values(a).filter((v): v is string => Boolean(v)));
+}
+
+export function unscheduled(places: Place[], a: Assignments): Place[] {
+  const placed = placedIds(a);
+  return places.filter((p) => !placed.has(p.id));
+}
+
+/** Which trip day "Today" should show: the current day, else the next one, else the last. */
+export function todayFor(
+  days: DayRule[],
+  timeZone: string,
+  now: Date = new Date(),
+): { date: string; status: "today" | "upcoming" | "past" } {
+  const today = ymdIn(now, timeZone);
+  const hit = days.find((d) => d.date === today);
+  if (hit) return { date: hit.date, status: "today" };
+  const next = days.find((d) => d.date > today);
+  if (next) return { date: next.date, status: "upcoming" };
+  return { date: days[days.length - 1].date, status: "past" };
+}

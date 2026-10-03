@@ -1,0 +1,1163 @@
+{
+  "slug": "lisbon-2026",
+  "name": "Lisbon",
+  "destination": "Lisbon, Portugal",
+  "timezone": "Europe/Lisbon",
+  "homeTimezone": "America/New_York",
+  "localCurrency": "EUR",
+  "usdRate": 1.16,
+  "usdRateDate": "2026-10-02",
+  "travelers": [
+    {
+      "name": "Rob",
+      "email": "cohen.rl@gmail.com"
+    },
+    {
+      "name": "Danielle",
+      "email": "dmindess@gmail.com"
+    }
+  ],
+  "bookingRef": "ZYKGWV",
+  "homebase": {
+    "label": "The house",
+    "address": "R. da Giribita 1, Paço de Arcos",
+    "lat": 38.69783,
+    "lng": -9.28385
+  },
+  "flights": [
+    {
+      "airline": "TAP Air Portugal",
+      "flightNo": "TP202",
+      "from": {
+        "code": "EWR",
+        "name": "Newark",
+        "terminal": "B"
+      },
+      "to": {
+        "code": "LIS",
+        "name": "Lisbon",
+        "terminal": "1"
+      },
+      "depart": "2026-10-08T17:30:00-04:00",
+      "arrive": "2026-10-09T05:30:00+01:00",
+      "checkInCloses": "2026-10-08T16:30:00-04:00",
+      "seats": {
+        "Rob": "20C",
+        "Danielle": "20B"
+      }
+    },
+    {
+      "airline": "TAP Air Portugal",
+      "flightNo": "TP209",
+      "from": {
+        "code": "LIS",
+        "name": "Lisbon",
+        "terminal": "1"
+      },
+      "to": {
+        "code": "JFK",
+        "name": "New York JFK",
+        "terminal": "1"
+      },
+      "depart": "2026-10-12T17:00:00+01:00",
+      "arrive": "2026-10-12T20:05:00-04:00",
+      "checkInCloses": "2026-10-12T16:00:00+01:00",
+      "seats": {
+        "Rob": "22C",
+        "Danielle": "22A"
+      }
+    }
+  ],
+  "bags": [
+    "1 carry-on each included (10 kg / 22 lb, 55×40×25 cm)",
+    "No checked bags on the fare: 1st bag $131 (≈ €113), 2nd $160 (≈ €138), each way",
+    "Return seats aren't together (22B is between you); try to swap at check-in",
+    "Fare is non-refundable; passport required at check-in"
+  ],
+  "gettingAround": [
+    "Cascais train line from Paço de Arcos: west Lisbon (Belém/Junqueira) in 15–20 min, Cais do Sodré in about 25",
+    "Trams: take 12E from Martim Moniz instead of the crowded 28",
+    "Funiculars closed after the Sept 2025 crash; check whether they've reopened",
+    "Taxi and ride apps for late nights and the airport"
+  ],
+  "days": [
+    {
+      "date": "2026-10-09",
+      "label": "Fri",
+      "note": "Arrival day: land 5:30 am, house may not be ready",
+      "slots": [
+        "early",
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ],
+      "optional": [
+        "night"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "label": "Sat",
+      "note": "Best gallery day + Feira da Ladra (Sat only)",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "label": "Sun",
+      "note": "Museums; commercial galleries likely closed",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "label": "Mon",
+      "note": "Departure: check-in closes 4:00 pm",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon"
+      ],
+      "locked": [
+        {
+          "kind": "afternoon",
+          "reason": "Airport: TP209 departs 5:00 pm"
+        }
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "id": "west",
+      "name": "West Lisbon",
+      "note": "Belém, Junqueira, Ajuda: 15–20 min by train",
+      "color": "#97D8B2"
+    },
+    {
+      "id": "center",
+      "name": "Center",
+      "note": "Bairro Alto, Príncipe Real, São Bento, Campo de Ourique",
+      "color": "#E7A1D9"
+    },
+    {
+      "id": "east",
+      "name": "East",
+      "note": "Beato, Marvila, Graça, Alfama",
+      "color": "#F2C14E"
+    }
+  ],
+  "todos": [
+    {
+      "id": "book-canalha",
+      "kind": "book",
+      "text": "Book Canalha (+351 962 152 742)",
+      "placeId": "canalha"
+    },
+    {
+      "id": "book-monkey-mash",
+      "kind": "book",
+      "text": "Book Monkey Mash / Red Frog",
+      "placeId": "monkey-mash-red-frog"
+    },
+    {
+      "id": "book-queer-tour",
+      "kind": "book",
+      "text": "Book the Queer Lisbon walking tour (Leonor Machado)",
+      "placeId": "queer-lisbon-walking-tour-guide-leonor-machado"
+    },
+    {
+      "id": "confirm-maat",
+      "kind": "confirm",
+      "text": "Confirm MAAT hours",
+      "placeId": "maat-museum-of-art-architecture-and-technology"
+    },
+    {
+      "id": "confirm-macam",
+      "kind": "confirm",
+      "text": "Confirm MACAM hours",
+      "placeId": "macam-museu-de-arte-contemporanea-armando-martins"
+    },
+    {
+      "id": "confirm-amalia",
+      "kind": "confirm",
+      "text": "Confirm Casa-Museu Amália hours",
+      "placeId": "casa-museu-amalia-rodrigues"
+    },
+    {
+      "id": "check-funiculars",
+      "kind": "check",
+      "text": "Check whether the funiculars have reopened"
+    },
+    {
+      "id": "swap-seats",
+      "kind": "other",
+      "text": "Swap return seats at check-in (22B is between you)"
+    }
+  ],
+  "enrich": {
+    "pigmeu": {
+      "noImages": true
+    },
+    "damas": {
+      "geoQuery": "Rua da Voz do Operário, Lisboa",
+      "noImages": true
+    },
+    "dois-corvos": {
+      "geoQuery": "Rua Capitão Leitão, Marvila, Lisboa",
+      "noImages": true
+    },
+    "feed": {
+      "noImages": true
+    },
+    "macam-museu-de-arte-contemporanea-armando-martins": {
+      "imageQuery": "MACAM Lisboa",
+      "imageMatch": "MACAM"
+    },
+    "galeria-filomena-soares": {
+      "imageMatch": "Filomena"
+    },
+    "side-bar": {
+      "imageMatch": "Side_Bar"
+    },
+    "feira-da-ladra-flea-market": {
+      "geoQuery": "Campo de Santa Clara, Lisboa",
+      "imageMatch": "Feira_da_Ladra"
+    },
+    "gala-cricri-at-palacio-do-grilo": {
+      "geoQuery": "Palácio do Grilo, Lisboa",
+      "imageQuery": "Palácio do Grilo Lisboa",
+      "imageMatch": "grilo"
+    },
+    "maria-limao-at-miradouro-da-senhora-do-monte": {
+      "imageQuery": "Miradouro da Senhora do Monte"
+    },
+    "rua-de-sao-bento-strip": {
+      "imageQuery": "Rua de São Bento Lisboa"
+    },
+    "queer-lisbon-walking-tour-guide-leonor-machado": {
+      "geoQuery": "Jardim do Príncipe Real, Lisboa",
+      "imageQuery": "Jardim do Príncipe Real"
+    },
+    "tram-12e": {
+      "imageMatch": "12E"
+    },
+    "santa-joana-nuno-mendes": {
+      "imageMatch": "Locke"
+    }
+  },
+  "places": [
+    {
+      "id": "maat-museum-of-art-architecture-and-technology",
+      "name": "MAAT (Museum of Art, Architecture and Technology)",
+      "category": "art",
+      "location": "Belém/Junqueira riverfront",
+      "details": "€16 (≈ $19). Hours not confirmed; usually closed Tuesdays.",
+      "priceLocal": 16,
+      "url": "https://www.maat.pt/en/plan-a-visit",
+      "mapsUrl": null,
+      "phone": null,
+      "note": "Futuristic seashell-like gallery joined to a restored 1908 power station; big Pop Art collection alongside old turbines and machinery.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "west",
+      "lat": 38.695934,
+      "lng": -9.1936238,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Building_of_the_Museum_of_Art%2C_Architecture_and_Technology_in_Lisbon%2C_20250604_2006_9600.jpg/960px-Building_of_the_Museum_of_Art%2C_Architecture_and_Technology_in_Lisbon%2C_20250604_2006_9600.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Building_of_the_Museum_of_Art%2C_Architecture_and_Technology_in_Lisbon%2C_20250604_2006_9600.jpg/320px-Building_of_the_Museum_of_Art%2C_Architecture_and_Technology_in_Lisbon%2C_20250604_2006_9600.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jakub Hałun",
+          "license": "CC BY 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Building_of_the_Museum_of_Art,_Architecture_and_Technology_in_Lisbon,_20250604_2006_9600.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Detail_of_the_ceramic_fa%C3%A7ade%2C_MAAT%2C_Lisbon%2C_Portugal_julesvernex2.jpg/960px-Detail_of_the_ceramic_fa%C3%A7ade%2C_MAAT%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Detail_of_the_ceramic_fa%C3%A7ade%2C_MAAT%2C_Lisbon%2C_Portugal_julesvernex2.jpg/320px-Detail_of_the_ceramic_fa%C3%A7ade%2C_MAAT%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jules Verne Times Two",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Detail_of_the_ceramic_fa%C3%A7ade,_MAAT,_Lisbon,_Portugal_julesvernex2.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Panorama_view_of_the_outside_of_MAAT_museum_in_Lisbon.jpg/960px-Panorama_view_of_the_outside_of_MAAT_museum_in_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Panorama_view_of_the_outside_of_MAAT_museum_in_Lisbon.jpg/320px-Panorama_view_of_the_outside_of_MAAT_museum_in_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Leeturtle",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Panorama_view_of_the_outside_of_MAAT_museum_in_Lisbon.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/MAAT_Museum_of_Art_Architecture_and_Technology_Lisbon.jpg/960px-MAAT_Museum_of_Art_Architecture_and_Technology_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/MAAT_Museum_of_Art_Architecture_and_Technology_Lisbon.jpg/320px-MAAT_Museum_of_Art_Architecture_and_Technology_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "SIryn",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:MAAT_Museum_of_Art_Architecture_and_Technology_Lisbon.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/The_MAAT_%2834943440096%29.jpg/960px-The_MAAT_%2834943440096%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/The_MAAT_%2834943440096%29.jpg/320px-The_MAAT_%2834943440096%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Susanne Nilsson",
+          "license": "CC BY-SA 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:The_MAAT_(34943440096).jpg"
+        }
+      ]
+    },
+    {
+      "id": "macam-museu-de-arte-contemporanea-armando-martins",
+      "name": "MACAM (Museu de Arte Contemporânea Armando Martins)",
+      "category": "art",
+      "location": "Rua da Junqueira 66",
+      "details": "€15 + €1.20 fee (≈ $19). Hours not confirmed.",
+      "priceLocal": 15,
+      "url": "https://macam.pt/en",
+      "mapsUrl": null,
+      "phone": null,
+      "note": "~1-year-old museum in an 18th-century palace; 600+ works from a developer's collection — Portuguese art late 1800s–1980s plus newer work.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "west",
+      "lat": 38.7004862,
+      "lng": -9.183303,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727238%29.jpg/960px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727238%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727238%29.jpg/320px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727238%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_(54690727238).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690833250%29.jpg/960px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690833250%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690833250%29.jpg/320px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690833250%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_(54690833250).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727193%29.jpg/960px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727193%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727193%29.jpg/320px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690727193%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_(54690727193).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501351%29.jpg/960px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501351%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501351%29.jpg/320px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501351%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_(54690501351).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501306%29.jpg/960px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501306%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501306%29.jpg/320px-MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_%2854690501306%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:MACAM_Hotel_-_Lisboa_-_Portugal_%F0%9F%87%B5%F0%9F%87%B9_(54690501306).jpg"
+        }
+      ]
+    },
+    {
+      "id": "museu-do-tesouro-real-crown-jewels-palacio-nacional-da-ajuda",
+      "name": "Museu do Tesouro Real (Crown Jewels) + Palácio Nacional da Ajuda",
+      "category": "art",
+      "location": "Calçada da Ajuda",
+      "details": "✓ Daily 10:00–18:00 from Oct (last entry 17:00). Treasury €11 (≈ $13); article's combined price €13 (≈ $15) is from 2023.",
+      "priceLocal": 11,
+      "url": "https://www.tesouroreal.pt/en",
+      "mapsUrl": null,
+      "phone": null,
+      "note": "Royal diamonds, emeralds and a gold-and-sapphire bookmark in a sleek new museum; next-door palace has a white-bar façade, chandeliers, tapestries and an El Greco.",
+      "noteYear": 2023,
+      "hoursConfirmed": true,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "west",
+      "lat": 38.7076265,
+      "lng": -9.198759,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Museu_do_Tesouro_Real.jpg/960px-Museu_do_Tesouro_Real.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Museu_do_Tesouro_Real.jpg/320px-Museu_do_Tesouro_Real.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Vampiregrave",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Museu_do_Tesouro_Real.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Interior_fa%C3%A7ade_of_the_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/960px-Interior_fa%C3%A7ade_of_the_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Interior_fa%C3%A7ade_of_the_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/320px-Interior_fa%C3%A7ade_of_the_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jules Verne Times Two",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Interior_fa%C3%A7ade_of_the_Royal_Treasure_Museum,_Lisbon,_Portugal_julesvernex2.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Silver_ewer%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/960px-Silver_ewer%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Silver_ewer%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/320px-Silver_ewer%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jules Verne Times Two",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Silver_ewer,_Royal_Treasure_Museum,_Lisbon,_Portugal_julesvernex2.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Gold_nugget_from_Brazil%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/960px-Gold_nugget_from_Brazil%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Gold_nugget_from_Brazil%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/320px-Gold_nugget_from_Brazil%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jules Verne Times Two",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Gold_nugget_from_Brazil,_Royal_Treasure_Museum,_Lisbon,_Portugal_julesvernex2.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Displays_with_silver_objects_and_diplomatic_gifts%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/960px-Displays_with_silver_objects_and_diplomatic_gifts%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Displays_with_silver_objects_and_diplomatic_gifts%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg/320px-Displays_with_silver_objects_and_diplomatic_gifts%2C_Royal_Treasure_Museum%2C_Lisbon%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jules Verne Times Two",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Displays_with_silver_objects_and_diplomatic_gifts,_Royal_Treasure_Museum,_Lisbon,_Portugal_julesvernex2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "casa-fernando-pessoa",
+      "name": "Casa Fernando Pessoa",
+      "category": "art",
+      "location": "Rua Coelho da Rocha 16–18, Campo de Ourique",
+      "details": "✓ Tue–Sun 10:00–18:00, closed Mon. €5 (≈ $6).",
+      "priceLocal": 5,
+      "url": "https://www.casafernandopessoa.pt/en/visit",
+      "mapsUrl": null,
+      "phone": null,
+      "note": "The poet's home; bedroom kept as he left it, plus a case of his oval rimless glasses.",
+      "noteYear": 2026,
+      "hoursConfirmed": true,
+      "openDays": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7166716,
+      "lng": -9.1625191,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Casa_Fernando_Pessoa.jpg/960px-Casa_Fernando_Pessoa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Casa_Fernando_Pessoa.jpg/320px-Casa_Fernando_Pessoa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Lijealso",
+          "license": "CC BY 3.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_Fernando_Pessoa.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Casa_Fernando_Pessoa_-_4963892743.jpg/960px-Casa_Fernando_Pessoa_-_4963892743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Casa_Fernando_Pessoa_-_4963892743.jpg/320px-Casa_Fernando_Pessoa_-_4963892743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "dirk.olbertz",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_Fernando_Pessoa_-_4963892743.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Casa_Fernando_Pessoa_%2849893027228%29.jpg/960px-Casa_Fernando_Pessoa_%2849893027228%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Casa_Fernando_Pessoa_%2849893027228%29.jpg/320px-Casa_Fernando_Pessoa_%2849893027228%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Pedro Ribeiro Simões from Lisboa, Portugal",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_Fernando_Pessoa_(49893027228).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Casa_Fernando_Pessoa_-_4963900037.jpg/960px-Casa_Fernando_Pessoa_-_4963900037.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Casa_Fernando_Pessoa_-_4963900037.jpg/320px-Casa_Fernando_Pessoa_-_4963900037.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "dirk.olbertz",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_Fernando_Pessoa_-_4963900037.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Casa_Fernando_Pessoa_-_4963903705.jpg/960px-Casa_Fernando_Pessoa_-_4963903705.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Casa_Fernando_Pessoa_-_4963903705.jpg/320px-Casa_Fernando_Pessoa_-_4963903705.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "dirk.olbertz",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_Fernando_Pessoa_-_4963903705.jpg"
+        }
+      ]
+    },
+    {
+      "id": "casa-museu-amalia-rodrigues",
+      "name": "Casa-Museu Amália Rodrigues",
+      "category": "art",
+      "location": "Rua de São Bento",
+      "details": "Hours/price not confirmed.",
+      "priceLocal": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Casa-Museu+Amalia+Rodrigues+Lisboa",
+      "phone": null,
+      "note": "The fado diva's house on the São Bento walk. Also hosts \"Fado in the Garden\" through Oct 31.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7153959,
+      "lng": -9.1546143,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Casa_Museu_Am%C3%A1lia_Rodrigues_Lisbon.jpg/960px-Casa_Museu_Am%C3%A1lia_Rodrigues_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Casa_Museu_Am%C3%A1lia_Rodrigues_Lisbon.jpg/320px-Casa_Museu_Am%C3%A1lia_Rodrigues_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Acediscovery",
+          "license": "CC BY 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_Museu_Am%C3%A1lia_Rodrigues_Lisbon.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Casa_de_Am%C3%A1lia_Rodrigue_na_Rua_de_S%C3%A3o_Bento%2C_Lisboa_-_Am%C3%A1lia_Rodrigues%27_house_on_Rua_de_S%C3%A3o_Bento%2C_Lisbon_%2851003544688%29.jpg/960px-Casa_de_Am%C3%A1lia_Rodrigue_na_Rua_de_S%C3%A3o_Bento%2C_Lisboa_-_Am%C3%A1lia_Rodrigues%27_house_on_Rua_de_S%C3%A3o_Bento%2C_Lisbon_%2851003544688%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Casa_de_Am%C3%A1lia_Rodrigue_na_Rua_de_S%C3%A3o_Bento%2C_Lisboa_-_Am%C3%A1lia_Rodrigues%27_house_on_Rua_de_S%C3%A3o_Bento%2C_Lisbon_%2851003544688%29.jpg/320px-Casa_de_Am%C3%A1lia_Rodrigue_na_Rua_de_S%C3%A3o_Bento%2C_Lisboa_-_Am%C3%A1lia_Rodrigues%27_house_on_Rua_de_S%C3%A3o_Bento%2C_Lisbon_%2851003544688%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jens Cederskjold from København S, Danmark",
+          "license": "CC BY-SA 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_de_Am%C3%A1lia_Rodrigue_na_Rua_de_S%C3%A3o_Bento,_Lisboa_-_Am%C3%A1lia_Rodrigues%27_house_on_Rua_de_S%C3%A3o_Bento,_Lisbon_(51003544688).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Um_presente_para_Am%C3%A1lia_Rodrigues_%2851003555668%29.jpg/960px-Um_presente_para_Am%C3%A1lia_Rodrigues_%2851003555668%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Um_presente_para_Am%C3%A1lia_Rodrigues_%2851003555668%29.jpg/320px-Um_presente_para_Am%C3%A1lia_Rodrigues_%2851003555668%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Jens Cederskjold from København S, Danmark",
+          "license": "CC BY-SA 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Um_presente_para_Am%C3%A1lia_Rodrigues_(51003555668).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Grafite_da_Rua_Am%C3%A1lia%2C_2024.jpg/960px-Grafite_da_Rua_Am%C3%A1lia%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Grafite_da_Rua_Am%C3%A1lia%2C_2024.jpg/320px-Grafite_da_Rua_Am%C3%A1lia%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Grafite_da_Rua_Am%C3%A1lia,_2024.jpg"
+        }
+      ]
+    },
+    {
+      "id": "galeria-filomena-soares",
+      "name": "Galeria Filomena Soares",
+      "category": "art",
+      "location": "Beato",
+      "details": "Free.",
+      "priceLocal": 0,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Galeria+Filomena+Soares+Lisboa",
+      "phone": null,
+      "note": "Beato institution since 2001 (Shirin Neshat, Allan Sekula). Go up to the roof for Dan Graham's curving glass-wall installation.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7317082,
+      "lng": -9.1074964,
+      "images": []
+    },
+    {
+      "id": "galeria-francisco-fino",
+      "name": "Galeria Francisco Fino",
+      "category": "art",
+      "location": "Marvila",
+      "details": "Free.",
+      "priceLocal": 0,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Galeria+Francisco+Fino+Lisboa",
+      "phone": null,
+      "note": "White two-level house showing mostly Portuguese and Brazilian contemporary artists.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.738514,
+      "lng": -9.10539,
+      "images": []
+    },
+    {
+      "id": "canalha",
+      "name": "Canalha",
+      "category": "food",
+      "location": "Rua da Junqueira 207, Belém",
+      "details": "~€40 (≈ $46)/person; Michelin Bib Gourmand. Call +351 962 152 742.",
+      "priceLocal": 40,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Canalha+Rua+da+Junqueira+207+Lisboa",
+      "phone": "+351 962 152 742",
+      "note": "Lisbon chefs' favorite, tough reservation. Shrimp-and-onion omelet €18 (≈ $21), squid in ewe's-milk butter €25 (≈ $29), steak €16 (≈ $19). **Book now.**",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": true,
+      "cluster": "west",
+      "lat": 38.6973967,
+      "lng": -9.1937118,
+      "images": []
+    },
+    {
+      "id": "santa-joana-nuno-mendes",
+      "name": "Santa Joana (Nuno Mendes)",
+      "category": "food",
+      "location": "In Locke de Santa Joana, near Marquês de Pombal",
+      "details": "Pork T-bone with walnut sauce €32 (≈ $37).",
+      "priceLocal": 32,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Santa+Joana+restaurant+Lisboa",
+      "phone": null,
+      "note": "\"Superb dinner\" from a renowned chef; the standout tiborna is currently off the menu.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7255618,
+      "lng": -9.1472599,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Locke_de_Santa_Joana_03.jpg/960px-Locke_de_Santa_Joana_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Locke_de_Santa_Joana_03.jpg/320px-Locke_de_Santa_Joana_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "DiogoBaptista",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Locke_de_Santa_Joana_03.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Locke_de_Santa_Joana_19.jpg/960px-Locke_de_Santa_Joana_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Locke_de_Santa_Joana_19.jpg/320px-Locke_de_Santa_Joana_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "DiogoBaptista",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Locke_de_Santa_Joana_19.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Locke_de_Santa_Joana_14.jpg/960px-Locke_de_Santa_Joana_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Locke_de_Santa_Joana_14.jpg/320px-Locke_de_Santa_Joana_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "DiogoBaptista",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Locke_de_Santa_Joana_14.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Locke_de_Santa_Joana_20.jpg/960px-Locke_de_Santa_Joana_20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Locke_de_Santa_Joana_20.jpg/320px-Locke_de_Santa_Joana_20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "DiogoBaptista",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Locke_de_Santa_Joana_20.jpg"
+        }
+      ]
+    },
+    {
+      "id": "pigmeu",
+      "name": "Pigmeu",
+      "category": "food",
+      "location": "Campo de Ourique",
+      "details": "Lunch ~€17 (≈ $20).",
+      "priceLocal": 17,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pigmeu+Campo+de+Ourique",
+      "phone": null,
+      "note": "Excellent free-range Portuguese pork. Pairs with nearby Casa Pessoa.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.719897,
+      "lng": -9.1647741,
+      "images": []
+    },
+    {
+      "id": "damas",
+      "name": "Damas",
+      "category": "food",
+      "location": "Graça",
+      "details": "~€20 (≈ $23) with wine.",
+      "priceLocal": 20,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Damas+Graca+Lisboa",
+      "phone": null,
+      "note": "\"Wonderfully funky\" restaurant/bar/art space in an old industrial bakery. Get the pica pau and string-bean tempura.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7164253,
+      "lng": -9.1294345,
+      "images": []
+    },
+    {
+      "id": "arkhe",
+      "name": "Arkhe",
+      "category": "food",
+      "location": "Near Cais do Sodré",
+      "details": "5-course vegetarian tasting €70 (≈ $81) without drinks.",
+      "priceLocal": 70,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arkhe+restaurante+Lisboa",
+      "phone": null,
+      "note": "Quietly elegant, plant-filled room; artful dishes like beet several ways in dashi, kimchi tortellini.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7061547,
+      "lng": -9.1468269,
+      "images": []
+    },
+    {
+      "id": "tricky-s",
+      "name": "Tricky's",
+      "category": "food",
+      "location": "Near Cais do Sodré",
+      "details": "~€70 (≈ $81) for two without drinks. Cash only (2023).",
+      "priceLocal": 70,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tricky%27s+Lisboa",
+      "phone": null,
+      "note": "Industrial décor, natural wines, eclectic small plates (mackerel wrapped in lardo).",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7088983,
+      "lng": -9.1494294,
+      "images": []
+    },
+    {
+      "id": "pica-pau",
+      "name": "Pica-Pau",
+      "category": "food",
+      "location": "Príncipe Real",
+      "details": "~€50 (≈ $58) for two.",
+      "priceLocal": 50,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pica-Pau+Principe+Real+Lisboa",
+      "phone": null,
+      "note": "Old-time farmhouse and fisherman's food; cod cakes €6 (≈ $7), monkfish-and-shrimp rice; nice back patio.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.717195,
+      "lng": -9.1497469,
+      "images": []
+    },
+    {
+      "id": "bacoalto",
+      "name": "BacoAlto",
+      "category": "bar",
+      "location": "Bairro Alto",
+      "details": "Chorizo €9.50 (≈ $11).",
+      "priceLocal": 9.5,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BacoAlto+Lisboa",
+      "phone": null,
+      "note": "Wine bar with wooden stools; ask for a red from the little-known Bairrada region.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7133919,
+      "lng": -9.1455522,
+      "images": []
+    },
+    {
+      "id": "side-bar",
+      "name": "Side Bar",
+      "category": "bar",
+      "location": "Rua da Barroca, Bairro Alto",
+      "details": "",
+      "priceLocal": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Side+Bar+Rua+da+Barroca+Lisboa",
+      "phone": null,
+      "note": "Friendly, very mixed crowd in the Bairro Alto gay-bar cluster; good G&Ts.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7114735,
+      "lng": -9.1445326,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/LGBT_Side_Bar_pub_Lisbon.jpg/960px-LGBT_Side_Bar_pub_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/LGBT_Side_Bar_pub_Lisbon.jpg/320px-LGBT_Side_Bar_pub_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Ceaseless Watcher",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:LGBT_Side_Bar_pub_Lisbon.jpg"
+        }
+      ]
+    },
+    {
+      "id": "monkey-mash-red-frog",
+      "name": "Monkey Mash / Red Frog",
+      "category": "bar",
+      "location": "Off Avenida da Liberdade",
+      "details": "Cocktails €13.50–15 (≈ $16–17). Book ahead.",
+      "priceLocal": 13.5,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Monkey+Mash+Lisboa",
+      "phone": null,
+      "note": "Tropical-chic underground cocktail bar with a hidden speakeasy (Red Frog) behind a wall panel.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": true,
+      "cluster": "center",
+      "lat": 38.7181992,
+      "lng": -9.1447242,
+      "images": []
+    },
+    {
+      "id": "gala-cricri-at-palacio-do-grilo",
+      "name": "Gala Cricri at Palácio do Grilo",
+      "category": "bar",
+      "location": "Beato",
+      "details": "Free if reserved online or before 22:00, else €8 (≈ $9); cocktails €10–14 (≈ $12–16).",
+      "priceLocal": 0,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Palacio+do+Grilo+Lisboa",
+      "phone": null,
+      "note": "Late-night dance party through the rooms, gardens and chapel of an 18th-century palace; electro to disco.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7324905,
+      "lng": -9.1067453,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Palcio-do-grilo-plano-4.jpg/960px-Palcio-do-grilo-plano-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Palcio-do-grilo-plano-4.jpg/320px-Palcio-do-grilo-plano-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Drawing Eugénio dos Santos",
+          "license": "Public domain",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Palcio-do-grilo-plano-4.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Palcio-do-grilo-plano-2.jpg/960px-Palcio-do-grilo-plano-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Palcio-do-grilo-plano-2.jpg/320px-Palcio-do-grilo-plano-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Drawing Filipe Folque - 1856",
+          "license": "Public domain",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Palcio-do-grilo-plano-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "little-chelsea-experience",
+      "name": "Little Chelsea Experience",
+      "category": "bar",
+      "location": "Marvila",
+      "details": "",
+      "priceLocal": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Little+Chelsea+Experience+Lisboa",
+      "phone": null,
+      "note": "1970s NY punk-and-glam boutique/bar/gallery — vintage clothes, wine, rock shows.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7460112,
+      "lng": -9.1056191,
+      "images": []
+    },
+    {
+      "id": "dois-corvos",
+      "name": "Dois Corvos",
+      "category": "bar",
+      "location": "Marvila",
+      "details": "",
+      "priceLocal": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dois+Corvos+Marvila",
+      "phone": null,
+      "note": "Art-decorated craft-beer hall on the same block.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7390966,
+      "lng": -9.1048076,
+      "images": []
+    },
+    {
+      "id": "maria-limao-at-miradouro-da-senhora-do-monte",
+      "name": "Maria Limão at Miradouro da Senhora do Monte",
+      "category": "bar",
+      "location": "Graça",
+      "details": "Caipirinha €7.50 (≈ $9).",
+      "priceLocal": 7.5,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Miradouro+da+Senhora+do+Monte",
+      "phone": null,
+      "note": "Drinks stand at the city's best sunset viewpoint — rooftops, castle and the Tagus.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7186222,
+      "lng": -9.1298331,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Miradouro_Nossa_Senhora_do_Monte_II.jpg/960px-Miradouro_Nossa_Senhora_do_Monte_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Miradouro_Nossa_Senhora_do_Monte_II.jpg/320px-Miradouro_Nossa_Senhora_do_Monte_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Filipe Rocha,user:sacavem (pt) http://pt.wikipedia.org/wiki/Usu%C3%A1rio:Sacavem",
+          "license": "CC BY-SA 3.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Miradouro_Nossa_Senhora_do_Monte_II.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Miradouro_da_Senhora_do_Monte_%2838530147244%29.jpg/960px-Miradouro_da_Senhora_do_Monte_%2838530147244%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Miradouro_da_Senhora_do_Monte_%2838530147244%29.jpg/320px-Miradouro_da_Senhora_do_Monte_%2838530147244%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Pedro from Lisboa, Portugal",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Miradouro_da_Senhora_do_Monte_(38530147244).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Capela_de_Nossa_Senhora_do_Monte%2C_Miradouro_da_Senhora_do_Monte_%2849649695837%29.jpg/960px-Capela_de_Nossa_Senhora_do_Monte%2C_Miradouro_da_Senhora_do_Monte_%2849649695837%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Capela_de_Nossa_Senhora_do_Monte%2C_Miradouro_da_Senhora_do_Monte_%2849649695837%29.jpg/320px-Capela_de_Nossa_Senhora_do_Monte%2C_Miradouro_da_Senhora_do_Monte_%2849649695837%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Sonse",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Capela_de_Nossa_Senhora_do_Monte,_Miradouro_da_Senhora_do_Monte_(49649695837).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Miradouro_Nossa_Senhora_do_Monte_I.jpg/960px-Miradouro_Nossa_Senhora_do_Monte_I.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Miradouro_Nossa_Senhora_do_Monte_I.jpg/320px-Miradouro_Nossa_Senhora_do_Monte_I.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Filipe Rocha,user:sacavem (pt) http://pt.wikipedia.org/wiki/Usu%C3%A1rio:Sacavem",
+          "license": "CC BY-SA 3.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Miradouro_Nossa_Senhora_do_Monte_I.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/BAR000273_-_Miradouro_da_Senhora_do_Monte.jpg/960px-BAR000273_-_Miradouro_da_Senhora_do_Monte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/BAR000273_-_Miradouro_da_Senhora_do_Monte.jpg/320px-BAR000273_-_Miradouro_da_Senhora_do_Monte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "José Artur Leitão Bárcia",
+          "license": "Public domain",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:BAR000273_-_Miradouro_da_Senhora_do_Monte.jpg"
+        }
+      ]
+    },
+    {
+      "id": "feira-da-ladra-flea-market",
+      "name": "Feira da Ladra flea market",
+      "category": "shop",
+      "location": "Campo de Santa Clara, behind São Vicente de Fora",
+      "details": "✓ Tuesdays & Saturdays (Sat Oct 10 works). Free.",
+      "priceLocal": 0,
+      "url": "https://www.visitlisboa.com/en/places/feira-da-ladra-flea-market",
+      "mapsUrl": null,
+      "phone": null,
+      "note": "Bric-a-brac that improves uphill (glassware, china, jewelry). Look for the yellow van of art-house DVDs and Frida/Dalí hand-painted military jackets.",
+      "noteYear": 2023,
+      "hoursConfirmed": true,
+      "openDays": [
+        2,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7154143,
+      "lng": -9.1262761,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Feira_da_Ladra%2C_Lisboa%2C_Jul_2024.jpg/960px-Feira_da_Ladra%2C_Lisboa%2C_Jul_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Feira_da_Ladra%2C_Lisboa%2C_Jul_2024.jpg/320px-Feira_da_Ladra%2C_Lisboa%2C_Jul_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Feira_da_Ladra,_Lisboa,_Jul_2024.jpg"
+        }
+      ]
+    },
+    {
+      "id": "rua-de-sao-bento-strip",
+      "name": "Rua de São Bento strip",
+      "category": "shop",
+      "location": "São Bento",
+      "details": "",
+      "priceLocal": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+de+Sao+Bento+Lisboa",
+      "phone": null,
+      "note": "Antique shops mixed with new creative stores: · Homecore — French-owned, mostly single-color fashion · Sokyo Lisbon — melted/meteorite-like Japanese ceramics · Distopia — bookshop with \"Soul of Lisbon\" and \"Secret Lisbon\" guides, plus vinyl",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "center",
+      "lat": 38.7110328,
+      "lng": -9.1531551,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Pedro_Ziegler%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/960px-Pedro_Ziegler%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Pedro_Ziegler%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/320px-Pedro_Ziegler%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Pedro_Ziegler,_Rua_de_S%C3%A3o_Bento,_Lisboa,_2024.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/The_World_of_Vintage%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/960px-The_World_of_Vintage%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/The_World_of_Vintage%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/320px-The_World_of_Vintage%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:The_World_of_Vintage,_Rua_de_S%C3%A3o_Bento,_Lisboa,_2024.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Untitled_mural%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/960px-Untitled_mural%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Untitled_mural%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/320px-Untitled_mural%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Untitled_mural,_Rua_de_S%C3%A3o_Bento,_Lisboa,_2024.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Antiqu%C3%A1rio_Velharias_de_Ant%C3%B3nio_Azevedo%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/960px-Antiqu%C3%A1rio_Velharias_de_Ant%C3%B3nio_Azevedo%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Antiqu%C3%A1rio_Velharias_de_Ant%C3%B3nio_Azevedo%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg/320px-Antiqu%C3%A1rio_Velharias_de_Ant%C3%B3nio_Azevedo%2C_Rua_de_S%C3%A3o_Bento%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Antiqu%C3%A1rio_Velharias_de_Ant%C3%B3nio_Azevedo,_Rua_de_S%C3%A3o_Bento,_Lisboa,_2024.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Edif%C3%ADcio_na_Rua_de_S%C3%A3o_Bento%2C_291%E2%80%93295%2C_Lisboa%2C_2024.jpg/960px-Edif%C3%ADcio_na_Rua_de_S%C3%A3o_Bento%2C_291%E2%80%93295%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Edif%C3%ADcio_na_Rua_de_S%C3%A3o_Bento%2C_291%E2%80%93295%2C_Lisboa%2C_2024.jpg/320px-Edif%C3%ADcio_na_Rua_de_S%C3%A3o_Bento%2C_291%E2%80%93295%2C_Lisboa%2C_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Edif%C3%ADcio_na_Rua_de_S%C3%A3o_Bento,_291%E2%80%93295,_Lisboa,_2024.jpg"
+        }
+      ]
+    },
+    {
+      "id": "feed",
+      "name": "Feed",
+      "category": "shop",
+      "location": "Beato",
+      "details": "",
+      "priceLocal": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Feed+Beato+Lisboa",
+      "phone": null,
+      "note": "Hangar-size store of funky, psychedelic women's wear and accessories.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7317082,
+      "lng": -9.1074964,
+      "images": []
+    },
+    {
+      "id": "queer-lisbon-walking-tour-guide-leonor-machado",
+      "name": "Queer Lisbon walking tour (guide Leonor Machado)",
+      "category": "tour",
+      "location": "Starts at Jardim do Príncipe Real",
+      "details": "€40 (≈ $46), 4 hours.",
+      "priceLocal": 40,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jardim+do+Principe+Real",
+      "phone": null,
+      "note": "Changed how the writer sees the city — ties fascism and colonial history to Lisbon today. Search \"Queer Lisbon tour Leonor Machado\" to book.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": true,
+      "cluster": "center",
+      "lat": 38.7162843,
+      "lng": -9.1486158,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/JardimPrincipeReal2.JPG/960px-JardimPrincipeReal2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/JardimPrincipeReal2.JPG/320px-JardimPrincipeReal2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "CorreiaPM",
+          "license": "Public domain",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:JardimPrincipeReal2.JPG"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Exibi%C3%A7%C3%A3o_do_Jardim_do_Pr%C3%ADncipe_Real%2C_Lisboa_%2820240212174026%29.jpg/960px-Exibi%C3%A7%C3%A3o_do_Jardim_do_Pr%C3%ADncipe_Real%2C_Lisboa_%2820240212174026%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Exibi%C3%A7%C3%A3o_do_Jardim_do_Pr%C3%ADncipe_Real%2C_Lisboa_%2820240212174026%29.jpg/320px-Exibi%C3%A7%C3%A3o_do_Jardim_do_Pr%C3%ADncipe_Real%2C_Lisboa_%2820240212174026%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Exibi%C3%A7%C3%A3o_do_Jardim_do_Pr%C3%ADncipe_Real,_Lisboa_(20240212174026).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Unindenified_plant_-_Jardim_do_Pr%C3%ADncipe_Real_%2820240212_174532%29.jpg/960px-Unindenified_plant_-_Jardim_do_Pr%C3%ADncipe_Real_%2820240212_174532%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Unindenified_plant_-_Jardim_do_Pr%C3%ADncipe_Real_%2820240212_174532%29.jpg/320px-Unindenified_plant_-_Jardim_do_Pr%C3%ADncipe_Real_%2820240212_174532%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Unindenified_plant_-_Jardim_do_Pr%C3%ADncipe_Real_(20240212_174532).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Francisco_Marques_de_Sousa_Viterbo_-_Jardim_do_Pr%C3%ADncipe_Real_-_Lisboa_%2820240212174719%29.jpg/960px-Francisco_Marques_de_Sousa_Viterbo_-_Jardim_do_Pr%C3%ADncipe_Real_-_Lisboa_%2820240212174719%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Francisco_Marques_de_Sousa_Viterbo_-_Jardim_do_Pr%C3%ADncipe_Real_-_Lisboa_%2820240212174719%29.jpg/320px-Francisco_Marques_de_Sousa_Viterbo_-_Jardim_do_Pr%C3%ADncipe_Real_-_Lisboa_%2820240212174719%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "JnpoJuwan",
+          "license": "CC0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Francisco_Marques_de_Sousa_Viterbo_-_Jardim_do_Pr%C3%ADncipe_Real_-_Lisboa_(20240212174719).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Lisbon%2C_the_Jardim_do_Pr%C3%ADncipe_Real.JPG/960px-Lisbon%2C_the_Jardim_do_Pr%C3%ADncipe_Real.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Lisbon%2C_the_Jardim_do_Pr%C3%ADncipe_Real.JPG/320px-Lisbon%2C_the_Jardim_do_Pr%C3%ADncipe_Real.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Dguendel",
+          "license": "CC BY 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Lisbon,_the_Jardim_do_Pr%C3%ADncipe_Real.JPG"
+        }
+      ]
+    },
+    {
+      "id": "tram-12e",
+      "name": "Tram 12E",
+      "category": "tour",
+      "location": "From Martim Moniz",
+      "details": "€3 (≈ $3.50), 2023 price.",
+      "priceLocal": 3,
+      "url": null,
+      "mapsUrl": null,
+      "phone": null,
+      "note": "Skip the Tram 28 lines — same vintage cars, ~30 min through Mouraria, Portas do Sol, Alfama and the cathedral. Note: funiculars closed after the Sept 2025 crash; check if reopened.",
+      "noteYear": 2023,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "east",
+      "lat": 38.7174998,
+      "lng": -9.1357929,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Tram_28E_and_12E_Lisbon_2011.png/960px-Tram_28E_and_12E_Lisbon_2011.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Tram_28E_and_12E_Lisbon_2011.png/320px-Tram_28E_and_12E_Lisbon_2011.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Don-kun, Open Street Map",
+          "license": "CC BY 2.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Tram_28E_and_12E_Lisbon_2011.png"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Inside_Tram_12E_in_Pra%C3%A7a_da_Figueira.JPG/960px-Inside_Tram_12E_in_Pra%C3%A7a_da_Figueira.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Inside_Tram_12E_in_Pra%C3%A7a_da_Figueira.JPG/320px-Inside_Tram_12E_in_Pra%C3%A7a_da_Figueira.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "credit": "Threeohsix",
+          "license": "CC BY-SA 4.0",
+          "sourcePage": "https://commons.wikimedia.org/wiki/File:Inside_Tram_12E_in_Pra%C3%A7a_da_Figueira.JPG"
+        }
+      ]
+    }
+  ]
+}

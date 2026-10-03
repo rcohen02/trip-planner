@@ -1,0 +1,288 @@
+{
+  "slug": "lisbon-2026",
+  "name": "Lisbon",
+  "destination": "Lisbon, Portugal",
+  "timezone": "Europe/Lisbon",
+  "homeTimezone": "America/New_York",
+  "localCurrency": "EUR",
+  "usdRate": 1.16,
+  "usdRateDate": "2026-10-02",
+  "travelers": [
+    {
+      "name": "Rob",
+      "email": "cohen.rl@gmail.com"
+    },
+    {
+      "name": "Danielle",
+      "email": "dmindess@gmail.com"
+    }
+  ],
+  "bookingRef": "ZYKGWV",
+  "homebase": {
+    "label": "The house",
+    "address": "R. da Giribita 1, Paço de Arcos",
+    "lat": 38.69783,
+    "lng": -9.28385
+  },
+  "flights": [
+    {
+      "airline": "TAP Air Portugal",
+      "flightNo": "TP202",
+      "from": {
+        "code": "EWR",
+        "name": "Newark",
+        "terminal": "B"
+      },
+      "to": {
+        "code": "LIS",
+        "name": "Lisbon",
+        "terminal": "1"
+      },
+      "depart": "2026-10-08T17:30:00-04:00",
+      "arrive": "2026-10-09T05:30:00+01:00",
+      "checkInCloses": "2026-10-08T16:30:00-04:00",
+      "seats": {
+        "Rob": "20C",
+        "Danielle": "20B"
+      }
+    },
+    {
+      "airline": "TAP Air Portugal",
+      "flightNo": "TP209",
+      "from": {
+        "code": "LIS",
+        "name": "Lisbon",
+        "terminal": "1"
+      },
+      "to": {
+        "code": "JFK",
+        "name": "New York JFK",
+        "terminal": "1"
+      },
+      "depart": "2026-10-12T17:00:00+01:00",
+      "arrive": "2026-10-12T20:05:00-04:00",
+      "checkInCloses": "2026-10-12T16:00:00+01:00",
+      "seats": {
+        "Rob": "22C",
+        "Danielle": "22A"
+      }
+    }
+  ],
+  "bags": [
+    "1 carry-on each included (10 kg / 22 lb, 55×40×25 cm)",
+    "No checked bags on the fare: 1st bag $131 (≈ €113), 2nd $160 (≈ €138), each way",
+    "Return seats aren't together (22B is between you); try to swap at check-in",
+    "Fare is non-refundable; passport required at check-in"
+  ],
+  "gettingAround": [
+    "Cascais train line from Paço de Arcos: west Lisbon (Belém/Junqueira) in 15–20 min, Cais do Sodré in about 25",
+    "Trams: take 12E from Martim Moniz instead of the crowded 28",
+    "Funiculars closed after the Sept 2025 crash; check whether they've reopened",
+    "Taxi and ride apps for late nights and the airport"
+  ],
+  "days": [
+    {
+      "date": "2026-10-09",
+      "label": "Fri",
+      "note": "Arrival day: land 5:30 am, house may not be ready",
+      "slots": [
+        "early",
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ],
+      "optional": [
+        "night"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "label": "Sat",
+      "note": "Best gallery day + Feira da Ladra (Sat only)",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "label": "Sun",
+      "note": "Museums; commercial galleries likely closed",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "label": "Mon",
+      "note": "Departure: check-in closes 4:00 pm",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon"
+      ],
+      "locked": [
+        {
+          "kind": "afternoon",
+          "reason": "Airport: TP209 departs 5:00 pm"
+        }
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "id": "west",
+      "name": "West Lisbon",
+      "note": "Belém, Junqueira, Ajuda: 15–20 min by train",
+      "color": "#97D8B2"
+    },
+    {
+      "id": "center",
+      "name": "Center",
+      "note": "Bairro Alto, Príncipe Real, São Bento, Campo de Ourique",
+      "color": "#E7A1D9"
+    },
+    {
+      "id": "east",
+      "name": "East",
+      "note": "Beato, Marvila, Graça, Alfama",
+      "color": "#F2C14E"
+    }
+  ],
+  "clusterOf": {
+    "maat-museum-of-art-architecture-and-technology": "west",
+    "macam-museu-de-arte-contemporanea-armando-martins": "west",
+    "museu-do-tesouro-real-crown-jewels-palacio-nacional-da-ajuda": "west",
+    "canalha": "west",
+    "casa-fernando-pessoa": "center",
+    "casa-museu-amalia-rodrigues": "center",
+    "santa-joana-nuno-mendes": "center",
+    "pigmeu": "center",
+    "arkhe": "center",
+    "tricky-s": "center",
+    "pica-pau": "center",
+    "bacoalto": "center",
+    "side-bar": "center",
+    "monkey-mash-red-frog": "center",
+    "rua-de-sao-bento-strip": "center",
+    "queer-lisbon-walking-tour-guide-leonor-machado": "center",
+    "galeria-filomena-soares": "east",
+    "galeria-francisco-fino": "east",
+    "damas": "east",
+    "gala-cricri-at-palacio-do-grilo": "east",
+    "little-chelsea-experience": "east",
+    "dois-corvos": "east",
+    "maria-limao-at-miradouro-da-senhora-do-monte": "east",
+    "feira-da-ladra-flea-market": "east",
+    "feed": "east",
+    "tram-12e": "east"
+  },
+  "todos": [
+    {
+      "id": "book-canalha",
+      "kind": "book",
+      "text": "Book Canalha (+351 962 152 742)",
+      "placeId": "canalha"
+    },
+    {
+      "id": "book-monkey-mash",
+      "kind": "book",
+      "text": "Book Monkey Mash / Red Frog",
+      "placeId": "monkey-mash-red-frog"
+    },
+    {
+      "id": "book-queer-tour",
+      "kind": "book",
+      "text": "Book the Queer Lisbon walking tour (Leonor Machado)",
+      "placeId": "queer-lisbon-walking-tour-guide-leonor-machado"
+    },
+    {
+      "id": "confirm-maat",
+      "kind": "confirm",
+      "text": "Confirm MAAT hours",
+      "placeId": "maat-museum-of-art-architecture-and-technology"
+    },
+    {
+      "id": "confirm-macam",
+      "kind": "confirm",
+      "text": "Confirm MACAM hours",
+      "placeId": "macam-museu-de-arte-contemporanea-armando-martins"
+    },
+    {
+      "id": "confirm-amalia",
+      "kind": "confirm",
+      "text": "Confirm Casa-Museu Amália hours",
+      "placeId": "casa-museu-amalia-rodrigues"
+    },
+    {
+      "id": "check-funiculars",
+      "kind": "check",
+      "text": "Check whether the funiculars have reopened"
+    },
+    {
+      "id": "swap-seats",
+      "kind": "other",
+      "text": "Swap return seats at check-in (22B is between you)"
+    }
+  ],
+  "enrich": {
+    "pigmeu": {
+      "noImages": true
+    },
+    "damas": {
+      "geoQuery": "Rua da Voz do Operário, Lisboa",
+      "noImages": true
+    },
+    "dois-corvos": {
+      "geoQuery": "Rua Capitão Leitão, Marvila, Lisboa",
+      "noImages": true
+    },
+    "feed": {
+      "noImages": true
+    },
+    "macam-museu-de-arte-contemporanea-armando-martins": {
+      "imageQuery": "MACAM Lisboa",
+      "imageMatch": "MACAM"
+    },
+    "galeria-filomena-soares": {
+      "imageMatch": "Filomena"
+    },
+    "side-bar": {
+      "imageMatch": "Side_Bar"
+    },
+    "feira-da-ladra-flea-market": {
+      "geoQuery": "Campo de Santa Clara, Lisboa",
+      "imageMatch": "Feira_da_Ladra"
+    },
+    "gala-cricri-at-palacio-do-grilo": {
+      "geoQuery": "Palácio do Grilo, Lisboa",
+      "imageQuery": "Palácio do Grilo Lisboa",
+      "imageMatch": "grilo"
+    },
+    "maria-limao-at-miradouro-da-senhora-do-monte": {
+      "imageQuery": "Miradouro da Senhora do Monte"
+    },
+    "rua-de-sao-bento-strip": {
+      "imageQuery": "Rua de São Bento Lisboa"
+    },
+    "queer-lisbon-walking-tour-guide-leonor-machado": {
+      "geoQuery": "Jardim do Príncipe Real, Lisboa",
+      "imageQuery": "Jardim do Príncipe Real"
+    },
+    "tram-12e": {
+      "imageMatch": "12E"
+    },
+    "santa-joana-nuno-mendes": {
+      "imageMatch": "Locke"
+    }
+  }
+}
