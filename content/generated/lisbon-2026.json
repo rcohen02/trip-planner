@@ -264,7 +264,11 @@
       "category": "art",
       "location": "Belém/Junqueira riverfront",
       "details": "€16 (≈ $19). Hours not confirmed; usually closed Tuesdays.",
-      "priceLocal": 16,
+      "price": {
+        "amount": 16,
+        "year": 2026
+      },
+      "hours": null,
       "url": "https://www.maat.pt/en/plan-a-visit",
       "mapsUrl": null,
       "phone": null,
@@ -327,7 +331,11 @@
       "category": "art",
       "location": "Rua da Junqueira 66",
       "details": "€15 + €1.20 fee (≈ $19). Hours not confirmed.",
-      "priceLocal": 15,
+      "price": {
+        "amount": 15,
+        "year": 2026
+      },
+      "hours": null,
       "url": "https://macam.pt/en",
       "mapsUrl": null,
       "phone": null,
@@ -383,7 +391,11 @@
       "category": "art",
       "location": "Calçada da Ajuda",
       "details": "✓ Daily 10:00–18:00 from Oct (last entry 17:00). Treasury €11 (≈ $13); article's combined price €13 (≈ $15) is from 2023.",
-      "priceLocal": 11,
+      "price": {
+        "amount": 11,
+        "year": 2023
+      },
+      "hours": "Daily 10:00–18:00 from Oct (last entry 17:00)",
       "url": "https://www.tesouroreal.pt/en",
       "mapsUrl": null,
       "phone": null,
@@ -447,7 +459,11 @@
       "category": "art",
       "location": "Rua Coelho da Rocha 16–18, Campo de Ourique",
       "details": "✓ Tue–Sun 10:00–18:00, closed Mon. €5 (≈ $6).",
-      "priceLocal": 5,
+      "price": {
+        "amount": 5,
+        "year": 2026
+      },
+      "hours": "Tue–Sun 10:00–18:00, closed Mon",
       "url": "https://www.casafernandopessoa.pt/en/visit",
       "mapsUrl": null,
       "phone": null,
@@ -510,7 +526,8 @@
       "category": "art",
       "location": "Rua de São Bento",
       "details": "Hours/price not confirmed.",
-      "priceLocal": null,
+      "price": null,
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Casa-Museu+Amalia+Rodrigues+Lisboa",
       "phone": null,
@@ -559,7 +576,11 @@
       "category": "art",
       "location": "Beato",
       "details": "Free.",
-      "priceLocal": 0,
+      "price": {
+        "amount": 0,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Galeria+Filomena+Soares+Lisboa",
       "phone": null,
@@ -579,7 +600,11 @@
       "category": "art",
       "location": "Marvila",
       "details": "Free.",
-      "priceLocal": 0,
+      "price": {
+        "amount": 0,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Galeria+Francisco+Fino+Lisboa",
       "phone": null,
@@ -599,7 +624,13 @@
       "category": "food",
       "location": "Rua da Junqueira 207, Belém",
       "details": "~€40 (≈ $46)/person; Michelin Bib Gourmand. Call +351 962 152 742.",
-      "priceLocal": 40,
+      "price": {
+        "amount": 40,
+        "approx": true,
+        "unit": "per person",
+        "year": 2026
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Canalha+Rua+da+Junqueira+207+Lisboa",
       "phone": "+351 962 152 742",
@@ -619,7 +650,11 @@
       "category": "food",
       "location": "In Locke de Santa Joana, near Marquês de Pombal",
       "details": "Pork T-bone with walnut sauce €32 (≈ $37).",
-      "priceLocal": 32,
+      "price": {
+        "amount": 32,
+        "year": 2026
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Santa+Joana+restaurant+Lisboa",
       "phone": null,
@@ -668,7 +703,12 @@
       "category": "food",
       "location": "Campo de Ourique",
       "details": "Lunch ~€17 (≈ $20).",
-      "priceLocal": 17,
+      "price": {
+        "amount": 17,
+        "approx": true,
+        "year": 2026
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pigmeu+Campo+de+Ourique",
       "phone": null,
@@ -688,7 +728,12 @@
       "category": "food",
       "location": "Graça",
       "details": "~€20 (≈ $23) with wine.",
-      "priceLocal": 20,
+      "price": {
+        "amount": 20,
+        "approx": true,
+        "year": 2026
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Damas+Graca+Lisboa",
       "phone": null,
@@ -708,7 +753,11 @@
       "category": "food",
       "location": "Near Cais do Sodré",
       "details": "5-course vegetarian tasting €70 (≈ $81) without drinks.",
-      "priceLocal": 70,
+      "price": {
+        "amount": 70,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arkhe+restaurante+Lisboa",
       "phone": null,
@@ -728,7 +777,13 @@
       "category": "food",
       "location": "Near Cais do Sodré",
       "details": "~€70 (≈ $81) for two without drinks. Cash only (2023).",
-      "priceLocal": 70,
+      "price": {
+        "amount": 70,
+        "approx": true,
+        "unit": "for two",
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tricky%27s+Lisboa",
       "phone": null,
@@ -748,7 +803,13 @@
       "category": "food",
       "location": "Príncipe Real",
       "details": "~€50 (≈ $58) for two.",
-      "priceLocal": 50,
+      "price": {
+        "amount": 50,
+        "approx": true,
+        "unit": "for two",
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pica-Pau+Principe+Real+Lisboa",
       "phone": null,
@@ -768,7 +829,11 @@
       "category": "bar",
       "location": "Bairro Alto",
       "details": "Chorizo €9.50 (≈ $11).",
-      "priceLocal": 9.5,
+      "price": {
+        "amount": 9.5,
+        "year": 2026
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BacoAlto+Lisboa",
       "phone": null,
@@ -788,7 +853,8 @@
       "category": "bar",
       "location": "Rua da Barroca, Bairro Alto",
       "details": "",
-      "priceLocal": null,
+      "price": null,
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Side+Bar+Rua+da+Barroca+Lisboa",
       "phone": null,
@@ -816,7 +882,12 @@
       "category": "bar",
       "location": "Off Avenida da Liberdade",
       "details": "Cocktails €13.50–15 (≈ $16–17). Book ahead.",
-      "priceLocal": 13.5,
+      "price": {
+        "amount": 13.5,
+        "max": 15,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Monkey+Mash+Lisboa",
       "phone": null,
@@ -836,7 +907,11 @@
       "category": "bar",
       "location": "Beato",
       "details": "Free if reserved online or before 22:00, else €8 (≈ $9); cocktails €10–14 (≈ $12–16).",
-      "priceLocal": 0,
+      "price": {
+        "amount": 0,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Palacio+do+Grilo+Lisboa",
       "phone": null,
@@ -871,7 +946,8 @@
       "category": "bar",
       "location": "Marvila",
       "details": "",
-      "priceLocal": null,
+      "price": null,
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Little+Chelsea+Experience+Lisboa",
       "phone": null,
@@ -891,7 +967,8 @@
       "category": "bar",
       "location": "Marvila",
       "details": "",
-      "priceLocal": null,
+      "price": null,
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dois+Corvos+Marvila",
       "phone": null,
@@ -911,7 +988,11 @@
       "category": "bar",
       "location": "Graça",
       "details": "Caipirinha €7.50 (≈ $9).",
-      "priceLocal": 7.5,
+      "price": {
+        "amount": 7.5,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Miradouro+da+Senhora+do+Monte",
       "phone": null,
@@ -967,7 +1048,11 @@
       "category": "shop",
       "location": "Campo de Santa Clara, behind São Vicente de Fora",
       "details": "✓ Tuesdays & Saturdays (Sat Oct 10 works). Free.",
-      "priceLocal": 0,
+      "price": {
+        "amount": 0,
+        "year": 2023
+      },
+      "hours": "Tuesdays & Saturdays (Sat Oct 10 works)",
       "url": "https://www.visitlisboa.com/en/places/feira-da-ladra-flea-market",
       "mapsUrl": null,
       "phone": null,
@@ -998,7 +1083,8 @@
       "category": "shop",
       "location": "São Bento",
       "details": "",
-      "priceLocal": null,
+      "price": null,
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+de+Sao+Bento+Lisboa",
       "phone": null,
@@ -1054,7 +1140,8 @@
       "category": "shop",
       "location": "Beato",
       "details": "",
-      "priceLocal": null,
+      "price": null,
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Feed+Beato+Lisboa",
       "phone": null,
@@ -1074,7 +1161,11 @@
       "category": "tour",
       "location": "Starts at Jardim do Príncipe Real",
       "details": "€40 (≈ $46), 4 hours.",
-      "priceLocal": 40,
+      "price": {
+        "amount": 40,
+        "year": 2026
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jardim+do+Principe+Real",
       "phone": null,
@@ -1130,7 +1221,11 @@
       "category": "tour",
       "location": "From Martim Moniz",
       "details": "€3 (≈ $3.50), 2023 price.",
-      "priceLocal": 3,
+      "price": {
+        "amount": 3,
+        "year": 2023
+      },
+      "hours": null,
       "url": null,
       "mapsUrl": null,
       "phone": null,

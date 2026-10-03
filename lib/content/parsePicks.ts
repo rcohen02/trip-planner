@@ -1,4 +1,4 @@
-import type { Category, Place, Weekday } from "./types";
+import type { Category, Place, Price, Weekday } from "./types";
 
 const SECTIONS: Record<string, Category> = {
   "art & museums": "art",
@@ -57,10 +57,23 @@ function link(text: string, label: string): string | null {
   return m ? m[1] : null;
 }
 
-function price(text: string): number | null {
-  if (/(^|[.—]\s*)Free\b/.test(text)) return 0;
-  const m = text.match(/€\s?(\d+(?:[.,]\d+)?)/);
-  return m ? Number(m[1].replace(",", ".")) : null;
+function price(text: string): Price | null {
+  if (/(^|[.—]\s*)Free\b/.test(text)) return { amount: 0 };
+  const m = text.match(/(~)?€\s?(\d+(?:[.,]\d+)?)(?:\s*[–-]\s*(\d+(?:[.,]\d+)?))?([^.]*)/);
+  if (!m) return null;
+  const out: Price = { amount: Number(m[2].replace(",", ".")) };
+  if (m[3]) out.max = Number(m[3].replace(",", "."));
+  if (m[1]) out.approx = true;
+  const tail = m[4] ?? "";
+  if (/\/\s*person|per person/.test(tail)) out.unit = "per person";
+  else if (/for two/.test(tail)) out.unit = "for two";
+  return out;
+}
+
+/** The hours phrase after a ✓, up to the price or the next sentence. */
+function hoursText(text: string): string | null {
+  const m = text.match(/✓\s*([^.€]*?(?:\([^)]*\))?)(?=\.\s|\.$|\s*€|$)/);
+  return m ? m[1].trim().replace(/[.,]$/, "") : null;
 }
 
 /** Parse a picks markdown file (format of content/trips/<slug>/picks.md) into places. */
@@ -89,7 +102,8 @@ export function parsePicks(md: string): Place[] {
         category,
         location: location.replace(/\.$/, ""),
         details: more.join(". ").replace(/\[[^\]]+\]\([^)]+\)/g, "").trim(),
-        priceLocal: price(rest),
+        price: price(rest),
+        hours: hoursConfirmed ? hoursText(rest) : null,
         url: link(rest, "Site") ?? link(rest, "Info"),
         mapsUrl: link(rest, "Maps"),
         phone: rest.match(/\+\d{1,3}(?:\s?\d{2,4}){2,4}/)?.[0] ?? null,
@@ -107,6 +121,7 @@ export function parsePicks(md: string): Place[] {
     const note = line.match(/^\s+\*(\d{4}):\*\s*(.*)$/);
     if (note) {
       current.noteYear = Number(note[1]);
+      if (current.price) current.price.year = current.noteYear;
       current.note = note[2].trim();
       if (/book (now|ahead)|to book/i.test(note[2])) current.needsBooking = true;
       continue;

@@ -11,6 +11,15 @@ export interface PlaceImage {
   sourcePage: string;
 }
 
+export interface Price {
+  amount: number;
+  max?: number;
+  approx?: boolean;
+  unit?: "per person" | "for two";
+  /** Year of the source the price came from. */
+  year?: number;
+}
+
 export interface Place {
   id: string;
   name: string;
@@ -18,7 +27,9 @@ export interface Place {
   /** Text right after the name, e.g. "Rua da Junqueira 207, Belém". */
   location: string;
   details: string;
-  priceLocal: number | null;
+  price: Price | null;
+  /** Hours as written in the source, when confirmed on the venue's site (e.g. "Tue–Sun 10:00–18:00, closed Mon"). */
+  hours: string | null;
   url: string | null;
   mapsUrl: string | null;
   phone: string | null;

@@ -29,14 +29,17 @@ describe("parsePicks", () => {
 
   it("extracts the first euro price, links and the dated NYT note", () => {
     const c = byName("Canalha");
-    expect(c.priceLocal).toBe(40);
+    expect(c.price).toEqual({ amount: 40, approx: true, unit: "per person", year: 2026 });
     expect(c.mapsUrl).toContain("google.com/maps");
     expect(c.phone).toBe("+351 962 152 742");
     expect(c.note).toMatch(/^Lisbon chefs' favorite/);
     expect(c.noteYear).toBe(2026);
     expect(byName("MAAT").url).toBe("https://www.maat.pt/en/plan-a-visit");
-    expect(byName("Galeria Filomena Soares").priceLocal).toBe(0);
-    expect(byName("Side Bar").priceLocal).toBeNull();
+    expect(byName("Galeria Filomena Soares").price).toEqual({ amount: 0, year: 2023 });
+    expect(byName("Side Bar").price).toBeNull();
+    expect(byName("Monkey Mash").price).toEqual({ amount: 13.5, max: 15, year: 2023 });
+    expect(byName("Tricky's").price).toEqual({ amount: 70, approx: true, unit: "for two", year: 2023 });
+    expect(byName("Tram 12E").price).toEqual({ amount: 3, year: 2023 });
   });
 
   it("flags confirmed hours and needed bookings", () => {
@@ -45,6 +48,13 @@ describe("parsePicks", () => {
     expect(byName("Canalha").needsBooking).toBe(true);
     expect(byName("Monkey Mash").needsBooking).toBe(true);
     expect(byName("Pigmeu").needsBooking).toBe(false);
+  });
+
+  it("keeps the confirmed hours text", () => {
+    expect(byName("Casa Fernando Pessoa").hours).toBe("Tue–Sun 10:00–18:00, closed Mon");
+    expect(byName("Museu do Tesouro Real").hours).toBe("Daily 10:00–18:00 from Oct (last entry 17:00)");
+    expect(byName("Feira da Ladra").hours).toBe("Tuesdays & Saturdays (Sat Oct 10 works)");
+    expect(byName("MAAT").hours).toBeNull();
   });
 
   it("works out open days from the hours text", () => {

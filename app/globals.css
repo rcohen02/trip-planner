@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #170312;
+  --color-plum-deep: #33032f;
+  --color-plum: #531253;
+  --color-mist: #a0acad;
+  --color-mint: #97d8b2;
+  --color-amber: #f2b85a;
+  --color-paper: #f3eef2;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 2px;
+}
+
+/* Boarding-pass perforation along the top of a day column */
+.perf {
+  background-image: radial-gradient(circle at 8px -2px, var(--color-ink) 5px, transparent 5.5px);
+  background-size: 16px 10px;
+  background-repeat: repeat-x;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

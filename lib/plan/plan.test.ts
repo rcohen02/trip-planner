@@ -13,7 +13,8 @@ const place = (over: Partial<Place>): Place => ({
   category: "food",
   location: "",
   details: "",
-  priceLocal: null,
+  price: null,
+  hours: null,
   url: null,
   mapsUrl: null,
   phone: null,
@@ -44,21 +45,22 @@ describe("buildSlots", () => {
 describe("warningsFor", () => {
   it("warns when a place is closed that weekday", () => {
     const pessoa = place({ name: "Casa Fernando Pessoa", openDays: [0, 2, 3, 4, 5, 6] });
-    expect(warningsFor(pessoa, "2026-10-12")).toContain("Closed Mondays");
+    expect(warningsFor(pessoa, "2026-10-12")).toContainEqual({ level: "crit", text: "Closed Mondays" });
     expect(warningsFor(pessoa, "2026-10-11")).toEqual([]);
   });
 
   it("describes short open-day lists positively", () => {
     const feira = place({ openDays: [2, 6] });
-    expect(warningsFor(feira, "2026-10-11")).toContain("Tue & Sat only");
+    expect(warningsFor(feira, "2026-10-11")).toContainEqual({ level: "crit", text: "Tue & Sat only" });
   });
 
   it("flags unconfirmed hours, bookings and Sun–Mon galleries", () => {
-    expect(warningsFor(place({ hoursConfirmed: false }), "2026-10-10")).toContain("Hours unconfirmed");
-    expect(warningsFor(place({ needsBooking: true }), "2026-10-10")).toContain("Needs a booking");
+    const texts = (p: Place, d: string) => warningsFor(p, d).map((w) => `${w.level}:${w.text}`);
+    expect(texts(place({ hoursConfirmed: false }), "2026-10-10")).toContain("warn:Hours unconfirmed");
+    expect(texts(place({ needsBooking: true }), "2026-10-10")).toContain("warn:Needs a booking");
     const gallery = place({ name: "Galeria Francisco Fino", category: "art" });
-    expect(warningsFor(gallery, "2026-10-11")).toContain("Galleries often closed Sun–Mon");
-    expect(warningsFor(gallery, "2026-10-10")).not.toContain("Galleries often closed Sun–Mon");
+    expect(texts(gallery, "2026-10-11")).toContain("warn:Galleries often closed Sun–Mon");
+    expect(texts(gallery, "2026-10-10")).not.toContain("warn:Galleries often closed Sun–Mon");
   });
 });
 

@@ -42,23 +42,29 @@ export function buildSlots(days: DayRule[]): Slot[] {
 const DAY_NAMES = ["Sundays", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays"];
 const SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+export interface PlanWarning {
+  /** crit = the plan is broken (closed that day); warn = check this. */
+  level: "crit" | "warn";
+  text: string;
+}
+
 /** Warnings to show when a place is dropped on a given date. They inform; they never block. */
-export function warningsFor(place: Place, date: string): string[] {
-  const out: string[] = [];
+export function warningsFor(place: Place, date: string): PlanWarning[] {
+  const out: PlanWarning[] = [];
   const wd = weekdayOf(date);
   if (place.openDays && !place.openDays.includes(wd as never)) {
     if (place.openDays.length >= 5) {
       const closed = [0, 1, 2, 3, 4, 5, 6].filter((d) => !place.openDays!.includes(d as never));
-      out.push(`Closed ${closed.map((d) => DAY_NAMES[d]).join(" & ")}`);
+      out.push({ level: "crit", text: `Closed ${closed.map((d) => DAY_NAMES[d]).join(" & ")}` });
     } else {
-      out.push(`${place.openDays.map((d) => SHORT[d]).join(" & ")} only`);
+      out.push({ level: "crit", text: `${place.openDays.map((d) => SHORT[d]).join(" & ")} only` });
     }
   }
   if (place.category === "art" && /galer/i.test(place.name) && (wd === 0 || wd === 1)) {
-    out.push("Galleries often closed Sun–Mon");
+    out.push({ level: "warn", text: "Galleries often closed Sun–Mon" });
   }
-  if (!place.hoursConfirmed) out.push("Hours unconfirmed");
-  if (place.needsBooking) out.push("Needs a booking");
+  if (!place.hoursConfirmed) out.push({ level: "warn", text: "Hours unconfirmed" });
+  if (place.needsBooking) out.push({ level: "warn", text: "Needs a booking" });
   return out;
 }
 
