@@ -6,6 +6,8 @@ Compiled from two New York Times articles:
 
 Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue's own site; otherwise check the Maps link for current hours.
 
+**Cascais & the coast:** Places west of the house (Oeiras to Guincho) come from trip research, not the NYT articles.
+
 **Best fit from Paço de Arcos:** The west-Lisbon cluster (MAAT, MACAM, Canalha, Ajuda) is 15–20 min up the Cascais train line — an easy half-day without going into the center.
 
 ---
@@ -54,6 +56,23 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
 
 > Commercial galleries often close Sun–Mon — aim for Fri or Sat.
 
+- **Parque dos Poetas** — Oeiras, ~5 min west of the house. Free. [Maps](https://www.google.com/maps/search/?api=1&query=Parque+dos+Poetas+Oeiras)
+  *2026:* Sculpture garden honoring Portuguese poets; an easy first outing after landing.
+- **LandArt Cascais 2026** — Quinta do Pisão (EN 9-1, by the Rio da Mula reservoir), Alcabideche. Free, through Nov 1. Park hours not confirmed. [Site](https://fundacaodomluis.pt/landart2026/)
+  *2026:* 12th edition, just two works in the landscape: Pedro Cabrita Reis's white *A Probable Horizon #8* and Susanne Themlitz's *The Listener*, a hybrid figure fishing in an old water tank. Allow ~1 hour; search "Quinta do Pisão" in Maps.
+- **Casa das Histórias Paula Rego** — Avenida da República 300, Cascais. Hours not confirmed; Bairro dos Museus +351 800 203 186. [Site](https://bairrodosmuseus.cascais.pt/list/museu/casa-das-historias-paula-rego)
+  *2026:* Eduardo Souto de Moura's red concrete building with two pyramid towers; Paula Rego's work plus rotating shows.
+- **Museu Condes de Castro Guimarães** — Parque Marechal Carmona, Cascais. Hours not confirmed. [Site](https://bairrodosmuseus.cascais.pt/)
+  *2026:* Castle-like 1900s mansion in a shady park; often called the town's must-see museum.
+- **Casa de Santa Maria** — Next to the Farol de Santa Marta, Cascais. Hours not confirmed. [Site](https://bairrodosmuseus.cascais.pt/list/museu/casa-de-santa-maria)
+  *2026:* Early-1900s Raul Lino house with outstanding azulejo tilework.
+- **Farol Museu de Santa Marta** — Cascais waterfront, by the Casa de Santa Maria. Hours not confirmed. [Site](https://bairrodosmuseus.cascais.pt/list/museu/farol-museu-de-santa-marta)
+  *2026:* Striped lighthouse turned museum of lighthouse equipment and coastal history.
+- **Centro Cultural de Cascais** — Old town, Cascais. Hours not confirmed. [Site](https://fundacaodomluis.pt/expositions/)
+  *2026:* 17th-century convent building; Catarina Leitão's *ECO·NOMIA* exhibition runs through Nov 1.
+- **Cidadela de Cascais** — Old town waterfront, Cascais. Free to wander. [Maps](https://www.google.com/maps/search/?api=1&query=Cidadela+de+Cascais)
+  *2026:* Old fortress turned hotel and art district with galleries and studios.
+
 ## Restaurants
 
 - **Canalha** — Rua da Junqueira 207, Belém. ~€40 (≈ $46)/person; Michelin Bib Gourmand. Call +351 962 152 742. [Maps](https://www.google.com/maps/search/?api=1&query=Canalha+Rua+da+Junqueira+207+Lisboa)
@@ -70,6 +89,17 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
   *2023:* Industrial décor, natural wines, eclectic small plates (mackerel wrapped in lardo).
 - **Pica-Pau** — Príncipe Real. ~€50 (≈ $58) for two. [Maps](https://www.google.com/maps/search/?api=1&query=Pica-Pau+Principe+Real+Lisboa)
   *2023:* Old-time farmhouse and fisherman's food; cod cakes €6 (≈ $7), monkfish-and-shrimp rice; nice back patio.
+
+- **Vela Azul** — Travessa Conde Castro Guimarães, lote 2, Cascais. ~€20 (≈ $23)/person (older price, expect more). Usually Tue–Sat (closed Sun & Mon); call +351 21 483 4932. [Maps](https://www.google.com/maps/search/?api=1&query=Vela+Azul+Cascais)
+  *2026:* Family-run fish spot hidden in a residential block that only locals find; fresh grilled fish at fair prices. Friday is the only trip night it's open.
+- **Beira Mar** — Old town, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Restaurante+Beira+Mar+Cascais)
+  *2026:* Same management 40+ years; grilled or roasted fish with açorda or rice. Short walk from the fado courtyard.
+- **Marisco na Praça** — Mercado da Vila, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Marisco+na+Praca+Mercado+da+Vila+Cascais)
+  *2026:* Lively, informal shellfish-and-fish counter in the market; go to the original market location, not the marina branch.
+- **Mar do Inferno** — Avenida Rei Humberto II de Itália, by Boca do Inferno, Cascais. ✓ 12:30–22:00, closed Wed. [Site](https://www.mardoinferno.pt/en)
+  *2026:* Family-run for 48 years; fish platters (sea bass, bream, prawns, mussels) right by the sea cliffs.
+- **Furnas do Guincho** — Estrada do Guincho, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Furnas+do+Guincho)
+  *2026:* Classic for fish and shellfish with a terrace made for sunset; 10 min drive from town.
 
 ## Bars & Nightlife
 
@@ -88,6 +118,13 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
 - **Maria Limão at Miradouro da Senhora do Monte** — Graça. Caipirinha €7.50 (≈ $9). [Maps](https://www.google.com/maps/search/?api=1&query=Miradouro+da+Senhora+do+Monte)
   *2023:* Drinks stand at the city's best sunset viewpoint — rooftops, castle and the Tagus.
 
+- **Fado at Páteo da Santa Casa da Misericórdia** — Rua da Saudade 12, Cascais. ✓ Thu–Sun 19:00 (extra sessions 20:30). €21 (≈ $24)/person. Book ahead: +351 935 447 588 or info@cascaisfado.com. [Site](https://cascaisfado.com/)
+  *2026:* Short concert-style fado in a courtyard, good before a late dinner. Emailed to confirm Friday availability and that the season runs into October.
+- **Cascais em Fado** — Rua Visconde da Luz 43A, Cascais. Live show from 21:00. Book ahead: +351 912 218 839. [Site](https://cascaisemfado.wixsite.com/cascaisemfado)
+  *2026:* Fado house where dinner comes with the performance; make it the whole evening.
+- **Cascais Fado Xperience at Rubro** — Mercado da Vila, Cascais. Fridays 18:00. Book ahead via their Instagram. [Info](https://www.tripadvisor.com/Attraction_Review-g189154-d28046443-Reviews-Cascais_Fado_Xperience-Cascais_Lisbon_District_Central_Portugal.html)
+  *2026:* Early weekly fado show in the market's Rubro restaurant; confirm it's running in October.
+
 ## Shopping
 
 - **Feira da Ladra flea market** — Campo de Santa Clara, behind São Vicente de Fora. ✓ Tuesdays & Saturdays (Sat Oct 10 works). Free. [Info](https://www.visitlisboa.com/en/places/feira-da-ladra-flea-market)
@@ -100,12 +137,42 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
 - **Feed** — Beato. [Maps](https://www.google.com/maps/search/?api=1&query=Feed+Beato+Lisboa)
   *2023:* Hangar-size store of funky, psychedelic women's wear and accessories.
 
+- **Rua Frederico Arouca & old-town lanes** — Old town, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Rua+Frederico+Arouca+Cascais)
+  *2026:* Main pedestrian shopping street on wave-pattern calçada:
+  - **Cais 16** — Portuguese-made goods (Portus Cale fragrances, tile coasters), free ginjinha samples
+  - **Goldsmiths** — jewelry in 19.2-carat gold
+- **Tear Linhos** — Rua da Saudade, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Tear+Linhos+Cascais)
+  *2026:* Hand-embroidered linens and tableware, on the same street as the fado courtyard.
+- **Allarts Gallery** — Cidadela de Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Allarts+Gallery+Cascais)
+  *2026:* Authentic Bordallo Pinheiro ceramics with hand-painted swallows.
+- **Mercado da Vila** — Old town, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Mercado+da+Vila+Cascais)
+  *2026:* Produce and fish stalls Wed, Sat and Sun mornings (none Friday); the restaurant section (Rubro, Marisco na Praça) is open daily until late.
+
 ## Tours & Getting Around
 
 - **Queer Lisbon walking tour (guide Leonor Machado)** — Starts at Jardim do Príncipe Real. €40 (≈ $46), 4 hours. [Maps](https://www.google.com/maps/search/?api=1&query=Jardim+do+Principe+Real)
   *2026:* Changed how the writer sees the city — ties fascism and colonial history to Lisbon today. Search "Queer Lisbon tour Leonor Machado" to book.
 - **Tram 12E** — From Martim Moniz. €3 (≈ $3.50), 2023 price.
   *2023:* Skip the Tram 28 lines — same vintage cars, ~30 min through Mouraria, Portas do Sol, Alfama and the cathedral. Note: funiculars closed after the Sept 2025 crash; check if reopened.
+
+- **Cascais self-guided walk** — Starts at Cascais train station. Free. ~2 miles, 3–4 hours. [Maps](https://www.google.com/maps/search/?api=1&query=Cascais+train+station)
+  *2026:* Loop through art, architecture and shopping: Largo Camões → Rua Frederico Arouca → Rua da Saudade → Cidadela → Centro Cultural → Casa das Histórias → Castro Guimarães → Casa de Santa Maria and the lighthouse. Ends near the fado courtyard; pick 2–3 museums.
+- **Cascais–Guincho bike path** — Seafront from Cascais toward Guincho beach. [Maps](https://www.google.com/maps/search/?api=1&query=Ciclovia+Cascais+Guincho)
+  *2026:* Flat coastal ride; rent bikes in Cascais and stop for grilled fish at Guincho.
+
+## Nature
+
+- **Estoril–Cascais seafront promenade** — Paredão from Estoril to Cascais. Free. [Maps](https://www.google.com/maps/search/?api=1&query=Paredao+Estoril+Cascais)
+  *2026:* Flat ~2-mile walk along the beaches into Cascais; park in Estoril.
+- **Boca do Inferno** — Coast road west of Cascais. Free. [Maps](https://www.google.com/maps/search/?api=1&query=Boca+do+Inferno+Cascais)
+  *2026:* Sea cliff and blowhole ~0.75 mile past the lighthouse; best at sunset.
+
+## Festivals
+
+- **World SuperBikes at Estoril** — Autódromo do Estoril. Oct 9–11. [Maps](https://www.google.com/maps/search/?api=1&query=Autodromo+do+Estoril)
+  *2026:* International motorcycle championship at the Estoril circuit, with Miguel Oliveira among the riders.
+- **Mostra de Artes da Palavra** — Oeiras village. Oct 9–11. [Info](https://www.viralagenda.com/pt/lisboa/oeiras)
+  *2026:* Spoken-word festival with concerts, literature and comedy; check the program.
 
 ## Hotels (reference)
 

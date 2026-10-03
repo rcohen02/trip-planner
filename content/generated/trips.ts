@@ -160,6 +160,12 @@ export const TRIPS: Record<string, Trip> = {
         "name": "East",
         "note": "Train to Cais do Sodré, then metro or taxi",
         "color": "#F2C14E"
+      },
+      {
+        "id": "cascais",
+        "name": "Cascais & the coast",
+        "note": "West of the house · 10–25 min by train or car",
+        "color": "#6FA8DC"
       }
     ],
     "todos": [
@@ -208,6 +214,29 @@ export const TRIPS: Record<string, Trip> = {
         "id": "swap-seats",
         "kind": "other",
         "text": "Swap return seats at check-in (22B is between you)"
+      },
+      {
+        "id": "confirm-pateo-fado",
+        "kind": "confirm",
+        "text": "Confirm Friday seats and October season for Páteo fado (emailed info@cascaisfado.com)",
+        "placeId": "fado-at-pateo-da-santa-casa-da-misericordia"
+      },
+      {
+        "id": "confirm-cascais-museums",
+        "kind": "confirm",
+        "text": "Confirm Cascais museum hours (Bairro dos Museus +351 800 203 186)",
+        "placeId": "casa-das-historias-paula-rego"
+      },
+      {
+        "id": "call-vela-azul",
+        "kind": "confirm",
+        "text": "Call Vela Azul to confirm Friday dinner (+351 21 483 4932)",
+        "placeId": "vela-azul"
+      },
+      {
+        "id": "check-marathon",
+        "kind": "check",
+        "text": "Check Lisbon Marathon date: Av. Marginal closed ~07:30–12:00 on race morning (use the A5)"
       }
     ],
     "places": [
@@ -572,6 +601,464 @@ export const TRIPS: Record<string, Trip> = {
         "images": []
       },
       {
+        "id": "parque-dos-poetas",
+        "name": "Parque dos Poetas",
+        "category": "art",
+        "location": "Oeiras, ~5 min west of the house",
+        "details": "Free.",
+        "price": {
+          "amount": 0,
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Parque+dos+Poetas+Oeiras",
+        "phone": null,
+        "note": "Sculpture garden honoring Portuguese poets; an easy first outing after landing.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6996427,
+        "lng": -9.3015764,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Est%C3%A1tua_de_Eug%C3%A9nio_de_Andrade_-_Parque_dos_Poetas_-_Oeiras_-_Portugal_%2822569733372%29.jpg/960px-Est%C3%A1tua_de_Eug%C3%A9nio_de_Andrade_-_Parque_dos_Poetas_-_Oeiras_-_Portugal_%2822569733372%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Est%C3%A1tua_de_Eug%C3%A9nio_de_Andrade_-_Parque_dos_Poetas_-_Oeiras_-_Portugal_%2822569733372%29.jpg/330px-Est%C3%A1tua_de_Eug%C3%A9nio_de_Andrade_-_Parque_dos_Poetas_-_Oeiras_-_Portugal_%2822569733372%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Est%C3%A1tua_de_Eug%C3%A9nio_de_Andrade_-_Parque_dos_Poetas_-_Oeiras_-_Portugal_(22569733372).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Parque_dos_Poetas_-_Oeiras_%28177228022%29.jpg/960px-Parque_dos_Poetas_-_Oeiras_%28177228022%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Parque_dos_Poetas_-_Oeiras_%28177228022%29.jpg/330px-Parque_dos_Poetas_-_Oeiras_%28177228022%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Parque_dos_Poetas_-_Oeiras_(177228022).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Parque_dos_Poetas_-_Oeiras_-_Portugal_%2839966161353%29.jpg/960px-Parque_dos_Poetas_-_Oeiras_-_Portugal_%2839966161353%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Parque_dos_Poetas_-_Oeiras_-_Portugal_%2839966161353%29.jpg/330px-Parque_dos_Poetas_-_Oeiras_-_Portugal_%2839966161353%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Parque_dos_Poetas_-_Oeiras_-_Portugal_(39966161353).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Parque_dos_Poetas_-_Oeiras_-_Portugal_%2817065225678%29.jpg/960px-Parque_dos_Poetas_-_Oeiras_-_Portugal_%2817065225678%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Parque_dos_Poetas_-_Oeiras_-_Portugal_%2817065225678%29.jpg/330px-Parque_dos_Poetas_-_Oeiras_-_Portugal_%2817065225678%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Parque_dos_Poetas_-_Oeiras_-_Portugal_(17065225678).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Parque_dos_Poetas_-_Oeiras_-_Portugal_%2842983130404%29.jpg/960px-Parque_dos_Poetas_-_Oeiras_-_Portugal_%2842983130404%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Parque_dos_Poetas_-_Oeiras_-_Portugal_%2842983130404%29.jpg/330px-Parque_dos_Poetas_-_Oeiras_-_Portugal_%2842983130404%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Parque_dos_Poetas_-_Oeiras_-_Portugal_(42983130404).jpg"
+          }
+        ]
+      },
+      {
+        "id": "landart-cascais-2026",
+        "name": "LandArt Cascais 2026",
+        "category": "art",
+        "location": "Quinta do Pisão (EN 9-1, by the Rio da Mula reservoir), Alcabideche",
+        "details": "Free, through Nov 1. Park hours not confirmed.",
+        "price": {
+          "amount": 0,
+          "year": 2026
+        },
+        "hours": null,
+        "url": "https://fundacaodomluis.pt/landart2026/",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "12th edition, just two works in the landscape: Pedro Cabrita Reis's white *A Probable Horizon #8* and Susanne Themlitz's *The Listener*, a hybrid figure fishing in an old water tank. Allow ~1 hour; search \"Quinta do Pisão\" in Maps.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.75876,
+        "lng": -9.4191361,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Quinta_e_nascentes_do_Pis%C3%A3o.jpg/960px-Quinta_e_nascentes_do_Pis%C3%A3o.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Quinta_e_nascentes_do_Pis%C3%A3o.jpg/330px-Quinta_e_nascentes_do_Pis%C3%A3o.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Unknown authorUnknown author",
+            "license": "Public domain",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Quinta_e_nascentes_do_Pis%C3%A3o.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Miranda_donkey%2C_Quinta_do_Pis%C3%A3o%2C_Cascais%2C_Portugal_julesvernex2.jpg/960px-Miranda_donkey%2C_Quinta_do_Pis%C3%A3o%2C_Cascais%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Miranda_donkey%2C_Quinta_do_Pis%C3%A3o%2C_Cascais%2C_Portugal_julesvernex2.jpg/330px-Miranda_donkey%2C_Quinta_do_Pis%C3%A3o%2C_Cascais%2C_Portugal_julesvernex2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Jules Verne Times Two",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Miranda_donkey,_Quinta_do_Pis%C3%A3o,_Cascais,_Portugal_julesvernex2.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Quinta_do_Pis%C3%A3o_Cascais_09.jpg/960px-Quinta_do_Pis%C3%A3o_Cascais_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Quinta_do_Pis%C3%A3o_Cascais_09.jpg/330px-Quinta_do_Pis%C3%A3o_Cascais_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Quinta_do_Pis%C3%A3o_Cascais_09.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Quinta_do_Pis%C3%A3o_Cascais_10.jpg/960px-Quinta_do_Pis%C3%A3o_Cascais_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Quinta_do_Pis%C3%A3o_Cascais_10.jpg/330px-Quinta_do_Pis%C3%A3o_Cascais_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Quinta_do_Pis%C3%A3o_Cascais_10.jpg"
+          }
+        ]
+      },
+      {
+        "id": "casa-das-historias-paula-rego",
+        "name": "Casa das Histórias Paula Rego",
+        "category": "art",
+        "location": "Avenida da República 300, Cascais",
+        "details": "Hours not confirmed; Bairro dos Museus +351 800 203 186.",
+        "price": null,
+        "hours": null,
+        "url": "https://bairrodosmuseus.cascais.pt/list/museu/casa-das-historias-paula-rego",
+        "mapsUrl": null,
+        "phone": "+351 800 203 186",
+        "note": "Eduardo Souto de Moura's red concrete building with two pyramid towers; Paula Rego's work plus rotating shows.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6952129,
+        "lng": -9.4240401,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Casa_das_Hist%C3%B3rias_Paula_Rego.JPG/960px-Casa_das_Hist%C3%B3rias_Paula_Rego.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Casa_das_Hist%C3%B3rias_Paula_Rego.JPG/330px-Casa_das_Hist%C3%B3rias_Paula_Rego.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "L'Éclipse",
+            "license": "CC BY 3.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_das_Hist%C3%B3rias_Paula_Rego.JPG"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852519701393%29.jpg/960px-Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852519701393%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852519701393%29.jpg/330px-Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852519701393%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_(52519701393).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Casa_das_Hist%C3%B3rias_Paula_Rego_02_%285788435952%29.jpg/960px-Casa_das_Hist%C3%B3rias_Paula_Rego_02_%285788435952%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Casa_das_Hist%C3%B3rias_Paula_Rego_02_%285788435952%29.jpg/330px-Casa_das_Hist%C3%B3rias_Paula_Rego_02_%285788435952%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Bosc d'Anjou from New York, NY, USA",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_das_Hist%C3%B3rias_Paula_Rego_02_(5788435952).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Casa_das_Hist%C3%B3rias_Paula_Rego_01_%285787880153%29.jpg/960px-Casa_das_Hist%C3%B3rias_Paula_Rego_01_%285787880153%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Casa_das_Hist%C3%B3rias_Paula_Rego_01_%285787880153%29.jpg/330px-Casa_das_Hist%C3%B3rias_Paula_Rego_01_%285787880153%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Bosc d'Anjou from New York, NY, USA",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_das_Hist%C3%B3rias_Paula_Rego_01_(5787880153).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852596501429%29.jpg/960px-Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852596501429%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852596501429%29.jpg/330px-Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_%2852596501429%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_das_Hist%C3%B3rias_Paula_Rego_-_Cascais_-_Portugal_(52596501429).jpg"
+          }
+        ]
+      },
+      {
+        "id": "museu-condes-de-castro-guimaraes",
+        "name": "Museu Condes de Castro Guimarães",
+        "category": "art",
+        "location": "Parque Marechal Carmona, Cascais",
+        "details": "Hours not confirmed.",
+        "price": null,
+        "hours": null,
+        "url": "https://bairrodosmuseus.cascais.pt/",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "Castle-like 1900s mansion in a shady park; often called the town's must-see museum.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6921044,
+        "lng": -9.4216455,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Museu_Condes_de_Castro_Guimar%C3%A3es.jpg/960px-Museu_Condes_de_Castro_Guimar%C3%A3es.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Museu_Condes_de_Castro_Guimar%C3%A3es.jpg/330px-Museu_Condes_de_Castro_Guimar%C3%A3es.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Hipersyl",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Museu_Condes_de_Castro_Guimar%C3%A3es.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Cascais_-_Museu_Condes_de_Castro_Guimar%C3%A3es_%2853854018180%29.jpg/960px-Cascais_-_Museu_Condes_de_Castro_Guimar%C3%A3es_%2853854018180%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Cascais_-_Museu_Condes_de_Castro_Guimar%C3%A3es_%2853854018180%29.jpg/330px-Cascais_-_Museu_Condes_de_Castro_Guimar%C3%A3es_%2853854018180%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Jorge Franganillo",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais_-_Museu_Condes_de_Castro_Guimar%C3%A3es_(53854018180).jpg"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Museu_Conde_de_Castro_Guimar%C3%A3es_-_Carlos_Bonvalot.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Museu_Conde_de_Castro_Guimar%C3%A3es_-_Carlos_Bonvalot.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "credit": "Carlos Bonvalot",
+            "license": "Public domain",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Museu_Conde_de_Castro_Guimar%C3%A3es_-_Carlos_Bonvalot.png"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Museu_Condes_de_Castro_Guimar%C3%A3es_Cascais_Portugal.JPG/960px-Museu_Condes_de_Castro_Guimar%C3%A3es_Cascais_Portugal.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Museu_Condes_de_Castro_Guimar%C3%A3es_Cascais_Portugal.JPG/330px-Museu_Condes_de_Castro_Guimar%C3%A3es_Cascais_Portugal.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Herbert wie",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Museu_Condes_de_Castro_Guimar%C3%A3es_Cascais_Portugal.JPG"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Pal%C3%A1cio_dos_Condes_de_Castro_Guimar%C3%A3es_04.jpg/500px-Pal%C3%A1cio_dos_Condes_de_Castro_Guimar%C3%A3es_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Pal%C3%A1cio_dos_Condes_de_Castro_Guimar%C3%A3es_04.jpg/330px-Pal%C3%A1cio_dos_Condes_de_Castro_Guimar%C3%A3es_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_dos_Condes_de_Castro_Guimar%C3%A3es_04.jpg"
+          }
+        ]
+      },
+      {
+        "id": "casa-de-santa-maria",
+        "name": "Casa de Santa Maria",
+        "category": "art",
+        "location": "Next to the Farol de Santa Marta, Cascais",
+        "details": "Hours not confirmed.",
+        "price": null,
+        "hours": null,
+        "url": "https://bairrodosmuseus.cascais.pt/list/museu/casa-de-santa-maria",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "Early-1900s Raul Lino house with outstanding azulejo tilework.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6910803,
+        "lng": -9.4213268,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg/960px-Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg/330px-Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Diego Delso",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Faro_de_Santa_Marta,_Cascais,_Portugal,_2022-07-25,_DD_13-15_HDR.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Casa_de_Santa_Maria%2C_Cascais%2C_Lissabon.jpg/960px-Casa_de_Santa_Maria%2C_Cascais%2C_Lissabon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Casa_de_Santa_Maria%2C_Cascais%2C_Lissabon.jpg/330px-Casa_de_Santa_Maria%2C_Cascais%2C_Lissabon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "HilaThong",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_de_Santa_Maria,_Cascais,_Lissabon.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Casa_de_Santa_Maria_in_Cascais%2C_Lissabon.jpg/960px-Casa_de_Santa_Maria_in_Cascais%2C_Lissabon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Casa_de_Santa_Maria_in_Cascais%2C_Lissabon.jpg/330px-Casa_de_Santa_Maria_in_Cascais%2C_Lissabon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "HilaThong",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Casa_de_Santa_Maria_in_Cascais,_Lissabon.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cascais_-_Casa_de_Santa_Maria_%2853854071996%29.jpg/960px-Cascais_-_Casa_de_Santa_Maria_%2853854071996%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cascais_-_Casa_de_Santa_Maria_%2853854071996%29.jpg/330px-Cascais_-_Casa_de_Santa_Maria_%2853854071996%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Jorge Franganillo",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais_-_Casa_de_Santa_Maria_(53854071996).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Cascais_%283978984341%29.png/960px-Cascais_%283978984341%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Cascais_%283978984341%29.png/330px-Cascais_%283978984341%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Morgaine",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais_(3978984341).png"
+          }
+        ]
+      },
+      {
+        "id": "farol-museu-de-santa-marta",
+        "name": "Farol Museu de Santa Marta",
+        "category": "art",
+        "location": "Cascais waterfront, by the Casa de Santa Maria",
+        "details": "Hours not confirmed.",
+        "price": null,
+        "hours": null,
+        "url": "https://bairrodosmuseus.cascais.pt/list/museu/farol-museu-de-santa-marta",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "Striped lighthouse turned museum of lighthouse equipment and coastal history.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6903939,
+        "lng": -9.4209747,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg/960px-Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg/330px-Faro_de_Santa_Marta%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_13-15_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Diego Delso",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Faro_de_Santa_Marta,_Cascais,_Portugal,_2022-07-25,_DD_13-15_HDR.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Farol_de_Santa_Marta%2C_Cascais._02-20.jpg/960px-Farol_de_Santa_Marta%2C_Cascais._02-20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Farol_de_Santa_Marta%2C_Cascais._02-20.jpg/330px-Farol_de_Santa_Marta%2C_Cascais._02-20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Rúdisicyon",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Farol_de_Santa_Marta,_Cascais._02-20.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Farol_de_Santa_Marta_panorama.jpg/960px-Farol_de_Santa_Marta_panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Farol_de_Santa_Marta_panorama.jpg/330px-Farol_de_Santa_Marta_panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Pedro J Pacheco",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Farol_de_Santa_Marta_panorama.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Farol_de_Santa_Marta%2C_Cascais._02-20_%28cropped%29.jpg/960px-Farol_de_Santa_Marta%2C_Cascais._02-20_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Farol_de_Santa_Marta%2C_Cascais._02-20_%28cropped%29.jpg/330px-Farol_de_Santa_Marta%2C_Cascais._02-20_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Rúdisicyon",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Farol_de_Santa_Marta,_Cascais._02-20_(cropped).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Farol_de_Santa_Marta_-_Cascais_-_Portugal_%288685958376%29.jpg/960px-Farol_de_Santa_Marta_-_Cascais_-_Portugal_%288685958376%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Farol_de_Santa_Marta_-_Cascais_-_Portugal_%288685958376%29.jpg/330px-Farol_de_Santa_Marta_-_Cascais_-_Portugal_%288685958376%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Farol_de_Santa_Marta_-_Cascais_-_Portugal_(8685958376).jpg"
+          }
+        ]
+      },
+      {
+        "id": "centro-cultural-de-cascais",
+        "name": "Centro Cultural de Cascais",
+        "category": "art",
+        "location": "Old town, Cascais",
+        "details": "Hours not confirmed.",
+        "price": null,
+        "hours": null,
+        "url": "https://fundacaodomluis.pt/expositions/",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "17th-century convent building; Catarina Leitão's *ECO·NOMIA* exhibition runs through Nov 1.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.694,
+        "lng": -9.4212595,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Centro_Cultural_de_Cascais_02.jpg/960px-Centro_Cultural_de_Cascais_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Centro_Cultural_de_Cascais_02.jpg/330px-Centro_Cultural_de_Cascais_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Centro_Cultural_de_Cascais_02.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Centro_Cultural_de_Cascais_01.jpg/960px-Centro_Cultural_de_Cascais_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Centro_Cultural_de_Cascais_01.jpg/330px-Centro_Cultural_de_Cascais_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Centro_Cultural_de_Cascais_01.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Centro_Cultural_de_Cascais%2C_2022.jpg/960px-Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Centro_Cultural_de_Cascais%2C_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Centro_Cultural_de_Cascais%2C_2022.jpg/330px-Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Centro_Cultural_de_Cascais%2C_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Catarina Caetano",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Velez_-_Uma_Homenagem_%C3%A0_Vida,_Centro_Cultural_de_Cascais,_2022.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Cascais.png/960px-Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Cascais.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Cascais.png/330px-Velez_-_Uma_Homenagem_%C3%A0_Vida%2C_Cascais.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Catarina Caetano",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Velez_-_Uma_Homenagem_%C3%A0_Vida,_Cascais.png"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Centro_Cultural_de_Cascais_Interior_02.jpg/960px-Centro_Cultural_de_Cascais_Interior_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Centro_Cultural_de_Cascais_Interior_02.jpg/330px-Centro_Cultural_de_Cascais_Interior_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Centro_Cultural_de_Cascais_Interior_02.jpg"
+          }
+        ]
+      },
+      {
+        "id": "cidadela-de-cascais",
+        "name": "Cidadela de Cascais",
+        "category": "art",
+        "location": "Old town waterfront, Cascais",
+        "details": "Free to wander.",
+        "price": {
+          "amount": 0,
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cidadela+de+Cascais",
+        "phone": null,
+        "note": "Old fortress turned hotel and art district with galleries and studios.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6936514,
+        "lng": -9.41914,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Ciudadela%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_08.jpg/960px-Ciudadela%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Ciudadela%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_08.jpg/330px-Ciudadela%2C_Cascais%2C_Portugal%2C_2022-07-25%2C_DD_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Diego Delso",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Ciudadela,_Cascais,_Portugal,_2022-07-25,_DD_08.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Cidadela_de_Cascais_Cascais_02.jpg/960px-Cidadela_de_Cascais_Cascais_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Cidadela_de_Cascais_Cascais_02.jpg/330px-Cidadela_de_Cascais_Cascais_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cidadela_de_Cascais_Cascais_02.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Cidadela_de_Cascais_Cascais_03.jpg/960px-Cidadela_de_Cascais_Cascais_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Cidadela_de_Cascais_Cascais_03.jpg/330px-Cidadela_de_Cascais_Cascais_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cidadela_de_Cascais_Cascais_03.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Cidadela_de_Cascais_Cascais_01.jpg/960px-Cidadela_de_Cascais_Cascais_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Cidadela_de_Cascais_Cascais_01.jpg/330px-Cidadela_de_Cascais_Cascais_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cidadela_de_Cascais_Cascais_01.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Cidadela_de_Cascais%2C_Pal%C3%A1cio%2C_03.jpg/960px-Cidadela_de_Cascais%2C_Pal%C3%A1cio%2C_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Cidadela_de_Cascais%2C_Pal%C3%A1cio%2C_03.jpg/330px-Cidadela_de_Cascais%2C_Pal%C3%A1cio%2C_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "GualdimG",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cidadela_de_Cascais,_Pal%C3%A1cio,_03.jpg"
+          }
+        ]
+      },
+      {
         "id": "canalha",
         "name": "Canalha",
         "category": "food",
@@ -774,6 +1261,129 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "center",
         "lat": 38.717195,
         "lng": -9.1497469,
+        "images": []
+      },
+      {
+        "id": "vela-azul",
+        "name": "Vela Azul",
+        "category": "food",
+        "location": "Travessa Conde Castro Guimarães, lote 2, Cascais",
+        "details": "~€20 (≈ $23)/person (older price, expect more). Usually Tue–Sat (closed Sun & Mon); call +351 21 483 4932.",
+        "price": {
+          "amount": 20,
+          "approx": true,
+          "unit": "per person",
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vela+Azul+Cascais",
+        "phone": "+351 21 483 4932",
+        "note": "Family-run fish spot hidden in a residential block that only locals find; fresh grilled fish at fair prices. Friday is the only trip night it's open.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.7040592,
+        "lng": -9.4288031,
+        "images": []
+      },
+      {
+        "id": "beira-mar",
+        "name": "Beira Mar",
+        "category": "food",
+        "location": "Old town, Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante+Beira+Mar+Cascais",
+        "phone": null,
+        "note": "Same management 40+ years; grilled or roasted fish with açorda or rice. Short walk from the fado courtyard.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6983934,
+        "lng": -9.4192953,
+        "images": []
+      },
+      {
+        "id": "marisco-na-praca",
+        "name": "Marisco na Praça",
+        "category": "food",
+        "location": "Mercado da Vila, Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marisco+na+Praca+Mercado+da+Vila+Cascais",
+        "phone": null,
+        "note": "Lively, informal shellfish-and-fish counter in the market; go to the original market location, not the marina branch.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.701711,
+        "lng": -9.420928,
+        "images": []
+      },
+      {
+        "id": "mar-do-inferno",
+        "name": "Mar do Inferno",
+        "category": "food",
+        "location": "Avenida Rei Humberto II de Itália, by Boca do Inferno, Cascais",
+        "details": "✓ 12:30–22:00, closed Wed.",
+        "price": null,
+        "hours": "12:30–22:00, closed Wed",
+        "url": "https://www.mardoinferno.pt/en",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "Family-run for 48 years; fish platters (sea bass, bream, prawns, mussels) right by the sea cliffs.",
+        "noteYear": 2026,
+        "hoursConfirmed": true,
+        "openDays": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6911173,
+        "lng": -9.430821,
+        "images": []
+      },
+      {
+        "id": "furnas-do-guincho",
+        "name": "Furnas do Guincho",
+        "category": "food",
+        "location": "Estrada do Guincho, Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furnas+do+Guincho",
+        "phone": null,
+        "note": "Classic for fish and shellfish with a terrace made for sunset; 10 min drive from town.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.7308982,
+        "lng": -9.4686634,
         "images": []
       },
       {
@@ -996,6 +1606,78 @@ export const TRIPS: Record<string, Trip> = {
         ]
       },
       {
+        "id": "fado-at-pateo-da-santa-casa-da-misericordia",
+        "name": "Fado at Páteo da Santa Casa da Misericórdia",
+        "category": "bar",
+        "location": "Rua da Saudade 12, Cascais",
+        "details": "✓ Thu–Sun 19:00 (extra sessions 20:30). €21 (≈ $24)/person. Book ahead: +351 935 447 588 or info@cascaisfado.com.",
+        "price": {
+          "amount": 21,
+          "unit": "per person",
+          "year": 2026
+        },
+        "hours": "Thu–Sun 19:00 (extra sessions 20:30)",
+        "url": "https://cascaisfado.com/",
+        "mapsUrl": null,
+        "phone": "+351 935 447 588",
+        "note": "Short concert-style fado in a courtyard, good before a late dinner. Emailed to confirm Friday availability and that the season runs into October.",
+        "noteYear": 2026,
+        "hoursConfirmed": true,
+        "openDays": [
+          4,
+          5,
+          6,
+          0
+        ],
+        "needsBooking": true,
+        "cluster": "cascais",
+        "lat": 38.6986216,
+        "lng": -9.4188488,
+        "images": []
+      },
+      {
+        "id": "cascais-em-fado",
+        "name": "Cascais em Fado",
+        "category": "bar",
+        "location": "Rua Visconde da Luz 43A, Cascais",
+        "details": "Live show from 21:00. Book ahead: +351 912 218 839.",
+        "price": null,
+        "hours": null,
+        "url": "https://cascaisemfado.wixsite.com/cascaisemfado",
+        "mapsUrl": null,
+        "phone": "+351 912 218 839",
+        "note": "Fado house where dinner comes with the performance; make it the whole evening.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": true,
+        "cluster": "cascais",
+        "lat": 38.6998918,
+        "lng": -9.4220281,
+        "images": []
+      },
+      {
+        "id": "cascais-fado-xperience-at-rubro",
+        "name": "Cascais Fado Xperience at Rubro",
+        "category": "bar",
+        "location": "Mercado da Vila, Cascais",
+        "details": "Fridays 18:00. Book ahead via their Instagram.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.tripadvisor.com/Attraction_Review-g189154-d28046443-Reviews-Cascais_Fado_Xperience-Cascais_Lisbon_District_Central_Portugal.html",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "Early weekly fado show in the market's Rubro restaurant; confirm it's running in October.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": true,
+        "cluster": "cascais",
+        "lat": 38.701711,
+        "lng": -9.420928,
+        "images": []
+      },
+      {
         "id": "feira-da-ladra-flea-market",
         "name": "Feira da Ladra flea market",
         "category": "shop",
@@ -1109,6 +1791,126 @@ export const TRIPS: Record<string, Trip> = {
         "images": []
       },
       {
+        "id": "rua-frederico-arouca-old-town-lanes",
+        "name": "Rua Frederico Arouca & old-town lanes",
+        "category": "shop",
+        "location": "Old town, Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+Frederico+Arouca+Cascais",
+        "phone": null,
+        "note": "Main pedestrian shopping street on wave-pattern calçada: · Cais 16 — Portuguese-made goods (Portus Cale fragrances, tile coasters), free ginjinha samples · Goldsmiths — jewelry in 19.2-carat gold",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6981445,
+        "lng": -9.4204307,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/19-06-09_Rua_Frederico_Arouca_02.jpg/960px-19-06-09_Rua_Frederico_Arouca_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/19-06-09_Rua_Frederico_Arouca_02.jpg/330px-19-06-09_Rua_Frederico_Arouca_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Alexmar983",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:19-06-09_Rua_Frederico_Arouca_02.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Rua_Frederico_Arouca_Cascais_Portugal.JPG/960px-Rua_Frederico_Arouca_Cascais_Portugal.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Rua_Frederico_Arouca_Cascais_Portugal.JPG/330px-Rua_Frederico_Arouca_Cascais_Portugal.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Herbert wie",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Rua_Frederico_Arouca_Cascais_Portugal.JPG"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/19-06-09_Rua_Frederico_Arouca_01.jpg/960px-19-06-09_Rua_Frederico_Arouca_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/19-06-09_Rua_Frederico_Arouca_01.jpg/330px-19-06-09_Rua_Frederico_Arouca_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Alexmar983",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:19-06-09_Rua_Frederico_Arouca_01.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Cascais%2C_the_Rua_Frederico_Arouca-1.JPG/960px-Cascais%2C_the_Rua_Frederico_Arouca-1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Cascais%2C_the_Rua_Frederico_Arouca-1.JPG/330px-Cascais%2C_the_Rua_Frederico_Arouca-1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Dguendel",
+            "license": "CC BY 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais,_the_Rua_Frederico_Arouca-1.JPG"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Cascais%2C_the_Rua_Frederico_Arouca-2.JPG/960px-Cascais%2C_the_Rua_Frederico_Arouca-2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Cascais%2C_the_Rua_Frederico_Arouca-2.JPG/330px-Cascais%2C_the_Rua_Frederico_Arouca-2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Dguendel",
+            "license": "CC BY 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais,_the_Rua_Frederico_Arouca-2.JPG"
+          }
+        ]
+      },
+      {
+        "id": "tear-linhos",
+        "name": "Tear Linhos",
+        "category": "shop",
+        "location": "Rua da Saudade, Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tear+Linhos+Cascais",
+        "phone": null,
+        "note": "Hand-embroidered linens and tableware, on the same street as the fado courtyard.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6986216,
+        "lng": -9.4188488,
+        "images": []
+      },
+      {
+        "id": "allarts-gallery",
+        "name": "Allarts Gallery",
+        "category": "shop",
+        "location": "Cidadela de Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Allarts+Gallery+Cascais",
+        "phone": null,
+        "note": "Authentic Bordallo Pinheiro ceramics with hand-painted swallows.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6936514,
+        "lng": -9.41914,
+        "images": []
+      },
+      {
+        "id": "mercado-da-vila",
+        "name": "Mercado da Vila",
+        "category": "shop",
+        "location": "Old town, Cascais",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mercado+da+Vila+Cascais",
+        "phone": null,
+        "note": "Produce and fish stalls Wed, Sat and Sun mornings (none Friday); the restaurant section (Rubro, Marisco na Praça) is open daily until late.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.701711,
+        "lng": -9.420928,
+        "images": []
+      },
+      {
         "id": "queer-lisbon-walking-tour-guide-leonor-machado",
         "name": "Queer Lisbon walking tour (guide Leonor Machado)",
         "category": "tour",
@@ -1206,6 +2008,264 @@ export const TRIPS: Record<string, Trip> = {
             "sourcePage": "https://commons.wikimedia.org/wiki/File:Inside_Tram_12E_in_Pra%C3%A7a_da_Figueira.JPG"
           }
         ]
+      },
+      {
+        "id": "cascais-self-guided-walk",
+        "name": "Cascais self-guided walk",
+        "category": "tour",
+        "location": "Starts at Cascais train station",
+        "details": "Free. ~2 miles, 3–4 hours.",
+        "price": {
+          "amount": 0,
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cascais+train+station",
+        "phone": null,
+        "note": "Loop through art, architecture and shopping: Largo Camões → Rua Frederico Arouca → Rua da Saudade → Cidadela → Centro Cultural → Casa das Histórias → Castro Guimarães → Casa de Santa Maria and the lighthouse. Ends near the fado courtyard; pick 2–3 museums.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.7007613,
+        "lng": -9.4186069,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Cascais_%281413897396%29.jpg/960px-Cascais_%281413897396%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Cascais_%281413897396%29.jpg/330px-Cascais_%281413897396%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "lele3100",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais_(1413897396).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Cascais_au_Portugal_%281413019941%29.jpg/960px-Cascais_au_Portugal_%281413019941%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Cascais_au_Portugal_%281413019941%29.jpg/330px-Cascais_au_Portugal_%281413019941%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "lele3100",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais_au_Portugal_(1413019941).jpg"
+          }
+        ]
+      },
+      {
+        "id": "cascais-guincho-bike-path",
+        "name": "Cascais–Guincho bike path",
+        "category": "tour",
+        "location": "Seafront from Cascais toward Guincho beach",
+        "details": "",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ciclovia+Cascais+Guincho",
+        "phone": null,
+        "note": "Flat coastal ride; rent bikes in Cascais and stop for grilled fish at Guincho.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.7331576,
+        "lng": -9.4727845,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Guincho%2C_Cascais%2C_Portugal_%28Unsplash%29.jpg/960px-Guincho%2C_Cascais%2C_Portugal_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Guincho%2C_Cascais%2C_Portugal_%28Unsplash%29.jpg/330px-Guincho%2C_Cascais%2C_Portugal_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Manuel Inglez manuelinglez",
+            "license": "CC0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Guincho,_Cascais,_Portugal_(Unsplash).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Cascais-sintra_coast_by_Guincho_fort.png/960px-Cascais-sintra_coast_by_Guincho_fort.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Cascais-sintra_coast_by_Guincho_fort.png/330px-Cascais-sintra_coast_by_Guincho_fort.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "RobiinPortugal",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais-sintra_coast_by_Guincho_fort.png"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Guincho_June_2013-1.jpg/960px-Guincho_June_2013-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Guincho_June_2013-1.jpg/330px-Guincho_June_2013-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Alvesgaspar",
+            "license": "CC BY-SA 3.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Guincho_June_2013-1.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/A_cove_on_the_Praia_do_Guincho_Atlantic_Ocean_coastline_near_Cascais%2C_Portugal._%2842598420582%29.jpg/960px-A_cove_on_the_Praia_do_Guincho_Atlantic_Ocean_coastline_near_Cascais%2C_Portugal._%2842598420582%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/A_cove_on_the_Praia_do_Guincho_Atlantic_Ocean_coastline_near_Cascais%2C_Portugal._%2842598420582%29.jpg/330px-A_cove_on_the_Praia_do_Guincho_Atlantic_Ocean_coastline_near_Cascais%2C_Portugal._%2842598420582%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Paul Morgan from Goostrey, Cheshire, United Kingdom",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:A_cove_on_the_Praia_do_Guincho_Atlantic_Ocean_coastline_near_Cascais,_Portugal._(42598420582).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Guincho_%283037891085%29.jpg/960px-Guincho_%283037891085%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Guincho_%283037891085%29.jpg/330px-Guincho_%283037891085%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "F Mira from Lisbon, Portugal",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Guincho_(3037891085).jpg"
+          }
+        ]
+      },
+      {
+        "id": "estoril-cascais-seafront-promenade",
+        "name": "Estoril–Cascais seafront promenade",
+        "category": "nature",
+        "location": "Paredão from Estoril to Cascais",
+        "details": "Free.",
+        "price": {
+          "amount": 0,
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paredao+Estoril+Cascais",
+        "phone": null,
+        "note": "Flat ~2-mile walk along the beaches into Cascais; park in Estoril.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.7037449,
+        "lng": -9.4047554,
+        "images": []
+      },
+      {
+        "id": "boca-do-inferno",
+        "name": "Boca do Inferno",
+        "category": "nature",
+        "location": "Coast road west of Cascais",
+        "details": "Free.",
+        "price": {
+          "amount": 0,
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Boca+do+Inferno+Cascais",
+        "phone": null,
+        "note": "Sea cliff and blowhole ~0.75 mile past the lighthouse; best at sunset.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6911173,
+        "lng": -9.430821,
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Boca_do_Inferno%2C_Cascais_%28c._1863-65%29_-_Jo%C3%A3o_Cristino_da_Silva.png/960px-Boca_do_Inferno%2C_Cascais_%28c._1863-65%29_-_Jo%C3%A3o_Cristino_da_Silva.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Boca_do_Inferno%2C_Cascais_%28c._1863-65%29_-_Jo%C3%A3o_Cristino_da_Silva.png/330px-Boca_do_Inferno%2C_Cascais_%28c._1863-65%29_-_Jo%C3%A3o_Cristino_da_Silva.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "João Cristino da Silva",
+            "license": "Public domain",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Boca_do_Inferno,_Cascais_(c._1863-65)_-_Jo%C3%A3o_Cristino_da_Silva.png"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Boca_do_Inferno%2C_Cascais.jpg/960px-Boca_do_Inferno%2C_Cascais.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Boca_do_Inferno%2C_Cascais.jpg/330px-Boca_do_Inferno%2C_Cascais.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Carlos SGP",
+            "license": "CC0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Boca_do_Inferno,_Cascais.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Cascais_-_Boca_do_Inferno_%2853854438774%29.jpg/960px-Cascais_-_Boca_do_Inferno_%2853854438774%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Cascais_-_Boca_do_Inferno_%2853854438774%29.jpg/330px-Cascais_-_Boca_do_Inferno_%2853854438774%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Jorge Franganillo",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Cascais_-_Boca_do_Inferno_(53854438774).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/A_dram%C3%A1tica_%27Boca_do_Inferno%27.JPG/960px-A_dram%C3%A1tica_%27Boca_do_Inferno%27.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/A_dram%C3%A1tica_%27Boca_do_Inferno%27.JPG/330px-A_dram%C3%A1tica_%27Boca_do_Inferno%27.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Beatriznog10",
+            "license": "CC BY-SA 3.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:A_dram%C3%A1tica_%27Boca_do_Inferno%27.JPG"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Boca_do_Inferno_%28Cascais%29_YGD2.jpg/960px-Boca_do_Inferno_%28Cascais%29_YGD2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Boca_do_Inferno_%28Cascais%29_YGD2.jpg/330px-Boca_do_Inferno_%28Cascais%29_YGD2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Yuri Granata Delalibera",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Boca_do_Inferno_(Cascais)_YGD2.jpg"
+          }
+        ]
+      },
+      {
+        "id": "world-superbikes-at-estoril",
+        "name": "World SuperBikes at Estoril",
+        "category": "festival",
+        "location": "Autódromo do Estoril",
+        "details": "Oct 9–11.",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Autodromo+do+Estoril",
+        "phone": null,
+        "note": "International motorcycle championship at the Estoril circuit, with Miguel Oliveira among the riders.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.7502982,
+        "lng": -9.393609,
+        "images": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Circuito_do_Estoril_1994-1999.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Circuito_do_Estoril_1994-1999.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "credit": "SimLola661",
+            "license": "CC BY-SA 4.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Circuito_do_Estoril_1994-1999.png"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/SL_Estoril.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8e/SL_Estoril.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "credit": "JVeiga",
+            "license": "CC BY-SA 3.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:SL_Estoril.jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Circuito_do_Estoril_%2839813638364%29.jpg/960px-Circuito_do_Estoril_%2839813638364%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Circuito_do_Estoril_%2839813638364%29.jpg/330px-Circuito_do_Estoril_%2839813638364%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "pedrik",
+            "license": "CC BY 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Circuito_do_Estoril_(39813638364).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Aut%C3%B3dromo_do_Estoril_%283954327138%29.jpg/960px-Aut%C3%B3dromo_do_Estoril_%283954327138%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Aut%C3%B3dromo_do_Estoril_%283954327138%29.jpg/330px-Aut%C3%B3dromo_do_Estoril_%283954327138%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "János Korom Dr. &gt;14 Million views from Wien, Austria",
+            "license": "CC BY-SA 2.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Aut%C3%B3dromo_do_Estoril_(3954327138).jpg"
+          },
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Aut%C3%B3dromo_do_Estoril_course.png/960px-Aut%C3%B3dromo_do_Estoril_course.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Aut%C3%B3dromo_do_Estoril_course.png/330px-Aut%C3%B3dromo_do_Estoril_course.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "credit": "Will Pittenger",
+            "license": "CC BY-SA 3.0",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Aut%C3%B3dromo_do_Estoril_course.png"
+          }
+        ]
+      },
+      {
+        "id": "mostra-de-artes-da-palavra",
+        "name": "Mostra de Artes da Palavra",
+        "category": "festival",
+        "location": "Oeiras village",
+        "details": "Oct 9–11.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.viralagenda.com/pt/lisboa/oeiras",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "Spoken-word festival with concerts, literature and comedy; check the program.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cascais",
+        "lat": 38.6925777,
+        "lng": -9.3123076,
+        "images": []
       }
     ]
   }

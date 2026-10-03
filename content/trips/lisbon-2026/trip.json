@@ -156,6 +156,12 @@
       "name": "East",
       "note": "Train to Cais do Sodré, then metro or taxi",
       "color": "#F2C14E"
+    },
+    {
+      "id": "cascais",
+      "name": "Cascais & the coast",
+      "note": "West of the house · 10–25 min by train or car",
+      "color": "#6FA8DC"
     }
   ],
   "clusterOf": {
@@ -184,7 +190,33 @@
     "maria-limao-at-miradouro-da-senhora-do-monte": "east",
     "feira-da-ladra-flea-market": "east",
     "feed": "east",
-    "tram-12e": "east"
+    "tram-12e": "east",
+    "parque-dos-poetas": "cascais",
+    "landart-cascais-2026": "cascais",
+    "casa-das-historias-paula-rego": "cascais",
+    "museu-condes-de-castro-guimaraes": "cascais",
+    "casa-de-santa-maria": "cascais",
+    "farol-museu-de-santa-marta": "cascais",
+    "centro-cultural-de-cascais": "cascais",
+    "cidadela-de-cascais": "cascais",
+    "vela-azul": "cascais",
+    "beira-mar": "cascais",
+    "marisco-na-praca": "cascais",
+    "mar-do-inferno": "cascais",
+    "furnas-do-guincho": "cascais",
+    "fado-at-pateo-da-santa-casa-da-misericordia": "cascais",
+    "cascais-em-fado": "cascais",
+    "cascais-fado-xperience-at-rubro": "cascais",
+    "rua-frederico-arouca-old-town-lanes": "cascais",
+    "tear-linhos": "cascais",
+    "allarts-gallery": "cascais",
+    "mercado-da-vila": "cascais",
+    "cascais-self-guided-walk": "cascais",
+    "cascais-guincho-bike-path": "cascais",
+    "estoril-cascais-seafront-promenade": "cascais",
+    "boca-do-inferno": "cascais",
+    "world-superbikes-at-estoril": "cascais",
+    "mostra-de-artes-da-palavra": "cascais"
   },
   "todos": [
     {
@@ -232,6 +264,29 @@
       "id": "swap-seats",
       "kind": "other",
       "text": "Swap return seats at check-in (22B is between you)"
+    },
+    {
+      "id": "confirm-pateo-fado",
+      "kind": "confirm",
+      "text": "Confirm Friday seats and October season for Páteo fado (emailed info@cascaisfado.com)",
+      "placeId": "fado-at-pateo-da-santa-casa-da-misericordia"
+    },
+    {
+      "id": "confirm-cascais-museums",
+      "kind": "confirm",
+      "text": "Confirm Cascais museum hours (Bairro dos Museus +351 800 203 186)",
+      "placeId": "casa-das-historias-paula-rego"
+    },
+    {
+      "id": "call-vela-azul",
+      "kind": "confirm",
+      "text": "Call Vela Azul to confirm Friday dinner (+351 21 483 4932)",
+      "placeId": "vela-azul"
+    },
+    {
+      "id": "check-marathon",
+      "kind": "check",
+      "text": "Check Lisbon Marathon date: Av. Marginal closed ~07:30–12:00 on race morning (use the A5)"
     }
   ],
   "enrich": {
@@ -283,6 +338,112 @@
     },
     "santa-joana-nuno-mendes": {
       "imageMatch": "Locke"
+    },
+    "parque-dos-poetas": {
+      "geoQuery": "Parque dos Poetas, Oeiras",
+      "imageQuery": "Parque dos Poetas Oeiras"
+    },
+    "landart-cascais-2026": {
+      "geoQuery": "Quinta do Pisão, Cascais",
+      "imageQuery": "Quinta do Pisão Cascais",
+      "imageMatch": "Pis"
+    },
+    "casa-das-historias-paula-rego": {
+      "geoQuery": "Casa das Histórias Paula Rego, Cascais",
+      "imageQuery": "Casa das Histórias Paula Rego"
+    },
+    "museu-condes-de-castro-guimaraes": {
+      "geoQuery": "Museu Condes de Castro Guimarães, Cascais",
+      "imageQuery": "Museu Condes de Castro Guimarães"
+    },
+    "casa-de-santa-maria": {
+      "geoQuery": "Casa de Santa Maria, Cascais",
+      "imageQuery": "Casa de Santa Maria Cascais"
+    },
+    "farol-museu-de-santa-marta": {
+      "geoQuery": "Farol de Santa Marta, Cascais",
+      "imageQuery": "Farol de Santa Marta Cascais"
+    },
+    "centro-cultural-de-cascais": {
+      "geoQuery": "Centro Cultural de Cascais",
+      "imageQuery": "Centro Cultural de Cascais"
+    },
+    "cidadela-de-cascais": {
+      "geoQuery": "Cidadela de Cascais",
+      "imageQuery": "Cidadela de Cascais"
+    },
+    "vela-azul": {
+      "geoQuery": "Travessa Conde Castro Guimarães, Cascais",
+      "noImages": true
+    },
+    "beira-mar": {
+      "geoQuery": "Rua das Flores, 2750 Cascais",
+      "noImages": true
+    },
+    "marisco-na-praca": {
+      "geoQuery": "Mercado da Vila, Cascais",
+      "noImages": true
+    },
+    "mar-do-inferno": {
+      "geoQuery": "Boca do Inferno, Cascais",
+      "noImages": true
+    },
+    "furnas-do-guincho": {
+      "geoQuery": "Estrada do Guincho, Cascais",
+      "noImages": true
+    },
+    "fado-at-pateo-da-santa-casa-da-misericordia": {
+      "geoQuery": "Igreja da Misericórdia, Cascais",
+      "noImages": true
+    },
+    "cascais-em-fado": {
+      "geoQuery": "Rua Visconde da Luz, Cascais",
+      "noImages": true
+    },
+    "cascais-fado-xperience-at-rubro": {
+      "geoQuery": "Mercado da Vila, Cascais",
+      "noImages": true
+    },
+    "rua-frederico-arouca-old-town-lanes": {
+      "geoQuery": "Rua Frederico Arouca, Cascais",
+      "imageQuery": "Rua Frederico Arouca Cascais"
+    },
+    "tear-linhos": {
+      "geoQuery": "Igreja da Misericórdia, Cascais",
+      "noImages": true
+    },
+    "allarts-gallery": {
+      "geoQuery": "Cidadela de Cascais",
+      "noImages": true
+    },
+    "mercado-da-vila": {
+      "geoQuery": "Mercado da Vila, Cascais",
+      "noImages": true
+    },
+    "cascais-self-guided-walk": {
+      "geoQuery": "Estação Ferroviária de Cascais",
+      "imageQuery": "Cascais historic centre",
+      "imageMatch": "Cascais"
+    },
+    "cascais-guincho-bike-path": {
+      "geoQuery": "Praia do Guincho, Cascais",
+      "imageQuery": "Guincho Cascais coast"
+    },
+    "estoril-cascais-seafront-promenade": {
+      "geoQuery": "Paredão, Estoril",
+      "imageQuery": "Paredão Estoril Cascais"
+    },
+    "boca-do-inferno": {
+      "geoQuery": "Boca do Inferno, Cascais",
+      "imageQuery": "Boca do Inferno Cascais"
+    },
+    "world-superbikes-at-estoril": {
+      "geoQuery": "Autódromo do Estoril",
+      "imageQuery": "Autódromo do Estoril"
+    },
+    "mostra-de-artes-da-palavra": {
+      "geoQuery": "Oeiras",
+      "noImages": true
     }
   }
 }
