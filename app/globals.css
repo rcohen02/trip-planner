@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "../design/tokens.css";
-@import "../design/components.css";
+@import "../design/components.css" layer(components);
 
 /* Tailwind utilities mapped to design-system role tokens (light/dark handled by the tokens). */
 @theme inline {
@@ -46,3 +46,9 @@ button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor
 .tp-progress { height: 6px; border-radius: 3px; background: var(--surface-sunken); overflow: hidden; }
 .tp-progress > span { display: block; height: 100%; background: var(--accent); }
 .leaflet-container { background: var(--map-land); font-family: var(--font-sans); }
+.tp-col > .tp-stat { flex: none; }
+/* OSM raster tiles: quiet them to match the neutral frame; invert for the dark theme. */
+.leaflet-tile-pane { filter: saturate(0.35) contrast(0.95); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) saturate(0.3) brightness(0.85) contrast(0.9); }
+}

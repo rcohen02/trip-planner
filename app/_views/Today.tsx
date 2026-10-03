@@ -104,8 +104,8 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
               <>
                 <div className="tp-stat__value">{Math.round(w.maxC)}°C</div>
                 <div className="tp-stat__sub">
-                  {toF(w.maxC)}°F · {describeCode(w.code)}
-                  {w.rainPct !== null ? ` · ${w.rainPct}% rain` : ""}
+                  {Math.round(w.maxC)}°C / {toF(w.maxC)}°F high, low {Math.round(w.minC)}°C / {toF(w.minC)}°F. {describeCode(w.code)}
+                  {w.rainPct !== null ? `, ${w.rainPct}% rain` : ""}
                 </div>
               </>
             ) : (

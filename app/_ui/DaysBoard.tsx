@@ -62,6 +62,7 @@ export function DaysBoard({
   const [cluster, setCluster] = useState("");
   const [openOn, setOpenOn] = useState("");
   const [q, setQ] = useState("");
+  const [railOpen, setRailOpen] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
@@ -106,7 +107,7 @@ export function DaysBoard({
   const sheetPlace = sheet?.kind === "place" ? byId.get(sheet.placeId) : undefined;
 
   return (
-    <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd} onDragCancel={() => setDragging(null)}>
+    <DndContext id="days-board" sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd} onDragCancel={() => setDragging(null)}>
       {error && (
         <div className="mb-4">
           <Alert level="crit">{error}</Alert>
@@ -115,12 +116,16 @@ export function DaysBoard({
 
       <div className="flex flex-col gap-6 min-[960px]:flex-row">
         {/* Unscheduled rail */}
-        <aside className="min-[960px]:w-[300px] min-[960px]:shrink-0" aria-label="Unscheduled places">
+        <aside className="max-sm:order-2 min-[960px]:w-[300px] min-[960px]:shrink-0" aria-label="Unscheduled places">
           <Pool editable={editable}>
             <div className="flex items-baseline justify-between">
               <h2 className="t-heading m-0">Unscheduled</h2>
               <span className="tp-num t-caption">{unscheduled.length} places</span>
             </div>
+            <button className="tp-btn tp-btn--secondary sm:hidden" aria-expanded={railOpen} onClick={() => setRailOpen((o) => !o)}>
+              {railOpen ? "Hide the list" : "Show the list"}
+            </button>
+            <div className={`tp-col ${railOpen ? "" : "max-sm:hidden"}`}>
             <div className="grid grid-cols-2 gap-2 min-[960px]:grid-cols-1">
               <label className="tp-field col-span-2 min-[960px]:col-span-1">
                 <span className="sr-only">Search</span>
@@ -176,11 +181,12 @@ export function DaysBoard({
                 <li className="t-caption">{unscheduled.length ? "Nothing matches. Clear a filter to see more." : "Everything is in a day."}</li>
               )}
             </ul>
+            </div>
           </Pool>
         </aside>
 
         {/* Days */}
-        <section className="min-w-0 flex-1" aria-label="Days">
+        <section className="min-w-0 flex-1 max-sm:order-1" aria-label="Days">
           <div className="tp-seg mb-4 sm:hidden" role="group" aria-label="Day">
             {days.map((d) => (
               <button key={d.date} aria-pressed={activeDay === d.date} onClick={() => setActiveDay(d.date)}>

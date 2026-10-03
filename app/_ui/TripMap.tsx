@@ -5,7 +5,7 @@ import type { Category, Cluster, Place, Trip } from "@/lib/content/types";
 import { CATEGORY } from "./bits";
 
 const HOUSE_SVG =
-  '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
+  '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
 
 export default function TripMap({
   base,
@@ -32,16 +32,15 @@ export default function TripMap({
       if (cancelled || !el.current) return;
       const map = L.map(el.current);
       mapRef.current = map;
-      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`, {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
       const pts: [number, number][] = [[homebase.lat, homebase.lng]];
       L.marker([homebase.lat, homebase.lng], {
         icon: L.divIcon({
           className: "",
-          html: `<div style="width:34px;height:34px;border-radius:17px;background:var(--ink);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
+          html: `<div style="width:34px;height:34px;border-radius:17px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
           iconSize: [34, 34],
           iconAnchor: [17, 17],
         }),

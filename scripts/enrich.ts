@@ -59,7 +59,7 @@ async function images(q: string): Promise<PlaceImage[]> {
     .filter((i): i is NonNullable<typeof i> => Boolean(i?.thumburl))
     .map((i) => ({
       url: i.thumburl,
-      thumb: i.thumburl.replace(/\/\d+px-/, "/320px-"),
+      thumb: i.thumburl.replace(/\/\d+px-/, "/330px-"),
       credit: strip(i.extmetadata?.Artist?.value) || "Wikimedia Commons",
       license: strip(i.extmetadata?.LicenseShortName?.value) || "see source",
       sourcePage: i.descriptionurl,

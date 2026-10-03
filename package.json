@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate && (test -z \"$DATABASE_URL\" || prisma migrate deploy) && next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
     "postinstall": "prisma generate",
     "content": "tsx scripts/build-content.ts",
-    "enrich": "tsx scripts/enrich.ts"
+    "enrich": "tsx scripts/enrich.ts",
+    "tokens": "tsx scripts/build-tokens.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
