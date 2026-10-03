@@ -1,0 +1,39 @@
+// T2T writable state. Trip content (places, flights) is read-only in v1 and lives in content/generated.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model SlotAssignment {
+  trip      String
+  slotId    String
+  placeId   String
+  updatedBy String?
+  updatedAt DateTime @updatedAt
+
+  @@id([trip, slotId])
+  @@unique([trip, placeId])
+}
+
+model TodoState {
+  trip      String
+  todoId    String
+  done      Boolean
+  updatedAt DateTime @updatedAt
+
+  @@id([trip, todoId])
+}
+
+model TripShare {
+  token     String    @id
+  trip      String
+  createdAt DateTime  @default(now())
+  revokedAt DateTime?
+
+  @@index([trip])
+}
