@@ -23,10 +23,13 @@ export const TRIPS: Record<string, Trip> = {
     ],
     "bookingRef": "ZYKGWV",
     "homebase": {
-      "label": "The house",
-      "address": "R. da Giribita 1, Paço de Arcos",
+      "label": "Hotel Solar Palmeiras",
+      "address": "Avenida Marginal (Curva dos Pinheiros), Rua da Giribita 1, 2780-142 Paço de Arcos",
       "lat": 38.69783,
-      "lng": -9.28385
+      "lng": -9.28385,
+      "url": "https://www.solarpalmeiras.com/",
+      "phone": "+351 21 446 8300",
+      "email": "reservas@solarpalmeiras.com"
     },
     "flights": [
       {
@@ -88,7 +91,7 @@ export const TRIPS: Record<string, Trip> = {
       {
         "date": "2026-10-09",
         "label": "Fri",
-        "note": "Arrival · land 5:30 am, house may not be ready",
+        "note": "Arrival · land 5:30 am, room may not be ready",
         "slots": [
           "early",
           "morning",

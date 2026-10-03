@@ -15,7 +15,7 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
 ## Travel Itinerary
 
 **Travelers:** Rob Cohen & Danielle Mindess · **Airline:** TAP Air Portugal · **Booking ref:** ZYKGWV
-**Staying:** House in Paço de Arcos — R. da Giribita 1
+**Staying:** [Hotel Solar Palmeiras](https://www.solarpalmeiras.com/) — Avenida Marginal (Curva dos Pinheiros), Rua da Giribita 1, 2780-142 Paço de Arcos · +351 21 446 8300
 
 | | Outbound | Return |
 |---|---|---|
@@ -33,7 +33,7 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
 - **Bags:** 1 carry-on each included (10 kg/22 lb, 55×40×25 cm). No checked bags on the fare — 1st bag $131 (≈ €113), 2nd $160 (≈ €138), each way.
 - **Ticket numbers:** Rob 047 2526419041 · Danielle 047 2526419040
 - Fare is non-refundable. Photo ID/passport required at check-in.
-- Arrival is 5:30 am — the house may not be ready; plan for an early-morning first stop or bag drop.
+- Arrival is 5:30 am — the room may not be ready; plan for an early-morning first stop or bag drop.
 
 ---
 

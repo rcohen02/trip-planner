@@ -92,7 +92,7 @@ export interface Trip {
   usdRateDate: string;
   travelers: { name: string; email?: string }[];
   bookingRef: string;
-  homebase: { label: string; address: string; lat: number; lng: number };
+  homebase: { label: string; address: string; lat: number; lng: number; url?: string; phone?: string; email?: string };
   flights: Flight[];
   bags: string[];
   gettingAround: string[];

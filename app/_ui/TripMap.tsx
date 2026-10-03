@@ -122,7 +122,7 @@ export default function TripMap({
           ref={el}
           className="h-[60dvh] min-h-[420px] w-full overflow-hidden min-[960px]:h-[calc(100dvh-12rem)]"
           style={{ borderRadius: "var(--radius-lg)", border: "1px solid var(--line)" }}
-          aria-label="Map of places and the house"
+          aria-label={`Map of places and ${homebase.label}`}
         />
         {picked && (
           <div
