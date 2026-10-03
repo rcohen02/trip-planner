@@ -1,10 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
-import type { Cluster, Place, Trip } from "@/lib/content/types";
+import type { Category, Cluster, Place, Trip } from "@/lib/content/types";
 import { CATEGORY } from "./bits";
 
-export default function TripMapClient({
+const HOUSE_SVG =
+  '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
+
+export default function TripMap({
   base,
   homebase,
   places,
@@ -16,93 +19,140 @@ export default function TripMapClient({
   clusters: Cluster[];
 }) {
   const el = useRef<HTMLDivElement>(null);
+  const layers = useRef<Map<Category, import("leaflet").LayerGroup>>(new Map());
+  const mapRef = useRef<import("leaflet").Map | null>(null);
   const [picked, setPicked] = useState<Place | null>(null);
+  const cats = [...new Set(places.map((p) => p.category))];
+  const [hidden, setHidden] = useState<Set<Category>>(new Set());
 
   useEffect(() => {
-    let map: import("leaflet").Map | undefined;
     let cancelled = false;
     (async () => {
       const L = await import("leaflet");
       if (cancelled || !el.current) return;
-      map = L.map(el.current, { zoomControl: true, attributionControl: true });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      const map = L.map(el.current);
+      mapRef.current = map;
+      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
         maxZoom: 19,
       }).addTo(map);
-
       const pts: [number, number][] = [[homebase.lat, homebase.lng]];
       L.marker([homebase.lat, homebase.lng], {
         icon: L.divIcon({
           className: "",
-          html: `<div style="background:#97D8B2;color:#170312;font:700 12px/1 var(--font-figtree);padding:6px 8px;border-radius:999px;white-space:nowrap;box-shadow:0 0 0 3px #170312">⌂ ${homebase.label}</div>`,
-          iconAnchor: [40, 14],
+          html: `<div style="width:34px;height:34px;border-radius:17px;background:var(--ink);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
         }),
-        title: homebase.address,
+        title: `${homebase.label}: ${homebase.address}`,
+        zIndexOffset: 1000,
       }).addTo(map);
-
       for (const p of places) {
         if (p.lat == null || p.lng == null) continue;
         pts.push([p.lat, p.lng]);
-        const c = CATEGORY[p.category];
-        const ring = clusters.find((k) => k.id === p.cluster)?.color ?? "#A0ACAD";
+        let group = layers.current.get(p.category);
+        if (!group) {
+          group = L.layerGroup().addTo(map);
+          layers.current.set(p.category, group);
+        }
         L.marker([p.lat, p.lng], {
-          icon: L.divIcon({
-            className: "",
-            html: `<div style="width:22px;height:22px;border-radius:999px;background:#33032F;border:2px solid ${ring};color:${c.color};display:flex;align-items:center;justify-content:center;font-size:11px">${c.glyph}</div>`,
-            iconSize: [22, 22],
-            iconAnchor: [11, 11],
-          }),
-          title: p.name,
+          icon: L.divIcon({ className: "", html: `<div class="tp-pin c-${p.category}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] }),
+          title: `${p.name} (${CATEGORY[p.category].label})`,
           keyboard: true,
         })
           .on("click", () => setPicked(p))
-          .addTo(map);
+          .addTo(group);
       }
       map.fitBounds(L.latLngBounds(pts), { padding: [30, 30] });
     })();
+    const groups = layers.current;
     return () => {
       cancelled = true;
-      map?.remove();
+      mapRef.current?.remove();
+      mapRef.current = null;
+      groups.clear();
     };
-  }, [homebase, places, clusters]);
+  }, [homebase, places]);
+
+  function toggle(c: Category) {
+    const next = new Set(hidden);
+    const g = layers.current.get(c);
+    const m = mapRef.current;
+    if (next.has(c)) {
+      next.delete(c);
+      if (g && m) g.addTo(m);
+    } else {
+      next.add(c);
+      if (g && m) m.removeLayer(g);
+    }
+    setHidden(next);
+  }
 
   return (
-    <div className="relative">
-      <div ref={el} className="h-[calc(100dvh-14rem)] min-h-[420px] w-full overflow-hidden rounded-xl" aria-label="Map of places" />
-      <ul className="mt-3 flex flex-wrap gap-4 text-sm text-mist" aria-label="Areas">
-        {clusters.map((c) => (
-          <li key={c.id} className="flex items-center gap-2">
-            <span className="inline-block h-3 w-3 rounded-full border-2" style={{ borderColor: c.color }} aria-hidden />
-            <span>
-              <span className="text-paper">{c.name}</span>: {c.note}
-            </span>
-          </li>
-        ))}
-      </ul>
-      {picked && (
-        <div className="absolute inset-x-3 bottom-16 z-[1000] rounded-xl bg-plum-deep p-4 shadow-xl shadow-ink md:left-auto md:right-3 md:top-3 md:bottom-auto md:w-80">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="font-display text-lg font-bold leading-tight">{picked.name}</p>
-              <p className="text-sm text-mist">{picked.location}</p>
-            </div>
-            <button onClick={() => setPicked(null)} aria-label="Close" className="text-mist hover:text-paper">
-              ✕
-            </button>
-          </div>
-          <p className="mt-2 line-clamp-3 text-sm">{picked.note}</p>
-          <div className="mt-3 flex gap-4 text-sm">
-            <a href={`${base}/places/${picked.id}`} className="text-mint">
-              Details
-            </a>
-            {picked.mapsUrl && (
-              <a href={picked.mapsUrl} target="_blank" rel="noreferrer" className="text-mint">
-                Open in Maps
-              </a>
-            )}
+    <div className="flex flex-col gap-5 min-[960px]:flex-row">
+      <aside className="tp-col min-[960px]:order-2 min-[960px]:w-[300px] min-[960px]:shrink-0" aria-label="Map legend">
+        <div className="tp-card tp-card--compact">
+          <h2 className="t-heading m-0">Show on map</h2>
+          <div className="flex flex-wrap gap-2 min-[960px]:flex-col">
+            {cats.map((c) => (
+              <button key={c} className={`tp-chip c-${c} justify-start`} aria-pressed={!hidden.has(c)} onClick={() => toggle(c)}>
+                <span className="tp-dot" aria-hidden />
+                {CATEGORY[c].label}
+                <span className="tp-count">{places.filter((p) => p.category === c).length}</span>
+              </button>
+            ))}
           </div>
         </div>
-      )}
+        <div className="tp-card tp-card--compact">
+          <h2 className="t-heading m-0">Areas</h2>
+          <ul className="tp-col m-0 list-none p-0" style={{ gap: 8 }}>
+            {clusters.map((c) => (
+              <li key={c.id}>
+                <span className="t-subheading">{c.name}</span>
+                <span className="t-caption block">
+                  {c.note} · {places.filter((p) => p.cluster === c.id).length} places
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+      <div className="relative min-w-0 flex-1">
+        <div
+          ref={el}
+          className="h-[60dvh] min-h-[420px] w-full overflow-hidden min-[960px]:h-[calc(100dvh-12rem)]"
+          style={{ borderRadius: "var(--radius-lg)", border: "1px solid var(--line)" }}
+          aria-label="Map of places and the house"
+        />
+        {picked && (
+          <div
+            className="tp-card tp-card--compact absolute inset-x-3 bottom-3 z-[1000] sm:left-auto sm:right-3 sm:top-3 sm:bottom-auto sm:w-80"
+            style={{ boxShadow: "var(--shadow-sheet)", background: "var(--surface-raised)" }}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="t-subheading m-0">{picked.name}</p>
+                <p className="t-caption m-0">{picked.location}</p>
+              </div>
+              <button onClick={() => setPicked(null)} className="tp-btn tp-btn--text" aria-label="Close">
+                Close
+              </button>
+            </div>
+            <p className="m-0 line-clamp-3 text-sm text-ink-2">{picked.note}</p>
+            <div className="flex gap-2">
+              <a className="tp-btn tp-btn--primary" href={`${base}/places/${picked.id}`}>
+                Details
+              </a>
+              {picked.mapsUrl && (
+                <a className="tp-btn tp-btn--secondary" href={picked.mapsUrl} target="_blank" rel="noreferrer">
+                  Open in Maps
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

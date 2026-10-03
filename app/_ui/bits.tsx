@@ -1,73 +1,88 @@
+import { Image as ImageIcon, Utensils, Wine, ShoppingBag, Flag, Trees, Castle, Music, TriangleAlert, OctagonX, Clock, Check } from "lucide-react";
 import type { Category, Place } from "@/lib/content/types";
+import type { PlanWarning } from "@/lib/plan/plan";
+import { hours12 } from "@/lib/format";
 
-export const CATEGORY: Record<Category, { label: string; glyph: string; color: string }> = {
-  art: { label: "Art & museums", glyph: "◆", color: "#97D8B2" },
-  food: { label: "Restaurants", glyph: "●", color: "#F2B85A" },
-  bar: { label: "Bars & nightlife", glyph: "▲", color: "#E7A1D9" },
-  shop: { label: "Shopping", glyph: "■", color: "#A0ACAD" },
-  tour: { label: "Tours", glyph: "✦", color: "#8FC1E3" },
-  nature: { label: "Nature", glyph: "♣", color: "#97D8B2" },
-  history: { label: "History", glyph: "♜", color: "#D9C38F" },
-  festival: { label: "Festivals", glyph: "♪", color: "#E7A1D9" },
+export const CATEGORY: Record<Category, { label: string; short: string; Icon: typeof ImageIcon }> = {
+  art: { label: "Art & Museums", short: "Art", Icon: ImageIcon },
+  food: { label: "Restaurants", short: "Food", Icon: Utensils },
+  bar: { label: "Bars & Nightlife", short: "Bar", Icon: Wine },
+  shop: { label: "Shopping", short: "Shop", Icon: ShoppingBag },
+  tour: { label: "Tours", short: "Tour", Icon: Flag },
+  nature: { label: "Nature", short: "Nature", Icon: Trees },
+  history: { label: "History", short: "History", Icon: Castle },
+  festival: { label: "Festivals", short: "Festival", Icon: Music },
 };
 
 export function CategoryTag({ category }: { category: Category }) {
-  const c = CATEGORY[category];
+  const { label, Icon } = CATEGORY[category];
   return (
-    <span className="inline-flex items-center gap-1 text-xs text-mist">
-      <span aria-hidden style={{ color: c.color }}>
-        {c.glyph}
-      </span>
-      {c.label}
+    <span className={`tp-cat c-${category}`}>
+      <Icon className="tp-icon" aria-hidden />
+      {label}
     </span>
   );
 }
 
-export function Thumb({ place, size = 56 }: { place: Place; size?: number }) {
+export function Thumb({ place, size = "sm" }: { place: Place; size?: "sm" | "md" }) {
   const img = place.images?.[0];
-  const c = CATEGORY[place.category];
-  if (!img) {
+  const cls = `tp-thumb ${size === "md" ? "tp-thumb--md" : ""}`;
+  if (!img) return <div className={`${cls} tp-ph`} aria-hidden />;
+  // eslint-disable-next-line @next/next/no-img-element -- Wikimedia thumbnails, already sized
+  return <img src={img.thumb} alt="" loading="lazy" className={cls} />;
+}
+
+export function Alert({
+  level,
+  small = false,
+  children,
+}: {
+  level: "warn" | "crit" | "info";
+  small?: boolean;
+  children: React.ReactNode;
+}) {
+  const Icon = level === "warn" ? TriangleAlert : level === "crit" ? OctagonX : Clock;
+  return (
+    <div className={`tp-alert tp-alert--${level} ${small ? "tp-alert--sm" : ""}`} role={level === "crit" ? "alert" : undefined}>
+      <Icon className="tp-icon" aria-hidden />
+      <div>{children}</div>
+    </div>
+  );
+}
+
+export function WarningList({ items, small = true }: { items: PlanWarning[]; small?: boolean }) {
+  return (
+    <>
+      {items.slice(0, 3).map((w) => (
+        <Alert key={w.text} level={w.level} small={small}>
+          {w.text}
+        </Alert>
+      ))}
+    </>
+  );
+}
+
+export function StatusPill({ planned }: { planned: boolean }) {
+  return planned ? <span className="tp-pill tp-pill--planned">Planned</span> : <span className="tp-pill tp-pill--want">Want</span>;
+}
+
+export function HoursLine({ place }: { place: Place }) {
+  if (place.hoursConfirmed && place.hours) {
     return (
-      <div
-        aria-hidden
-        className="flex shrink-0 items-center justify-center rounded-md bg-plum-deep text-lg"
-        style={{ width: size, height: size, color: c.color }}
-      >
-        {c.glyph}
-      </div>
+      <span className="tp-ok inline-flex items-center gap-1">
+        <Check className="tp-icon" aria-hidden />
+        {hours12(place.hours)}
+      </span>
     );
   }
-  return (
-    // eslint-disable-next-line @next/next/no-img-element -- Wikimedia thumbnails, already sized
-    <img
-      src={img.thumb}
-      alt=""
-      width={size}
-      height={size}
-      loading="lazy"
-      className="shrink-0 rounded-md object-cover"
-      style={{ width: size, height: size }}
-    />
-  );
+  if (place.hoursConfirmed) return <span className="tp-ok">Hours confirmed</span>;
+  return <span className="tp-unsure">Hours unconfirmed</span>;
 }
 
-export function Warnings({ items }: { items: string[] }) {
-  if (!items.length) return null;
+export function PageTitle({ children, aside }: { children: React.ReactNode; aside?: React.ReactNode }) {
   return (
-    <ul className="mt-1 flex flex-wrap gap-1">
-      {items.map((w) => (
-        <li key={w} className="rounded bg-amber/15 px-1.5 py-0.5 text-[11px] font-medium text-amber">
-          {w}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-export function SectionTitle({ children, aside }: { children: React.ReactNode; aside?: React.ReactNode }) {
-  return (
-    <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
-      <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{children}</h1>
+    <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+      <h1 className="t-title m-0">{children}</h1>
       {aside}
     </div>
   );

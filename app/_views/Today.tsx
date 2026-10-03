@@ -2,9 +2,12 @@ import Link from "next/link";
 import type { TripContext } from "@/lib/context";
 import { getStore } from "@/lib/store";
 import { buildSlots, SLOT_LABEL, todayFor, warningsFor } from "@/lib/plan/plan";
-import { countdown, dateLabel, dateTimeIn, money, timeIn } from "@/lib/format";
+import { countdown, longDate, money, timeIn, weekdayOf } from "@/lib/format";
 import { describeCode, getForecast, toF } from "@/lib/weather";
-import { Thumb } from "@/app/_ui/bits";
+import { Alert, HoursLine, Thumb } from "@/app/_ui/bits";
+import { FlightCard } from "@/app/_ui/FlightCard";
+
+const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 export async function TodayView({ ctx }: { ctx: TripContext }) {
   const { trip, base } = ctx;
@@ -14,142 +17,158 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
     getForecast(trip.homebase.lat, trip.homebase.lng, trip.timezone),
   ]);
   const day = todayFor(trip.days, trip.timezone, now);
-  const rule = trip.days.find((d) => d.date === day.date)!;
+  const index = trip.days.findIndex((d) => d.date === day.date);
+  const rule = trip.days[index];
   const slots = buildSlots(trip.days).filter((s) => s.date === day.date);
   const byId = new Map(trip.places.map((p) => [p.id, p]));
-  const out = trip.flights[0];
-  const back = trip.flights[trip.flights.length - 1];
+  const planned = slots.map((s) => ({ s, p: assignments[s.id] ? byId.get(assignments[s.id]!) : undefined }));
+  const next = planned.find((x) => x.p)?.p;
+
+  const [out, back] = [trip.flights[0], trip.flights[trip.flights.length - 1]];
   const beforeTrip = now < new Date(out.depart);
   const flight = beforeTrip ? out : back;
   const toGo = countdown(flight.depart, now);
   const w = forecast[day.date];
 
-  const planned = slots.map((s) => ({ s, p: assignments[s.id] ? byId.get(assignments[s.id]!) : undefined }));
-  const next = planned.find((x) => x.p)?.p;
-  const alerts: string[] = [];
+  const info: string[] = [];
   for (const f of trip.flights) {
-    const closes = new Date(f.checkInCloses).getTime() - now.getTime();
-    if (closes > 0 && closes < 36 * 3600_000) alerts.push(`${f.flightNo} check-in closes ${dateTimeIn(f.checkInCloses, f.checkInCloses.endsWith("-04:00") ? trip.homeTimezone : trip.timezone)}`);
+    const ms = new Date(f.checkInCloses).getTime() - now.getTime();
+    if (ms > 0 && ms < 48 * 3600_000)
+      info.push(`${f.flightNo} check-in closes ${timeIn(f.checkInCloses, f.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}${f.from.code === "LIS" ? "" : " ET"}.`);
   }
-  for (const { p } of planned) if (p) for (const warn of warningsFor(p, day.date)) if (!warn.startsWith("Hours")) alerts.push(`${p.name}: ${warn}`);
+  if (!beforeTrip || day.date === trip.days[trip.days.length - 1].date) info.push("Swap return seats at check-in: 22B is between you.");
 
   return (
-    <div className="space-y-8">
-      {/* Boarding-pass hero */}
-      <section className="perf overflow-hidden rounded-2xl bg-plum pt-3">
-        <div className="grid gap-6 p-5 md:grid-cols-[1fr_auto] md:p-8">
-          <div>
-            <p className="text-sm text-paper/80">
-              {beforeTrip ? "Outbound" : "Flight home"} · {flight.airline} {flight.flightNo}
-            </p>
-            <div className="mt-2 flex items-end gap-4 font-display">
-              <div>
-                <p className="text-5xl font-extrabold tracking-tight md:text-7xl">{flight.from.code}</p>
-                <p className="tabular text-lg">{timeIn(flight.depart, flight.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}</p>
-              </div>
-              <p className="pb-8 text-3xl text-mint" aria-hidden>
-                ✈
-              </p>
-              <div>
-                <p className="text-5xl font-extrabold tracking-tight md:text-7xl">{flight.to.code}</p>
-                <p className="tabular text-lg">{timeIn(flight.arrive, flight.to.code === "LIS" ? trip.timezone : trip.homeTimezone)}</p>
-              </div>
-            </div>
-            <p className="mt-2 text-sm text-paper/80">
-              {dateLabel(flight.depart.slice(0, 10))} · Seats {Object.entries(flight.seats).map(([n, s]) => `${n} ${s}`).join(", ")} · Ref {trip.bookingRef}
-            </p>
-          </div>
-          <div className="border-t border-dashed border-paper/30 pt-4 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-            <p className="text-sm text-paper/80">{toGo ? "Departs in" : "Departed"}</p>
-            <p className="tabular font-display text-3xl font-bold md:text-4xl">{toGo ?? dateLabel(flight.depart.slice(0, 10))}</p>
-          </div>
+    <div className="grid gap-6 min-[960px]:grid-cols-[minmax(0,1fr)_320px]">
+      <section className="tp-col min-w-0" style={{ gap: 20 }}>
+        <div>
+          <p className="tp-label m-0">
+            {WEEKDAY[weekdayOf(day.date)]} · Day {index + 1} of {trip.days.length}
+            {day.status === "upcoming" ? " · coming up" : ""}
+          </p>
+          <h1 className="t-display m-0 mt-1">{longDate(day.date)}</h1>
+          {rule.note && <p className="t-caption m-0 mt-1">{rule.note}</p>}
         </div>
-      </section>
 
-      <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
-        <section>
-          <h2 className="font-display text-2xl font-bold">
-            {day.status === "today" ? "Today" : day.status === "upcoming" ? "First day" : "Last day"}, {dateLabel(day.date)}
-          </h2>
-          {rule.note && <p className="mt-1 text-mist">{rule.note}</p>}
-          <ol className="mt-4 divide-y divide-plum/60 rounded-xl bg-plum-deep">
+        <div className="tp-card">
+          <h2 className="t-heading m-0">{day.status === "today" ? "Today's plan" : "The plan"}</h2>
+          <ol className="tp-col m-0 list-none p-0" style={{ gap: 12 }}>
             {planned.map(({ s, p }) => (
-              <li key={s.id} className="flex items-center gap-4 px-4 py-3">
-                <span className="w-24 shrink-0 text-sm text-mist">{SLOT_LABEL[s.kind]}</span>
+              <li key={s.id} className="tp-col" style={{ gap: 6 }}>
+                <span className="tp-label">{SLOT_LABEL[s.kind]}</span>
                 {s.locked ? (
-                  <span className="text-mist">{s.locked}</span>
+                  <div className="tp-alert tp-alert--info">{s.locked}</div>
                 ) : p ? (
-                  <Link href={`${base}/places/${p.id}`} className="flex min-w-0 items-center gap-3 hover:text-mint">
-                    <Thumb place={p} size={40} />
-                    <span className="truncate">{p.name}</span>
-                  </Link>
+                  <>
+                    <div className="tp-row" style={{ padding: 10, gap: 12 }}>
+                      <Thumb place={p} size="md" />
+                      <div className="tp-row__body">
+                        <Link href={`${base}/places/${p.id}`} className="tp-row__name block text-ink no-underline">
+                          {p.name}
+                        </Link>
+                        <div className="text-sm text-ink-2">
+                          {p.location.split(",").pop()!.trim()} · {money(p.price, trip.localCurrency, trip.usdRate)}
+                        </div>
+                        <HoursLine place={p} />
+                      </div>
+                      {p.mapsUrl && (
+                        <a className="tp-btn tp-btn--text" href={p.mapsUrl} target="_blank" rel="noreferrer">
+                          Maps
+                        </a>
+                      )}
+                    </div>
+                    {warningsFor(p, day.date)
+                      .filter((x) => x.level === "crit")
+                      .map((x) => (
+                        <Alert key={x.text} level="crit" small>
+                          {x.text}. <Link href={`${base}/days`}>Move it in Days</Link>
+                        </Alert>
+                      ))}
+                  </>
                 ) : (
-                  <span className="text-mist/60">Nothing planned</span>
+                  <div className="tp-slot__empty">
+                    Nothing planned for {SLOT_LABEL[s.kind].toLowerCase()}.&nbsp;<Link href={`${base}/days`}>Pick from Unscheduled</Link>
+                  </div>
                 )}
               </li>
             ))}
           </ol>
-          <Link href={`${base}/days`} className="mt-3 inline-block text-sm text-mint underline-offset-4 hover:underline">
-            Plan the days
-          </Link>
-        </section>
+        </div>
+      </section>
 
-        <aside className="space-y-4">
-          <div className="rounded-xl border border-plum p-4">
-            <h2 className="font-display text-lg font-bold">Weather in {trip.name}</h2>
+      <aside className="tp-col" aria-label="At a glance" style={{ gap: 16 }}>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="tp-stat" style={{ minWidth: 0 }}>
+            <div className="tp-label">Weather</div>
             {w ? (
               <>
-                <p className="tabular mt-2 text-3xl font-semibold">
-                  {Math.round(w.maxC)}° <span className="text-lg text-mist">/ {Math.round(w.minC)}°C</span>
-                </p>
-                <p className="text-sm text-mist">
-                  {toF(w.maxC)}° / {toF(w.minC)}°F · {describeCode(w.code)}
-                  {w.rainPct !== null && ` · ${w.rainPct}% rain`}
-                </p>
-                <p className="mt-2 text-sm">Sunset {w.sunset.slice(11)}</p>
+                <div className="tp-stat__value">{Math.round(w.maxC)}°C</div>
+                <div className="tp-stat__sub">
+                  {toF(w.maxC)}°F · {describeCode(w.code)}
+                  {w.rainPct !== null ? ` · ${w.rainPct}% rain` : ""}
+                </div>
               </>
             ) : (
-              <p className="mt-2 text-sm text-mist">The forecast shows up about two weeks before {dateLabel(day.date)}.</p>
+              <div className="tp-stat__sub mt-1">Forecast appears about 2 weeks out</div>
             )}
           </div>
+          <div className="tp-stat" style={{ minWidth: 0 }}>
+            <div className="tp-label">Sunset</div>
+            {w ? (
+              <>
+                <div className="tp-stat__value">{timeIn(`${w.sunset}:00Z`, "UTC")}</div>
+                <div className="tp-stat__sub">Senhora do Monte for the view</div>
+              </>
+            ) : (
+              <div className="tp-stat__sub mt-1">With the forecast</div>
+            )}
+          </div>
+        </div>
 
-          <div className="rounded-xl border border-plum p-4">
-            <h2 className="font-display text-lg font-bold">Next up</h2>
-            {next ? (
-              <div className="mt-2 space-y-1 text-sm">
-                <p className="text-base font-medium">{next.name}</p>
-                <p className="text-mist">{next.location}</p>
-                {next.phone && (
-                  <p>
-                    <a href={`tel:${next.phone.replace(/\s/g, "")}`} className="text-mint">
-                      {next.phone}
-                    </a>
-                  </p>
-                )}
+        <div className="tp-stat">
+          <div className="tp-label">{beforeTrip ? "Leaving in" : "Flight home in"}</div>
+          <div className="tp-stat__value">{toGo ?? "Departed"}</div>
+          <div className="tp-stat__sub">
+            {flight.flightNo} · {flight.from.code} {timeIn(flight.depart, flight.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}
+            {flight.from.code === "LIS" ? "" : " ET"}
+          </div>
+        </div>
+
+        <div className="tp-card tp-card--compact">
+          <div className="tp-label">Next booking</div>
+          {next ? (
+            <>
+              <p className="t-subheading m-0">{next.name}</p>
+              <p className="m-0 text-sm text-ink-2">{next.location}</p>
+              {next.phone && <p className="tp-data m-0">{next.phone}</p>}
+              <div className="flex gap-2">
                 {next.mapsUrl && (
-                  <a href={next.mapsUrl} className="text-mint" target="_blank" rel="noreferrer">
+                  <a className="tp-btn tp-btn--primary" href={next.mapsUrl} target="_blank" rel="noreferrer">
                     Open in Maps
                   </a>
                 )}
-                <p className="text-mist">{money(next.priceLocal, trip.localCurrency, trip.usdRate)}</p>
+                {next.phone && (
+                  <a className="tp-btn tp-btn--secondary" href={`tel:${next.phone.replace(/\s/g, "")}`}>
+                    Call
+                  </a>
+                )}
               </div>
-            ) : (
-              <p className="mt-2 text-sm text-mist">Nothing scheduled yet for this day.</p>
-            )}
-          </div>
-
-          {alerts.length > 0 && (
-            <div className="rounded-xl border border-amber/50 p-4">
-              <h2 className="font-display text-lg font-bold text-amber">Heads up</h2>
-              <ul className="mt-2 space-y-1 text-sm">
-                {alerts.map((a) => (
-                  <li key={a}>{a}</li>
-                ))}
-              </ul>
-            </div>
+            </>
+          ) : (
+            <p className="m-0 text-sm text-ink-2">
+              Nothing planned yet. <Link href={`${base}/days`}>Plan this day</Link>
+            </p>
           )}
-        </aside>
-      </div>
+        </div>
+
+        {info.map((t) => (
+          <Alert key={t} level="info">
+            {t}
+          </Alert>
+        ))}
+
+        {beforeTrip && <FlightCard flight={out} trip={trip} title="Outbound" />}
+      </aside>
     </div>
   );
 }

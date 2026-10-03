@@ -1,39 +1,31 @@
 import Link from "next/link";
 import type { TripContext } from "@/lib/context";
-import { NavLinks } from "./NavLinks";
+import { dateLabel } from "@/lib/format";
+import { NavLinks, Main } from "./NavLinks";
 
-export const TABS = [
-  { href: "", label: "Today" },
-  { href: "/days", label: "Days" },
-  { href: "/places", label: "Places" },
-  { href: "/map", label: "Map" },
-  { href: "/todo", label: "To-do" },
-  { href: "/logistics", label: "Logistics" },
-];
-
-export function Shell({ ctx, children }: { ctx: TripContext; children: React.ReactNode }) {
+export function Shell({ ctx, children, wide = false }: { ctx: TripContext; children: React.ReactNode; wide?: boolean }) {
   const { trip, base, editable } = ctx;
+  const first = trip.days[0].date;
+  const last = trip.days[trip.days.length - 1].date;
+  const range = `${dateLabel(first).slice(4)}–${Number(last.slice(8))}`;
   return (
-    <div className="min-h-dvh pb-20 md:pb-0">
-      <header className="sticky top-0 z-30 border-b border-plum/60 bg-ink/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-3">
-          <Link href={editable ? "/" : base} className="flex items-baseline gap-2">
-            <span className="font-display text-2xl font-extrabold tracking-tight text-mint">T2T</span>
-            <span className="font-display text-lg font-semibold">{trip.name}</span>
-          </Link>
-          <nav className="ml-auto hidden md:block" aria-label="Trip sections">
-            <NavLinks base={base} tabs={TABS} variant="top" />
-          </nav>
-          {!editable && <span className="ml-auto rounded-full border border-mist/40 px-3 py-1 text-xs text-mist md:ml-0">View only</span>}
+    <div className="min-h-dvh pb-20 sm:pb-0">
+      <header className="tp-header sticky top-0 z-40">
+        <Link href={editable ? "/" : base} className="tp-trip text-ink no-underline">
+          <b>{trip.name}</b>
+          <span className="tp-label" style={{ letterSpacing: 0, textTransform: "none" }}>
+            {range} · {trip.travelers.map((t) => t.name).join(" & ")}
+          </span>
+        </Link>
+        <div className="hidden sm:block">
+          <NavLinks base={base} variant="top" />
         </div>
+        {!editable && <span className="tp-pill tp-pill--want ml-auto">View only</span>}
       </header>
-      <main className="mx-auto max-w-7xl px-4 py-6">{children}</main>
-      <nav
-        className="fixed inset-x-0 bottom-0 z-30 border-t border-plum/60 bg-ink/95 backdrop-blur md:hidden"
-        aria-label="Trip sections"
-      >
-        <NavLinks base={base} tabs={TABS} variant="bottom" />
-      </nav>
+      <Main wide={wide}>{children}</Main>
+      <div className="fixed inset-x-0 bottom-0 z-40 sm:hidden">
+        <NavLinks base={base} variant="bottom" />
+      </div>
     </div>
   );
 }

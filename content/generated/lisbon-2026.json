@@ -70,12 +70,12 @@
   ],
   "bags": [
     "1 carry-on each included (10 kg / 22 lb, 55×40×25 cm)",
-    "No checked bags on the fare: 1st bag $131 (≈ €113), 2nd $160 (≈ €138), each way",
-    "Return seats aren't together (22B is between you); try to swap at check-in",
-    "Fare is non-refundable; passport required at check-in"
+    "No checked bags on the fare. 1st bag ~€113 / $131, 2nd ~€138 / $160, each way",
+    "Return seats aren't together: 22B is between you. Try to swap at check-in",
+    "Fare is non-refundable. Bring passports for check-in"
   ],
   "gettingAround": [
-    "Cascais train line from Paço de Arcos: west Lisbon (Belém/Junqueira) in 15–20 min, Cais do Sodré in about 25",
+    "Cascais train line from Paço de Arcos: west Lisbon (Belém/Junqueira) in 15–20 min, Cais do Sodré in ~25",
     "Trams: take 12E from Martim Moniz instead of the crowded 28",
     "Funiculars closed after the Sept 2025 crash; check whether they've reopened",
     "Taxi and ride apps for late nights and the airport"
@@ -84,7 +84,7 @@
     {
       "date": "2026-10-09",
       "label": "Fri",
-      "note": "Arrival day: land 5:30 am, house may not be ready",
+      "note": "Arrival · land 5:30 am, house may not be ready",
       "slots": [
         "early",
         "morning",
@@ -100,7 +100,7 @@
     {
       "date": "2026-10-10",
       "label": "Sat",
-      "note": "Best gallery day + Feira da Ladra (Sat only)",
+      "note": "Best gallery day · Feira da Ladra",
       "slots": [
         "morning",
         "lunch",
@@ -112,7 +112,7 @@
     {
       "date": "2026-10-11",
       "label": "Sun",
-      "note": "Museums; commercial galleries likely closed",
+      "note": "Museums · galleries likely closed",
       "slots": [
         "morning",
         "lunch",
@@ -124,7 +124,7 @@
     {
       "date": "2026-10-12",
       "label": "Mon",
-      "note": "Departure: check-in closes 4:00 pm",
+      "note": "Departure · TP209 5 pm",
       "slots": [
         "morning",
         "lunch",
@@ -133,7 +133,7 @@
       "locked": [
         {
           "kind": "afternoon",
-          "reason": "Airport: TP209 departs 5:00 pm"
+          "reason": "Check-in closes 4 pm · LIS Terminal 1"
         }
       ]
     }
@@ -142,19 +142,19 @@
     {
       "id": "west",
       "name": "West Lisbon",
-      "note": "Belém, Junqueira, Ajuda: 15–20 min by train",
+      "note": "15–20 min by train",
       "color": "#97D8B2"
     },
     {
       "id": "center",
       "name": "Center",
-      "note": "Bairro Alto, Príncipe Real, São Bento, Campo de Ourique",
+      "note": "~25 min by train to Cais do Sodré",
       "color": "#E7A1D9"
     },
     {
       "id": "east",
       "name": "East",
-      "note": "Beato, Marvila, Graça, Alfama",
+      "note": "Train to Cais do Sodré, then metro or taxi",
       "color": "#F2C14E"
     }
   ],
@@ -206,57 +206,6 @@
       "text": "Swap return seats at check-in (22B is between you)"
     }
   ],
-  "enrich": {
-    "pigmeu": {
-      "noImages": true
-    },
-    "damas": {
-      "geoQuery": "Rua da Voz do Operário, Lisboa",
-      "noImages": true
-    },
-    "dois-corvos": {
-      "geoQuery": "Rua Capitão Leitão, Marvila, Lisboa",
-      "noImages": true
-    },
-    "feed": {
-      "noImages": true
-    },
-    "macam-museu-de-arte-contemporanea-armando-martins": {
-      "imageQuery": "MACAM Lisboa",
-      "imageMatch": "MACAM"
-    },
-    "galeria-filomena-soares": {
-      "imageMatch": "Filomena"
-    },
-    "side-bar": {
-      "imageMatch": "Side_Bar"
-    },
-    "feira-da-ladra-flea-market": {
-      "geoQuery": "Campo de Santa Clara, Lisboa",
-      "imageMatch": "Feira_da_Ladra"
-    },
-    "gala-cricri-at-palacio-do-grilo": {
-      "geoQuery": "Palácio do Grilo, Lisboa",
-      "imageQuery": "Palácio do Grilo Lisboa",
-      "imageMatch": "grilo"
-    },
-    "maria-limao-at-miradouro-da-senhora-do-monte": {
-      "imageQuery": "Miradouro da Senhora do Monte"
-    },
-    "rua-de-sao-bento-strip": {
-      "imageQuery": "Rua de São Bento Lisboa"
-    },
-    "queer-lisbon-walking-tour-guide-leonor-machado": {
-      "geoQuery": "Jardim do Príncipe Real, Lisboa",
-      "imageQuery": "Jardim do Príncipe Real"
-    },
-    "tram-12e": {
-      "imageMatch": "12E"
-    },
-    "santa-joana-nuno-mendes": {
-      "imageMatch": "Locke"
-    }
-  },
   "places": [
     {
       "id": "maat-museum-of-art-architecture-and-technology",

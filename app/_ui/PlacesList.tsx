@@ -1,97 +1,142 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import type { Category, Cluster, Place } from "@/lib/content/types";
-import { CATEGORY, Thumb } from "./bits";
+import type { Category, Cluster, DayRule, Place } from "@/lib/content/types";
+import type { Assignments } from "@/lib/plan/plan";
+import { assignPlace, unassignPlace } from "@/app/t/[slug]/actions";
+import { CATEGORY, HoursLine, StatusPill } from "./bits";
+import { AddToDaySheet } from "./AddToDay";
 
 export function PlacesList({
+  slug,
   base,
   places,
   clusters,
-  planned,
-  money,
+  days,
+  assignments,
+  prices,
+  editable,
 }: {
+  slug: string;
   base: string;
   places: Place[];
   clusters: Cluster[];
-  planned: string[];
-  money: Record<string, string>;
+  days: DayRule[];
+  assignments: Assignments;
+  prices: Record<string, string>;
+  editable: boolean;
 }) {
   const [category, setCategory] = useState<Category | "">("");
   const [cluster, setCluster] = useState("");
+  const [status, setStatus] = useState("");
+  const [local, setLocal] = useState(assignments);
+  const [sheet, setSheet] = useState<Place | null>(null);
+  const planned = new Set(Object.values(local).filter(Boolean) as string[]);
   const cats = [...new Set(places.map((p) => p.category))];
-  const shown = places.filter((p) => (!category || p.category === category) && (!cluster || p.cluster === cluster));
-  const plannedSet = new Set(planned);
+  const shown = places.filter(
+    (p) =>
+      (!category || p.category === category) &&
+      (!cluster || p.cluster === cluster) &&
+      (!status || (status === "planned") === planned.has(p.id)),
+  );
+  const clusterName = (id?: string | null) => clusters.find((c) => c.id === id)?.name.replace(" Lisbon", "") ?? "";
 
   return (
     <>
-      <div className="mb-5 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
-        <Chip on={!category} onClick={() => setCategory("")}>
-          All
-        </Chip>
+      <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+        <button className="tp-chip" aria-pressed={!category} onClick={() => setCategory("")}>
+          All <span className="tp-count">{places.length}</span>
+        </button>
         {cats.map((c) => (
-          <Chip key={c} on={category === c} onClick={() => setCategory(c)}>
-            <span style={{ color: CATEGORY[c].color }} aria-hidden>
-              {CATEGORY[c].glyph}
-            </span>{" "}
-            {CATEGORY[c].label}
-          </Chip>
+          <button key={c} className={`tp-chip c-${c}`} aria-pressed={category === c} onClick={() => setCategory(category === c ? "" : c)}>
+            <span className="tp-dot" aria-hidden />
+            {CATEGORY[c].label} <span className="tp-count">{places.filter((p) => p.category === c).length}</span>
+          </button>
         ))}
-        <select
-          value={cluster}
-          onChange={(e) => setCluster(e.target.value)}
-          className="ml-auto rounded-full border border-plum bg-ink px-3 py-1.5 text-sm"
-          aria-label="Area"
-        >
-          <option value="">All areas</option>
-          {clusters.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
       </div>
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mb-5 flex flex-wrap gap-3">
+        <label className="tp-field w-44">
+          Area
+          <select className="tp-input" value={cluster} onChange={(e) => setCluster(e.target.value)}>
+            <option value="">All areas</option>
+            {clusters.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="tp-field w-44">
+          Status
+          <select className="tp-input" value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="">Any status</option>
+            <option value="want">Want</option>
+            <option value="planned">Planned</option>
+          </select>
+        </label>
+      </div>
+      <ul className="m-0 grid list-none gap-4 p-0" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))" }}>
         {shown.map((p) => (
-          <li key={p.id}>
-            <Link href={`${base}/places/${p.id}`} className="group block overflow-hidden rounded-xl bg-plum-deep hover:ring-1 hover:ring-mint/60">
-              <div className="aspect-[16/9] bg-plum/40">
+          <li key={p.id} className="flex">
+            <article className="tp-place flex-1">
+              <div className="tp-place__photo">
                 {p.images?.[0] ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={p.images[0].url} alt="" loading="lazy" className="h-full w-full object-cover" />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-4xl" style={{ color: CATEGORY[p.category].color }} aria-hidden>
-                    {CATEGORY[p.category].glyph}
+                  <div className="tp-ph h-full w-full" aria-hidden />
+                )}
+                {p.images && p.images.length > 1 && (
+                  <div className="tp-dots" aria-hidden>
+                    {p.images.map((_, i) => (
+                      <span key={i} />
+                    ))}
                   </div>
                 )}
               </div>
-              <div className="p-4">
-                <div className="flex items-start justify-between gap-2">
-                  <h2 className="font-display text-lg font-bold leading-tight group-hover:text-mint">{p.name}</h2>
-                  {plannedSet.has(p.id) && <span className="shrink-0 rounded-full bg-mint/15 px-2 py-0.5 text-xs text-mint">Planned</span>}
+              <div className="tp-place__body">
+                <Link className="tp-place__name" href={`${base}/places/${p.id}`}>
+                  {p.name}
+                </Link>
+                <div className="tp-label-sm">
+                  {p.location.split(",").pop()!.trim().toUpperCase()}
+                  {p.cluster ? ` · ${clusterName(p.cluster).toUpperCase()}` : ""}
                 </div>
-                <p className="mt-1 text-sm text-mist">{p.location}</p>
-                <p className="mt-2 line-clamp-2 text-sm">{p.note}</p>
-                <p className="tabular mt-2 text-sm text-mist">{money[p.id]}</p>
+                <div className="tp-num">{prices[p.id]}</div>
+                <HoursLine place={p} />
+                <div className="tp-place__foot">
+                  <StatusPill planned={planned.has(p.id)} />
+                  {editable && (
+                    <button className="tp-btn tp-btn--secondary" style={{ fontSize: 13, padding: "0 12px" }} onClick={() => setSheet(p)}>
+                      {planned.has(p.id) ? "Move" : "Add to day"}
+                    </button>
+                  )}
+                </div>
               </div>
-            </Link>
+            </article>
           </li>
         ))}
       </ul>
+      {shown.length === 0 && <p className="t-caption">No places match these filters. Choose All to see everything.</p>}
+      {sheet && (
+        <AddToDaySheet
+          place={sheet}
+          days={days}
+          assignments={local}
+          onClose={() => setSheet(null)}
+          onConfirm={async (slotId) => {
+            const next = Object.fromEntries(Object.entries(local).filter(([k, v]) => v !== sheet.id && k !== slotId));
+            setLocal({ ...next, [slotId]: sheet.id });
+            setSheet(null);
+            await assignPlace(slug, slotId, sheet.id);
+          }}
+          onRemove={async () => {
+            setLocal(Object.fromEntries(Object.entries(local).filter(([, v]) => v !== sheet.id)));
+            setSheet(null);
+            await unassignPlace(slug, sheet.id);
+          }}
+        />
+      )}
     </>
   );
 }
-
-function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
-  return (
-    <button
-      onClick={onClick}
-      aria-pressed={on}
-      className="rounded-full border border-plum px-3 py-1.5 text-sm text-mist aria-pressed:border-mint aria-pressed:text-paper"
-    >
-      {children}
-    </button>
-  );
-}
-
-export { Thumb };
