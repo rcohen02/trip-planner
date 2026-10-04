@@ -13,11 +13,11 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { GripVertical, Lock, OctagonX } from "lucide-react";
+import { GripVertical, Lock, OctagonX, Plus, X } from "lucide-react";
 import type { Cluster, DayRule, Place } from "@/lib/content/types";
-import { buildSlots, SLOT_LABEL, warningsFor, type Assignments, type Slot } from "@/lib/plan/plan";
+import { buildSlots, cleanSlotLabel, suggestSlotLabel, warningsFor, type Assignments, type ExtraSlot, type Slot } from "@/lib/plan/plan";
 import { dateLabel } from "@/lib/format";
-import { assignPlace, unassignPlace } from "@/app/t/[slug]/actions";
+import { addSlot, assignPlace, removeSlot, unassignPlace } from "@/app/t/[slug]/actions";
 import { Alert, CATEGORY, Thumb } from "./bits";
 import { AddToDaySheet } from "./AddToDay";
 
@@ -30,7 +30,11 @@ function apply(a: Assignments, m: Move): Assignments {
   return next;
 }
 
-type Sheet = { kind: "place"; placeId: string; slotId?: string } | { kind: "slot"; slotId: string } | null;
+type Sheet =
+  | { kind: "place"; placeId: string; slotId?: string }
+  | { kind: "slot"; slotId: string }
+  | { kind: "newSlot"; date: string }
+  | null;
 
 export function DaysBoard({
   slug,
@@ -38,6 +42,7 @@ export function DaysBoard({
   places,
   clusters,
   initial,
+  initialExtras,
   editable,
   prices,
 }: {
@@ -46,10 +51,12 @@ export function DaysBoard({
   places: Place[];
   clusters: Cluster[];
   initial: Assignments;
+  initialExtras: ExtraSlot[];
   editable: boolean;
   prices: Record<string, string>;
 }) {
-  const slots = useMemo(() => buildSlots(days), [days]);
+  const [extras, setExtras] = useState(initialExtras);
+  const slots = useMemo(() => buildSlots(days, extras), [days, extras]);
   const byId = useMemo(() => new Map(places.map((p) => [p.id, p])), [places]);
   const [assignments, addMove] = useOptimistic(initial, apply);
   const [, startTransition] = useTransition();
@@ -91,6 +98,31 @@ export function DaysBoard({
         setError("That change didn't save. Check your connection and try again.");
       }
     });
+  }
+
+  async function createSlot(after: string, label: string) {
+    setError(null);
+    try {
+      const x = await addSlot(slug, after, label);
+      setExtras((e) => [...e, x]);
+      setSheet(null);
+    } catch {
+      setError("That slot didn't save. Check your connection and try again.");
+    }
+  }
+
+  async function dropSlot(id: string) {
+    const gone = extras.find((x) => x.id === id);
+    const pid = assignments[id];
+    setError(null);
+    setExtras((e) => e.filter((x) => x.id !== id).map((x) => (gone && x.after === id ? { ...x, after: gone.after } : x)));
+    if (pid) startTransition(() => addMove({ type: "unassign", placeId: pid }));
+    try {
+      await removeSlot(slug, id);
+    } catch {
+      setExtras(extras);
+      setError("That slot wasn't removed. Check your connection and try again.");
+    }
   }
 
   const onDragStart = (e: DragStartEvent) => setDragging(String(e.active.id));
@@ -216,6 +248,7 @@ export function DaysBoard({
                         editable={editable}
                         dragName={dragName}
                         onEmptyTap={() => setSheet({ kind: "slot", slotId: s.id })}
+                        onRemove={s.extra ? () => dropSlot(s.id) : undefined}
                       >
                         {p && (
                           <>
@@ -265,6 +298,12 @@ export function DaysBoard({
                       </SlotCell>
                     );
                   })}
+                {editable && (
+                  <button className="tp-btn tp-btn--text justify-start" onClick={() => setSheet({ kind: "newSlot", date: d.date })}>
+                    <Plus className="tp-icon tp-icon-lg" aria-hidden />
+                    Add a slot
+                  </button>
+                )}
               </div>
             ))}
           </div>
@@ -286,6 +325,7 @@ export function DaysBoard({
         <AddToDaySheet
           place={sheetPlace}
           days={days}
+          extras={extras}
           assignments={assignments}
           initialSlot={sheet.slotId}
           onClose={() => setSheet(null)}
@@ -311,7 +351,99 @@ export function DaysBoard({
           }}
         />
       )}
+      {sheet?.kind === "newSlot" && (
+        <NewSlotSheet
+          date={sheet.date}
+          slots={slots.filter((s) => s.date === sheet.date)}
+          onClose={() => setSheet(null)}
+          onAdd={createSlot}
+        />
+      )}
     </DndContext>
+  );
+}
+
+/** Add a labeled slot between existing ones, e.g. a second afternoon. */
+function NewSlotSheet({
+  date,
+  slots,
+  onAdd,
+  onClose,
+}: {
+  date: string;
+  slots: Slot[];
+  onAdd: (after: string, label: string) => Promise<void>;
+  onClose: () => void;
+}) {
+  const open = slots.filter((s) => !s.locked);
+  const start = open.find((s) => s.kind === "afternoon" && !s.extra)?.id ?? open[0]?.id ?? "";
+  const [after, setAfter] = useState(start);
+  const [label, setLabel] = useState(() => suggestSlotLabel(slots, start));
+  const [touched, setTouched] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const clean = cleanSlotLabel(label);
+  return (
+    <>
+      <div className="tp-scrim" onClick={onClose} />
+      <form
+        className="tp-sheet tp-col"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Add a slot"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          if (!clean || busy) return;
+          setBusy(true);
+          await onAdd(after, clean);
+          setBusy(false);
+        }}
+      >
+        <div>
+          <p className="tp-label m-0">{dateLabel(date)} · Add a slot</p>
+          <p className="t-subheading m-0 mt-1">Room for one more</p>
+        </div>
+        <label className="tp-field">
+          Goes after
+          <select
+            className="tp-input"
+            value={after}
+            onChange={(e) => {
+              setAfter(e.target.value);
+              if (!touched) setLabel(suggestSlotLabel(slots, e.target.value));
+            }}
+          >
+            {open.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="tp-field">
+          Label
+          <input
+            className="tp-input"
+            value={label}
+            maxLength={40}
+            aria-invalid={!clean}
+            onChange={(e) => {
+              setTouched(true);
+              setLabel(e.target.value);
+            }}
+            autoFocus
+          />
+        </label>
+        {!clean && <p className="tp-help m-0">Give the slot a name, like Afternoon 2 or Gelato.</p>}
+        <div className="flex flex-wrap gap-2">
+          <button type="submit" className="tp-btn tp-btn--primary flex-1" disabled={!clean || busy}>
+            {busy ? "Adding…" : "Add slot"}
+          </button>
+          <button type="button" className="tp-btn tp-btn--text" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
 
@@ -333,16 +465,18 @@ function SlotCell({
   editable,
   dragName,
   onEmptyTap,
+  onRemove,
   children,
 }: {
   slot: Slot;
   editable: boolean;
   dragName?: string;
   onEmptyTap: () => void;
+  onRemove?: () => void;
   children: React.ReactNode;
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: slot.id, disabled: Boolean(slot.locked) || !editable });
-  const label = `${SLOT_LABEL[slot.kind]}${slot.optional ? " · optional" : ""}`;
+  const label = `${slot.label}${slot.optional ? " · optional" : ""}`;
   if (slot.locked) {
     return (
       <div className="tp-slot">
@@ -358,7 +492,22 @@ function SlotCell({
   const empty = !children;
   return (
     <div ref={setNodeRef} className="tp-slot">
-      <div className="tp-label">{label}</div>
+      {onRemove && editable ? (
+        <div className="flex items-center justify-between gap-2">
+          <div className="tp-label">{label}</div>
+          <button
+            className="tp-btn tp-btn--text"
+            style={{ minHeight: 44, padding: "0 6px", fontSize: 12 }}
+            onClick={onRemove}
+            aria-label={`Remove the ${slot.label} slot`}
+          >
+            <X className="tp-icon" aria-hidden />
+            Remove
+          </button>
+        </div>
+      ) : (
+        <div className="tp-label">{label}</div>
+      )}
       {isOver && dragName ? (
         <div className="tp-slot__drop">Release to add {dragName}</div>
       ) : empty ? (
@@ -436,10 +585,10 @@ function PickPlaceSheet({
   return (
     <>
       <div className="tp-scrim" onClick={onClose} />
-      <div className="tp-sheet tp-col" role="dialog" aria-modal="true" aria-label={`Add a place to ${SLOT_LABEL[slot.kind]}`}>
+      <div className="tp-sheet tp-col" role="dialog" aria-modal="true" aria-label={`Add a place to ${slot.label}`}>
         <div>
           <p className="tp-label m-0">
-            {dateLabel(slot.date)} · {SLOT_LABEL[slot.kind]}
+            {dateLabel(slot.date)} · {slot.label}
           </p>
           <p className="t-subheading m-0 mt-1">Pick from Unscheduled</p>
         </div>

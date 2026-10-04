@@ -18,7 +18,7 @@ import { MapLoader } from "@/app/_ui/MapLoader";
 
 export async function DaysView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
-  const assignments = await getStore().assignments(trip.slug);
+  const [assignments, extras] = await Promise.all([getStore().assignments(trip.slug), getStore().extraSlots(trip.slug)]);
   return (
     <>
       <PageTitle aside={<span className="t-caption">{editable ? "Drag a place into a slot, or tap a slot to add one." : ""}</span>}>Days</PageTitle>
@@ -28,6 +28,7 @@ export async function DaysView({ ctx }: { ctx: TripContext }) {
         places={trip.places}
         clusters={trip.clusters}
         initial={assignments}
+        initialExtras={extras}
         editable={editable}
         prices={priceMap(trip)}
       />
@@ -37,7 +38,7 @@ export async function DaysView({ ctx }: { ctx: TripContext }) {
 
 export async function PlacesView({ ctx }: { ctx: TripContext }) {
   const { trip, base, editable } = ctx;
-  const assignments = await getStore().assignments(trip.slug);
+  const [assignments, extras] = await Promise.all([getStore().assignments(trip.slug), getStore().extraSlots(trip.slug)]);
   return (
     <>
       <PageTitle aside={<span className="t-caption">From the NYT · prices local first, then USD at {trip.usdRate}</span>}>Places</PageTitle>
@@ -48,6 +49,7 @@ export async function PlacesView({ ctx }: { ctx: TripContext }) {
         clusters={trip.clusters}
         days={trip.days}
         assignments={assignments}
+        extras={extras}
         prices={priceMap(trip)}
         editable={editable}
       />
@@ -144,12 +146,23 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
   );
 }
 
-export function MapView({ ctx }: { ctx: TripContext }) {
-  const { trip, base } = ctx;
+export async function MapView({ ctx }: { ctx: TripContext }) {
+  const { trip, base, editable } = ctx;
+  const [assignments, extras] = await Promise.all([getStore().assignments(trip.slug), getStore().extraSlots(trip.slug)]);
   return (
     <>
       <PageTitle>Map</PageTitle>
-      <MapLoader base={base} homebase={trip.homebase} places={trip.places} clusters={trip.clusters} />
+      <MapLoader
+        slug={trip.slug}
+        base={base}
+        homebase={trip.homebase}
+        places={trip.places}
+        clusters={trip.clusters}
+        days={trip.days}
+        assignments={assignments}
+        extras={extras}
+        editable={editable}
+      />
     </>
   );
 }

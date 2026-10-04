@@ -37,3 +37,15 @@ model TripShare {
 
   @@index([trip])
 }
+
+/// A slot added on the Days board (e.g. a second afternoon). Base slots come from trip.json.
+model ExtraSlot {
+  id        String   @id
+  trip      String
+  date      String
+  after     String
+  label     String
+  createdAt DateTime @default(now())
+
+  @@index([trip])
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { DayRule, Place } from "../content/types";
-import { buildSlots, slotId, warningsFor, placedIds, unscheduled, todayFor } from "./plan";
+import { buildSlots, slotId, warningsFor, placedIds, unscheduled, todayFor, suggestSlotLabel, cleanSlotLabel, visibleCategories } from "./plan";
 
 const days: DayRule[] = [
   { date: "2026-10-09", label: "Fri", slots: ["early", "morning", "lunch"], optional: ["lunch"] },
@@ -91,5 +91,42 @@ describe("placement helpers", () => {
       date: "2026-10-12",
       status: "past",
     });
+  });
+});
+
+describe("added slots", () => {
+  const sat: DayRule[] = [{ date: "2026-10-10", label: "Sat", slots: ["morning", "lunch", "afternoon", "dinner"] }];
+
+  it("inserts an added slot right after the slot it follows, with its own label", () => {
+    const slots = buildSlots(sat, [{ id: "2026-10-10:x-1", date: "2026-10-10", after: "2026-10-10:afternoon", label: "Second afternoon" }]);
+    expect(slots.map((s) => s.label)).toEqual(["Morning", "Lunch", "Afternoon", "Second afternoon", "Dinner"]);
+    expect(slots[3]).toMatchObject({ id: "2026-10-10:x-1", kind: "afternoon", extra: true, locked: null });
+    expect(slots[2].extra).toBe(false);
+  });
+
+  it("chains added slots in order and puts orphans at the end of their day", () => {
+    const slots = buildSlots(sat, [
+      { id: "2026-10-10:x-1", date: "2026-10-10", after: "2026-10-10:morning", label: "Coffee" },
+      { id: "2026-10-10:x-2", date: "2026-10-10", after: "2026-10-10:x-1", label: "Market" },
+      { id: "2026-10-10:x-3", date: "2026-10-10", after: "2026-10-10:gone", label: "Late" },
+    ]);
+    expect(slots.map((s) => s.label)).toEqual(["Morning", "Coffee", "Market", "Lunch", "Afternoon", "Dinner", "Late"]);
+  });
+
+  it("suggests a numbered label and cleans what people type", () => {
+    const slots = buildSlots(sat, [{ id: "2026-10-10:x-1", date: "2026-10-10", after: "2026-10-10:afternoon", label: "Afternoon 2" }]);
+    expect(suggestSlotLabel(slots, "2026-10-10:afternoon")).toBe("Afternoon 3");
+    expect(suggestSlotLabel(slots, "2026-10-10:lunch")).toBe("Lunch 2");
+    expect(cleanSlotLabel("  Gelato   run ")).toBe("Gelato run");
+    expect(cleanSlotLabel("   ")).toBeNull();
+    expect(cleanSlotLabel("x".repeat(60))).toHaveLength(40);
+  });
+});
+
+describe("map category filter", () => {
+  it("shows every category until one is chosen, then only that one", () => {
+    const all = ["art", "food", "bar"] as const;
+    expect(visibleCategories([...all], null)).toEqual(["art", "food", "bar"]);
+    expect(visibleCategories([...all], "food")).toEqual(["food"]);
   });
 });

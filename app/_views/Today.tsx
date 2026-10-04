@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { TripContext } from "@/lib/context";
 import { getStore } from "@/lib/store";
-import { buildSlots, SLOT_LABEL, todayFor, warningsFor } from "@/lib/plan/plan";
+import { buildSlots, todayFor, warningsFor } from "@/lib/plan/plan";
 import { countdown, longDate, money, timeIn, weekdayOf } from "@/lib/format";
 import { describeCode, getForecast, toF } from "@/lib/weather";
 import { Alert, HoursLine, Thumb } from "@/app/_ui/bits";
@@ -12,14 +12,15 @@ const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 export async function TodayView({ ctx }: { ctx: TripContext }) {
   const { trip, base } = ctx;
   const now = new Date();
-  const [assignments, forecast] = await Promise.all([
+  const [assignments, extras, forecast] = await Promise.all([
     getStore().assignments(trip.slug),
+    getStore().extraSlots(trip.slug),
     getForecast(trip.homebase.lat, trip.homebase.lng, trip.timezone),
   ]);
   const day = todayFor(trip.days, trip.timezone, now);
   const index = trip.days.findIndex((d) => d.date === day.date);
   const rule = trip.days[index];
-  const slots = buildSlots(trip.days).filter((s) => s.date === day.date);
+  const slots = buildSlots(trip.days, extras).filter((s) => s.date === day.date);
   const byId = new Map(trip.places.map((p) => [p.id, p]));
   const planned = slots.map((s) => ({ s, p: assignments[s.id] ? byId.get(assignments[s.id]!) : undefined }));
   const next = planned.find((x) => x.p)?.p;
@@ -55,7 +56,7 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
           <ol className="tp-col m-0 list-none p-0" style={{ gap: 12 }}>
             {planned.map(({ s, p }) => (
               <li key={s.id} className="tp-col" style={{ gap: 6 }}>
-                <span className="tp-label">{SLOT_LABEL[s.kind]}</span>
+                <span className="tp-label">{s.label}</span>
                 {s.locked ? (
                   <div className="tp-alert tp-alert--info">{s.locked}</div>
                 ) : p ? (
@@ -87,7 +88,7 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
                   </>
                 ) : (
                   <div className="tp-slot__empty">
-                    Nothing planned for {SLOT_LABEL[s.kind].toLowerCase()}.&nbsp;<Link href={`${base}/days`}>Pick from Unscheduled</Link>
+                    Nothing planned for {s.label.toLowerCase()}.&nbsp;<Link href={`${base}/days`}>Pick from Unscheduled</Link>
                   </div>
                 )}
               </li>

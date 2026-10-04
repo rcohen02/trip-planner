@@ -1,29 +1,44 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
-import type { Category, Cluster, Place, Trip } from "@/lib/content/types";
-import { CATEGORY } from "./bits";
+import type { Category, Cluster, DayRule, Place, Trip } from "@/lib/content/types";
+import { visibleCategories, type Assignments, type ExtraSlot } from "@/lib/plan/plan";
+import { Alert, CATEGORY, StatusPill } from "./bits";
+import { AddToDaySheet, usePlanAssignments } from "./AddToDay";
 
 const HOUSE_SVG =
   '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
 
 export default function TripMap({
+  slug,
   base,
   homebase,
   places,
   clusters,
+  days,
+  assignments: initial,
+  extras,
+  editable,
 }: {
+  slug: string;
   base: string;
   homebase: Trip["homebase"];
   places: Place[];
   clusters: Cluster[];
+  days: DayRule[];
+  assignments: Assignments;
+  extras: ExtraSlot[];
+  editable: boolean;
 }) {
   const el = useRef<HTMLDivElement>(null);
   const layers = useRef<Map<Category, import("leaflet").LayerGroup>>(new Map());
   const mapRef = useRef<import("leaflet").Map | null>(null);
   const [picked, setPicked] = useState<Place | null>(null);
   const cats = [...new Set(places.map((p) => p.category))];
-  const [hidden, setHidden] = useState<Set<Category>>(new Set());
+  const [only, setOnly] = useState<Category | null>(null);
+  const [sheet, setSheet] = useState<Place | null>(null);
+  const { assignments, assign, unassign, error } = usePlanAssignments(slug, initial);
+  const planned = new Set(Object.values(assignments).filter(Boolean) as string[]);
 
   useEffect(() => {
     let cancelled = false;
@@ -74,28 +89,31 @@ export default function TripMap({
     };
   }, [homebase, places]);
 
-  function toggle(c: Category) {
-    const next = new Set(hidden);
-    const g = layers.current.get(c);
+  // Tapping a category shows only that one; tapping it again (or Reset) shows everything.
+  useEffect(() => {
     const m = mapRef.current;
-    if (next.has(c)) {
-      next.delete(c);
-      if (g && m) g.addTo(m);
-    } else {
-      next.add(c);
-      if (g && m) m.removeLayer(g);
+    if (!m) return;
+    const shown = new Set(visibleCategories([...layers.current.keys()], only));
+    for (const [c, g] of layers.current) {
+      if (shown.has(c)) g.addTo(m);
+      else m.removeLayer(g);
     }
-    setHidden(next);
-  }
+    if (picked && !shown.has(picked.category)) setPicked(null);
+  }, [only, picked]);
 
   return (
     <div className="flex flex-col gap-5 min-[960px]:flex-row">
       <aside className="tp-col min-[960px]:order-2 min-[960px]:w-[300px] min-[960px]:shrink-0" aria-label="Map legend">
         <div className="tp-card tp-card--compact">
-          <h2 className="t-heading m-0">Show on map</h2>
-          <div className="flex flex-wrap gap-2 min-[960px]:flex-col">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="t-heading m-0">Show on map</h2>
+            <button className="tp-btn tp-btn--text" onClick={() => setOnly(null)} disabled={!only} aria-label="Reset: show every category">
+              Reset
+            </button>
+          </div>
+          <div className="flex flex-wrap gap-2 min-[960px]:flex-col" role="group" aria-label="Show one category">
             {cats.map((c) => (
-              <button key={c} className={`tp-chip c-${c} justify-start`} aria-pressed={!hidden.has(c)} onClick={() => toggle(c)}>
+              <button key={c} className={`tp-chip c-${c} justify-start`} aria-pressed={only === c} onClick={() => setOnly(only === c ? null : c)}>
                 <span className="tp-dot" aria-hidden />
                 {CATEGORY[c].label}
                 <span className="tp-count">{places.filter((p) => p.category === c).length}</span>
@@ -117,7 +135,7 @@ export default function TripMap({
           </ul>
         </div>
       </aside>
-      <div className="relative min-w-0 flex-1">
+      <div className="relative isolate min-w-0 flex-1">
         <div
           ref={el}
           className="h-[60dvh] min-h-[420px] w-full overflow-hidden min-[960px]:h-[calc(100dvh-12rem)]"
@@ -133,14 +151,22 @@ export default function TripMap({
               <div>
                 <p className="t-subheading m-0">{picked.name}</p>
                 <p className="t-caption m-0">{picked.location}</p>
+                <div className="mt-1">
+                  <StatusPill planned={planned.has(picked.id)} />
+                </div>
               </div>
               <button onClick={() => setPicked(null)} className="tp-btn tp-btn--text" aria-label="Close">
                 Close
               </button>
             </div>
             <p className="m-0 line-clamp-3 text-sm text-ink-2">{picked.note}</p>
-            <div className="flex gap-2">
-              <a className="tp-btn tp-btn--primary" href={`${base}/places/${picked.id}`}>
+            <div className="flex flex-wrap gap-2">
+              {editable && (
+                <button className="tp-btn tp-btn--primary" onClick={() => setSheet(picked)}>
+                  {planned.has(picked.id) ? "Move" : "Add to day"}
+                </button>
+              )}
+              <a className={`tp-btn ${editable ? "tp-btn--secondary" : "tp-btn--primary"}`} href={`${base}/places/${picked.id}`}>
                 Details
               </a>
               {picked.mapsUrl && (
@@ -152,6 +178,28 @@ export default function TripMap({
           </div>
         )}
       </div>
+      {error && (
+        <div className="fixed inset-x-4 top-4 z-[1100] sm:left-auto sm:w-96">
+          <Alert level="crit">{error}</Alert>
+        </div>
+      )}
+      {sheet && (
+        <AddToDaySheet
+          place={sheet}
+          days={days}
+          extras={extras}
+          assignments={assignments}
+          onClose={() => setSheet(null)}
+          onConfirm={(slotId) => {
+            setSheet(null);
+            assign(slotId, sheet.id);
+          }}
+          onRemove={() => {
+            setSheet(null);
+            unassign(sheet.id);
+          }}
+        />
+      )}
     </div>
   );
 }

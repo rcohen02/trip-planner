@@ -2,10 +2,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Category, Cluster, DayRule, Place } from "@/lib/content/types";
-import type { Assignments } from "@/lib/plan/plan";
-import { assignPlace, unassignPlace } from "@/app/t/[slug]/actions";
-import { CATEGORY, HoursLine, StatusPill } from "./bits";
-import { AddToDaySheet } from "./AddToDay";
+import type { Assignments, ExtraSlot } from "@/lib/plan/plan";
+import { Alert, CATEGORY, HoursLine, StatusPill } from "./bits";
+import { AddToDaySheet, usePlanAssignments } from "./AddToDay";
 
 export function PlacesList({
   slug,
@@ -14,6 +13,7 @@ export function PlacesList({
   clusters,
   days,
   assignments,
+  extras,
   prices,
   editable,
 }: {
@@ -23,13 +23,14 @@ export function PlacesList({
   clusters: Cluster[];
   days: DayRule[];
   assignments: Assignments;
+  extras: ExtraSlot[];
   prices: Record<string, string>;
   editable: boolean;
 }) {
   const [category, setCategory] = useState<Category | "">("");
   const [cluster, setCluster] = useState("");
   const [status, setStatus] = useState("");
-  const [local, setLocal] = useState(assignments);
+  const { assignments: local, assign, unassign, error } = usePlanAssignments(slug, assignments);
   const [sheet, setSheet] = useState<Place | null>(null);
   const planned = new Set(Object.values(local).filter(Boolean) as string[]);
   const cats = [...new Set(places.map((p) => p.category))];
@@ -43,6 +44,11 @@ export function PlacesList({
 
   return (
     <>
+      {error && (
+        <div className="mb-4">
+          <Alert level="crit">{error}</Alert>
+        </div>
+      )}
       <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
         <button className="tp-chip" aria-pressed={!category} onClick={() => setCategory("")}>
           All <span className="tp-count">{places.length}</span>
@@ -122,18 +128,16 @@ export function PlacesList({
         <AddToDaySheet
           place={sheet}
           days={days}
+          extras={extras}
           assignments={local}
           onClose={() => setSheet(null)}
-          onConfirm={async (slotId) => {
-            const next = Object.fromEntries(Object.entries(local).filter(([k, v]) => v !== sheet.id && k !== slotId));
-            setLocal({ ...next, [slotId]: sheet.id });
+          onConfirm={(slotId) => {
             setSheet(null);
-            await assignPlace(slug, slotId, sheet.id);
+            assign(slotId, sheet.id);
           }}
-          onRemove={async () => {
-            setLocal(Object.fromEntries(Object.entries(local).filter(([, v]) => v !== sheet.id)));
+          onRemove={() => {
             setSheet(null);
-            await unassignPlace(slug, sheet.id);
+            unassign(sheet.id);
           }}
         />
       )}

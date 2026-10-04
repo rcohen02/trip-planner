@@ -1,11 +1,30 @@
-import type { Assignments } from "../plan/plan";
-import { newToken, type PlanStore, type Share } from "./types";
+import type { Assignments, ExtraSlot } from "../plan/plan";
+import { newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 /** In-memory store for tests and for running locally without a database. */
 export class MemoryStore implements PlanStore {
   private slots = new Map<string, Assignments>();
   private todoState = new Map<string, Record<string, boolean>>();
   private shares = new Map<string, Share & { revoked?: boolean }>();
+  private extras = new Map<string, ExtraSlot[]>();
+
+  async extraSlots(trip: string) {
+    return [...(this.extras.get(trip) ?? [])];
+  }
+  async addSlot(trip: string, slot: Omit<ExtraSlot, "id">) {
+    const x = { id: newSlotId(slot.date), ...slot };
+    this.extras.set(trip, [...(this.extras.get(trip) ?? []), x]);
+    return x;
+  }
+  async removeSlot(trip: string, id: string) {
+    const list = this.extras.get(trip) ?? [];
+    const gone = list.find((x) => x.id === id);
+    // Slots that followed this one now follow what it followed.
+    this.extras.set(trip, list.filter((x) => x.id !== id).map((x) => (gone && x.after === id ? { ...x, after: gone.after } : x)));
+    const a = { ...(this.slots.get(trip) ?? {}) };
+    delete a[id];
+    this.slots.set(trip, a);
+  }
 
   async assignments(trip: string) {
     return { ...(this.slots.get(trip) ?? {}) };

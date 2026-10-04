@@ -1,14 +1,51 @@
 "use client";
 import { useMemo, useState } from "react";
 import type { DayRule, Place } from "@/lib/content/types";
-import { buildSlots, SLOT_LABEL, warningsFor, type Assignments } from "@/lib/plan/plan";
+import { buildSlots, warningsFor, type Assignments, type ExtraSlot } from "@/lib/plan/plan";
 import { dateLabel } from "@/lib/format";
+import { assignPlace, unassignPlace } from "@/app/t/[slug]/actions";
 import { WarningList } from "./bits";
+
+/*
+ * ONE "Add to day" popup for the whole site. Places, Map and Days all render this
+ * component (and Places + Map share `usePlanAssignments` below), so any change to the
+ * popup — fields, wording, buttons, warnings — belongs here and shows up everywhere.
+ * Don't copy it into a page.
+ */
+
+/** Local copy of the plan with the save calls wired in; used by every page that opens the Add to day popup. */
+export function usePlanAssignments(slug: string, initial: Assignments) {
+  const [assignments, setAssignments] = useState(initial);
+  const [error, setError] = useState<string | null>(null);
+  async function save(next: Assignments, call: () => Promise<void>) {
+    const before = assignments;
+    setError(null);
+    setAssignments(next);
+    try {
+      await call();
+    } catch {
+      setAssignments(before);
+      setError("That change didn't save. Check your connection and try again.");
+    }
+  }
+  return {
+    assignments,
+    error,
+    assign: (slotId: string, placeId: string) =>
+      save(
+        { ...Object.fromEntries(Object.entries(assignments).filter(([k, v]) => v !== placeId && k !== slotId)), [slotId]: placeId },
+        () => assignPlace(slug, slotId, placeId),
+      ),
+    unassign: (placeId: string) =>
+      save(Object.fromEntries(Object.entries(assignments).filter(([, v]) => v !== placeId)), () => unassignPlace(slug, placeId)),
+  };
+}
 
 /** "Add to day": Day + Slot selects in a bottom sheet (phone) or small dialog. The tap alternative to dragging. */
 export function AddToDaySheet({
   place,
   days,
+  extras = [],
   assignments,
   initialSlot,
   onConfirm,
@@ -17,13 +54,14 @@ export function AddToDaySheet({
 }: {
   place: Place;
   days: DayRule[];
+  extras?: ExtraSlot[];
   assignments: Assignments;
   initialSlot?: string;
   onConfirm: (slotId: string) => void;
   onRemove?: () => void;
   onClose: () => void;
 }) {
-  const slots = useMemo(() => buildSlots(days).filter((s) => !s.locked), [days]);
+  const slots = useMemo(() => buildSlots(days, extras).filter((s) => !s.locked), [days, extras]);
   const current = Object.entries(assignments).find(([, v]) => v === place.id)?.[0];
   const start = initialSlot ?? current ?? slots[0].id;
   const [date, setDate] = useState(start.split(":")[0]);
@@ -63,7 +101,7 @@ export function AddToDaySheet({
           <select className="tp-input" value={chosen?.id} onChange={(e) => setSlotId(e.target.value)}>
             {daySlots.map((s) => (
               <option key={s.id} value={s.id}>
-                {SLOT_LABEL[s.kind]}
+                {s.label}
                 {s.optional ? " (optional)" : ""}
                 {assignments[s.id] && assignments[s.id] !== place.id ? " · taken" : ""}
               </option>

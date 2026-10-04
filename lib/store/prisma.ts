@@ -1,7 +1,7 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/lib/generated/prisma/client";
-import type { Assignments } from "../plan/plan";
-import { newToken, type PlanStore, type Share } from "./types";
+import type { Assignments, ExtraSlot } from "../plan/plan";
+import { newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 export function createPrisma(url: string): PrismaClient {
   return new PrismaClient({ adapter: new PrismaPg({ connectionString: url }) });
@@ -24,6 +24,26 @@ export class PrismaStore implements PlanStore {
 
   async unassign(trip: string, placeId: string) {
     await this.db.slotAssignment.deleteMany({ where: { trip, placeId } });
+  }
+
+  async extraSlots(trip: string): Promise<ExtraSlot[]> {
+    const rows = await this.db.extraSlot.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
+    return rows.map(({ id, date, after, label }) => ({ id, date, after, label }));
+  }
+
+  async addSlot(trip: string, slot: Omit<ExtraSlot, "id">): Promise<ExtraSlot> {
+    const x = { id: newSlotId(slot.date), ...slot };
+    await this.db.extraSlot.create({ data: { trip, ...x } });
+    return x;
+  }
+
+  async removeSlot(trip: string, id: string) {
+    await this.db.$transaction([
+      this.db.slotAssignment.deleteMany({ where: { trip, slotId: id } }),
+      // Slots that followed this one now follow what it followed.
+      this.db.$executeRaw`UPDATE "ExtraSlot" SET "after" = (SELECT "after" FROM "ExtraSlot" WHERE "trip" = ${trip} AND "id" = ${id}) WHERE "trip" = ${trip} AND "after" = ${id}`,
+      this.db.extraSlot.deleteMany({ where: { trip, id } }),
+    ]);
   }
 
   async todos(trip: string) {

@@ -15,6 +15,7 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
       await prisma.slotAssignment.deleteMany();
       await prisma.todoState.deleteMany();
       await prisma.tripShare.deleteMany();
+      await prisma.extraSlot.deleteMany();
     }
   });
 
@@ -60,5 +61,17 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
     expect(await s.resolveShare(a.token)).toBeNull();
     expect(await s.activeShare("lis")).toBeNull();
     expect((await s.share("lis")).token).not.toBe(a.token);
+  });
+
+  it("adds labeled slots per trip and removing one sends its place back", async () => {
+    const s = make();
+    const a = await s.addSlot("lis", { date: "2026-10-10", after: "2026-10-10:afternoon", label: "Afternoon 2" });
+    expect(a.id).toMatch(/^2026-10-10:x-/);
+    expect(await s.extraSlots("lis")).toEqual([a]);
+    expect(await s.extraSlots("other")).toEqual([]);
+    await s.assign("lis", a.id, "maat");
+    await s.removeSlot("lis", a.id);
+    expect(await s.extraSlots("lis")).toEqual([]);
+    expect(await s.assignments("lis")).toEqual({});
   });
 });
