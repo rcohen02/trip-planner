@@ -30,7 +30,8 @@ import {
 import { dateLabel } from "@/lib/format";
 import { addSlot, assignPlace, removeSlot, renameSlot, unassignPlace } from "@/app/t/[slug]/actions";
 import { Alert, CATEGORY, Thumb } from "./bits";
-import { AddToDaySheet } from "./AddToDay";
+import { AddToDaySheet, usePlanBookings } from "./AddToDay";
+import { bookingTime, bookingWarnings, type Booking } from "@/lib/plan/booking";
 
 type Move = { type: "assign"; slotId: string; placeId: string } | { type: "unassign"; placeId: string };
 
@@ -41,7 +42,7 @@ function apply(a: Assignments, m: Move): Assignments {
 }
 
 type Sheet =
-  | { kind: "place"; placeId: string; slotId?: string }
+  | { kind: "place"; placeId: string; slotId?: string; booking?: boolean }
   | { kind: "slot"; slotId: string }
   | { kind: "newSlot"; date: string }
   | null;
@@ -53,6 +54,7 @@ export function DaysBoard({
   clusters,
   initial,
   initialLayout,
+  initialBookings,
   editable,
   prices,
 }: {
@@ -62,10 +64,12 @@ export function DaysBoard({
   clusters: Cluster[];
   initial: Assignments;
   initialLayout: Required<SlotLayout>;
+  initialBookings: Record<string, Booking>;
   editable: boolean;
   prices: Record<string, string>;
 }) {
   const [layout, setLayout] = useState(initialLayout);
+  const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
   const extras = layout.extras;
   const setExtras = (f: (e: typeof extras) => typeof extras) => setLayout((l) => ({ ...l, extras: f(l.extras) }));
   const slots = useMemo(() => buildSlots(days, layout), [days, layout]);
@@ -172,9 +176,9 @@ export function DaysBoard({
 
   return (
     <DndContext id="days-board" sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd} onDragCancel={() => setDragging(null)}>
-      {error && (
+      {(error ?? bookingError) && (
         <div className="mb-4">
-          <Alert level="crit">{error}</Alert>
+          <Alert level="crit">{error ?? bookingError}</Alert>
         </div>
       )}
 
@@ -270,7 +274,8 @@ export function DaysBoard({
                   .map((s) => {
                     const pid = assignments[s.id];
                     const p = pid ? byId.get(pid) : undefined;
-                    const warnings = p ? warningsFor(p, d.date) : [];
+                    const booking = p ? bookings[p.id] : undefined;
+                    const warnings = p ? [...(booking ? bookingWarnings(booking, s) : []), ...warningsFor(p, d.date, booking)] : [];
                     const crit = warnings.find((w) => w.level === "crit");
                     const conflict = Boolean(crit && !kept.has(s.id));
                     const up = p ? neighborSlot(slots, s.id, -1) : null;
@@ -304,6 +309,19 @@ export function DaysBoard({
                               conflict={conflict}
                               onTap={() => editable && setSheet({ kind: "place", placeId: p.id })}
                             />
+                            {(booking || editable) && (
+                              <button
+                                className="tp-booking-chip self-start"
+                                data-booked={booking ? "" : undefined}
+                                disabled={!editable}
+                                onClick={() => setSheet({ kind: "place", placeId: p.id, booking: true })}
+                                aria-label={booking ? `Booking for ${p.name}: ${bookingTime(booking)}. Edit` : `Add booking details for ${p.name}`}
+                              >
+                                {booking
+                                  ? `Booked · ${booking.date === d.date ? "" : `${dateLabel(booking.date)}, `}${bookingTime(booking)}${booking.confirmation ? ` · ${booking.confirmation}` : ""}`
+                                  : "+ Add booking"}
+                              </button>
+                            )}
                             {conflict && crit && (
                               <div className="tp-alert tp-alert--crit tp-alert--sm" role="alert">
                                 <OctagonX className="tp-icon" aria-hidden />
@@ -374,6 +392,10 @@ export function DaysBoard({
           assignments={assignments}
           initialSlot={sheet.slotId}
           placeNames={Object.fromEntries(places.map((p) => [p.id, p.name]))}
+          booking={bookings[sheetPlace.id] ?? null}
+          startOnBooking={sheet.booking}
+          onSaveBooking={editable ? saveBooking : undefined}
+          onClearBooking={() => clearBooking(sheetPlace.id)}
           onClose={() => setSheet(null)}
           onConfirm={(slotId) => {
             run({ type: "assign", slotId, placeId: sheetPlace.id });

@@ -4,7 +4,8 @@ import { useState } from "react";
 import type { Category, Cluster, DayRule, Place } from "@/lib/content/types";
 import type { Assignments, SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, HoursLine, StatusPill } from "./bits";
-import { AddToDaySheet, usePlanAssignments } from "./AddToDay";
+import { AddToDaySheet, usePlanAssignments, usePlanBookings } from "./AddToDay";
+import type { Booking } from "@/lib/plan/booking";
 
 export function PlacesList({
   slug,
@@ -14,6 +15,7 @@ export function PlacesList({
   days,
   assignments,
   layout,
+  bookings: initialBookings,
   prices,
   editable,
 }: {
@@ -24,13 +26,16 @@ export function PlacesList({
   days: DayRule[];
   assignments: Assignments;
   layout: SlotLayout;
+  bookings: Record<string, Booking>;
   prices: Record<string, string>;
   editable: boolean;
 }) {
   const [category, setCategory] = useState<Category | "">("");
   const [cluster, setCluster] = useState("");
   const [status, setStatus] = useState("");
-  const { assignments: local, assign, unassign, error } = usePlanAssignments(slug, assignments);
+  const { assignments: local, assign, unassign, error: planError } = usePlanAssignments(slug, assignments);
+  const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
+  const error = planError ?? bookingError;
   const [sheet, setSheet] = useState<Place | null>(null);
   const planned = new Set(Object.values(local).filter(Boolean) as string[]);
   const cats = [...new Set(places.map((p) => p.category))];
@@ -130,6 +135,9 @@ export function PlacesList({
           days={days}
           layout={layout}
           placeNames={Object.fromEntries(places.map((p) => [p.id, p.name]))}
+          booking={bookings[sheet.id] ?? null}
+          onSaveBooking={editable ? saveBooking : undefined}
+          onClearBooking={() => clearBooking(sheet.id)}
           assignments={local}
           onClose={() => setSheet(null)}
           onConfirm={(slotId) => {

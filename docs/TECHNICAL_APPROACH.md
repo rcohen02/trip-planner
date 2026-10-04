@@ -285,6 +285,7 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 - [ ] **New trip wizard:** destination, dates, homebase, family or adults scope
 - [ ] **Done status + notes** during the trip
 - [ ] **ICS calendar feed** for flights and planned slots
+- [ ] **Add to calendar** from a booking (requested Oct 4, 2026): one tap on a booked place adds it to Google Calendar with the time, confirmation and note, plus a reminder; fallback is a downloadable `.ics` file. Bookings already store Lisbon date + time (`lib/plan/booking.ts`, `bookingInstant` gives the exact moment).
 
 ---
 

@@ -14,12 +14,15 @@ export function Checklist({
   slug,
   todos,
   initial,
+  booked,
   editable,
   actions,
 }: {
   slug: string;
   todos: Todo[];
   initial: Record<string, boolean>;
+  /** todoId → "Booked · Sat Oct 10, 7 pm": ticked by a saved booking, so the box is locked. */
+  booked: Record<string, string>;
   editable: boolean;
   actions: Record<string, { label: string; href: string }>;
 }) {
@@ -54,7 +57,8 @@ export function Checklist({
                       <input
                         type="checkbox"
                         checked={Boolean(done[t.id])}
-                        disabled={!editable}
+                        disabled={!editable || Boolean(booked[t.id])}
+                        title={booked[t.id] ? "Ticked by the booking. Remove the booking in Itinerary to untick." : undefined}
                         onChange={(e) => {
                           const v = e.target.checked;
                           start(async () => {
@@ -65,7 +69,11 @@ export function Checklist({
                       />
                       <span>
                         <span className="tp-check__title">{t.text.replace(/\s*\(\+[\d\s]+\)/, "")}</span>
-                        {t.text.match(/\+[\d\s]+\d/) && <span className="tp-check__detail tp-data">{t.text.match(/\+[\d\s]+\d/)![0]}</span>}
+                        {booked[t.id] ? (
+                          <span className="tp-check__detail">{booked[t.id]}</span>
+                        ) : (
+                          t.text.match(/\+[\d\s]+\d/) && <span className="tp-check__detail tp-data">{t.text.match(/\+[\d\s]+\d/)![0]}</span>
+                        )}
                       </span>
                     </label>
                     {action && (

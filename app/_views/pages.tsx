@@ -6,6 +6,7 @@ import type { TripContext } from "@/lib/context";
 import { getStore } from "@/lib/store";
 import { priceMap } from "@/lib/prices";
 import { warningsFor } from "@/lib/plan/plan";
+import { bookingTime, todoDone } from "@/lib/plan/booking";
 import { dateLabel } from "@/lib/format";
 import { DaysBoard } from "@/app/_ui/DaysBoard";
 import { PlacesList } from "@/app/_ui/PlacesList";
@@ -18,7 +19,11 @@ import { MapLoader } from "@/app/_ui/MapLoader";
 
 export async function DaysView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
-  const [assignments, layout] = await Promise.all([getStore().assignments(trip.slug), getStore().layout(trip.slug)]);
+  const [assignments, layout, bookings] = await Promise.all([
+    getStore().assignments(trip.slug),
+    getStore().layout(trip.slug),
+    getStore().bookings(trip.slug),
+  ]);
   return (
     <>
       <PageTitle aside={<span className="t-caption">{editable ? "Drag a place into a slot, or tap a slot to add one." : ""}</span>}>Itinerary</PageTitle>
@@ -29,6 +34,7 @@ export async function DaysView({ ctx }: { ctx: TripContext }) {
         clusters={trip.clusters}
         initial={assignments}
         initialLayout={layout}
+        initialBookings={bookings}
         editable={editable}
         prices={priceMap(trip)}
       />
@@ -38,7 +44,11 @@ export async function DaysView({ ctx }: { ctx: TripContext }) {
 
 export async function PlacesView({ ctx }: { ctx: TripContext }) {
   const { trip, base, editable } = ctx;
-  const [assignments, layout] = await Promise.all([getStore().assignments(trip.slug), getStore().layout(trip.slug)]);
+  const [assignments, layout, bookings] = await Promise.all([
+    getStore().assignments(trip.slug),
+    getStore().layout(trip.slug),
+    getStore().bookings(trip.slug),
+  ]);
   return (
     <>
       <PageTitle aside={<span className="t-caption">From the NYT · prices local first, then USD at {trip.usdRate}</span>}>Places</PageTitle>
@@ -50,6 +60,7 @@ export async function PlacesView({ ctx }: { ctx: TripContext }) {
         days={trip.days}
         assignments={assignments}
         layout={layout}
+        bookings={bookings}
         prices={priceMap(trip)}
         editable={editable}
       />
@@ -148,7 +159,11 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
 
 export async function MapView({ ctx }: { ctx: TripContext }) {
   const { trip, base, editable } = ctx;
-  const [assignments, layout] = await Promise.all([getStore().assignments(trip.slug), getStore().layout(trip.slug)]);
+  const [assignments, layout, bookings] = await Promise.all([
+    getStore().assignments(trip.slug),
+    getStore().layout(trip.slug),
+    getStore().bookings(trip.slug),
+  ]);
   return (
     <>
       <PageTitle>Map</PageTitle>
@@ -161,6 +176,7 @@ export async function MapView({ ctx }: { ctx: TripContext }) {
         days={trip.days}
         assignments={assignments}
         layout={layout}
+        bookings={bookings}
         editable={editable}
       />
     </>
@@ -170,7 +186,17 @@ export async function MapView({ ctx }: { ctx: TripContext }) {
 export async function TodoView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
   const store = getStore();
-  const [done, share] = await Promise.all([store.todos(trip.slug), editable ? store.activeShare(trip.slug) : null]);
+  const [ticked, bookings, share] = await Promise.all([
+    store.todos(trip.slug),
+    store.bookings(trip.slug),
+    editable ? store.activeShare(trip.slug) : null,
+  ]);
+  const done = todoDone(trip.todos, ticked, bookings);
+  const booked: Record<string, string> = {};
+  for (const t of trip.todos) {
+    const b = t.kind === "book" && t.placeId ? bookings[t.placeId] : undefined;
+    if (b) booked[t.id] = `Booked · ${dateLabel(b.date)}, ${bookingTime(b)}${b.confirmation ? ` · ${b.confirmation}` : ""}`;
+  }
   const byId = new Map(trip.places.map((p) => [p.id, p]));
   const actions: Record<string, { label: string; href: string }> = {};
   for (const t of trip.todos) {
@@ -191,7 +217,7 @@ export async function TodoView({ ctx }: { ctx: TripContext }) {
     <>
       <PageTitle>Bookings & To-Do</PageTitle>
       <div className="grid gap-6 min-[960px]:grid-cols-[minmax(0,1fr)_320px]">
-        <Checklist slug={trip.slug} todos={trip.todos} initial={done} editable={editable} actions={actions} />
+        <Checklist slug={trip.slug} todos={trip.todos} initial={done} booked={booked} editable={editable} actions={actions} />
         {editable && (
           <aside>
             <ShareControl slug={trip.slug} url={shareUrl} />

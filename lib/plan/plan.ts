@@ -1,5 +1,6 @@
 import type { Category, DayRule, Place, SlotKind } from "../content/types";
 import { weekdayOf, ymdIn } from "../format";
+import type { Booking } from "./booking";
 
 export interface Slot {
   id: string;
@@ -112,7 +113,7 @@ export interface PlanWarning {
 }
 
 /** Warnings to show when a place is dropped on a given date. They inform; they never block. */
-export function warningsFor(place: Place, date: string): PlanWarning[] {
+export function warningsFor(place: Place, date: string, booking?: Booking | null): PlanWarning[] {
   const out: PlanWarning[] = [];
   const wd = weekdayOf(date);
   if (place.openDays && !place.openDays.includes(wd as never)) {
@@ -127,7 +128,7 @@ export function warningsFor(place: Place, date: string): PlanWarning[] {
     out.push({ level: "warn", text: "Galleries often closed Sun–Mon" });
   }
   if (!place.hoursConfirmed) out.push({ level: "warn", text: "Hours unconfirmed" });
-  if (place.needsBooking) out.push({ level: "warn", text: "Needs a booking" });
+  if (place.needsBooking && !booking) out.push({ level: "warn", text: "Needs a booking" });
   return out;
 }
 

@@ -59,3 +59,16 @@ model SlotLabel {
 
   @@id([trip, slotId])
 }
+
+/// A reservation for a planned place. Date and time are Lisbon wall-clock (trip time zone).
+model Booking {
+  trip         String
+  placeId      String
+  date         String
+  time         String
+  confirmation String?
+  note         String?
+  updatedAt    DateTime @updatedAt
+
+  @@id([trip, placeId])
+}

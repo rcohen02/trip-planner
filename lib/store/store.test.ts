@@ -17,6 +17,7 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
       await prisma.tripShare.deleteMany();
       await prisma.extraSlot.deleteMany();
       await prisma.slotLabel.deleteMany();
+      await prisma.booking.deleteMany();
     }
   });
 
@@ -92,5 +93,16 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
     expect(await s.layout("lis")).toEqual({ extras: [{ ...x, label: "Gelato" }], labels: { "2026-10-10:lunch": "Canalha lunch" } });
     await s.renameSlot("lis", "2026-10-10:lunch", null);
     expect((await s.layout("lis")).labels).toEqual({});
+  });
+
+  it("saves one booking per place and clears it", async () => {
+    const s = make();
+    const b = { placeId: "canalha", date: "2026-10-10", time: "19:00", confirmation: "RC4", note: null };
+    await s.setBooking("lis", b);
+    await s.setBooking("lis", { ...b, time: "19:30" });
+    expect(await s.bookings("lis")).toEqual({ canalha: { ...b, time: "19:30" } });
+    expect(await s.bookings("other")).toEqual({});
+    await s.clearBooking("lis", "canalha");
+    expect(await s.bookings("lis")).toEqual({});
   });
 });

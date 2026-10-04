@@ -3,7 +3,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { TripContext } from "@/lib/context";
 import { getStore } from "@/lib/store";
 import { buildSlots, pickDay, todayFor, warningsFor } from "@/lib/plan/plan";
-import { countdown, longDate, money, timeIn, weekdayOf } from "@/lib/format";
+import { bookingInstant, bookingTime, bookingWarnings, nextBooking } from "@/lib/plan/booking";
+import { countdown, dateLabel, longDate, money, timeIn, weekdayOf } from "@/lib/format";
 import { describeCode, getForecast, toF } from "@/lib/weather";
 import { Alert, HoursLine, Thumb } from "@/app/_ui/bits";
 import { FlightCard } from "@/app/_ui/FlightCard";
@@ -14,9 +15,10 @@ const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; requestedDay?: string }) {
   const { trip, base } = ctx;
   const now = new Date();
-  const [assignments, layout, forecast] = await Promise.all([
+  const [assignments, layout, bookings, forecast] = await Promise.all([
     getStore().assignments(trip.slug),
     getStore().layout(trip.slug),
+    getStore().bookings(trip.slug),
     getForecast(trip.homebase.lat, trip.homebase.lng, trip.timezone),
   ]);
   const day = pickDay(trip.days, trip.timezone, requestedDay, now);
@@ -26,7 +28,9 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
   const slots = buildSlots(trip.days, layout).filter((s) => s.date === day.date);
   const byId = new Map(trip.places.map((p) => [p.id, p]));
   const planned = slots.map((s) => ({ s, p: assignments[s.id] ? byId.get(assignments[s.id]!) : undefined }));
-  const next = planned.find((x) => x.p)?.p;
+  const nb = nextBooking(bookings, trip.timezone, now);
+  const nbPlace = nb ? byId.get(nb.placeId) : undefined;
+  const next = nbPlace ?? planned.find((x) => x.p)?.p;
 
   const [out, back] = [trip.flights[0], trip.flights[trip.flights.length - 1]];
   const beforeTrip = now < new Date(out.depart);
@@ -68,7 +72,10 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
           <ol className="tp-col m-0 list-none p-0" style={{ gap: 12 }}>
             {planned.map(({ s, p }) => (
               <li key={s.id} className="tp-col" style={{ gap: 6 }}>
-                <span className="tp-label">{s.label}</span>
+                <span className="tp-label">
+                  {s.label}
+                  {p && bookings[p.id]?.date === day.date ? ` · ${bookingTime(bookings[p.id])}` : ""}
+                </span>
                 {s.locked ? (
                   <div className="tp-alert tp-alert--info">{s.locked}</div>
                 ) : p ? (
@@ -83,6 +90,16 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
                           {p.location.split(",").pop()!.trim()} · {money(p.price, trip.localCurrency, trip.usdRate)}
                         </div>
                         <HoursLine place={p} />
+                        {bookings[p.id] && (
+                          <div className="mt-1 flex flex-wrap items-center gap-2">
+                            <span className="tp-pill tp-pill--planned">
+                              Booked · {bookings[p.id].date === day.date ? "" : `${dateLabel(bookings[p.id].date)}, `}
+                              {bookingTime(bookings[p.id])}
+                            </span>
+                            {bookings[p.id].confirmation && <span className="tp-data text-sm">{bookings[p.id].confirmation}</span>}
+                          </div>
+                        )}
+                        {bookings[p.id]?.note && <p className="m-0 mt-1 text-sm text-ink-2">{bookings[p.id].note}</p>}
                       </div>
                       {p.mapsUrl && (
                         <a className="tp-btn tp-btn--text" href={p.mapsUrl} target="_blank" rel="noreferrer">
@@ -90,7 +107,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
                         </a>
                       )}
                     </div>
-                    {warningsFor(p, day.date)
+                    {[...(bookings[p.id] ? bookingWarnings(bookings[p.id], s) : []), ...warningsFor(p, day.date, bookings[p.id])]
                       .filter((x) => x.level === "crit")
                       .map((x) => (
                         <Alert key={x.text} level="crit" small>
@@ -148,10 +165,17 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
         </div>
 
         <div className="tp-card tp-card--compact">
-          <div className="tp-label">Next booking</div>
+          <div className="tp-label">{nb ? "Next booking" : "Next up"}</div>
           {next ? (
             <>
               <p className="t-subheading m-0">{next.name}</p>
+              {nb && (
+                <p className="m-0 text-sm text-ink">
+                  {dateLabel(nb.date)}, {bookingTime(nb)}
+                  {countdown(bookingInstant(nb, trip.timezone), now) ? ` · in ${countdown(bookingInstant(nb, trip.timezone), now)}` : ""}
+                  {nb.confirmation ? <span className="tp-data"> · {nb.confirmation}</span> : null}
+                </p>
+              )}
               <p className="m-0 text-sm text-ink-2">{next.location}</p>
               {next.phone && <p className="tp-data m-0">{next.phone}</p>}
               <div className="flex gap-2">

@@ -1,4 +1,5 @@
 import type { Assignments, ExtraSlot, SlotLayout } from "../plan/plan";
+import type { Booking } from "../plan/booking";
 
 export interface Share {
   token: string;
@@ -20,6 +21,10 @@ export interface PlanStore {
   addSlot(trip: string, slot: Omit<ExtraSlot, "id">): Promise<ExtraSlot>;
   /** Removes the slot and sends any place in it back to Unscheduled. */
   removeSlot(trip: string, id: string): Promise<void>;
+  /** placeId → booking (one per place). */
+  bookings(trip: string): Promise<Record<string, Booking>>;
+  setBooking(trip: string, booking: Booking): Promise<void>;
+  clearBooking(trip: string, placeId: string): Promise<void>;
   todos(trip: string): Promise<Record<string, boolean>>;
   setTodo(trip: string, todoId: string, done: boolean): Promise<void>;
   share(trip: string): Promise<Share>;

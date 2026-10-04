@@ -4,6 +4,7 @@ import { getViewer } from "@/auth";
 import { getStore } from "@/lib/store";
 import { getTrip } from "@/lib/trips";
 import { buildSlots, cleanSlotLabel, type ExtraSlot } from "@/lib/plan/plan";
+import { cleanBooking, type Booking } from "@/lib/plan/booking";
 
 async function guard(slug: string) {
   const viewer = await getViewer();
@@ -72,5 +73,21 @@ export async function renameSlot(slug: string, slotId: string, rawLabel: string 
   const label = rawLabel === null ? null : cleanSlotLabel(rawLabel);
   if (!label && slot.extra) throw new Error("Give the slot a name");
   await getStore().renameSlot(slug, slotId, label);
+  revalidatePath(`/t/${slug}`, "layout");
+}
+
+/** Save (or replace) the reservation for a place. Time is Lisbon wall-clock time. */
+export async function saveBooking(slug: string, raw: Booking) {
+  const trip = await guard(slug);
+  if (!trip.places.some((p) => p.id === raw.placeId)) throw new Error("Unknown place");
+  const b = cleanBooking(raw);
+  if (!b || !trip.days.some((d) => d.date === b.date)) throw new Error("Pick a trip day and a time");
+  await getStore().setBooking(slug, b);
+  revalidatePath(`/t/${slug}`, "layout");
+}
+
+export async function clearBooking(slug: string, placeId: string) {
+  await guard(slug);
+  await getStore().clearBooking(slug, placeId);
   revalidatePath(`/t/${slug}`, "layout");
 }

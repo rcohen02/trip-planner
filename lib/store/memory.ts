@@ -1,4 +1,5 @@
 import { movePlace, type Assignments, type ExtraSlot } from "../plan/plan";
+import type { Booking } from "../plan/booking";
 import { newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 /** In-memory store for tests and for running locally without a database. */
@@ -8,6 +9,19 @@ export class MemoryStore implements PlanStore {
   private shares = new Map<string, Share & { revoked?: boolean }>();
   private extras = new Map<string, ExtraSlot[]>();
   private labels = new Map<string, Record<string, string>>();
+  private bookingState = new Map<string, Record<string, Booking>>();
+
+  async bookings(trip: string) {
+    return { ...(this.bookingState.get(trip) ?? {}) };
+  }
+  async setBooking(trip: string, b: Booking) {
+    this.bookingState.set(trip, { ...(this.bookingState.get(trip) ?? {}), [b.placeId]: { ...b } });
+  }
+  async clearBooking(trip: string, placeId: string) {
+    const all = { ...(this.bookingState.get(trip) ?? {}) };
+    delete all[placeId];
+    this.bookingState.set(trip, all);
+  }
 
   async layout(trip: string) {
     return { extras: await this.extraSlots(trip), labels: { ...(this.labels.get(trip) ?? {}) } };

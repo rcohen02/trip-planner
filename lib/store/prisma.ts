@@ -1,6 +1,7 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/lib/generated/prisma/client";
 import { movePlace, type Assignments, type ExtraSlot, type SlotLayout } from "../plan/plan";
+import type { Booking } from "../plan/booking";
 import { newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 export function createPrisma(url: string): PrismaClient {
@@ -35,6 +36,20 @@ export class PrismaStore implements PlanStore {
   async extraSlots(trip: string): Promise<ExtraSlot[]> {
     const rows = await this.db.extraSlot.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
     return rows.map(({ id, date, after, label }) => ({ id, date, after, label }));
+  }
+
+  async bookings(trip: string): Promise<Record<string, Booking>> {
+    const rows = await this.db.booking.findMany({ where: { trip } });
+    return Object.fromEntries(rows.map(({ placeId, date, time, confirmation, note }) => [placeId, { placeId, date, time, confirmation, note }]));
+  }
+
+  async setBooking(trip: string, b: Booking) {
+    const data = { date: b.date, time: b.time, confirmation: b.confirmation, note: b.note };
+    await this.db.booking.upsert({ where: { trip_placeId: { trip, placeId: b.placeId } }, create: { trip, placeId: b.placeId, ...data }, update: data });
+  }
+
+  async clearBooking(trip: string, placeId: string) {
+    await this.db.booking.deleteMany({ where: { trip, placeId } });
   }
 
   async layout(trip: string): Promise<Required<SlotLayout>> {

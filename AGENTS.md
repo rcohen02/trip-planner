@@ -17,6 +17,7 @@ Read `node_modules/next/dist/docs/` before using an API you are unsure of.
 - v1 content comes from markdown + `trip.json`; run `npm run content` after editing. Editing on site is v2.
 - Never suggest hotels (travel_context rule): the importer skips any "Hotels" section.
 - One "Add to day" popup for the whole site: `app/_ui/AddToDay.tsx` (`AddToDaySheet` + `usePlanAssignments`), used by Places, Map and Days. Change it there so every page gets the change; never copy it into a page.
+- Bookings (`lib/plan/booking.ts`): one per place, stored as Lisbon wall-clock `date` + `time` (HH:MM). Convert with `bookingInstant` for countdowns; show with `bookingTime`. A booking clears "Needs a booking" and ticks the matching "Book" to-do.
 - Slots: base slots come from `trip.json`; slots people add on the Days board are `ExtraSlot`s in the store. Always build slots with `buildSlots(days, extras)` and show `slot.label`.
 
 <!-- BEGIN:nextjs-agent-rules -->

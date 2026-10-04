@@ -4,7 +4,9 @@ import "leaflet/dist/leaflet.css";
 import type { Category, Cluster, DayRule, Place, Trip } from "@/lib/content/types";
 import { visibleCategories, type Assignments, type SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, StatusPill } from "./bits";
-import { AddToDaySheet, usePlanAssignments } from "./AddToDay";
+import { AddToDaySheet, usePlanAssignments, usePlanBookings } from "./AddToDay";
+import { bookingTime, type Booking } from "@/lib/plan/booking";
+import { dateLabel } from "@/lib/format";
 
 const HOUSE_SVG =
   '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
@@ -18,6 +20,7 @@ export default function TripMap({
   days,
   assignments: initial,
   layout,
+  bookings: initialBookings,
   editable,
 }: {
   slug: string;
@@ -28,6 +31,7 @@ export default function TripMap({
   days: DayRule[];
   assignments: Assignments;
   layout: SlotLayout;
+  bookings: Record<string, Booking>;
   editable: boolean;
 }) {
   const el = useRef<HTMLDivElement>(null);
@@ -37,7 +41,9 @@ export default function TripMap({
   const cats = [...new Set(places.map((p) => p.category))];
   const [only, setOnly] = useState<Category | null>(null);
   const [sheet, setSheet] = useState<Place | null>(null);
-  const { assignments, assign, unassign, error } = usePlanAssignments(slug, initial);
+  const { assignments, assign, unassign, error: planError } = usePlanAssignments(slug, initial);
+  const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
+  const error = planError ?? bookingError;
   const planned = new Set(Object.values(assignments).filter(Boolean) as string[]);
 
   useEffect(() => {
@@ -151,8 +157,13 @@ export default function TripMap({
               <div>
                 <p className="t-subheading m-0">{picked.name}</p>
                 <p className="t-caption m-0">{picked.location}</p>
-                <div className="mt-1">
+                <div className="mt-1 flex flex-wrap gap-1">
                   <StatusPill planned={planned.has(picked.id)} />
+                  {bookings[picked.id] && (
+                    <span className="tp-pill tp-pill--planned">
+                      Booked · {dateLabel(bookings[picked.id].date)}, {bookingTime(bookings[picked.id])}
+                    </span>
+                  )}
                 </div>
               </div>
               <button onClick={() => setPicked(null)} className="tp-btn tp-btn--text" aria-label="Close">
@@ -189,6 +200,9 @@ export default function TripMap({
           days={days}
           layout={layout}
           placeNames={Object.fromEntries(places.map((p) => [p.id, p.name]))}
+          booking={bookings[sheet.id] ?? null}
+          onSaveBooking={editable ? saveBooking : undefined}
+          onClearBooking={() => clearBooking(sheet.id)}
           assignments={assignments}
           onClose={() => setSheet(null)}
           onConfirm={(slotId) => {
