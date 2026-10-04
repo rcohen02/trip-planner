@@ -13,21 +13,31 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { GripVertical, Lock, OctagonX, Plus, X } from "lucide-react";
+import { ChevronDown, ChevronUp, GripVertical, Lock, OctagonX, Pencil, Plus } from "lucide-react";
 import type { Cluster, DayRule, Place } from "@/lib/content/types";
-import { buildSlots, cleanSlotLabel, suggestSlotLabel, warningsFor, type Assignments, type ExtraSlot, type Slot } from "@/lib/plan/plan";
+import {
+  buildSlots,
+  cleanSlotLabel,
+  movePlace,
+  neighborSlot,
+  SLOT_LABEL,
+  suggestSlotLabel,
+  warningsFor,
+  type Assignments,
+  type SlotLayout,
+  type Slot,
+} from "@/lib/plan/plan";
 import { dateLabel } from "@/lib/format";
-import { addSlot, assignPlace, removeSlot, unassignPlace } from "@/app/t/[slug]/actions";
+import { addSlot, assignPlace, removeSlot, renameSlot, unassignPlace } from "@/app/t/[slug]/actions";
 import { Alert, CATEGORY, Thumb } from "./bits";
 import { AddToDaySheet } from "./AddToDay";
 
 type Move = { type: "assign"; slotId: string; placeId: string } | { type: "unassign"; placeId: string };
 
+/** Same rule as the store: a planned place swaps with what's in the target; one from Unscheduled replaces it. */
 function apply(a: Assignments, m: Move): Assignments {
-  const next: Assignments = {};
-  for (const [k, v] of Object.entries(a)) if (v && v !== m.placeId && !(m.type === "assign" && k === m.slotId)) next[k] = v;
-  if (m.type === "assign") next[m.slotId] = m.placeId;
-  return next;
+  if (m.type === "assign") return movePlace(a, m.placeId, m.slotId);
+  return Object.fromEntries(Object.entries(a).filter(([, v]) => v && v !== m.placeId));
 }
 
 type Sheet =
@@ -42,7 +52,7 @@ export function DaysBoard({
   places,
   clusters,
   initial,
-  initialExtras,
+  initialLayout,
   editable,
   prices,
 }: {
@@ -51,12 +61,14 @@ export function DaysBoard({
   places: Place[];
   clusters: Cluster[];
   initial: Assignments;
-  initialExtras: ExtraSlot[];
+  initialLayout: Required<SlotLayout>;
   editable: boolean;
   prices: Record<string, string>;
 }) {
-  const [extras, setExtras] = useState(initialExtras);
-  const slots = useMemo(() => buildSlots(days, extras), [days, extras]);
+  const [layout, setLayout] = useState(initialLayout);
+  const extras = layout.extras;
+  const setExtras = (f: (e: typeof extras) => typeof extras) => setLayout((l) => ({ ...l, extras: f(l.extras) }));
+  const slots = useMemo(() => buildSlots(days, layout), [days, layout]);
   const byId = useMemo(() => new Map(places.map((p) => [p.id, p])), [places]);
   const [assignments, addMove] = useOptimistic(initial, apply);
   const [, startTransition] = useTransition();
@@ -120,8 +132,28 @@ export function DaysBoard({
     try {
       await removeSlot(slug, id);
     } catch {
-      setExtras(extras);
+      setExtras(() => extras);
       setError("That slot wasn't removed. Check your connection and try again.");
+    }
+  }
+
+  async function rename(slot: Slot, raw: string | null) {
+    const before = layout;
+    const label = raw === null ? null : cleanSlotLabel(raw);
+    if (label === null && slot.extra) return;
+    setError(null);
+    setLayout((l) => {
+      if (slot.extra) return { ...l, extras: l.extras.map((x) => (x.id === slot.id ? { ...x, label: label! } : x)) };
+      const labels = { ...l.labels };
+      if (label && label !== SLOT_LABEL[slot.kind]) labels[slot.id] = label;
+      else delete labels[slot.id];
+      return { ...l, labels };
+    });
+    try {
+      await renameSlot(slug, slot.id, label && (slot.extra || label !== SLOT_LABEL[slot.kind]) ? label : null);
+    } catch {
+      setLayout(before);
+      setError("That name didn't save. Check your connection and try again.");
     }
   }
 
@@ -218,7 +250,7 @@ export function DaysBoard({
         </aside>
 
         {/* Days */}
-        <section className="min-w-0 flex-1 max-sm:order-1" aria-label="Days">
+        <section className="min-w-0 flex-1 max-sm:order-1" aria-label="Itinerary">
           <div className="tp-seg mb-4 sm:hidden" role="group" aria-label="Day">
             {days.map((d) => (
               <button key={d.date} aria-pressed={activeDay === d.date} onClick={() => setActiveDay(d.date)}>
@@ -226,7 +258,7 @@ export function DaysBoard({
               </button>
             ))}
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {days.map((d) => (
               <div key={d.date} className={`tp-day ${activeDay === d.date ? "" : "max-sm:hidden"}`}>
                 <div>
@@ -241,6 +273,8 @@ export function DaysBoard({
                     const warnings = p ? warningsFor(p, d.date) : [];
                     const crit = warnings.find((w) => w.level === "crit");
                     const conflict = Boolean(crit && !kept.has(s.id));
+                    const up = p ? neighborSlot(slots, s.id, -1) : null;
+                    const down = p ? neighborSlot(slots, s.id, 1) : null;
                     return (
                       <SlotCell
                         key={s.id}
@@ -249,6 +283,17 @@ export function DaysBoard({
                         dragName={dragName}
                         onEmptyTap={() => setSheet({ kind: "slot", slotId: s.id })}
                         onRemove={s.extra ? () => dropSlot(s.id) : undefined}
+                        onRename={(label) => rename(s, label)}
+                        move={
+                          p
+                            ? {
+                                name: p.name,
+                                up,
+                                down,
+                                go: (to: Slot) => run({ type: "assign", slotId: to.id, placeId: p.id }),
+                              }
+                            : undefined
+                        }
                       >
                         {p && (
                           <>
@@ -325,9 +370,10 @@ export function DaysBoard({
         <AddToDaySheet
           place={sheetPlace}
           days={days}
-          extras={extras}
+          layout={layout}
           assignments={assignments}
           initialSlot={sheet.slotId}
+          placeNames={Object.fromEntries(places.map((p) => [p.id, p.name]))}
           onClose={() => setSheet(null)}
           onConfirm={(slotId) => {
             run({ type: "assign", slotId, placeId: sheetPlace.id });
@@ -460,12 +506,16 @@ function Pool({ editable, children }: { editable: boolean; children: React.React
   );
 }
 
+type SlotMove = { name: string; up: Slot | null; down: Slot | null; go: (to: Slot) => void };
+
 function SlotCell({
   slot,
   editable,
   dragName,
   onEmptyTap,
   onRemove,
+  onRename,
+  move,
   children,
 }: {
   slot: Slot;
@@ -473,9 +523,12 @@ function SlotCell({
   dragName?: string;
   onEmptyTap: () => void;
   onRemove?: () => void;
+  onRename: (label: string | null) => void;
+  move?: SlotMove;
   children: React.ReactNode;
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: slot.id, disabled: Boolean(slot.locked) || !editable });
+  const [editing, setEditing] = useState(false);
   const label = `${slot.label}${slot.optional ? " · optional" : ""}`;
   if (slot.locked) {
     return (
@@ -492,24 +545,45 @@ function SlotCell({
   const empty = !children;
   return (
     <div ref={setNodeRef} className="tp-slot">
-      {onRemove && editable ? (
-        <div className="flex items-center justify-between gap-2">
-          <div className="tp-label">{label}</div>
+      {editing ? (
+        <RenameSlot slot={slot} onCancel={() => setEditing(false)} onRemove={onRemove} onSave={(l) => (setEditing(false), onRename(l))} />
+      ) : editable ? (
+        <div className="flex items-center justify-between gap-1">
           <button
-            className="tp-btn tp-btn--text"
-            style={{ minHeight: 44, padding: "0 6px", fontSize: 12 }}
-            onClick={onRemove}
-            aria-label={`Remove the ${slot.label} slot`}
+            className="tp-slot__name"
+            onClick={() => setEditing(true)}
+            aria-label={`Rename the ${slot.label} slot`}
+            title="Rename this slot"
           >
-            <X className="tp-icon" aria-hidden />
-            Remove
+            <span className="tp-label">{label}</span>
+            <Pencil className="tp-slot__pencil" aria-hidden />
           </button>
+          {move && (
+            <span className="flex shrink-0">
+              <button
+                className="tp-icon-btn"
+                disabled={!move.up}
+                onClick={() => move.up && move.go(move.up)}
+                aria-label={move.up ? `Move ${move.name} up to ${move.up.label}` : `${move.name} is already first`}
+              >
+                <ChevronUp className="tp-icon tp-icon-lg" aria-hidden />
+              </button>
+              <button
+                className="tp-icon-btn"
+                disabled={!move.down}
+                onClick={() => move.down && move.go(move.down)}
+                aria-label={move.down ? `Move ${move.name} down to ${move.down.label}` : `${move.name} is already last`}
+              >
+                <ChevronDown className="tp-icon tp-icon-lg" aria-hidden />
+              </button>
+            </span>
+          )}
         </div>
       ) : (
         <div className="tp-label">{label}</div>
       )}
       {isOver && dragName ? (
-        <div className="tp-slot__drop">Release to add {dragName}</div>
+        <div className="tp-slot__drop">{empty ? `Release to add ${dragName}` : `Release to swap with ${dragName}`}</div>
       ) : empty ? (
         editable ? (
           <button className="tp-slot__empty" onClick={onEmptyTap}>
@@ -522,6 +596,65 @@ function SlotCell({
         children
       )}
     </div>
+  );
+}
+
+/** Inline rename: type a name and press Return. Base slots can go back to their default name. */
+function RenameSlot({
+  slot,
+  onSave,
+  onCancel,
+  onRemove,
+}: {
+  slot: Slot;
+  onSave: (label: string | null) => void;
+  onCancel: () => void;
+  onRemove?: () => void;
+}) {
+  const [value, setValue] = useState(slot.label);
+  const clean = cleanSlotLabel(value);
+  return (
+    <form
+      className="tp-col"
+      style={{ gap: 6 }}
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (clean) onSave(clean);
+        else if (!slot.extra) onSave(null);
+      }}
+      onKeyDown={(e) => e.key === "Escape" && onCancel()}
+    >
+      <label className="tp-field">
+        <span className="sr-only">Slot name</span>
+        <input
+          className="tp-input"
+          value={value}
+          maxLength={40}
+          aria-invalid={!clean && slot.extra}
+          onChange={(e) => setValue(e.target.value)}
+          autoFocus
+          onFocus={(e) => e.target.select()}
+        />
+      </label>
+      <div className="flex flex-wrap items-center gap-1">
+        <button type="submit" className="tp-btn tp-btn--primary" style={{ fontSize: 13, padding: "0 12px" }} disabled={!clean && slot.extra}>
+          Save
+        </button>
+        <button type="button" className="tp-btn tp-btn--text" style={{ fontSize: 13, padding: "0 8px" }} onClick={onCancel}>
+          Cancel
+        </button>
+        {slot.renamed && (
+          <button type="button" className="tp-btn tp-btn--text" style={{ fontSize: 13, padding: "0 8px" }} onClick={() => onSave(null)}>
+            Reset to {SLOT_LABEL[slot.kind]}
+          </button>
+        )}
+        {onRemove && (
+          <button type="button" className="tp-btn tp-btn--text" style={{ fontSize: 13, padding: "0 8px", color: "var(--crit)" }} onClick={onRemove}>
+            Remove slot
+          </button>
+        )}
+      </div>
+    </form>
   );
 }
 

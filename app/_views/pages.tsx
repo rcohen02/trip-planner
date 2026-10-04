@@ -18,17 +18,17 @@ import { MapLoader } from "@/app/_ui/MapLoader";
 
 export async function DaysView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
-  const [assignments, extras] = await Promise.all([getStore().assignments(trip.slug), getStore().extraSlots(trip.slug)]);
+  const [assignments, layout] = await Promise.all([getStore().assignments(trip.slug), getStore().layout(trip.slug)]);
   return (
     <>
-      <PageTitle aside={<span className="t-caption">{editable ? "Drag a place into a slot, or tap a slot to add one." : ""}</span>}>Days</PageTitle>
+      <PageTitle aside={<span className="t-caption">{editable ? "Drag a place into a slot, or tap a slot to add one." : ""}</span>}>Itinerary</PageTitle>
       <DaysBoard
         slug={trip.slug}
         days={trip.days}
         places={trip.places}
         clusters={trip.clusters}
         initial={assignments}
-        initialExtras={extras}
+        initialLayout={layout}
         editable={editable}
         prices={priceMap(trip)}
       />
@@ -38,7 +38,7 @@ export async function DaysView({ ctx }: { ctx: TripContext }) {
 
 export async function PlacesView({ ctx }: { ctx: TripContext }) {
   const { trip, base, editable } = ctx;
-  const [assignments, extras] = await Promise.all([getStore().assignments(trip.slug), getStore().extraSlots(trip.slug)]);
+  const [assignments, layout] = await Promise.all([getStore().assignments(trip.slug), getStore().layout(trip.slug)]);
   return (
     <>
       <PageTitle aside={<span className="t-caption">From the NYT · prices local first, then USD at {trip.usdRate}</span>}>Places</PageTitle>
@@ -49,7 +49,7 @@ export async function PlacesView({ ctx }: { ctx: TripContext }) {
         clusters={trip.clusters}
         days={trip.days}
         assignments={assignments}
-        extras={extras}
+        layout={layout}
         prices={priceMap(trip)}
         editable={editable}
       />
@@ -138,7 +138,7 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
             .filter((w) => w.level === "crit")
             .map((w) => (
               <Alert key={w.text} level="crit">
-                {w.text}, but it's planned for {dateLabel(planDate)}. <Link href={`${base}/days`}>Move it in Days</Link>
+                {w.text}, but it's planned for {dateLabel(planDate)}. <Link href={`${base}/days`}>Move it in Itinerary</Link>
               </Alert>
             ))}
       </aside>
@@ -148,7 +148,7 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
 
 export async function MapView({ ctx }: { ctx: TripContext }) {
   const { trip, base, editable } = ctx;
-  const [assignments, extras] = await Promise.all([getStore().assignments(trip.slug), getStore().extraSlots(trip.slug)]);
+  const [assignments, layout] = await Promise.all([getStore().assignments(trip.slug), getStore().layout(trip.slug)]);
   return (
     <>
       <PageTitle>Map</PageTitle>
@@ -160,7 +160,7 @@ export async function MapView({ ctx }: { ctx: TripContext }) {
         clusters={trip.clusters}
         days={trip.days}
         assignments={assignments}
-        extras={extras}
+        layout={layout}
         editable={editable}
       />
     </>

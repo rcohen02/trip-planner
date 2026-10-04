@@ -1,4 +1,4 @@
-import type { Assignments, ExtraSlot } from "../plan/plan";
+import { movePlace, type Assignments, type ExtraSlot } from "../plan/plan";
 import { newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 /** In-memory store for tests and for running locally without a database. */
@@ -7,6 +7,22 @@ export class MemoryStore implements PlanStore {
   private todoState = new Map<string, Record<string, boolean>>();
   private shares = new Map<string, Share & { revoked?: boolean }>();
   private extras = new Map<string, ExtraSlot[]>();
+  private labels = new Map<string, Record<string, string>>();
+
+  async layout(trip: string) {
+    return { extras: await this.extraSlots(trip), labels: { ...(this.labels.get(trip) ?? {}) } };
+  }
+  async renameSlot(trip: string, slotId: string, label: string | null) {
+    const list = this.extras.get(trip) ?? [];
+    if (list.some((x) => x.id === slotId)) {
+      if (label) this.extras.set(trip, list.map((x) => (x.id === slotId ? { ...x, label } : x)));
+      return;
+    }
+    const l = { ...(this.labels.get(trip) ?? {}) };
+    if (label) l[slotId] = label;
+    else delete l[slotId];
+    this.labels.set(trip, l);
+  }
 
   async extraSlots(trip: string) {
     return [...(this.extras.get(trip) ?? [])];
@@ -30,10 +46,7 @@ export class MemoryStore implements PlanStore {
     return { ...(this.slots.get(trip) ?? {}) };
   }
   async assign(trip: string, slotId: string, placeId: string) {
-    const a = { ...(this.slots.get(trip) ?? {}) };
-    for (const [k, v] of Object.entries(a)) if (v === placeId) delete a[k];
-    a[slotId] = placeId;
-    this.slots.set(trip, a);
+    this.slots.set(trip, movePlace(this.slots.get(trip) ?? {}, placeId, slotId));
   }
   async unassign(trip: string, placeId: string) {
     const a = { ...(this.slots.get(trip) ?? {}) };

@@ -1,4 +1,4 @@
-import type { Assignments, ExtraSlot } from "../plan/plan";
+import type { Assignments, ExtraSlot, SlotLayout } from "../plan/plan";
 
 export interface Share {
   token: string;
@@ -8,11 +8,15 @@ export interface Share {
 /** Everything the site writes. Content (places, flights) is read-only in v1 and comes from content/generated. */
 export interface PlanStore {
   assignments(trip: string): Promise<Assignments>;
-  /** Put a place in a slot. A place lives in at most one slot; a slot holds one place. */
+  /** Put a place in a slot (see plan.movePlace: planned places swap; from Unscheduled replaces). */
   assign(trip: string, slotId: string, placeId: string): Promise<void>;
   unassign(trip: string, placeId: string): Promise<void>;
-  /** Slots added on the Days board (beyond the ones in trip.json). */
+  /** Slots added on the Itinerary board (beyond the ones in trip.json). */
   extraSlots(trip: string): Promise<ExtraSlot[]>;
+  /** Added slots plus new names for base slots. */
+  layout(trip: string): Promise<Required<SlotLayout>>;
+  /** New name for any slot; null puts a base slot back to its default name. */
+  renameSlot(trip: string, slotId: string, label: string | null): Promise<void>;
   addSlot(trip: string, slot: Omit<ExtraSlot, "id">): Promise<ExtraSlot>;
   /** Removes the slot and sends any place in it back to Unscheduled. */
   removeSlot(trip: string, id: string): Promise<void>;

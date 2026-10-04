@@ -45,7 +45,7 @@ The site talks like a well-organized friend who did the research: plain, specifi
 
 ## Fixed labels
 
-- Sections: Today, Days, Places, Map, Bookings & To-Do, Logistics, Budget.
+- Sections: Day View, Itinerary, Places, Map, Bookings & To-Do, Logistics, Budget. (Renamed Oct 4, 2026 from Today and Days; URLs are unchanged: `/t/<slug>` and `/t/<slug>/days`.)
 - Slots: Early arrival, Morning, Lunch, Afternoon, Dinner, Night.
 - Categories: Art & Museums, Restaurants, Bars & Nightlife, Shopping, Tours, Nature, History, Festivals.
 - Pace (family trips): Relaxed, Packed.

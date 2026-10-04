@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { TripContext } from "@/lib/context";
 import { getStore } from "@/lib/store";
-import { buildSlots, todayFor, warningsFor } from "@/lib/plan/plan";
+import { buildSlots, pickDay, todayFor, warningsFor } from "@/lib/plan/plan";
 import { countdown, longDate, money, timeIn, weekdayOf } from "@/lib/format";
 import { describeCode, getForecast, toF } from "@/lib/weather";
 import { Alert, HoursLine, Thumb } from "@/app/_ui/bits";
@@ -9,18 +10,20 @@ import { FlightCard } from "@/app/_ui/FlightCard";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-export async function TodayView({ ctx }: { ctx: TripContext }) {
+/** Day View: one trip day at a time. Opens on today (or the next trip day); ?day=YYYY-MM-DD picks another. */
+export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; requestedDay?: string }) {
   const { trip, base } = ctx;
   const now = new Date();
-  const [assignments, extras, forecast] = await Promise.all([
+  const [assignments, layout, forecast] = await Promise.all([
     getStore().assignments(trip.slug),
-    getStore().extraSlots(trip.slug),
+    getStore().layout(trip.slug),
     getForecast(trip.homebase.lat, trip.homebase.lng, trip.timezone),
   ]);
-  const day = todayFor(trip.days, trip.timezone, now);
+  const day = pickDay(trip.days, trip.timezone, requestedDay, now);
+  const home = todayFor(trip.days, trip.timezone, now);
   const index = trip.days.findIndex((d) => d.date === day.date);
   const rule = trip.days[index];
-  const slots = buildSlots(trip.days, extras).filter((s) => s.date === day.date);
+  const slots = buildSlots(trip.days, layout).filter((s) => s.date === day.date);
   const byId = new Map(trip.places.map((p) => [p.id, p]));
   const planned = slots.map((s) => ({ s, p: assignments[s.id] ? byId.get(assignments[s.id]!) : undefined }));
   const next = planned.find((x) => x.p)?.p;
@@ -43,11 +46,20 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
     <div className="grid gap-6 min-[960px]:grid-cols-[minmax(0,1fr)_320px]">
       <section className="tp-col min-w-0" style={{ gap: 20 }}>
         <div>
-          <p className="tp-label m-0">
-            {WEEKDAY[weekdayOf(day.date)]} · Day {index + 1} of {trip.days.length}
-            {day.status === "upcoming" ? " · coming up" : ""}
-          </p>
+          <nav className="flex items-center gap-1" aria-label="Choose a day">
+            <DayStep base={base} to={trip.days[index - 1]?.date} dir="prev" />
+            <p className="tp-label m-0 flex-1 text-center sm:flex-none" aria-live="polite">
+              {WEEKDAY[weekdayOf(day.date)]} · Day {index + 1} of {trip.days.length}
+              {day.status === "today" ? " · today" : ""}
+            </p>
+            <DayStep base={base} to={trip.days[index + 1]?.date} dir="next" />
+          </nav>
           <h1 className="t-display m-0 mt-1">{longDate(day.date)}</h1>
+          {home.status === "today" && day.date !== home.date && (
+            <Link className="t-caption" href={base}>
+              Back to today
+            </Link>
+          )}
           {rule.note && <p className="t-caption m-0 mt-1">{rule.note}</p>}
         </div>
 
@@ -82,7 +94,7 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
                       .filter((x) => x.level === "crit")
                       .map((x) => (
                         <Alert key={x.text} level="crit" small>
-                          {x.text}. <Link href={`${base}/days`}>Move it in Days</Link>
+                          {x.text}. <Link href={`${base}/days`}>Move it in Itinerary</Link>
                         </Alert>
                       ))}
                   </>
@@ -171,5 +183,22 @@ export async function TodayView({ ctx }: { ctx: TripContext }) {
         {beforeTrip && <FlightCard flight={out} trip={trip} title="Outbound" />}
       </aside>
     </div>
+  );
+}
+
+function DayStep({ base, to, dir }: { base: string; to?: string; dir: "prev" | "next" }) {
+  const Icon = dir === "prev" ? ChevronLeft : ChevronRight;
+  const label = dir === "prev" ? "Previous day" : "Next day";
+  if (!to)
+    return (
+      <span className="tp-icon-btn" aria-disabled="true" style={{ opacity: 0.35, color: "var(--ink-3)" }}>
+        <Icon className="tp-icon tp-icon-lg" aria-hidden />
+        <span className="sr-only">{label}</span>
+      </span>
+    );
+  return (
+    <Link className="tp-icon-btn" href={`${base}?day=${to}`} aria-label={`${label}: ${longDate(to)}`} scroll={false}>
+      <Icon className="tp-icon tp-icon-lg" aria-hidden />
+    </Link>
   );
 }

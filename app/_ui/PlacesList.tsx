@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Category, Cluster, DayRule, Place } from "@/lib/content/types";
-import type { Assignments, ExtraSlot } from "@/lib/plan/plan";
+import type { Assignments, SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, HoursLine, StatusPill } from "./bits";
 import { AddToDaySheet, usePlanAssignments } from "./AddToDay";
 
@@ -13,7 +13,7 @@ export function PlacesList({
   clusters,
   days,
   assignments,
-  extras,
+  layout,
   prices,
   editable,
 }: {
@@ -23,7 +23,7 @@ export function PlacesList({
   clusters: Cluster[];
   days: DayRule[];
   assignments: Assignments;
-  extras: ExtraSlot[];
+  layout: SlotLayout;
   prices: Record<string, string>;
   editable: boolean;
 }) {
@@ -128,7 +128,8 @@ export function PlacesList({
         <AddToDaySheet
           place={sheet}
           days={days}
-          extras={extras}
+          layout={layout}
+          placeNames={Object.fromEntries(places.map((p) => [p.id, p.name]))}
           assignments={local}
           onClose={() => setSheet(null)}
           onConfirm={(slotId) => {

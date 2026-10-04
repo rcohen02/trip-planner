@@ -1,5 +1,7 @@
 # Lisbon Dashboard — Sitemap (Oct 9–12, 2026 · Rob & Danielle)
 
+> Oct 4, 2026: "Today" is now **Day View** (with previous / next day) and "Days" is now **Itinerary**. Slots can be added, renamed and reordered on the Itinerary board.
+
 Built from `claude/lisbon-nyt-picks.md`. Staying at the house in Paço de Arcos (R. da Giribita 1).
 
 ```

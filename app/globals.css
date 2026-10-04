@@ -41,7 +41,7 @@
 }
 .tp-slot__empty, .tp-slot__drop { width: 100%; box-sizing: border-box; }
 button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor: pointer; }
-.tp-day { width: auto; }
+.tp-day { width: auto; min-width: 0; }
 .tp-place { width: auto; }
 .tp-progress { height: 6px; border-radius: 3px; background: var(--surface-sunken); overflow: hidden; }
 .tp-progress > span { display: block; height: 100%; background: var(--accent); }
@@ -52,3 +52,14 @@ button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) saturate(0.3) brightness(0.85) contrast(0.9); }
 }
+
+/* Itinerary slot header: the name is a button (rename); arrows move the card up or down. */
+.tp-slot__name { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 0; padding: 0 4px 0 0;
+  background: none; border: 0; color: var(--ink-3); cursor: pointer; text-align: left; font: inherit; }
+.tp-slot__name .tp-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tp-slot__pencil { width: 14px; height: 14px; flex: none; opacity: 0.55; }
+.tp-slot__name:hover .tp-slot__pencil, .tp-slot__name:focus-visible .tp-slot__pencil { opacity: 1; color: var(--accent); }
+.tp-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; min-height: 44px; padding: 0;
+  background: none; border: 0; border-radius: var(--radius-md); color: var(--accent); cursor: pointer; }
+.tp-icon-btn:hover:not(:disabled) { background: var(--surface); }
+.tp-icon-btn:disabled { color: var(--ink-3); opacity: 0.35; cursor: default; }

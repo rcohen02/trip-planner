@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import type { Category, Cluster, DayRule, Place, Trip } from "@/lib/content/types";
-import { visibleCategories, type Assignments, type ExtraSlot } from "@/lib/plan/plan";
+import { visibleCategories, type Assignments, type SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, StatusPill } from "./bits";
 import { AddToDaySheet, usePlanAssignments } from "./AddToDay";
 
@@ -17,7 +17,7 @@ export default function TripMap({
   clusters,
   days,
   assignments: initial,
-  extras,
+  layout,
   editable,
 }: {
   slug: string;
@@ -27,7 +27,7 @@ export default function TripMap({
   clusters: Cluster[];
   days: DayRule[];
   assignments: Assignments;
-  extras: ExtraSlot[];
+  layout: SlotLayout;
   editable: boolean;
 }) {
   const el = useRef<HTMLDivElement>(null);
@@ -187,7 +187,8 @@ export default function TripMap({
         <AddToDaySheet
           place={sheet}
           days={days}
-          extras={extras}
+          layout={layout}
+          placeNames={Object.fromEntries(places.map((p) => [p.id, p.name]))}
           assignments={assignments}
           onClose={() => setSheet(null)}
           onConfirm={(slotId) => {

@@ -1,6 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/lib/generated/prisma/client";
-import type { Assignments, ExtraSlot } from "../plan/plan";
+import { movePlace, type Assignments, type ExtraSlot, type SlotLayout } from "../plan/plan";
 import { newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 export function createPrisma(url: string): PrismaClient {
@@ -16,9 +16,15 @@ export class PrismaStore implements PlanStore {
   }
 
   async assign(trip: string, slotId: string, placeId: string, by?: string) {
+    // Same rule as the board (plan.movePlace): planned places swap, Unscheduled ones replace.
+    const before = await this.assignments(trip);
+    const after = movePlace(before, placeId, slotId);
+    const changed = Object.keys({ ...before, ...after }).filter((k) => before[k] !== after[k]);
     await this.db.$transaction([
-      this.db.slotAssignment.deleteMany({ where: { trip, OR: [{ placeId }, { slotId }] } }),
-      this.db.slotAssignment.create({ data: { trip, slotId, placeId, updatedBy: by ?? null } }),
+      this.db.slotAssignment.deleteMany({ where: { trip, OR: [{ slotId: { in: changed } }, { placeId: { in: changed.map((k) => after[k]).filter((v): v is string => Boolean(v)) } }] } }),
+      ...changed
+        .filter((k) => after[k])
+        .map((k) => this.db.slotAssignment.create({ data: { trip, slotId: k, placeId: after[k]!, updatedBy: by ?? null } })),
     ]);
   }
 
@@ -29,6 +35,22 @@ export class PrismaStore implements PlanStore {
   async extraSlots(trip: string): Promise<ExtraSlot[]> {
     const rows = await this.db.extraSlot.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
     return rows.map(({ id, date, after, label }) => ({ id, date, after, label }));
+  }
+
+  async layout(trip: string): Promise<Required<SlotLayout>> {
+    const [extras, rows] = await Promise.all([this.extraSlots(trip), this.db.slotLabel.findMany({ where: { trip } })]);
+    return { extras, labels: Object.fromEntries(rows.map((r) => [r.slotId, r.label])) };
+  }
+
+  async renameSlot(trip: string, slotId: string, label: string | null) {
+    const extra = await this.db.extraSlot.findFirst({ where: { trip, id: slotId } });
+    if (extra) {
+      if (label) await this.db.extraSlot.update({ where: { id: slotId }, data: { label } });
+      return;
+    }
+    if (label)
+      await this.db.slotLabel.upsert({ where: { trip_slotId: { trip, slotId } }, create: { trip, slotId, label }, update: { label } });
+    else await this.db.slotLabel.deleteMany({ where: { trip, slotId } });
   }
 
   async addSlot(trip: string, slot: Omit<ExtraSlot, "id">): Promise<ExtraSlot> {

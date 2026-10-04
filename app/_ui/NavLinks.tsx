@@ -5,8 +5,8 @@ import { useState } from "react";
 import { CalendarDays, ListOrdered, Image as ImageIcon, Map as MapIcon, Ellipsis } from "lucide-react";
 
 const TOP = [
-  { href: "", label: "Today" },
-  { href: "/days", label: "Days" },
+  { href: "", label: "Day View" },
+  { href: "/days", label: "Itinerary" },
   { href: "/places", label: "Places" },
   { href: "/map", label: "Map" },
   { href: "/todo", label: "Bookings & To-Do" },
@@ -31,8 +31,8 @@ export function NavLinks({ base, variant }: { base: string; variant: "top" | "bo
   }
 
   const tabs = [
-    { href: "", label: "Today", Icon: CalendarDays },
-    { href: "/days", label: "Days", Icon: ListOrdered },
+    { href: "", label: "Day View", Icon: CalendarDays },
+    { href: "/days", label: "Itinerary", Icon: ListOrdered },
     { href: "/places", label: "Places", Icon: ImageIcon },
     { href: "/map", label: "Map", Icon: MapIcon },
   ];
@@ -76,7 +76,7 @@ export function NavLinks({ base, variant }: { base: string; variant: "top" | "bo
   );
 }
 
-/** Days and Map get the wider board width (board-max); everything else uses page-max. */
+/** Itinerary and Map get the wider board width (board-max); everything else uses page-max. */
 export function Main({ wide, children }: { wide: boolean; children: React.ReactNode }) {
   const path = usePathname();
   const isWide = wide || /\/(days|map)$/.test(path);

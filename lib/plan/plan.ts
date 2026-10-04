@@ -8,8 +8,10 @@ export interface Slot {
   /** For an added slot, the kind of the base slot it follows. */
   kind: SlotKind;
   label: string;
-  /** True for slots people added on the Days board (they can be removed). */
+  /** True for slots people added on the Itinerary board (they can be removed). */
   extra: boolean;
+  /** True when a base slot shows a name someone typed instead of its default. */
+  renamed: boolean;
   optional: boolean;
   locked: string | null;
 }
@@ -39,15 +41,24 @@ export interface ExtraSlot {
   label: string;
 }
 
-export function buildSlots(days: DayRule[], extras: ExtraSlot[] = []): Slot[] {
+/** What people changed about the slots: added ones, and new names for base ones (slotId → name). */
+export interface SlotLayout {
+  extras?: ExtraSlot[];
+  labels?: Record<string, string>;
+}
+
+export function buildSlots(days: DayRule[], layout: SlotLayout = {}): Slot[] {
+  const extras = layout.extras ?? [];
+  const labels = layout.labels ?? {};
   return days.flatMap((d) => {
     const base: Slot[] = d.slots.map((kind) => ({
       id: slotId(d.date, kind),
       date: d.date,
       dayLabel: d.label,
       kind,
-      label: SLOT_LABEL[kind],
+      label: labels[slotId(d.date, kind)] ?? SLOT_LABEL[kind],
       extra: false,
+      renamed: slotId(d.date, kind) in labels,
       optional: d.optional?.includes(kind) ?? false,
       locked: d.locked?.find((l) => l.kind === kind)?.reason ?? null,
     }));
@@ -59,13 +70,13 @@ export function buildSlots(days: DayRule[], extras: ExtraSlot[] = []): Slot[] {
       for (const x of mine) {
         if (x.after !== s.id || used.has(x.id)) continue;
         used.add(x.id);
-        place({ ...s, id: x.id, label: x.label, extra: true, optional: false, locked: null });
+        place({ ...s, id: x.id, label: x.label, extra: true, renamed: false, optional: false, locked: null });
       }
     };
     base.forEach(place);
     const last = base[base.length - 1];
     for (const x of mine)
-      if (!used.has(x.id) && last) out.push({ ...last, id: x.id, label: x.label, extra: true, optional: false, locked: null });
+      if (!used.has(x.id) && last) out.push({ ...last, id: x.id, label: x.label, extra: true, renamed: false, optional: false, locked: null });
     return out;
   });
 }
@@ -127,6 +138,43 @@ export function placedIds(a: Assignments): Set<string> {
 export function unscheduled(places: Place[], a: Assignments): Place[] {
   const placed = placedIds(a);
   return places.filter((p) => !placed.has(p.id));
+}
+
+/**
+ * Put a place in a slot. If the place was already in another slot and the target is taken,
+ * the two swap. If it came from Unscheduled, whatever was in the target goes back to Unscheduled.
+ */
+export function movePlace(a: Assignments, placeId: string, to: string): Assignments {
+  const from = Object.entries(a).find(([, v]) => v === placeId)?.[0];
+  const occupant = a[to];
+  const next: Assignments = {};
+  for (const [k, v] of Object.entries(a)) if (v && v !== placeId && k !== to) next[k] = v;
+  next[to] = placeId;
+  if (from && from !== to && occupant && occupant !== placeId) next[from] = occupant;
+  return next;
+}
+
+/** The nearest open (not locked) slot above (-1) or below (+1) on the same day, or null. */
+export function neighborSlot(slots: Slot[], id: string, dir: -1 | 1): Slot | null {
+  const i = slots.findIndex((s) => s.id === id);
+  if (i < 0) return null;
+  for (let j = i + dir; j >= 0 && j < slots.length; j += dir) {
+    if (slots[j].date !== slots[i].date) return null;
+    if (!slots[j].locked) return slots[j];
+  }
+  return null;
+}
+
+/** Day View: the requested trip day if there is one, else the same choice as todayFor. */
+export function pickDay(
+  days: DayRule[],
+  timeZone: string,
+  requested: string | undefined,
+  now: Date = new Date(),
+): { date: string; status: "today" | "upcoming" | "past" } {
+  if (!requested || !days.some((d) => d.date === requested)) return todayFor(days, timeZone, now);
+  const today = ymdIn(now, timeZone);
+  return { date: requested, status: requested === today ? "today" : requested > today ? "upcoming" : "past" };
 }
 
 /** Which trip day "Today" should show: the current day, else the next one, else the last. */

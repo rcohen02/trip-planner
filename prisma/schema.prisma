@@ -38,7 +38,7 @@ model TripShare {
   @@index([trip])
 }
 
-/// A slot added on the Days board (e.g. a second afternoon). Base slots come from trip.json.
+/// A slot added on the Itinerary board (e.g. a second afternoon). Base slots come from trip.json.
 model ExtraSlot {
   id        String   @id
   trip      String
@@ -48,4 +48,14 @@ model ExtraSlot {
   createdAt DateTime @default(now())
 
   @@index([trip])
+}
+
+/// A new name someone gave a base slot (e.g. "Lunch" → "Canalha lunch").
+model SlotLabel {
+  trip      String
+  slotId    String
+  label     String
+  updatedAt DateTime @updatedAt
+
+  @@id([trip, slotId])
 }

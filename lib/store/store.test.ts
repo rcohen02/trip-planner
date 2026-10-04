@@ -16,6 +16,7 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
       await prisma.todoState.deleteMany();
       await prisma.tripShare.deleteMany();
       await prisma.extraSlot.deleteMany();
+      await prisma.slotLabel.deleteMany();
     }
   });
 
@@ -73,5 +74,23 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
     await s.removeSlot("lis", a.id);
     expect(await s.extraSlots("lis")).toEqual([]);
     expect(await s.assignments("lis")).toEqual({});
+  });
+
+  it("swaps two planned places when one moves onto the other's slot", async () => {
+    const s = make();
+    await s.assign("lis", "d1:morning", "maat");
+    await s.assign("lis", "d1:afternoon", "macam");
+    await s.assign("lis", "d1:morning", "macam");
+    expect(await s.assignments("lis")).toEqual({ "d1:morning": "macam", "d1:afternoon": "maat" });
+  });
+
+  it("renames base slots and added slots, and resets a base name", async () => {
+    const s = make();
+    const x = await s.addSlot("lis", { date: "2026-10-10", after: "2026-10-10:afternoon", label: "Afternoon 2" });
+    await s.renameSlot("lis", "2026-10-10:lunch", "Canalha lunch");
+    await s.renameSlot("lis", x.id, "Gelato");
+    expect(await s.layout("lis")).toEqual({ extras: [{ ...x, label: "Gelato" }], labels: { "2026-10-10:lunch": "Canalha lunch" } });
+    await s.renameSlot("lis", "2026-10-10:lunch", null);
+    expect((await s.layout("lis")).labels).toEqual({});
   });
 });

@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import type { DayRule, Place } from "@/lib/content/types";
-import { buildSlots, warningsFor, type Assignments, type ExtraSlot } from "@/lib/plan/plan";
+import { buildSlots, movePlace, warningsFor, type Assignments, type SlotLayout } from "@/lib/plan/plan";
 import { dateLabel } from "@/lib/format";
 import { assignPlace, unassignPlace } from "@/app/t/[slug]/actions";
 import { WarningList } from "./bits";
@@ -32,10 +32,7 @@ export function usePlanAssignments(slug: string, initial: Assignments) {
     assignments,
     error,
     assign: (slotId: string, placeId: string) =>
-      save(
-        { ...Object.fromEntries(Object.entries(assignments).filter(([k, v]) => v !== placeId && k !== slotId)), [slotId]: placeId },
-        () => assignPlace(slug, slotId, placeId),
-      ),
+      save(movePlace(assignments, placeId, slotId), () => assignPlace(slug, slotId, placeId)),
     unassign: (placeId: string) =>
       save(Object.fromEntries(Object.entries(assignments).filter(([, v]) => v !== placeId)), () => unassignPlace(slug, placeId)),
   };
@@ -45,23 +42,26 @@ export function usePlanAssignments(slug: string, initial: Assignments) {
 export function AddToDaySheet({
   place,
   days,
-  extras = [],
+  layout,
   assignments,
   initialSlot,
+  placeNames,
   onConfirm,
   onRemove,
   onClose,
 }: {
   place: Place;
   days: DayRule[];
-  extras?: ExtraSlot[];
+  layout?: SlotLayout;
   assignments: Assignments;
   initialSlot?: string;
+  /** placeId → name, so the popup can say who swaps or goes back to Unscheduled. */
+  placeNames?: Record<string, string>;
   onConfirm: (slotId: string) => void;
   onRemove?: () => void;
   onClose: () => void;
 }) {
-  const slots = useMemo(() => buildSlots(days, extras).filter((s) => !s.locked), [days, extras]);
+  const slots = useMemo(() => buildSlots(days, layout).filter((s) => !s.locked), [days, layout]);
   const current = Object.entries(assignments).find(([, v]) => v === place.id)?.[0];
   const start = initialSlot ?? current ?? slots[0].id;
   const [date, setDate] = useState(start.split(":")[0]);
@@ -69,6 +69,8 @@ export function AddToDaySheet({
   const daySlots = slots.filter((s) => s.date === date);
   const chosen = daySlots.find((s) => s.id === slotId) ?? daySlots[0];
   const occupant = chosen && assignments[chosen.id];
+  const occupantName = occupant && occupant !== place.id ? placeNames?.[occupant] : undefined;
+  const fromSlot = current ? slots.find((s) => s.id === current) : undefined;
   const warnings = warningsFor(place, date);
 
   return (
@@ -108,7 +110,13 @@ export function AddToDaySheet({
             ))}
           </select>
         </label>
-        {occupant && occupant !== place.id && <p className="tp-help m-0">This replaces what's there; it goes back to Unscheduled.</p>}
+        {occupant && occupant !== place.id && (
+          <p className="tp-help m-0">
+            {fromSlot
+              ? `Swaps places: ${occupantName ?? "what's there"} moves to ${dateLabel(fromSlot.date)} · ${fromSlot.label}.`
+              : `This replaces ${occupantName ?? "what's there"}; it goes back to Unscheduled.`}
+          </p>
+        )}
         <WarningList items={warnings} />
         <div className="flex flex-wrap gap-2">
           <button className="tp-btn tp-btn--primary flex-1" onClick={() => chosen && onConfirm(chosen.id)}>
