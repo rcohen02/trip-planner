@@ -38,6 +38,17 @@ export class PrismaStore implements PlanStore {
     return rows.map(({ id, date, after, label }) => ({ id, date, after, label }));
   }
 
+  async hoursChecked(trip: string): Promise<string[]> {
+    const rows = await this.db.hoursCheck.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
+    return rows.map((r) => r.placeId);
+  }
+
+  async setHoursChecked(trip: string, placeId: string, checked: boolean) {
+    if (checked)
+      await this.db.hoursCheck.upsert({ where: { trip_placeId: { trip, placeId } }, create: { trip, placeId }, update: {} });
+    else await this.db.hoursCheck.deleteMany({ where: { trip, placeId } });
+  }
+
   async bookings(trip: string): Promise<Record<string, Booking>> {
     const rows = await this.db.booking.findMany({ where: { trip } });
     return Object.fromEntries(rows.map(({ placeId, date, time, confirmation, note }) => [placeId, { placeId, date, time, confirmation, note }]));

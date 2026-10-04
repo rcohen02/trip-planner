@@ -72,3 +72,12 @@ model Booking {
 
   @@id([trip, placeId])
 }
+
+/// A place whose hours someone checked (the ✓ on "Hours unconfirmed" in Itinerary).
+model HoursCheck {
+  trip      String
+  placeId   String
+  createdAt DateTime @default(now())
+
+  @@id([trip, placeId])
+}

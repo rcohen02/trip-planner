@@ -35,17 +35,21 @@ export function Thumb({ place, size = "sm" }: { place: Place; size?: "sm" | "md"
 export function Alert({
   level,
   small = false,
+  action,
   children,
 }: {
   level: "warn" | "crit" | "info";
   small?: boolean;
+  /** Optional button at the right edge (e.g. the ✓ on "Hours unconfirmed"). */
+  action?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const Icon = level === "warn" ? TriangleAlert : level === "crit" ? OctagonX : Clock;
   return (
     <div className={`tp-alert tp-alert--${level} ${small ? "tp-alert--sm" : ""}`} role={level === "crit" ? "alert" : undefined}>
       <Icon className="tp-icon" aria-hidden />
-      <div>{children}</div>
+      <div className="flex-1">{children}</div>
+      {action}
     </div>
   );
 }

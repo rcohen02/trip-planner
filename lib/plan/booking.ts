@@ -1,6 +1,7 @@
 import type { SlotKind, Todo } from "../content/types";
 import { dateLabel, hours12 } from "../format";
 import type { PlanWarning, Slot } from "./plan";
+import { hoursTodoPlace } from "./hours";
 
 /** A reservation for a planned place: Lisbon wall-clock date + time, plus optional details. */
 export interface Booking {
@@ -89,10 +90,20 @@ export function bookingWarnings(b: Booking, slot: Slot): PlanWarning[] {
   return inside ? [] : [{ level: "warn", text: `${bookingTime(b)} is outside ${slot.label}` }];
 }
 
-/** To-do state with "Book …" items ticked for places that have a booking. */
-export function todoDone(todos: Todo[], done: Record<string, boolean>, bookings: Record<string, Booking>): Record<string, boolean> {
+/** To-do state with "Book …" items ticked for booked places and "Confirm … hours" items for checked places. */
+export function todoDone(
+  todos: Todo[],
+  done: Record<string, boolean>,
+  bookings: Record<string, Booking>,
+  hoursChecked: string[] = [],
+): Record<string, boolean> {
   const out = { ...done };
-  for (const t of todos) if (t.kind === "book" && t.placeId && bookings[t.placeId]) out[t.id] = true;
+  const checked = new Set(hoursChecked);
+  for (const t of todos) {
+    if (t.kind === "book" && t.placeId && bookings[t.placeId]) out[t.id] = true;
+    const hp = hoursTodoPlace(t);
+    if (hp && checked.has(hp)) out[t.id] = true;
+  }
   return out;
 }
 

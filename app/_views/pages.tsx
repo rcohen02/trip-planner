@@ -191,7 +191,7 @@ export async function TodoView({ ctx }: { ctx: TripContext }) {
     store.bookings(trip.slug),
     editable ? store.activeShare(trip.slug) : null,
   ]);
-  const done = todoDone(trip.todos, ticked, bookings);
+  const done = todoDone(trip.todos, ticked, bookings, trip.places.filter((p) => p.hoursChecked).map((p) => p.id));
   const booked: Record<string, string> = {};
   for (const t of trip.todos) {
     const b = t.kind === "book" && t.placeId ? bookings[t.placeId] : undefined;

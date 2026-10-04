@@ -10,6 +10,17 @@ export class MemoryStore implements PlanStore {
   private extras = new Map<string, ExtraSlot[]>();
   private labels = new Map<string, Record<string, string>>();
   private bookingState = new Map<string, Record<string, Booking>>();
+  private hours = new Map<string, Set<string>>();
+
+  async hoursChecked(trip: string) {
+    return [...(this.hours.get(trip) ?? [])];
+  }
+  async setHoursChecked(trip: string, placeId: string, checked: boolean) {
+    const set = new Set(this.hours.get(trip) ?? []);
+    if (checked) set.add(placeId);
+    else set.delete(placeId);
+    this.hours.set(trip, set);
+  }
 
   async bookings(trip: string) {
     return { ...(this.bookingState.get(trip) ?? {}) };

@@ -36,6 +36,8 @@ export interface Place {
   note: string;
   noteYear: number | null;
   hoursConfirmed: boolean;
+  /** True when the hours were checked on the site (✓ in Itinerary), not marked ✓ in picks.md. */
+  hoursChecked?: boolean;
   openDays: Weekday[] | null;
   needsBooking: boolean;
   // Added by trip.json overrides / enrichment:

@@ -69,3 +69,15 @@ button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor
   font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; background: transparent; color: var(--accent);
   border: 1px dashed var(--control-border); }
 .tp-booking-chip[data-booked] { background: var(--planned-bg); color: var(--planned-ink); border: 1px solid transparent; }
+
+/* ✓ button on "Hours unconfirmed": marks the place's hours as checked. 44px hit area, compact look. */
+.tp-check-btn { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 28px; height: 28px;
+  margin: -4px -4px -4px 0; border-radius: 50%; border: 1px solid var(--warn-line); background: var(--surface-raised);
+  color: var(--warn-ink); cursor: pointer; position: relative; }
+.tp-check-btn::after { content: ""; position: absolute; inset: -8px; }
+.tp-check-btn:hover, .tp-check-btn:focus-visible { background: var(--planned-bg); color: var(--planned-ink); border-color: transparent; }
+.tp-unsure-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-left: 4px; }
+/* Short-lived "Undo" message after a quick action. Sits above the phone tab bar. */
+.tp-toast { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  width: min(420px, calc(100vw - 32px)); box-shadow: var(--shadow-sheet); }
+@media (min-width: 640px) { .tp-toast { bottom: 24px; } }

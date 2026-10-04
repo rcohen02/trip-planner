@@ -25,6 +25,9 @@ export interface PlanStore {
   bookings(trip: string): Promise<Record<string, Booking>>;
   setBooking(trip: string, booking: Booking): Promise<void>;
   clearBooking(trip: string, placeId: string): Promise<void>;
+  /** Places whose hours someone checked (the ✓ on "Hours unconfirmed"). */
+  hoursChecked(trip: string): Promise<string[]>;
+  setHoursChecked(trip: string, placeId: string, checked: boolean): Promise<void>;
   todos(trip: string): Promise<Record<string, boolean>>;
   setTodo(trip: string, todoId: string, done: boolean): Promise<void>;
   share(trip: string): Promise<Share>;

@@ -18,6 +18,7 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
       await prisma.extraSlot.deleteMany();
       await prisma.slotLabel.deleteMany();
       await prisma.booking.deleteMany();
+      await prisma.hoursCheck.deleteMany();
     }
   });
 
@@ -104,5 +105,16 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
     expect(await s.bookings("other")).toEqual({});
     await s.clearBooking("lis", "canalha");
     expect(await s.bookings("lis")).toEqual({});
+  });
+
+  it("remembers which places have had their hours checked", async () => {
+    const s = make();
+    await s.setHoursChecked("lis", "maat", true);
+    await s.setHoursChecked("lis", "maat", true);
+    await s.setHoursChecked("lis", "macam", true);
+    expect((await s.hoursChecked("lis")).sort()).toEqual(["maat", "macam"]);
+    await s.setHoursChecked("lis", "macam", false);
+    expect(await s.hoursChecked("lis")).toEqual(["maat"]);
+    expect(await s.hoursChecked("other")).toEqual([]);
   });
 });

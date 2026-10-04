@@ -5,6 +5,7 @@ import { getStore } from "@/lib/store";
 import { getTrip } from "@/lib/trips";
 import { buildSlots, cleanSlotLabel, type ExtraSlot } from "@/lib/plan/plan";
 import { cleanBooking, type Booking } from "@/lib/plan/booking";
+import { hoursTodoPlace } from "@/lib/plan/hours";
 
 async function guard(slug: string) {
   const viewer = await getViewer();
@@ -29,8 +30,12 @@ export async function unassignPlace(slug: string, placeId: string) {
 }
 
 export async function setTodo(slug: string, todoId: string, done: boolean) {
-  await guard(slug);
+  const trip = await guard(slug);
   await getStore().setTodo(slug, todoId, done);
+  // A "Confirm … hours" to-do and the ✓ on "Hours unconfirmed" are the same fact.
+  const todo = trip.todos.find((t) => t.id === todoId);
+  const placeId = todo ? hoursTodoPlace(todo) : null;
+  if (placeId) await getStore().setHoursChecked(slug, placeId, done);
   revalidatePath(`/t/${slug}`, "layout");
 }
 
@@ -89,5 +94,14 @@ export async function saveBooking(slug: string, raw: Booking) {
 export async function clearBooking(slug: string, placeId: string) {
   await guard(slug);
   await getStore().clearBooking(slug, placeId);
+  revalidatePath(`/t/${slug}`, "layout");
+}
+
+/** The ✓ on "Hours unconfirmed": mark (or unmark) a place's hours as checked. Keeps the matching to-do in step. */
+export async function setHoursChecked(slug: string, placeId: string, checked: boolean) {
+  const trip = await guard(slug);
+  if (!trip.places.some((p) => p.id === placeId)) throw new Error("Unknown place");
+  await getStore().setHoursChecked(slug, placeId, checked);
+  for (const t of trip.todos) if (hoursTodoPlace(t) === placeId) await getStore().setTodo(slug, t.id, checked);
   revalidatePath(`/t/${slug}`, "layout");
 }

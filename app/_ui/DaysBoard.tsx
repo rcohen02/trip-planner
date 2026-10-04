@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useOptimistic, useState, useTransition } from "react";
+import { useEffect, useMemo, useOptimistic, useState, useTransition } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -13,7 +13,7 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { ChevronDown, ChevronUp, GripVertical, Lock, OctagonX, Pencil, Plus } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, GripVertical, Lock, OctagonX, Pencil, Plus } from "lucide-react";
 import type { Cluster, DayRule, Place } from "@/lib/content/types";
 import {
   buildSlots,
@@ -28,7 +28,7 @@ import {
   type Slot,
 } from "@/lib/plan/plan";
 import { dateLabel } from "@/lib/format";
-import { addSlot, assignPlace, removeSlot, renameSlot, unassignPlace } from "@/app/t/[slug]/actions";
+import { addSlot, assignPlace, removeSlot, renameSlot, setHoursChecked, unassignPlace } from "@/app/t/[slug]/actions";
 import { Alert, CATEGORY, Thumb } from "./bits";
 import { AddToDaySheet, usePlanBookings } from "./AddToDay";
 import { bookingTime, bookingWarnings, type Booking } from "@/lib/plan/booking";
@@ -50,7 +50,7 @@ type Sheet =
 export function DaysBoard({
   slug,
   days,
-  places,
+  places: sourcePlaces,
   clusters,
   initial,
   initialLayout,
@@ -69,6 +69,18 @@ export function DaysBoard({
   prices: Record<string, string>;
 }) {
   const [layout, setLayout] = useState(initialLayout);
+  // ✓ on "Hours unconfirmed": local overrides until the server catches up.
+  const [hoursOverride, setHoursOverride] = useState<Record<string, boolean>>({});
+  const [undo, setUndo] = useState<{ placeId: string; name: string } | null>(null);
+  const places = useMemo(
+    () =>
+      sourcePlaces.map((p) =>
+        p.id in hoursOverride && (hoursOverride[p.id] || p.hoursChecked)
+          ? { ...p, hoursConfirmed: hoursOverride[p.id], hoursChecked: hoursOverride[p.id] }
+          : p,
+      ),
+    [sourcePlaces, hoursOverride],
+  );
   const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
   const extras = layout.extras;
   const setExtras = (f: (e: typeof extras) => typeof extras) => setLayout((l) => ({ ...l, extras: f(l.extras) }));
@@ -140,6 +152,33 @@ export function DaysBoard({
       setError("That slot wasn't removed. Check your connection and try again.");
     }
   }
+
+  useEffect(() => {
+    if (!undo) return;
+    const t = setTimeout(() => setUndo(null), 8000);
+    return () => clearTimeout(t);
+  }, [undo]);
+
+  async function checkHours(placeId: string, checked: boolean) {
+    const name = sourcePlaces.find((p) => p.id === placeId)?.name ?? "";
+    setError(null);
+    setHoursOverride((o) => ({ ...o, [placeId]: checked }));
+    setUndo(checked ? { placeId, name } : null);
+    try {
+      await setHoursChecked(slug, placeId, checked);
+    } catch {
+      setHoursOverride((o) => ({ ...o, [placeId]: !checked }));
+      setUndo(null);
+      setError("That didn't save. Check your connection and try again.");
+    }
+  }
+
+  const hoursCheck = (p: Place) =>
+    editable ? (
+      <button className="tp-check-btn" onClick={() => checkHours(p.id, true)} aria-label={`Mark ${p.name}'s hours as checked`} title="Hours checked">
+        <Check className="tp-icon" aria-hidden />
+      </button>
+    ) : undefined;
 
   async function rename(slot: Slot, raw: string | null) {
     const before = layout;
@@ -242,7 +281,12 @@ export function DaysBoard({
                     editable={editable}
                     onTap={() => editable && setSheet({ kind: "place", placeId: p.id })}
                   />
-                  {!p.hoursConfirmed && <span className="tp-unsure pl-1">Hours unconfirmed</span>}
+                  {!p.hoursConfirmed && (
+                    <span className="tp-unsure-row">
+                      <span className="tp-unsure">Hours unconfirmed</span>
+                      {hoursCheck(p)}
+                    </span>
+                  )}
                 </li>
               ))}
               {pool.length === 0 && (
@@ -352,7 +396,7 @@ export function DaysBoard({
                               .filter((w) => w.level === "warn")
                               .slice(0, 2)
                               .map((w) => (
-                                <Alert key={w.text} level="warn" small>
+                                <Alert key={w.text} level="warn" small action={w.text === "Hours unconfirmed" ? hoursCheck(p) : undefined}>
                                   {w.text}
                                 </Alert>
                               ))}
@@ -372,6 +416,30 @@ export function DaysBoard({
           </div>
         </section>
       </div>
+
+      {undo && (
+        <div className="tp-toast" role="status">
+          <Alert
+            level="info"
+            action={
+              <span className="flex shrink-0 gap-1">
+                <button
+                  className="tp-btn tp-btn--text"
+                  style={{ minHeight: 32, padding: "0 8px", fontSize: 13 }}
+                  onClick={() => checkHours(undo.placeId, false)}
+                >
+                  Undo
+                </button>
+                <button className="tp-btn tp-btn--text" style={{ minHeight: 32, padding: "0 8px", fontSize: 13 }} onClick={() => setUndo(null)} aria-label="Dismiss">
+                  ✕
+                </button>
+              </span>
+            }
+          >
+            Hours checked for {undo.name}.
+          </Alert>
+        </div>
+      )}
 
       <DragOverlay>
         {dragging && byId.get(dragging) ? (
