@@ -87,7 +87,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
                           {p.name}
                         </Link>
                         <div className="text-sm text-ink-2">
-                          {p.location.split(",").pop()!.trim()} · {money(p.price, trip.localCurrency, trip.usdRate)}
+                          {p.route ? p.details : `${p.location.split(",").pop()!.trim()} · ${money(p.price, trip.localCurrency, trip.usdRate)}`}
                         </div>
                         <HoursLine place={p} />
                         {bookings[p.id] && (

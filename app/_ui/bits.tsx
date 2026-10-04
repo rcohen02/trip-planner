@@ -1,4 +1,4 @@
-import { Image as ImageIcon, Utensils, Wine, ShoppingBag, Flag, Trees, Castle, Music, TriangleAlert, OctagonX, Clock, Check } from "lucide-react";
+import { Image as ImageIcon, Utensils, Wine, ShoppingBag, Flag, Trees, Castle, Music, Footprints, TriangleAlert, OctagonX, Clock, Check } from "lucide-react";
 import type { Category, Place } from "@/lib/content/types";
 import type { PlanWarning } from "@/lib/plan/plan";
 import { hours12 } from "@/lib/format";
@@ -12,6 +12,7 @@ export const CATEGORY: Record<Category, { label: string; short: string; Icon: ty
   nature: { label: "Nature", short: "Nature", Icon: Trees },
   history: { label: "History", short: "History", Icon: Castle },
   festival: { label: "Festivals", short: "Festival", Icon: Music },
+  walk: { label: "Walks", short: "Walk", Icon: Footprints },
 };
 
 export function CategoryTag({ category }: { category: Category }) {
@@ -27,6 +28,12 @@ export function CategoryTag({ category }: { category: Category }) {
 export function Thumb({ place, size = "sm" }: { place: Place; size?: "sm" | "md" }) {
   const img = place.images?.[0];
   const cls = `tp-thumb ${size === "md" ? "tp-thumb--md" : ""}`;
+  if (!img && place.route)
+    return (
+      <div className={`${cls} tp-thumb--walk c-walk`} aria-hidden>
+        <Footprints className="tp-icon tp-icon-lg" />
+      </div>
+    );
   if (!img) return <div className={`${cls} tp-ph`} aria-hidden />;
   // eslint-disable-next-line @next/next/no-img-element -- Wikimedia thumbnails, already sized
   return <img src={img.thumb} alt="" loading="lazy" className={cls} />;
@@ -71,6 +78,7 @@ export function StatusPill({ planned }: { planned: boolean }) {
 }
 
 export function HoursLine({ place }: { place: Place }) {
+  if (place.route) return null; // walks have no opening hours
   if (place.hoursConfirmed && place.hours) {
     return (
       <span className="tp-ok inline-flex items-center gap-1">

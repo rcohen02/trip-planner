@@ -2,7 +2,8 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/lib/generated/prisma/client";
 import { movePlace, type Assignments, type ExtraSlot, type SlotLayout } from "../plan/plan";
 import type { Booking } from "../plan/booking";
-import { newSlotId, newToken, type PlanStore, type Share } from "./types";
+import type { RouteDraft, RouteRecord } from "../routes/route";
+import { newRouteId, newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 export function createPrisma(url: string): PrismaClient {
   return new PrismaClient({ adapter: new PrismaPg({ connectionString: url }) });
@@ -36,6 +37,21 @@ export class PrismaStore implements PlanStore {
   async extraSlots(trip: string): Promise<ExtraSlot[]> {
     const rows = await this.db.extraSlot.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
     return rows.map(({ id, date, after, label }) => ({ id, date, after, label }));
+  }
+
+  async routes(trip: string): Promise<RouteRecord[]> {
+    const rows = await this.db.route.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
+    return rows.map((r) => ({ id: r.id, name: r.name, line: r.line as [number, number][], startLabel: r.startLabel, endLabel: r.endLabel }));
+  }
+
+  async addRoute(trip: string, route: RouteDraft): Promise<RouteRecord> {
+    const r = { id: newRouteId(), ...route };
+    await this.db.route.create({ data: { trip, ...r } });
+    return r;
+  }
+
+  async removeRoute(trip: string, id: string) {
+    await this.db.route.deleteMany({ where: { trip, id } });
   }
 
   async hoursChecked(trip: string): Promise<string[]> {

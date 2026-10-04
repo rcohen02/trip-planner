@@ -6,6 +6,14 @@ import { getTrip } from "@/lib/trips";
 import { buildSlots, cleanSlotLabel, type ExtraSlot } from "@/lib/plan/plan";
 import { cleanBooking, type Booking } from "@/lib/plan/booking";
 import { hoursTodoPlace } from "@/lib/plan/hours";
+import { readRouteFile, routesFromKml } from "@/lib/routes/route";
+
+/** A place from the trip content, or an uploaded route ("route-<id>"). */
+async function knownPlace(slug: string, trip: { places: { id: string }[] }, placeId: string) {
+  if (trip.places.some((p) => p.id === placeId)) return true;
+  if (!placeId.startsWith("route-")) return false;
+  return (await getStore().routes(slug)).some((r) => `route-${r.id}` === placeId);
+}
 
 async function guard(slug: string) {
   const viewer = await getViewer();
@@ -18,7 +26,7 @@ export async function assignPlace(slug: string, slotId: string, placeId: string)
   const trip = await guard(slug);
   const slot = buildSlots(trip.days, await getStore().layout(slug)).find((s) => s.id === slotId);
   if (!slot || slot.locked) throw new Error("That slot can't take a place");
-  if (!trip.places.some((p) => p.id === placeId)) throw new Error("Unknown place");
+  if (!(await knownPlace(slug, trip, placeId))) throw new Error("Unknown place");
   await getStore().assign(slug, slotId, placeId);
   revalidatePath(`/t/${slug}`, "layout");
 }
@@ -84,7 +92,7 @@ export async function renameSlot(slug: string, slotId: string, rawLabel: string 
 /** Save (or replace) the reservation for a place. Time is Lisbon wall-clock time. */
 export async function saveBooking(slug: string, raw: Booking) {
   const trip = await guard(slug);
-  if (!trip.places.some((p) => p.id === raw.placeId)) throw new Error("Unknown place");
+  if (!(await knownPlace(slug, trip, raw.placeId))) throw new Error("Unknown place");
   const b = cleanBooking(raw);
   if (!b || !trip.days.some((d) => d.date === b.date)) throw new Error("Pick a trip day and a time");
   await getStore().setBooking(slug, b);
@@ -100,8 +108,42 @@ export async function clearBooking(slug: string, placeId: string) {
 /** The ✓ on "Hours unconfirmed": mark (or unmark) a place's hours as checked. Keeps the matching to-do in step. */
 export async function setHoursChecked(slug: string, placeId: string, checked: boolean) {
   const trip = await guard(slug);
-  if (!trip.places.some((p) => p.id === placeId)) throw new Error("Unknown place");
+  if (!(await knownPlace(slug, trip, placeId))) throw new Error("Unknown place");
   await getStore().setHoursChecked(slug, placeId, checked);
   for (const t of trip.todos) if (hoursTodoPlace(t) === placeId) await getStore().setTodo(slug, t.id, checked);
+  revalidatePath(`/t/${slug}`, "layout");
+}
+
+const MAX_ROUTE_FILE = 900 * 1024; // under the 1 MB Server Action limit, with room for the form overhead
+
+/**
+ * Add walking routes from a Google My Maps export (.kmz or .kml). One route per line in the file.
+ * Returns a result instead of throwing so the message reaches the page in production.
+ */
+export async function uploadRoute(slug: string, form: FormData): Promise<{ added: string[] } | { error: string }> {
+  await guard(slug);
+  const file = form.get("file");
+  if (!(file instanceof File) || file.size === 0) return { error: "Choose a .kmz or .kml file." };
+  if (file.size > MAX_ROUTE_FILE) return { error: "That file is over 900 KB. Export just the layer with your route." };
+  let drafts;
+  try {
+    drafts = routesFromKml(readRouteFile(file.name, new Uint8Array(await file.arrayBuffer())));
+  } catch (e) {
+    return { error: e instanceof Error && /kmz|map data/i.test(e.message) ? `${e.message}.` : "That file couldn't be read." };
+  }
+  if (!drafts.length) return { error: "No walking route in that file. In My Maps, export the layer that has your route line." };
+  if (drafts.length > 20) return { error: "That file has more than 20 lines. Export just the layer with your route." };
+  for (const d of drafts) await getStore().addRoute(slug, d);
+  revalidatePath(`/t/${slug}`, "layout");
+  return { added: drafts.map((d) => d.name) };
+}
+
+/** Delete an uploaded route; it leaves the plan and loses its booking. */
+export async function removeRoute(slug: string, routeId: string) {
+  await guard(slug);
+  const placeId = `route-${routeId}`;
+  await getStore().unassign(slug, placeId);
+  await getStore().clearBooking(slug, placeId);
+  await getStore().removeRoute(slug, routeId);
   revalidatePath(`/t/${slug}`, "layout");
 }

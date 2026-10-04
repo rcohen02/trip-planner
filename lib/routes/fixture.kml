@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made-up test route in the shape Google My Maps exports (one line + start/end pins). -->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Test walks</name>
+    <Placemark>
+      <name>Seafront loop</name>
+      <styleUrl>#line-1267FF-5000-nodesc</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>-9.4200,38.6900,0
+          -9.4200,38.6950,0
+          -9.4150,38.6950,0
+          -9.4150,38.7000,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Rua do Teste 1, 2750-001 Cascais, Portugal</name>
+      <Point><coordinates>-9.42001,38.69002,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Far away pin</name>
+      <Point><coordinates>-9.1,38.7,0</coordinates></Point>
+    </Placemark>
+    <Folder>
+      <name>Second layer</name>
+      <Placemark>
+        <name>Short &amp; sweet</name>
+        <LineString><coordinates>-9.40,38.70 -9.40,38.701</coordinates></LineString>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

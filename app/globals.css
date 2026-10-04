@@ -81,3 +81,12 @@ button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor
 .tp-toast { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px));
   width: min(420px, calc(100vw - 32px)); box-shadow: var(--shadow-sheet); }
 @media (min-width: 640px) { .tp-toast { bottom: 24px; } }
+
+/* Walking route thumbnail (no photo): the footprints icon on a tint of the Walks color. */
+.tp-thumb--walk { display: flex; align-items: center; justify-content: center; color: var(--c);
+  background: color-mix(in srgb, var(--c) 14%, var(--surface)); }
+
+/* Walking route line on the map (Leaflet path). CSS beats Leaflet's stroke attribute. */
+.tp-route { stroke: var(--cat-walk); stroke-linecap: round; stroke-linejoin: round; cursor: pointer; }
+
+.tp-sketch { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }

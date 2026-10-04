@@ -21,7 +21,7 @@ The palette is five brand colors: `plum-black`, `plum-deep`, `plum`, `steel` and
   - Warning (`warn-bg`, `warn-line`, `warn-ink`) means *check this*: hours unconfirmed, needs a booking, only chance this trip.
   - Critical (`crit`, `on-crit`) means *this plan is broken*: closed that day, overlaps the airport.
   - Info (`info-bg`, `info-line`, `info-ink`) means a time-based reminder: check-in closes 4 pm.
-- **Categories** get one hue each: `cat-art`, `cat-food`, `cat-bar`, `cat-shop`, `cat-tour`, plus `cat-nature`, `cat-history`, `cat-festival` for family trips. Use them for map pins, the dot in a category tag, and budget bars. Never for text or backgrounds. Some pairs are close in hue (bar/art, festival/crit), so a category color always appears with its icon or name.
+- **Categories** get one hue each: `cat-art`, `cat-food`, `cat-bar`, `cat-shop`, `cat-tour`, plus `cat-nature`, `cat-history`, `cat-festival` for family trips, and `cat-walk` for walking routes (also the route line on the map). Use them for map pins, the dot in a category tag, and budget bars. Never for text or backgrounds. Some pairs are close in hue (bar/art, festival/crit), so a category color always appears with its icon or name.
 - **Focus.** Every focusable element gets a 2px solid `focus-ring` outline with a 2px offset. Never remove it.
 
 ## Type

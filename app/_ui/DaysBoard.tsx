@@ -31,6 +31,7 @@ import { dateLabel } from "@/lib/format";
 import { addSlot, assignPlace, removeSlot, renameSlot, setHoursChecked, unassignPlace } from "@/app/t/[slug]/actions";
 import { Alert, CATEGORY, Thumb } from "./bits";
 import { AddToDaySheet, usePlanBookings } from "./AddToDay";
+import { AddRouteButton } from "./AddRoute";
 import { bookingTime, bookingWarnings, type Booking } from "@/lib/plan/booking";
 
 type Move = { type: "assign"; slotId: string; placeId: string } | { type: "unassign"; placeId: string };
@@ -229,6 +230,7 @@ export function DaysBoard({
               <h2 className="t-heading m-0">Unscheduled</h2>
               <span className="tp-num t-caption">{unscheduled.length} places</span>
             </div>
+            {editable && <AddRouteButton slug={slug} />}
             <button className="tp-btn tp-btn--secondary sm:hidden" aria-expanded={railOpen} onClick={() => setRailOpen((o) => !o)}>
               {railOpen ? "Hide the list" : "Show the list"}
             </button>

@@ -81,3 +81,16 @@ model HoursCheck {
 
   @@id([trip, placeId])
 }
+
+/// A walking route uploaded on the Itinerary (from a Google My Maps KMZ/KML). line = [[lat, lng], …].
+model Route {
+  id         String   @id
+  trip       String
+  name       String
+  line       Json
+  startLabel String?
+  endLabel   String?
+  createdAt  DateTime @default(now())
+
+  @@index([trip])
+}

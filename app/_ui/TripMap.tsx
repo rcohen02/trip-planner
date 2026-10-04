@@ -76,6 +76,12 @@ export default function TripMap({
           group = L.layerGroup().addTo(map);
           layers.current.set(p.category, group);
         }
+        if (p.route) {
+          L.polyline(p.route.line, { className: "tp-route", weight: 5, opacity: 0.85 })
+            .on("click", () => setPicked(p))
+            .addTo(group);
+          pts.push(...p.route.line);
+        }
         L.marker([p.lat, p.lng], {
           icon: L.divIcon({ className: "", html: `<div class="tp-pin c-${p.category}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] }),
           title: `${p.name} (${CATEGORY[p.category].label})`,
@@ -94,6 +100,13 @@ export default function TripMap({
       groups.clear();
     };
   }, [homebase, places]);
+
+  // Picking a walk zooms the map to its line (it's a squiggle at trip-wide zoom).
+  useEffect(() => {
+    const m = mapRef.current;
+    if (!m || !picked?.route) return;
+    m.fitBounds(picked.route.line, { padding: [40, 40], maxZoom: 16 });
+  }, [picked]);
 
   // Tapping a category shows only that one; tapping it again (or Reset) shows everything.
   useEffect(() => {
@@ -170,7 +183,13 @@ export default function TripMap({
                 Close
               </button>
             </div>
-            <p className="m-0 line-clamp-3 text-sm text-ink-2">{picked.note}</p>
+            <p className="m-0 line-clamp-3 text-sm text-ink-2">{picked.route ? picked.details : picked.note}</p>
+            {picked.route && picked.route.nearby.length > 0 && (
+              <p className="m-0 text-sm text-ink-2">
+                Passes {picked.route.nearby.length} of your places: {picked.route.nearby.slice(0, 3).map((id) => places.find((x) => x.id === id)?.name).filter(Boolean).join(", ")}
+                {picked.route.nearby.length > 3 ? "…" : ""}
+              </p>
+            )}
             <div className="flex flex-wrap gap-2">
               {editable && (
                 <button className="tp-btn tp-btn--primary" onClick={() => setSheet(picked)}>
@@ -182,7 +201,7 @@ export default function TripMap({
               </a>
               {picked.mapsUrl && (
                 <a className="tp-btn tp-btn--secondary" href={picked.mapsUrl} target="_blank" rel="noreferrer">
-                  Open in Maps
+                  {picked.route ? "Walking directions" : "Open in Maps"}
                 </a>
               )}
             </div>

@@ -14,8 +14,10 @@ import { Carousel } from "@/app/_ui/Carousel";
 import { Checklist } from "@/app/_ui/Checklist";
 import { ShareControl } from "@/app/_ui/ShareControl";
 import { FlightCard } from "@/app/_ui/FlightCard";
-import { Alert, CategoryTag, HoursLine, PageTitle, StatusPill } from "@/app/_ui/bits";
+import { Alert, CATEGORY, CategoryTag, HoursLine, PageTitle, StatusPill } from "@/app/_ui/bits";
 import { MapLoader } from "@/app/_ui/MapLoader";
+import { RemoveRouteButton } from "@/app/_ui/RemoveRoute";
+import { RouteSketch } from "@/app/_ui/RouteSketch";
 
 export async function DaysView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
@@ -69,7 +71,7 @@ export async function PlacesView({ ctx }: { ctx: TripContext }) {
 }
 
 export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: string }) {
-  const { trip, base } = ctx;
+  const { trip, base, editable } = ctx;
   const p = trip.places.find((x) => x.id === id);
   if (!p) notFound();
   const assignments = await getStore().assignments(trip.slug);
@@ -89,20 +91,53 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
           <StatusPill planned={Boolean(slotId)} />
           {planDate && <span className="t-caption">In the plan for {dateLabel(planDate)}</span>}
         </div>
-        <Carousel images={p.images ?? []} name={p.name} />
+        {p.route && !p.images?.length ? <RouteSketch place={p} /> : <Carousel images={p.images ?? []} name={p.name} />}
         {p.note && (
           <section>
             <p className="tp-label m-0">NYT note{p.noteYear ? ` · ${p.noteYear}` : ""}</p>
             <p className="t-body mt-1">{p.note}</p>
           </section>
         )}
-        {p.details && <p className="t-body m-0 text-ink-2">{p.details}</p>}
+        {p.details && !p.route && <p className="t-body m-0 text-ink-2">{p.details}</p>}
+        {p.route && (
+          <section className="tp-card">
+            <h2 className="t-heading m-0">On this walk</h2>
+            {p.route.nearby.length ? (
+              <ol className="tp-col m-0 pl-5" style={{ gap: 6 }}>
+                {p.route.nearby.map((nid) => {
+                  const q = trip.places.find((x) => x.id === nid);
+                  return q ? (
+                    <li key={nid}>
+                      <Link href={`${base}/places/${nid}`}>{q.name}</Link>
+                      <span className="t-caption"> · {CATEGORY[q.category].label}</span>
+                    </li>
+                  ) : null;
+                })}
+              </ol>
+            ) : (
+              <p className="m-0 text-sm text-ink-2">None of your saved places are within 150 m of this route.</p>
+            )}
+          </section>
+        )}
       </div>
       <aside className="tp-col" style={{ gap: 16 }}>
         <div className="tp-card">
           <dl className="tp-dl" style={{ borderTop: 0, paddingTop: 0 }}>
-            <dt>Where</dt>
-            <dd>{p.location}</dd>
+            {p.route ? (
+              <>
+                <dt>Walk</dt>
+                <dd className="tp-num">{p.details}</dd>
+                <dt>Start</dt>
+                <dd>{p.route.startLabel ?? "Start of the line"}</dd>
+                <dt>End</dt>
+                <dd>{p.route.endLabel ?? "End of the line"}</dd>
+              </>
+            ) : (
+              <>
+                <dt>Where</dt>
+                <dd>{p.location}</dd>
+              </>
+            )}
             {cluster && (
               <>
                 <dt>Area</dt>
@@ -111,12 +146,16 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
                 </dd>
               </>
             )}
-            <dt>Price</dt>
-            <dd className="tp-num">{prices[p.id]}</dd>
-            <dt>Hours</dt>
-            <dd>
-              <HoursLine place={p} />
-            </dd>
+            {!p.route && (
+              <>
+                <dt>Price</dt>
+                <dd className="tp-num">{prices[p.id]}</dd>
+                <dt>Hours</dt>
+                <dd>
+                  <HoursLine place={p} />
+                </dd>
+              </>
+            )}
             {p.phone && (
               <>
                 <dt>Phone</dt>
@@ -127,7 +166,7 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
           <div className="flex flex-wrap gap-2">
             {p.mapsUrl && (
               <a className="tp-btn tp-btn--primary" href={p.mapsUrl} target="_blank" rel="noreferrer">
-                Open in Maps
+                {p.route ? "Walking directions" : "Open in Maps"}
               </a>
             )}
             {p.url && (
@@ -142,6 +181,10 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
             )}
           </div>
         </div>
+        {p.route && (
+          <p className="tp-help m-0">Google Maps follows your line through 3 points along the way (the most phones accept), so its path may differ slightly.</p>
+        )}
+        {p.route && editable && <RemoveRouteButton slug={trip.slug} routeId={p.route.routeId} back={`${base}/days`} />}
         {!p.hoursConfirmed && <Alert level="warn">Hours unconfirmed. Check before heading to {p.location.split(",").pop()!.trim()}.</Alert>}
         {p.needsBooking && <Alert level="warn">Needs a booking. It's on Bookings & To-Do.</Alert>}
         {planDate &&

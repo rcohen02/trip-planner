@@ -42,7 +42,7 @@ a{color:var(--accent)} a:hover{color:var(--accent-hover)}
 .tp-cat .tp-icon{color:var(--c)}
 .tp-dot{width:10px;height:10px;border-radius:5px;background:var(--c);flex:none}
 .tp-pin{width:14px;height:14px;border-radius:7px;background:var(--c);border:2px solid var(--surface);box-shadow:0 0 0 1px var(--ink-3);flex:none}
-.c-art{--c:var(--cat-art)}.c-food{--c:var(--cat-food)}.c-bar{--c:var(--cat-bar)}.c-shop{--c:var(--cat-shop)}.c-tour{--c:var(--cat-tour)}.c-nature{--c:var(--cat-nature)}.c-history{--c:var(--cat-history)}.c-festival{--c:var(--cat-festival)}
+.c-art{--c:var(--cat-art)}.c-food{--c:var(--cat-food)}.c-bar{--c:var(--cat-bar)}.c-shop{--c:var(--cat-shop)}.c-tour{--c:var(--cat-tour)}.c-nature{--c:var(--cat-nature)}.c-history{--c:var(--cat-history)}.c-festival{--c:var(--cat-festival)}.c-walk{--c:var(--cat-walk)}
 /* Fields */
 .tp-field{display:flex;flex-direction:column;gap:4px;font-size:12px;line-height:16px;color:var(--ink-3);min-width:0}
 .tp-input{height:var(--target);box-sizing:border-box;border:1px solid var(--control-border);border-radius:var(--radius-md);padding:0 12px;background:var(--surface);color:var(--ink);font:400 14px/20px var(--font-sans);min-width:0}

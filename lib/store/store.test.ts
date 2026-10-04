@@ -19,6 +19,7 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
       await prisma.slotLabel.deleteMany();
       await prisma.booking.deleteMany();
       await prisma.hoursCheck.deleteMany();
+      await prisma.route.deleteMany();
     }
   });
 
@@ -116,5 +117,16 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
     await s.setHoursChecked("lis", "macam", false);
     expect(await s.hoursChecked("lis")).toEqual(["maat"]);
     expect(await s.hoursChecked("other")).toEqual([]);
+  });
+
+  it("saves uploaded routes per trip and removes them", async () => {
+    const s = make();
+    const draft = { name: "Seafront", line: [[38.69, -9.42], [38.7, -9.42]] as [number, number][], startLabel: "Estoril", endLabel: null };
+    const a = await s.addRoute("lis", draft);
+    expect(a.id).toMatch(/^[A-Za-z0-9_-]{8,}$/);
+    expect(await s.routes("lis")).toEqual([{ id: a.id, ...draft }]);
+    expect(await s.routes("other")).toEqual([]);
+    await s.removeRoute("lis", a.id);
+    expect(await s.routes("lis")).toEqual([]);
   });
 });

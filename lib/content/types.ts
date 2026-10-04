@@ -1,4 +1,4 @@
-export type Category = "art" | "food" | "bar" | "shop" | "tour" | "nature" | "history" | "festival";
+export type Category = "art" | "food" | "bar" | "shop" | "tour" | "nature" | "history" | "festival" | "walk";
 
 /** 0 = Sunday … 6 = Saturday (JS Date#getDay). */
 export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -45,6 +45,20 @@ export interface Place {
   lat?: number | null;
   lng?: number | null;
   images?: PlaceImage[];
+  /** Set for walking routes uploaded on the site (category "walk"). */
+  route?: RouteInfo;
+}
+
+/** A walking route as a plannable card: the line plus what the UI shows about it. */
+export interface RouteInfo {
+  routeId: string;
+  /** [lat, lng] points in walking order. */
+  line: [number, number][];
+  distanceM: number;
+  startLabel: string | null;
+  endLabel: string | null;
+  /** Ids of saved places within ~150 m of the line, in walking order. */
+  nearby: string[];
 }
 
 export interface Flight {

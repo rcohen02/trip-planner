@@ -1,6 +1,7 @@
 import { movePlace, type Assignments, type ExtraSlot } from "../plan/plan";
 import type { Booking } from "../plan/booking";
-import { newSlotId, newToken, type PlanStore, type Share } from "./types";
+import type { RouteDraft, RouteRecord } from "../routes/route";
+import { newRouteId, newSlotId, newToken, type PlanStore, type Share } from "./types";
 
 /** In-memory store for tests and for running locally without a database. */
 export class MemoryStore implements PlanStore {
@@ -11,6 +12,19 @@ export class MemoryStore implements PlanStore {
   private labels = new Map<string, Record<string, string>>();
   private bookingState = new Map<string, Record<string, Booking>>();
   private hours = new Map<string, Set<string>>();
+  private routeState = new Map<string, RouteRecord[]>();
+
+  async routes(trip: string) {
+    return (this.routeState.get(trip) ?? []).map((r) => ({ ...r, line: r.line.map((p) => [...p] as [number, number]) }));
+  }
+  async addRoute(trip: string, route: RouteDraft) {
+    const r = { id: newRouteId(), ...route };
+    this.routeState.set(trip, [...(this.routeState.get(trip) ?? []), r]);
+    return r;
+  }
+  async removeRoute(trip: string, id: string) {
+    this.routeState.set(trip, (this.routeState.get(trip) ?? []).filter((r) => r.id !== id));
+  }
 
   async hoursChecked(trip: string) {
     return [...(this.hours.get(trip) ?? [])];

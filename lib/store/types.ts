@@ -1,5 +1,6 @@
 import type { Assignments, ExtraSlot, SlotLayout } from "../plan/plan";
 import type { Booking } from "../plan/booking";
+import type { RouteDraft, RouteRecord } from "../routes/route";
 
 export interface Share {
   token: string;
@@ -25,6 +26,10 @@ export interface PlanStore {
   bookings(trip: string): Promise<Record<string, Booking>>;
   setBooking(trip: string, booking: Booking): Promise<void>;
   clearBooking(trip: string, placeId: string): Promise<void>;
+  /** Walking routes uploaded on the Itinerary (KMZ/KML from Google My Maps). */
+  routes(trip: string): Promise<RouteRecord[]>;
+  addRoute(trip: string, route: RouteDraft): Promise<RouteRecord>;
+  removeRoute(trip: string, id: string): Promise<void>;
   /** Places whose hours someone checked (the ✓ on "Hours unconfirmed"). */
   hoursChecked(trip: string): Promise<string[]>;
   setHoursChecked(trip: string, placeId: string, checked: boolean): Promise<void>;
@@ -44,4 +49,8 @@ export function newToken(): string {
 export function newSlotId(date: string): string {
   const bytes = crypto.getRandomValues(new Uint8Array(6));
   return `${date}:x-${Buffer.from(bytes).toString("base64url")}`;
+}
+
+export function newRouteId(): string {
+  return Buffer.from(crypto.getRandomValues(new Uint8Array(9))).toString("base64url");
 }

@@ -19,6 +19,7 @@ Read `node_modules/next/dist/docs/` before using an API you are unsure of.
 - One "Add to day" popup for the whole site: `app/_ui/AddToDay.tsx` (`AddToDaySheet` + `usePlanAssignments`), used by Places, Map and Days. Change it there so every page gets the change; never copy it into a page.
 - Bookings (`lib/plan/booking.ts`): one per place, stored as Lisbon wall-clock `date` + `time` (HH:MM). Convert with `bookingInstant` for countdowns; show with `bookingTime`. A booking clears "Needs a booking" and ticks the matching "Book" to-do.
 - Hours checks (`lib/plan/hours.ts`): the ✓ on "Hours unconfirmed" stores a `HoursCheck`; `lib/context.ts` applies checks to `trip.places`, so views just read `hoursConfirmed`. A "Confirm … hours" to-do and the ✓ stay in sync both ways.
+- Walking routes (`lib/routes/route.ts`): uploaded on the Itinerary as Google My Maps KMZ/KML, stored as `Route` rows (never in the repo, which is public). `lib/context.ts` turns each into a `walk` place (`route-<id>`, `place.route` holds the line, distance and nearby places), so planning, bookings and the Map treat it like any place. Directions links use 3 waypoints, the phone limit.
 - Slots: base slots come from `trip.json`; slots people add on the Days board are `ExtraSlot`s in the store. Always build slots with `buildSlots(days, extras)` and show `slot.label`.
 
 <!-- BEGIN:nextjs-agent-rules -->
