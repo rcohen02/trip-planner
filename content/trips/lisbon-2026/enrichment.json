@@ -1054,5 +1054,55 @@
     "lat": 38.6925777,
     "lng": -9.3123076,
     "images": []
+  },
+  "neat-records-record-shop": {
+    "lat": 38.731778,
+    "lng": -9.1381469,
+    "images": []
+  },
+  "groovie-records-record-shop": {
+    "lat": 38.7227666,
+    "lng": -9.1314722,
+    "images": []
+  },
+  "flur-record-shop": {
+    "lat": 38.7352417,
+    "lng": -9.1326629,
+    "images": []
+  },
+  "amor-records-record-shop": {
+    "lat": 38.7244587,
+    "lng": -9.1359976,
+    "images": []
+  },
+  "tabato-records-record-shop": {
+    "lat": 38.7274269,
+    "lng": -9.1363965,
+    "images": []
+  },
+  "carbono-record-shop": {
+    "lat": 38.7196319,
+    "lng": -9.1422904,
+    "images": []
+  },
+  "discoleccao-record-shop": {
+    "lat": 38.7135188,
+    "lng": -9.1414746,
+    "images": []
+  },
+  "louie-louie-record-shop": {
+    "lat": 38.7105369,
+    "lng": -9.1392327,
+    "images": []
+  },
+  "espaco-chiado-record-shops": {
+    "lat": 38.7112378,
+    "lng": -9.1424234,
+    "images": []
+  },
+  "clube-33-record-shop": {
+    "lat": 38.7108012,
+    "lng": -9.1508024,
+    "images": []
   }
 }

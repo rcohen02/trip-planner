@@ -148,6 +148,30 @@ Prices in EUR with USD (≈ 1.16). Hours marked ✓ were confirmed on the venue'
 - **Mercado da Vila** — Old town, Cascais. [Maps](https://www.google.com/maps/search/?api=1&query=Mercado+da+Vila+Cascais)
   *2026:* Produce and fish stalls Wed, Sat and Sun mornings (none Friday); the restaurant section (Rubro, Marisco na Praça) is open daily until late.
 
+- **Neat Records (record shop)** — Rua Rebelo da Silva 55B, Arroios. Used LPs ~€10–25 (≈ $12–29). Mon–Sat 12:00–19:30, closed Sun (unconfirmed). +351 915 897 827. [Info](https://www.lisbonrecordshops.com/2020/07/neat-records.html) [Maps](https://www.google.com/maps/search/?api=1&query=Neat+Records+Rua+Rebelo+da+Silva+Lisboa)
+  *2026:* Record shop. Its own tagline is "punk is alive and well": a punk-focused stock of new and used vinyl and CDs.
+- **Groovie Records (record shop)** — Rua Angelina Vidal 49A, Anjos. Used LPs ~€10–25 (≈ $12–29). ✓ Mon–Sat 11:00–22:00, closed Sun. +351 965 657 149. [Site](https://www.groovierecords.com/pages/contact) [Maps](https://www.google.com/maps/search/?api=1&query=Groovie+Records+Rua+Angelina+Vidal+Lisboa)
+  *2026:* Record shop and label for garage, psych and Portuguese beat/surf. Upstairs bar with craft beer, DJ sets and weekend gigs; good for an evening.
+- **Flur (record shop)** — Mercado de Arroios, stalls 28/29, Arroios. New LPs ~€25–45 (≈ $29–52). ✓ Mon–Sat (Mon–Fri 11:00–19:00, Sat 10:00–19:00), closed Sun. +351 21 882 1101. [Site](https://www.flur.pt/pages/contacts-opening-hours) [Maps](https://www.google.com/maps/search/?api=1&query=Flur+Mercado+de+Arroios+Lisboa)
+  *2026:* Record shop. Lisbon's best-known since 2001: electronic, experimental, disco, funk and world music, with listening stations.
+- **Amor Records (record shop)** — Rua dos Anjos 2A, Anjos. Used LPs ~€10–25 (≈ $12–29). 15:00–23:00 (unconfirmed). [Maps](https://www.google.com/maps/search/?api=1&query=Amor+Records+Rua+dos+Anjos+Lisboa)
+  *2026:* Record shop and bar with a Brazilian focus and new electronic releases; hosts DJ nights.
+- **Tabatô Records (record shop)** — Rua de Arroios 11B, Arroios. Used LPs ~€10–25 (≈ $12–29). Mon–Sat 15:00–20:00, closed Sun (unconfirmed). [Info](https://www.lisbonrecordshops.com/) [Maps](https://www.google.com/maps/search/?api=1&query=Tabato+Records+Rua+de+Arroios+Lisboa)
+  *2026:* Record shop for music from Portuguese-speaking Africa, Brazil and reggae/dub, plus jazz, soul and funk.
+- **Carbono (record shop)** — Rua do Telhal 6B, Avenida da Liberdade. Bargains ~€5–10 (≈ $6–12); basement €1 bin. Hours unconfirmed. [Maps](https://www.google.com/maps/search/?api=1&query=Carbono+Rua+do+Telhal+Lisboa)
+  *2026:* Record shop open since 1983; thousands of used records in rock, soul and African music. Dig through the basement.
+- **Discolecção (record shop)** — Calçada do Duque 53-A, Rossio. Hours unconfirmed. [Maps](https://www.google.com/maps/search/?api=1&query=Discoleccao+Calcada+do+Duque+Lisboa)
+  *2026:* Record shop with deep used crates (hardcore, free jazz, odd rarities) that take serious digging.
+- **Louie Louie (record shop)** — Escadinhas do Santo Espírito da Pedreira 3, Chiado. CDs from €5 (≈ $6). Daily (Mon–Sat 11:00–19:30, Sun 15:00–19:30; unconfirmed). [Info](https://www.timeout.com/lisbon/shopping/louie-louie) [Maps](https://www.google.com/maps/search/?api=1&query=Louie+Louie+Lisboa)
+  *2026:* Classic independent record shop with new and used jazz, Brazilian, Portuguese and soundtracks. May be the one shop open Sunday.
+- **Espaço Chiado record shops** — Rua da Misericórdia 14, Chiado. New LPs ~€20–40 (≈ $23–46). Hours unconfirmed. [Maps](https://www.google.com/maps/search/?api=1&query=Espaco+Chiado+Rua+da+Misericordia+14+Lisboa)
+  *2026:* Three record shops in one building:
+  - **Peekaboo** — punk, hardcore, post-punk (1st floor, shop 35)
+  - **Carpet & Snares** — DJ 12-inches, house and techno
+  - **Sound Club** — disco, soul, jazz and fado
+- **Clube 33 (record shop)** — Rua dos Poiais de São Bento 33, São Bento. New LPs ~€20–40 (≈ $23–46). Hours unconfirmed. +351 21 403 8570. [Maps](https://www.google.com/maps/search/?api=1&query=Clube+33+Rua+dos+Poiais+de+Sao+Bento+Lisboa)
+  *2026:* Record shop for electronic, house and ambient, right on the Rua de São Bento strip.
+
 ## Tours & Getting Around
 
 - **Queer Lisbon walking tour (guide Leonor Machado)** — Starts at Jardim do Príncipe Real. €40 (≈ $46), 4 hours. [Maps](https://www.google.com/maps/search/?api=1&query=Jardim+do+Principe+Real)
