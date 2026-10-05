@@ -5,6 +5,7 @@ import type { Category, Cluster, DayRule, Place } from "@/lib/content/types";
 import type { Assignments, SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, HoursLine, StatusPill } from "./bits";
 import { AddToDaySheet, usePlanAssignments, usePlanBookings } from "./AddToDay";
+import { ShortlistFilter, ShortlistToggle, useShortlist } from "./Shortlist";
 import type { Booking } from "@/lib/plan/booking";
 
 export function PlacesList({
@@ -33,9 +34,11 @@ export function PlacesList({
   const [category, setCategory] = useState<Category | "">("");
   const [cluster, setCluster] = useState("");
   const [status, setStatus] = useState("");
+  const [shortOnly, setShortOnly] = useState(false);
+  const short = useShortlist(slug, places);
   const { assignments: local, assign, unassign, error: planError } = usePlanAssignments(slug, assignments);
   const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
-  const error = planError ?? bookingError;
+  const error = planError ?? bookingError ?? short.error;
   const [sheet, setSheet] = useState<Place | null>(null);
   const planned = new Set(Object.values(local).filter(Boolean) as string[]);
   const cats = [...new Set(places.map((p) => p.category))];
@@ -43,6 +46,7 @@ export function PlacesList({
     (p) =>
       (!category || p.category === category) &&
       (!cluster || p.cluster === cluster) &&
+      (!shortOnly || short.is(p)) &&
       (!status || (status === "planned") === planned.has(p.id)),
   );
   const clusterName = (id?: string | null) => clusters.find((c) => c.id === id)?.name.replace(" Lisbon", "") ?? "";
@@ -55,6 +59,7 @@ export function PlacesList({
         </div>
       )}
       <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+        <ShortlistFilter on={shortOnly} count={short.count} onChange={setShortOnly} />
         <button className="tp-chip" aria-pressed={!category} onClick={() => setCategory("")}>
           All <span className="tp-count">{places.length}</span>
         </button>
@@ -81,8 +86,8 @@ export function PlacesList({
           Status
           <select className="tp-input" value={status} onChange={(e) => setStatus(e.target.value)}>
             <option value="">Any status</option>
-            <option value="want">Want</option>
             <option value="planned">Planned</option>
+            <option value="unplanned">Not planned yet</option>
           </select>
         </label>
       </div>
@@ -116,7 +121,10 @@ export function PlacesList({
                 <div className="tp-num">{prices[p.id]}</div>
                 <HoursLine place={p} />
                 <div className="tp-place__foot">
-                  <StatusPill planned={planned.has(p.id)} />
+                  <span className="flex flex-wrap items-center gap-2">
+                    <ShortlistToggle on={short.is(p)} name={p.name} editable={editable} onToggle={() => short.toggle(p)} />
+                    <StatusPill planned={planned.has(p.id)} />
+                  </span>
                   {editable && (
                     <button className="tp-btn tp-btn--secondary" style={{ fontSize: 13, padding: "0 12px" }} onClick={() => setSheet(p)}>
                       {planned.has(p.id) ? "Move" : "Add to day"}
@@ -128,7 +136,11 @@ export function PlacesList({
           </li>
         ))}
       </ul>
-      {shown.length === 0 && <p className="t-caption">No places match these filters. Choose All to see everything.</p>}
+      {shown.length === 0 && (
+        <p className="t-caption">
+          {shortOnly && !short.count ? "Nothing on the shortlist yet. Tap Shortlist on a place to add it." : "No places match these filters. Choose All to see everything."}
+        </p>
+      )}
       {sheet && (
         <AddToDaySheet
           place={sheet}

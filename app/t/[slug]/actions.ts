@@ -144,6 +144,15 @@ export async function removeRoute(slug: string, routeId: string) {
   const placeId = `route-${routeId}`;
   await getStore().unassign(slug, placeId);
   await getStore().clearBooking(slug, placeId);
+  await getStore().setShortlisted(slug, placeId, false);
   await getStore().removeRoute(slug, routeId);
+  revalidatePath(`/t/${slug}`, "layout");
+}
+
+/** The Shortlist toggle on a place card. */
+export async function setShortlisted(slug: string, placeId: string, on: boolean) {
+  const trip = await guard(slug);
+  if (!(await knownPlace(slug, trip, placeId))) throw new Error("Unknown place");
+  await getStore().setShortlisted(slug, placeId, on);
   revalidatePath(`/t/${slug}`, "layout");
 }

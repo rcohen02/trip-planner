@@ -20,6 +20,7 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
       await prisma.booking.deleteMany();
       await prisma.hoursCheck.deleteMany();
       await prisma.route.deleteMany();
+      await prisma.shortlistItem.deleteMany();
     }
   });
 
@@ -128,5 +129,16 @@ describe.each(makers)("PlanStore (%s)", (_name, make) => {
     expect(await s.routes("other")).toEqual([]);
     await s.removeRoute("lis", a.id);
     expect(await s.routes("lis")).toEqual([]);
+  });
+
+  it("keeps a shortlist per trip and lets places come off it", async () => {
+    const s = make();
+    await s.setShortlisted("lis", "maat", true);
+    await s.setShortlisted("lis", "maat", true);
+    await s.setShortlisted("lis", "canalha", true);
+    expect((await s.shortlist("lis")).sort()).toEqual(["canalha", "maat"]);
+    await s.setShortlisted("lis", "maat", false);
+    expect(await s.shortlist("lis")).toEqual(["canalha"]);
+    expect(await s.shortlist("other")).toEqual([]);
   });
 });

@@ -30,6 +30,9 @@ export interface PlanStore {
   routes(trip: string): Promise<RouteRecord[]>;
   addRoute(trip: string, route: RouteDraft): Promise<RouteRecord>;
   removeRoute(trip: string, id: string): Promise<void>;
+  /** Place ids on the trip's shortlist. */
+  shortlist(trip: string): Promise<string[]>;
+  setShortlisted(trip: string, placeId: string, on: boolean): Promise<void>;
   /** Places whose hours someone checked (the ✓ on "Hours unconfirmed"). */
   hoursChecked(trip: string): Promise<string[]>;
   setHoursChecked(trip: string, placeId: string, checked: boolean): Promise<void>;

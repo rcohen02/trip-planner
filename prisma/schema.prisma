@@ -94,3 +94,12 @@ model Route {
 
   @@index([trip])
 }
+
+/// A place on the trip's shortlist (the Shortlist toggle that replaced "Want").
+model ShortlistItem {
+  trip      String
+  placeId   String
+  createdAt DateTime @default(now())
+
+  @@id([trip, placeId])
+}

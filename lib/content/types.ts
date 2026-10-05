@@ -45,6 +45,8 @@ export interface Place {
   lat?: number | null;
   lng?: number | null;
   images?: PlaceImage[];
+  /** On the shortlist (the Shortlist toggle on cards). Set from the store in lib/context.ts. */
+  shortlisted?: boolean;
   /** Set for walking routes uploaded on the site (category "walk"). */
   route?: RouteInfo;
 }

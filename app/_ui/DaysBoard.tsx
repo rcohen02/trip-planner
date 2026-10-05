@@ -13,8 +13,9 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { Check, ChevronDown, ChevronUp, GripVertical, Lock, OctagonX, Pencil, Plus } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, GripVertical, Lock, OctagonX, Pencil, Plus, Star } from "lucide-react";
 import type { Cluster, DayRule, Place } from "@/lib/content/types";
+import { onlyShortlisted } from "@/lib/plan/shortlist";
 import {
   buildSlots,
   cleanSlotLabel,
@@ -32,6 +33,7 @@ import { addSlot, assignPlace, removeSlot, renameSlot, setHoursChecked, unassign
 import { Alert, CATEGORY, Thumb } from "./bits";
 import { AddToDaySheet, usePlanBookings } from "./AddToDay";
 import { AddRouteButton } from "./AddRoute";
+import { ShortlistFilter, ShortlistToggle, useShortlist } from "./Shortlist";
 import { bookingTime, bookingWarnings, type Booking } from "@/lib/plan/booking";
 
 type Move = { type: "assign"; slotId: string; placeId: string } | { type: "unassign"; placeId: string };
@@ -83,6 +85,8 @@ export function DaysBoard({
     [sourcePlaces, hoursOverride],
   );
   const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
+  const short = useShortlist(slug, sourcePlaces);
+  const [shortOnly, setShortOnly] = useState(false);
   const extras = layout.extras;
   const setExtras = (f: (e: typeof extras) => typeof extras) => setLayout((l) => ({ ...l, extras: f(l.extras) }));
   const slots = useMemo(() => buildSlots(days, layout), [days, layout]);
@@ -113,7 +117,8 @@ export function DaysBoard({
       (!category || p.category === category) &&
       (!cluster || p.cluster === cluster) &&
       (!openOn || !warningsFor(p, openOn).some((w) => w.level === "crit")) &&
-      (!q || p.name.toLowerCase().includes(q.toLowerCase())),
+      (!q || p.name.toLowerCase().includes(q.toLowerCase())) &&
+      (!shortOnly || short.is(p)),
   );
 
   function run(m: Move) {
@@ -216,9 +221,9 @@ export function DaysBoard({
 
   return (
     <DndContext id="days-board" sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd} onDragCancel={() => setDragging(null)}>
-      {(error ?? bookingError) && (
+      {(error ?? bookingError ?? short.error) && (
         <div className="mb-4">
-          <Alert level="crit">{error ?? bookingError}</Alert>
+          <Alert level="crit">{error ?? bookingError ?? short.error}</Alert>
         </div>
       )}
 
@@ -235,6 +240,7 @@ export function DaysBoard({
               {railOpen ? "Hide the list" : "Show the list"}
             </button>
             <div className={`tp-col ${railOpen ? "" : "max-sm:hidden"}`}>
+            <ShortlistFilter on={shortOnly} count={unscheduled.filter(short.is).length} onChange={setShortOnly} />
             <div className="grid grid-cols-2 gap-2 min-[960px]:grid-cols-1">
               <label className="tp-field col-span-2 min-[960px]:col-span-1">
                 <span className="sr-only">Search</span>
@@ -282,6 +288,7 @@ export function DaysBoard({
                     price={prices[p.id]}
                     editable={editable}
                     onTap={() => editable && setSheet({ kind: "place", placeId: p.id })}
+                    extra={<ShortlistToggle compact on={short.is(p)} name={p.name} editable={editable} onToggle={() => short.toggle(p)} />}
                   />
                   {!p.hoursConfirmed && (
                     <span className="tp-unsure-row">
@@ -292,7 +299,13 @@ export function DaysBoard({
                 </li>
               ))}
               {pool.length === 0 && (
-                <li className="t-caption">{unscheduled.length ? "Nothing matches. Clear a filter to see more." : "Everything is in a day."}</li>
+                <li className="t-caption">
+                  {shortOnly && !unscheduled.some(short.is)
+                    ? "Nothing unscheduled on the shortlist. Tap ☆ on a place to add it."
+                    : unscheduled.length
+                      ? "Nothing matches. Clear a filter to see more."
+                      : "Everything is in a day."}
+                </li>
               )}
             </ul>
             </div>
@@ -480,7 +493,7 @@ export function DaysBoard({
       {sheet?.kind === "slot" && (
         <PickPlaceSheet
           slot={slots.find((s) => s.id === sheet.slotId)!}
-          places={unscheduled}
+          places={short.withState(unscheduled)}
           prices={prices}
           onClose={() => setSheet(null)}
           onPick={(placeId) => {
@@ -756,12 +769,15 @@ function Row({
   editable,
   conflict = false,
   onTap,
+  extra,
 }: {
   place: Place;
   price: string;
   editable: boolean;
   conflict?: boolean;
   onTap: () => void;
+  /** Optional control before the drag handle (the shortlist star in Unscheduled). */
+  extra?: React.ReactNode;
 }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: place.id, disabled: !editable });
   return (
@@ -783,6 +799,7 @@ function Row({
           {CATEGORY[place.category].short.toUpperCase()} · {price}
         </div>
       </button>
+      {extra}
       {editable && (
         <span className="tp-row__grip flex min-h-[44px] items-center px-1 touch-none" {...listeners} {...attributes} aria-label={`Drag ${place.name}`}>
           <GripVertical className="tp-icon" aria-hidden />
@@ -806,7 +823,10 @@ function PickPlaceSheet({
   onClose: () => void;
 }) {
   const [q, setQ] = useState("");
-  const shown = places.filter((p) => !q || p.name.toLowerCase().includes(q.toLowerCase()));
+  const shortCount = places.filter((p) => p.shortlisted).length;
+  // With lots of places, start on the shortlist when there is one.
+  const [shortOnly, setShortOnly] = useState(shortCount > 0);
+  const shown = onlyShortlisted(places, shortOnly).filter((p) => !q || p.name.toLowerCase().includes(q.toLowerCase()));
   return (
     <>
       <div className="tp-scrim" onClick={onClose} />
@@ -817,6 +837,10 @@ function PickPlaceSheet({
           </p>
           <p className="t-subheading m-0 mt-1">Pick from Unscheduled</p>
         </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <ShortlistFilter on={shortOnly} count={shortCount} onChange={setShortOnly} />
+          {shortOnly && <span className="t-caption">{places.length - shortCount} more if you turn it off</span>}
+        </div>
         <input type="search" className="tp-input" placeholder="Search place names" value={q} onChange={(e) => setQ(e.target.value)} autoFocus />
         <ul className="tp-col m-0 max-h-[50dvh] list-none overflow-y-auto p-0" style={{ gap: 8 }}>
           {shown.map((p) => {
@@ -826,7 +850,10 @@ function PickPlaceSheet({
                 <button className="tp-row w-full cursor-pointer text-left text-ink" onClick={() => onPick(p.id)}>
                   <Thumb place={p} />
                   <div className="tp-row__body">
-                    <div className="tp-row__name">{p.name}</div>
+                    <div className="tp-row__name">
+                      {p.shortlisted && <Star className="tp-icon is-filled mr-1 inline align-[-2px] text-accent" aria-label="Shortlisted" />}
+                      {p.name}
+                    </div>
                     <div className="tp-label-sm">
                       {CATEGORY[p.category].short.toUpperCase()} · {prices[p.id]}
                     </div>
@@ -836,7 +863,7 @@ function PickPlaceSheet({
               </li>
             );
           })}
-          {shown.length === 0 && <li className="t-caption">No unscheduled places match.</li>}
+          {shown.length === 0 && <li className="t-caption">{shortOnly ? "No unscheduled places on the shortlist match." : "No unscheduled places match."}</li>}
         </ul>
         <button className="tp-btn tp-btn--text" onClick={onClose}>
           Cancel

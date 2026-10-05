@@ -74,7 +74,8 @@ export function WarningList({ items, small = true }: { items: PlanWarning[]; sma
 }
 
 export function StatusPill({ planned }: { planned: boolean }) {
-  return planned ? <span className="tp-pill tp-pill--planned">Planned</span> : <span className="tp-pill tp-pill--want">Want</span>;
+  // "Want" was replaced by the Shortlist toggle (Shortlist.tsx); unplanned places show nothing here.
+  return planned ? <span className="tp-pill tp-pill--planned">Planned</span> : null;
 }
 
 export function HoursLine({ place }: { place: Place }) {

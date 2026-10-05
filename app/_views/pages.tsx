@@ -18,6 +18,7 @@ import { Alert, CATEGORY, CategoryTag, HoursLine, PageTitle, StatusPill } from "
 import { MapLoader } from "@/app/_ui/MapLoader";
 import { RemoveRouteButton } from "@/app/_ui/RemoveRoute";
 import { RouteSketch } from "@/app/_ui/RouteSketch";
+import { ShortlistButton } from "@/app/_ui/Shortlist";
 
 export async function DaysView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
@@ -88,6 +89,7 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
         <h1 className="t-display m-0">{p.name}</h1>
         <div className="flex flex-wrap items-center gap-3">
           <CategoryTag category={p.category} />
+          <ShortlistButton slug={trip.slug} place={p} editable={editable} />
           <StatusPill planned={Boolean(slotId)} />
           {planDate && <span className="t-caption">In the plan for {dateLabel(planDate)}</span>}
         </div>

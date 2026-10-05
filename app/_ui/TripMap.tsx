@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import type { Category, Cluster, DayRule, Place, Trip } from "@/lib/content/types";
 import { visibleCategories, type Assignments, type SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, StatusPill } from "./bits";
+import { ShortlistFilter, ShortlistToggle, useShortlist } from "./Shortlist";
 import { AddToDaySheet, usePlanAssignments, usePlanBookings } from "./AddToDay";
 import { bookingTime, type Booking } from "@/lib/plan/booking";
 import { dateLabel } from "@/lib/format";
@@ -40,10 +41,17 @@ export default function TripMap({
   const [picked, setPicked] = useState<Place | null>(null);
   const cats = [...new Set(places.map((p) => p.category))];
   const [only, setOnly] = useState<Category | null>(null);
+  const [shortOnly, setShortOnly] = useState(false);
+  const [ready, setReady] = useState(0);
+  const placesKey = places.map((p) => `${p.id}:${p.lat}:${p.lng}`).join("|");
+  const short = useShortlist(slug, places);
+  const shortKey = places.filter(short.is).map((p) => p.id).join("|");
+  /** placeId → its pin (and route line), so the shortlist filter can hide single places. */
+  const items = useRef<Map<string, { group: import("leaflet").LayerGroup; layers: import("leaflet").Layer[]; pin: import("leaflet").Marker }>>(new Map());
   const [sheet, setSheet] = useState<Place | null>(null);
   const { assignments, assign, unassign, error: planError } = usePlanAssignments(slug, initial);
   const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
-  const error = planError ?? bookingError;
+  const error = planError ?? bookingError ?? short.error;
   const planned = new Set(Object.values(assignments).filter(Boolean) as string[]);
 
   useEffect(() => {
@@ -76,30 +84,55 @@ export default function TripMap({
           group = L.layerGroup().addTo(map);
           layers.current.set(p.category, group);
         }
+        const own: import("leaflet").Layer[] = [];
         if (p.route) {
-          L.polyline(p.route.line, { className: "tp-route", weight: 5, opacity: 0.85 })
-            .on("click", () => setPicked(p))
-            .addTo(group);
+          own.push(
+            L.polyline(p.route.line, { className: "tp-route", weight: 5, opacity: 0.85 })
+              .on("click", () => setPicked(p))
+              .addTo(group),
+          );
           pts.push(...p.route.line);
         }
-        L.marker([p.lat, p.lng], {
+        const pin = L.marker([p.lat, p.lng], {
           icon: L.divIcon({ className: "", html: `<div class="tp-pin c-${p.category}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] }),
           title: `${p.name} (${CATEGORY[p.category].label})`,
           keyboard: true,
         })
           .on("click", () => setPicked(p))
           .addTo(group);
+        own.push(pin);
+        items.current.set(p.id, { group, layers: own, pin });
       }
       map.fitBounds(L.latLngBounds(pts), { padding: [30, 30] });
+      setReady((n) => n + 1);
     })();
     const groups = layers.current;
+    const placed = items.current;
     return () => {
       cancelled = true;
       mapRef.current?.remove();
       mapRef.current = null;
       groups.clear();
+      placed.clear();
     };
-  }, [homebase, places]);
+    // Rebuild only when the places or their positions change, not on every data refresh (that would reset the zoom).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [homebase.lat, homebase.lng, placesKey]);
+
+  // "Shortlist only" hides the other pins; shortlisted pins get a ring either way.
+  useEffect(() => {
+    for (const p of places) {
+      const it = items.current.get(p.id);
+      if (!it) continue;
+      const on = short.is(p);
+      for (const l of it.layers) {
+        if (shortOnly && !on) it.group.removeLayer(l);
+        else it.group.addLayer(l);
+      }
+      it.pin.getElement()?.firstElementChild?.classList.toggle("tp-pin--short", on);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shortOnly, shortKey, ready]);
 
   // Picking a walk zooms the map to its line (it's a squiggle at trip-wide zoom).
   useEffect(() => {
@@ -118,7 +151,7 @@ export default function TripMap({
       else m.removeLayer(g);
     }
     if (picked && !shown.has(picked.category)) setPicked(null);
-  }, [only, picked]);
+  }, [only, picked, ready]);
 
   return (
     <div className="flex flex-col gap-5 min-[960px]:flex-row">
@@ -130,6 +163,7 @@ export default function TripMap({
               Reset
             </button>
           </div>
+          <ShortlistFilter on={shortOnly} count={short.count} onChange={setShortOnly} />
           <div className="flex flex-wrap gap-2 min-[960px]:flex-col" role="group" aria-label="Show one category">
             {cats.map((c) => (
               <button key={c} className={`tp-chip c-${c} justify-start`} aria-pressed={only === c} onClick={() => setOnly(only === c ? null : c)}>
@@ -161,7 +195,7 @@ export default function TripMap({
           style={{ borderRadius: "var(--radius-lg)", border: "1px solid var(--line)" }}
           aria-label={`Map of places and ${homebase.label}`}
         />
-        {picked && (
+        {picked && (!shortOnly || short.is(picked)) && (
           <div
             className="tp-card tp-card--compact absolute inset-x-3 bottom-3 z-[1000] sm:left-auto sm:right-3 sm:top-3 sm:bottom-auto sm:w-80"
             style={{ boxShadow: "var(--shadow-sheet)", background: "var(--surface-raised)" }}
@@ -171,6 +205,7 @@ export default function TripMap({
                 <p className="t-subheading m-0">{picked.name}</p>
                 <p className="t-caption m-0">{picked.location}</p>
                 <div className="mt-1 flex flex-wrap gap-1">
+                  <ShortlistToggle on={short.is(picked)} name={picked.name} editable={editable} onToggle={() => short.toggle(picked)} />
                   <StatusPill planned={planned.has(picked.id)} />
                   {bookings[picked.id] && (
                     <span className="tp-pill tp-pill--planned">

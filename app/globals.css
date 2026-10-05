@@ -90,3 +90,25 @@ button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor
 .tp-route { stroke: var(--cat-walk); stroke-linecap: round; stroke-linejoin: round; cursor: pointer; }
 
 .tp-sketch { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+
+/* Shortlist toggle: outline when off, highlighted (accent fill, filled star) when on. Replaced the "Want" pill. */
+.tp-short { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: var(--radius-pill);
+  border: 1px solid var(--control-border); background: transparent; color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 500;
+  cursor: pointer; position: relative; white-space: nowrap; }
+.tp-short::after { content: ""; position: absolute; inset: -4px; }
+.tp-short[aria-pressed=false]:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.tp-short[aria-pressed=true]:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
+.tp-short[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.tp-short:disabled { cursor: default; }
+.tp-short--icon { width: 36px; padding: 0; justify-content: center; border-color: transparent; }
+.tp-short--icon[aria-pressed=false] { color: var(--ink-3); }
+.tp-chip:disabled { opacity: 0.5; cursor: default; }
+
+/* Shortlisted map pin: a ring in the accent color around the category dot. */
+.tp-pin.tp-pin--short { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent); }
+
+/* Place card footer: let Shortlist and "Add to day" wrap as whole buttons instead of squeezing the text. */
+.tp-place__foot { flex-wrap: wrap; row-gap: 8px; }
+.tp-place__foot .tp-btn { white-space: nowrap; }
+/* A filled star means "on the shortlist" (.tp-icon defaults to fill:none). */
+.tp-icon.is-filled { fill: currentColor; }

@@ -5,6 +5,7 @@ import { getTrip } from "@/lib/trips";
 import type { Trip } from "@/lib/content/types";
 import { applyHoursChecks, checkedPlaces } from "@/lib/plan/hours";
 import { routePlace } from "@/lib/routes/route";
+import { applyShortlist } from "@/lib/plan/shortlist";
 
 export interface TripContext {
   trip: Trip;
@@ -33,11 +34,12 @@ export async function shareContext(token: string): Promise<TripContext> {
  * everywhere, and uploaded walking routes join the places as "walk" cards.
  */
 async function withChecks(trip: Trip): Promise<Trip> {
-  const [checks, done, routes] = await Promise.all([
+  const [checks, done, routes, shortlist] = await Promise.all([
     getStore().hoursChecked(trip.slug),
     getStore().todos(trip.slug),
     getStore().routes(trip.slug),
+    getStore().shortlist(trip.slug),
   ]);
   const places = applyHoursChecks(trip.places, checkedPlaces(checks, trip.todos, done));
-  return { ...trip, places: [...places, ...routes.map((r) => routePlace(r, places))] };
+  return { ...trip, places: applyShortlist([...places, ...routes.map((r) => routePlace(r, places))], shortlist) };
 }

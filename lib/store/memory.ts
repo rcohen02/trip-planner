@@ -12,6 +12,17 @@ export class MemoryStore implements PlanStore {
   private labels = new Map<string, Record<string, string>>();
   private bookingState = new Map<string, Record<string, Booking>>();
   private hours = new Map<string, Set<string>>();
+  private short = new Map<string, Set<string>>();
+
+  async shortlist(trip: string) {
+    return [...(this.short.get(trip) ?? [])];
+  }
+  async setShortlisted(trip: string, placeId: string, on: boolean) {
+    const set = new Set(this.short.get(trip) ?? []);
+    if (on) set.add(placeId);
+    else set.delete(placeId);
+    this.short.set(trip, set);
+  }
   private routeState = new Map<string, RouteRecord[]>();
 
   async routes(trip: string) {

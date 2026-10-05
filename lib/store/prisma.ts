@@ -54,6 +54,16 @@ export class PrismaStore implements PlanStore {
     await this.db.route.deleteMany({ where: { trip, id } });
   }
 
+  async shortlist(trip: string): Promise<string[]> {
+    const rows = await this.db.shortlistItem.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
+    return rows.map((r) => r.placeId);
+  }
+
+  async setShortlisted(trip: string, placeId: string, on: boolean) {
+    if (on) await this.db.shortlistItem.upsert({ where: { trip_placeId: { trip, placeId } }, create: { trip, placeId }, update: {} });
+    else await this.db.shortlistItem.deleteMany({ where: { trip, placeId } });
+  }
+
   async hoursChecked(trip: string): Promise<string[]> {
     const rows = await this.db.hoursCheck.findMany({ where: { trip }, orderBy: { createdAt: "asc" } });
     return rows.map((r) => r.placeId);
