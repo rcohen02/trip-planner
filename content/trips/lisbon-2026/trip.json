@@ -219,7 +219,17 @@
     "estoril-cascais-seafront-promenade": "cascais",
     "boca-do-inferno": "cascais",
     "world-superbikes-at-estoril": "cascais",
-    "mostra-de-artes-da-palavra": "cascais"
+    "mostra-de-artes-da-palavra": "cascais",
+    "neat-records-record-shop": "east",
+    "groovie-records-record-shop": "east",
+    "flur-record-shop": "east",
+    "amor-records-record-shop": "east",
+    "tabato-records-record-shop": "east",
+    "carbono-record-shop": "center",
+    "discoleccao-record-shop": "center",
+    "louie-louie-record-shop": "center",
+    "espaco-chiado-record-shops": "center",
+    "clube-33-record-shop": "center"
   },
   "todos": [
     {
@@ -446,6 +456,46 @@
     },
     "mostra-de-artes-da-palavra": {
       "geoQuery": "Oeiras",
+      "noImages": true
+    },
+    "neat-records-record-shop": {
+      "geoQuery": "Rua Rebelo da Silva 55, Lisboa",
+      "noImages": true
+    },
+    "groovie-records-record-shop": {
+      "geoQuery": "Rua Angelina Vidal 49, Lisboa",
+      "noImages": true
+    },
+    "flur-record-shop": {
+      "geoQuery": "Mercado de Arroios, Lisboa",
+      "noImages": true
+    },
+    "amor-records-record-shop": {
+      "geoQuery": "Rua dos Anjos, Lisboa",
+      "noImages": true
+    },
+    "tabato-records-record-shop": {
+      "geoQuery": "Rua de Arroios 11, Lisboa",
+      "noImages": true
+    },
+    "carbono-record-shop": {
+      "geoQuery": "Rua do Telhal, Lisboa",
+      "noImages": true
+    },
+    "discoleccao-record-shop": {
+      "geoQuery": "Calçada do Duque, Lisboa",
+      "noImages": true
+    },
+    "louie-louie-record-shop": {
+      "geoQuery": "Escadinhas do Santo Espírito da Pedreira, Lisboa",
+      "noImages": true
+    },
+    "espaco-chiado-record-shops": {
+      "geoQuery": "Rua da Misericórdia 14, Lisboa",
+      "noImages": true
+    },
+    "clube-33-record-shop": {
+      "geoQuery": "Rua dos Poiais de São Bento 33, Lisboa",
       "noImages": true
     }
   }
