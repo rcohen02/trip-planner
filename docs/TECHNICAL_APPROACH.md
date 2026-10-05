@@ -286,6 +286,12 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 - [ ] **Done status + notes** during the trip
 - [ ] **ICS calendar feed** for flights and planned slots
 - [ ] **Add to calendar** from a booking (requested Oct 4, 2026): one tap on a booked place adds it to Google Calendar with the time, confirmation and note, plus a reminder; fallback is a downloadable `.ics` file. Bookings already store Lisbon date + time (`lib/plan/booking.ts`, `bookingInstant` gives the exact moment).
+- [ ] **Maps feature: follow a walking route with more than 3 points** (tabled Oct 5, 2026). Google Maps directions links accept only 3 waypoints on phones (9 on desktop), so "Walking directions" for an uploaded route only roughly follows the drawn line (`directionsUrl` in `lib/routes/route.ts`). Options:
+  1. **Legs:** split the route into ~1.5 km legs, each its own directions link with 3 waypoints (3 legs ≈ 11 points instead of 5). End legs at saved places on the route where possible. Keeps Google's spoken turn-by-turn.
+  2. **"You are here" on the site map:** show the exact drawn line with a live location dot (browser Geolocation; Vercel is HTTPS). Follows the route 100%, no voice directions.
+  3. **Download GPX** of the full line for apps that follow imported tracks with voice guidance (Komoot, AllTrails; some features paid).
+  4. **No build:** the Google Maps app can show your My Maps (under Saved) with the full line, but without turn-by-turn.
+  - Leaning: 1 + 2 together (Google voice that stays close, plus the exact line when Google wanders).
 
 ---
 
