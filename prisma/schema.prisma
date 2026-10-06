@@ -140,3 +140,23 @@ model TripMember {
   @@id([slug, email])
   @@index([email])
 }
+
+/// A user's travel profile (lib/profile/types Profile) as one JSON document.
+model Profile {
+  email     String   @id
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
+/// Every change to a profile, so it can be shown and undone. before = the profile before this change (null = none).
+model ProfileChange {
+  id        String   @id
+  email     String
+  reason    String
+  summary   String
+  before    Json?
+  createdAt DateTime @default(now())
+  undone    Boolean  @default(false)
+
+  @@index([email, createdAt])
+}

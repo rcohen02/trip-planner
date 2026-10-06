@@ -2,17 +2,56 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getViewer, signOut } from "@/auth";
 import { listAllTrips, listTripsFor } from "@/lib/trips";
+import { getProfileRepo } from "@/lib/profile";
+import { nextStep } from "@/lib/profile/setup";
 import { dateLabel } from "@/lib/format";
 
 export default async function Home() {
   const viewer = await getViewer();
   if (!viewer) redirect("/signin");
-  const trips = viewer.dev ? await listAllTrips() : await listTripsFor(viewer.email);
+  const [trips, profile] = await Promise.all([
+    viewer.dev ? listAllTrips() : listTripsFor(viewer.email),
+    getProfileRepo().get(viewer.email),
+  ]);
+  const setupLeft = profile && nextStep(profile) !== "review";
   return (
     <main className="mx-auto max-w-[720px] px-4 py-10 sm:px-6">
-      <p className="tp-label m-0">T2T · Time 2 Travel</p>
-      <h1 className="t-title mt-1">Your trips</h1>
-      <ul className="tp-col m-0 mt-5 list-none p-0">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="tp-label m-0">T2T · Time 2 Travel</p>
+          <h1 className="t-title mt-1">Your trips</h1>
+        </div>
+        <Link href="/profile" className="tp-btn tp-btn--secondary">
+          Profile
+        </Link>
+      </div>
+
+      <section className="tp-card tp-card--compact mt-5 gap-2">
+        <div className="flex items-center justify-between gap-2">
+          <span className="tp-label">Your travel profile</span>
+          <Link href="/profile" className="tp-btn tp-btn--text">
+            {profile ? "Edit" : "Set up"}
+          </Link>
+        </div>
+        {profile ? (
+          <>
+            <span className="t-subheading">
+              {profile.groups.length} {profile.groups.length === 1 ? "group" : "groups"} · {profile.interests.length}{" "}
+              {profile.interests.length === 1 ? "interest" : "interests"}
+              {profile.limits.driveMinutes != null ? ` · ${profile.limits.driveMinutes}-min radius` : ""}
+            </span>
+            <span className="t-caption">
+              {profile.groups.map((g) => g.name).join(", ") || "No groups yet"}
+              {setupLeft ? " · a few questions still open" : ""}
+            </span>
+          </>
+        ) : (
+          <span className="t-caption">Set it up once: who comes, your limits, what you love. Trips then only ask what&apos;s new.</span>
+        )}
+      </section>
+
+      <p className="tp-label m-0 mt-6">Trips</p>
+      <ul className="tp-col m-0 mt-2 list-none p-0">
         {trips.map((t) => (
           <li key={t.slug}>
             <Link href={`/t/${t.slug}`} className="tp-card flex-row items-center justify-between text-ink no-underline">

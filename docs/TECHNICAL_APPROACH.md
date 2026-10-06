@@ -284,7 +284,7 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 - [ ] **Research agent** for new destinations (§4.8)
 - [ ] **New trip wizard:** destination, dates, homebase, family or adults scope. **Superseded Oct 5, 2026** by the profiles + new trips + voice plan in `docs/PRD_PROFILES_TRIPS_VOICE.md`, built in five phases:
   - [ ] Phase 1 Foundation: users, invites, trips and places in the database; Lisbon migrated; pages unchanged (branch `profiles-and-new-trips`, no deploy before Oct 12)
-  - [ ] Phase 2 Profile: Profile page, `travel_context.md` import, typed setup flow
+  - [ ] Phase 2 Profile: Profile page, `travel_context.md` import, typed setup flow (built Oct 5 on the branch: `lib/profile/`, `/profile`, `/profile/setup`; travelers and groups live inside the profile document, not separate tables)
   - [ ] Phase 3 New trip + "Add new places": conversation engine, read-back, research into Suggested cards, draft-or-build days
   - [ ] Phase 4 Voice: browser listening and speaking on every flow (Qwen3-TTS later)
   - [ ] Phase 5 Learning: signals, end-of-trip review, approved profile changes

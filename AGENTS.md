@@ -21,6 +21,8 @@ Read `node_modules/next/dist/docs/` before using an API you are unsure of.
 - Hours checks (`lib/plan/hours.ts`): the ✓ on "Hours unconfirmed" stores a `HoursCheck`; `lib/context.ts` applies checks to `trip.places`, so views just read `hoursConfirmed`. A "Confirm … hours" to-do and the ✓ stay in sync both ways.
 - Walking routes (`lib/routes/route.ts`): uploaded on the Itinerary as Google My Maps KMZ/KML, stored as `Route` rows (never in the repo, which is public). `lib/context.ts` turns each into a `walk` place (`route-<id>`, `place.route` holds the line, distance and nearby places), so planning, bookings and the Map treat it like any place. Directions links use 3 waypoints, the phone limit.
 - Shortlist (`lib/plan/shortlist.ts`, `app/_ui/Shortlist.tsx`): replaced "Want". `ShortlistItem` rows; `lib/context.ts` sets `place.shortlisted`. Use `ShortlistToggle` on cards and `ShortlistFilter` ("Shortlist only") on any list you pick places from.
+- Trips and users (`lib/trips/`): trips live in the `Trip` table as one JSON document (same shape as `content/generated`); bundled trips and `ALLOWED_EMAILS` people are seeded on first run. Use `getTrip`/`listTripsFor`/`canOpenTrip`; never import `content/generated` in pages.
+- Profiles (`lib/profile/`): one per user, one JSON document, every save logged in `ProfileChange` with a plain-words summary (undo = latest only). Setup questions and their order live in `SETUP_STEPS`; the voice flow will reuse them.
 - Slots: base slots come from `trip.json`; slots people add on the Days board are `ExtraSlot`s in the store. Always build slots with `buildSlots(days, extras)` and show `slot.label`.
 
 <!-- BEGIN:nextjs-agent-rules -->
