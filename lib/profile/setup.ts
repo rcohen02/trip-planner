@@ -1,3 +1,4 @@
+import { HIKE_LEVELS, HIKES } from "./options";
 import type { Interest, Pace, Party, Profile, Scope, Tier, TravelGroup, Transport, Traveler } from "./types";
 
 export type SetupStepId = "travelers" | "limits" | "interests" | "food" | "pace" | "avoid" | "review";
@@ -15,7 +16,7 @@ export const SETUP_STEPS: SetupStep[] = [
   { id: "interests", question: "What makes a trip great for you?", hint: "Drag each one into a bucket, or tap it and then tap a bucket. Add your own." },
   { id: "food", question: "How do you like to eat?", hint: "Drag foods into Love or Hate, or tap one and then tap a list. Add your own." },
   { id: "pace", question: "What pace do you like?", hint: "Relaxed leaves room to linger. Packed covers more ground." },
-  { id: "avoid", question: "Anything I should never suggest?", hint: "One per line." },
+  { id: "avoid", question: "Additional notes", hint: "Anything to never suggest, and any special requests." },
   { id: "review", question: "Here's your profile. Right?", hint: "You can change any part later." },
 ];
 
@@ -96,7 +97,9 @@ function parseInterests(a: Answers, old: Interest[]): Interest[] {
       const key = name.toLowerCase();
       if (seen.has(key)) continue;
       seen.add(key);
-      out.push({ name, detail: old.find((i) => i.name.toLowerCase() === key)?.detail ?? "", tier });
+      const level = HIKE_LEVELS.find((l) => l.value === a.hikeLevel)?.label;
+      const detail = name === HIKES ? (level ?? "") : (old.find((i) => i.name.toLowerCase() === key)?.detail ?? "");
+      out.push({ name, detail, tier });
     }
   }
   return out;
@@ -114,11 +117,8 @@ export function applyStep(p: Profile, step: SetupStepId, a: Answers): Profile {
       break;
     }
     case "limits": {
-      const neverHotels = on(a.neverHotels);
       next.limits = {
         driveMinutes: count(a.driveMinutes, 1, 24 * 60),
-        lodging: neverHotels ? "house" : "any",
-        neverHotels,
         transport: unique(lines(a.transport)).filter((t): t is Transport => TRANSPORTS.includes(t as Transport)),
         scope: oneOf(a.scope, SCOPES),
       };
@@ -160,7 +160,6 @@ export function describeChanges(before: Profile | null, after: Profile): string 
     parts.push(`Drive radius ${before.limits.driveMinutes ?? "none"} → ${after.limits.driveMinutes ?? "none"} min`);
   }
   if (!same(before.limits.transport, after.limits.transport) || before.limits.scope !== after.limits.scope) parts.push("How you travel changed");
-  if (before.limits.neverHotels !== after.limits.neverHotels) parts.push(after.limits.neverHotels ? "Never suggest hotels" : "Hotels allowed");
   if (!same(before.interests, after.interests)) parts.push("Interests changed");
   if (!same(before.food, after.food)) parts.push("Food changed");
   if (before.pace !== after.pace) parts.push(`Pace: ${after.pace ?? "not set"}`);
@@ -181,10 +180,14 @@ export function formValues(p: Profile, step: SetupStepId): Answers {
         transport: p.limits.transport.join("\n"),
         scope: p.limits.scope ?? "",
         driveMinutes: p.limits.driveMinutes != null ? String(p.limits.driveMinutes) : "",
-        neverHotels: yes(p.limits.neverHotels),
       };
     case "interests":
-      return { must: tier("must"), fit: tier("fit"), pass: tier("pass") };
+      return {
+        must: tier("must"),
+        fit: tier("fit"),
+        pass: tier("pass"),
+        hikeLevel: HIKE_LEVELS.find((l) => l.label === p.interests.find((i) => i.name === HIKES)?.detail)?.value ?? "",
+      };
     case "food":
       return { love: p.food.loves.join("\n"), hate: p.food.hates.join("\n"), localFirst: yes(p.food.localFirst) };
     case "pace":

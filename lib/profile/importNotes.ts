@@ -49,8 +49,6 @@ export function importNotes(raw: string): Profile {
   if (drive) p.limits.driveMinutes = Number(drive[1]);
   if (/with a car|have a car|rent a car/i.test(limits)) p.limits.transport = ["car"];
   if (/public transport|by train|transit/i.test(limits)) p.limits.transport = [...new Set([...p.limits.transport, "transit" as const])];
-  if (/stays in a house|not a hotel/i.test(limits)) p.limits.lodging = "house";
-  if (/never suggest[^.\n]*hotel/i.test(limits)) p.limits.neverHotels = true;
 
   const pace = find(s, "pace");
   if (/both paces/i.test(pace)) p.pace = "both";

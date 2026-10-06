@@ -29,8 +29,8 @@ describe("importNotes", () => {
     expect(p.party).toBe("family");
   });
 
-  it("reads the drive radius, a car, and the never-hotels rule", () => {
-    expect(p.limits).toEqual({ driveMinutes: 60, lodging: "house", neverHotels: true, transport: ["car"], scope: null });
+  it("reads the drive radius and a car", () => {
+    expect(p.limits).toEqual({ driveMinutes: 60, transport: ["car"], scope: null });
   });
 
   it("reads pace and food: favorites are loves, things they can't eat are hates", () => {

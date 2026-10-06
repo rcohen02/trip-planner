@@ -20,7 +20,7 @@ describe("normalizeProfile", () => {
       ...emptyProfile(),
       adults: 2,
       groups: old.groups,
-      limits: { driveMinutes: 90, lodging: "house", neverHotels: true, transport: [], scope: null },
+      limits: { driveMinutes: 90, transport: [], scope: null },
       interests: [{ name: "Land art", detail: "parks", tier: "must" }],
       food: { loves: ["Seafood"], hates: ["no peanuts"], localFirst: true },
       pace: "both",

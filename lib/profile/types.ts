@@ -30,7 +30,7 @@ export type Transport = "transit" | "car";
 /** Stay in the city, leave it (day trips), or both. */
 export type Scope = "city" | "leave" | "both";
 
-/** Everything that stays true from trip to trip. One per user; stored as one JSON document. */
+/** Everything that stays true from trip to trip. Lodging is never part of it: T2T never searches for places to stay. One per user; stored as one JSON document. */
 export interface Profile {
   party: Party | null;
   adults: number;
@@ -39,8 +39,6 @@ export interface Profile {
   limits: {
     /** Drive radius from the house, in minutes; null = not set. */
     driveMinutes: number | null;
-    lodging: "house" | "any";
-    neverHotels: boolean;
     transport: Transport[];
     scope: Scope | null;
   };
@@ -61,7 +59,7 @@ export function emptyProfile(): Profile {
     adults: 1,
     travelers: [],
     groups: [],
-    limits: { driveMinutes: null, lodging: "any", neverHotels: false, transport: [], scope: null },
+    limits: { driveMinutes: null, transport: [], scope: null },
     interests: [],
     food: { loves: [], hates: [], localFirst: false },
     pace: null,

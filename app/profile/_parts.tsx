@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Answers, SetupStepId } from "@/lib/profile/setup";
-import { FOOD_OPTIONS, INTEREST_OPTIONS, PARTY_OPTIONS, SCOPE_OPTIONS, TIERS, TRANSPORT_OPTIONS } from "@/lib/profile/options";
+import { FOOD_OPTIONS, HIKE_LEVELS, HIKES, INTEREST_OPTIONS, PARTY_OPTIONS, SCOPE_OPTIONS, TIERS, TRANSPORT_OPTIONS } from "@/lib/profile/options";
 import { ageOn, type Profile } from "@/lib/profile/types";
 import { BucketPicker } from "./BucketPicker";
 
@@ -69,8 +69,6 @@ export function ProfileSections({ p, edit = true }: { p: Profile; edit?: boolean
           <dd>{word(SCOPE_OPTIONS, p.limits.scope) ?? "Not set"}</dd>
           <dt>Radius</dt>
           <dd>{p.limits.driveMinutes != null ? `${p.limits.driveMinutes}-min drive from the house` : "Not set"}</dd>
-          <dt>Lodging</dt>
-          <dd>{p.limits.neverHotels ? "Always a house. Never suggest hotels." : "Any"}</dd>
         </dl>
       </Section>
 
@@ -82,7 +80,7 @@ export function ProfileSections({ p, edit = true }: { p: Profile; edit?: boolean
           return (
             <div key={t.value} className="flex flex-col gap-1.5">
               <span className="tp-label">{t.label}</span>
-              <Pills items={items.map((i) => i.name)} tone={t.value === "must" ? "planned" : "want"} />
+              <Pills items={items.map((i) => (i.name === HIKES && i.detail ? `${i.name} · ${i.detail}` : i.name))} tone={t.value === "must" ? "planned" : "want"} />
             </div>
           );
         })}
@@ -104,7 +102,8 @@ export function ProfileSections({ p, edit = true }: { p: Profile; edit?: boolean
         <span>{p.pace ? PACE_WORDS[p.pace] : "Not set"}</span>
       </Section>
 
-      <Section title="Never suggest" step="avoid" edit={edit}>
+      <Section title="Additional notes" step="avoid" edit={edit}>
+        <span className="tp-label">Never suggest</span>
         {p.avoid.length === 0 && <Empty>Nothing yet.</Empty>}
         <ul className="m-0 flex flex-col gap-1 pl-5">
           {p.avoid.map((a, i) => (
@@ -191,10 +190,6 @@ export function StepFields({ step, v }: { step: SetupStepId; v: Answers }) {
           <Field label="Farthest drive from the house (minutes)">
             <input className="tp-input w-28" name="driveMinutes" type="number" min={1} max={1440} defaultValue={v.driveMinutes} />
           </Field>
-          <label className="flex min-h-[44px] cursor-pointer items-center gap-2.5">
-            <input type="checkbox" name="neverHotels" defaultChecked={v.neverHotels === "on"} className="h-5 w-5 accent-[var(--accent)]" />
-            <span>We always have a house. Never suggest hotels.</span>
-          </label>
         </>
       );
     case "interests":
@@ -204,6 +199,7 @@ export function StepFields({ step, v }: { step: SetupStepId; v: Answers }) {
           buckets={TIERS.map((t) => ({ key: t.value, label: t.label }))}
           options={INTEREST_OPTIONS}
           picked={{ must: linesOf(v.must), fit: linesOf(v.fit), pass: linesOf(v.pass) }}
+          followUp={{ item: HIKES, name: "hikeLevel", question: "How hard a hike?", options: HIKE_LEVELS, value: v.hikeLevel ?? "" }}
           poolLabel="Ideas"
           writeInLabel="Something else?"
         />

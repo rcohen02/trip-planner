@@ -12,7 +12,7 @@ const full = (): Profile => ({
     { id: "g-family", name: "Whole family", travelerIds: ["t1"], hikingMilesPerDay: 5 },
     { id: "g-adults", name: "Just us two", travelerIds: [], hikingMilesPerDay: null },
   ],
-  limits: { driveMinutes: 90, lodging: "house", neverHotels: true, transport: ["car"], scope: "both" },
+  limits: { driveMinutes: 90, transport: ["car"], scope: "both" },
   interests: [
     { name: "Land art", detail: "sculpture parks", tier: "must" },
     { name: "Markets", detail: "", tier: "pass" },
@@ -27,6 +27,7 @@ describe("setup steps", () => {
   it("asks six questions then a read-back, with the new wording", () => {
     expect(SETUP_STEPS.map((s) => s.id)).toEqual(["travelers", "limits", "interests", "food", "pace", "avoid", "review"]);
     expect(SETUP_STEPS.find((s) => s.id === "limits")!.question).toBe("How do you travel?");
+    expect(SETUP_STEPS.find((s) => s.id === "avoid")!.question).toBe("Additional notes");
   });
 
   it("starts at the first question for an empty profile and skips what's known", () => {
@@ -43,9 +44,12 @@ describe("setup steps", () => {
 });
 
 describe("option lists", () => {
-  it("offers 20–30 interests and a good spread of foods, no duplicates", () => {
+  it("offers about 20–30 interests, including Hikes and Walking tours, and a spread of foods, no duplicates", () => {
     expect(INTEREST_OPTIONS.length).toBeGreaterThanOrEqual(20);
-    expect(INTEREST_OPTIONS.length).toBeLessThanOrEqual(30);
+    expect(INTEREST_OPTIONS.length).toBeLessThanOrEqual(32);
+    expect(INTEREST_OPTIONS).toContain("Hikes");
+    expect(INTEREST_OPTIONS).toContain("Walking tours");
+    expect(INTEREST_OPTIONS).not.toContain("Easy hikes");
     expect(new Set(INTEREST_OPTIONS).size).toBe(INTEREST_OPTIONS.length);
     expect(FOOD_OPTIONS.length).toBeGreaterThanOrEqual(15);
     expect(new Set(FOOD_OPTIONS).size).toBe(FOOD_OPTIONS.length);
@@ -86,9 +90,9 @@ describe("applyStep: who travels", () => {
 });
 
 describe("applyStep: how you travel", () => {
-  it("transport (one or both), city scope, drive minutes and hotels", () => {
+  it("transport (one or both), city scope and drive minutes; no lodging question (the app never searches for places to stay)", () => {
     const p = applyStep(emptyProfile(), "limits", { transport: "transit\ncar", scope: "leave", driveMinutes: "60", neverHotels: "on" });
-    expect(p.limits).toEqual({ driveMinutes: 60, lodging: "house", neverHotels: true, transport: ["transit", "car"], scope: "leave" });
+    expect(p.limits).toEqual({ driveMinutes: 60, transport: ["transit", "car"], scope: "leave" });
   });
 
   it("drops unknown values", () => {
@@ -106,6 +110,13 @@ describe("applyStep: interests in three buckets", () => {
       { name: "Kayaking & canoeing", detail: "", tier: "fit" },
       { name: "My own idea", detail: "", tier: "pass" },
     ]);
+  });
+
+  it("Hikes carries its difficulty: easy, intermediate or challenging", () => {
+    const p = applyStep(emptyProfile(), "interests", { must: "Hikes", hikeLevel: "intermediate" });
+    expect(p.interests).toEqual([{ name: "Hikes", detail: "Intermediate", tier: "must" }]);
+    expect(applyStep(emptyProfile(), "interests", { fit: "Hikes", hikeLevel: "silly" }).interests[0].detail).toBe("");
+    expect(formValues(p, "interests")).toMatchObject({ must: "Hikes", hikeLevel: "intermediate" });
   });
 
   it("keeps details from before (e.g. imported notes) and never lists one twice", () => {
@@ -152,8 +163,8 @@ describe("formValues", () => {
   it("pre-fills each step in the shape applyStep reads, and round-trips", () => {
     const p = full();
     expect(formValues(p, "travelers")).toEqual({ party: "family", adults: "2", kids: "Boy 2016" });
-    expect(formValues(p, "limits")).toEqual({ transport: "car", scope: "both", driveMinutes: "90", neverHotels: "on" });
-    expect(formValues(p, "interests")).toEqual({ must: "Land art", fit: "", pass: "Markets" });
+    expect(formValues(p, "limits")).toEqual({ transport: "car", scope: "both", driveMinutes: "90" });
+    expect(formValues(p, "interests")).toEqual({ must: "Land art", fit: "", pass: "Markets", hikeLevel: "" });
     expect(formValues(p, "food")).toEqual({ love: "Seafood", hate: "Shellfish", localFirst: "on" });
     expect(formValues(p, "avoid")).toEqual({ avoid: "Hotels", specialRequests: "Quiet mornings" });
     for (const s of ["travelers", "limits", "interests", "food", "pace", "avoid"] as const) {

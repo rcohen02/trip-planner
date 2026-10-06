@@ -12,7 +12,8 @@ export const INTEREST_OPTIONS = [
   "Science museums",
   "Aquariums & zoos",
   "Beaches",
-  "Easy hikes",
+  "Hikes",
+  "Walking tours",
   "Kayaking & canoeing",
   "Biking",
   "Parks & gardens",
@@ -57,6 +58,14 @@ export const FOOD_OPTIONS = [
   "Gluten",
   "Dairy",
 ] as const;
+
+/** Second question when someone picks Hikes. */
+export const HIKE_LEVELS = [
+  { value: "easy", label: "Easy" },
+  { value: "intermediate", label: "Intermediate" },
+  { value: "challenging", label: "Challenging" },
+] as const;
+export const HIKES = "Hikes";
 
 export const TRANSPORT_OPTIONS = [
   { value: "transit", label: "Public transportation" },

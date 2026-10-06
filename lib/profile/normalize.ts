@@ -21,8 +21,6 @@ export function normalizeProfile(raw: unknown): Profile {
     groups: arr(r.groups),
     limits: {
       driveMinutes: (limits.driveMinutes as number | null) ?? null,
-      lodging: limits.lodging === "house" ? "house" : "any",
-      neverHotels: Boolean(limits.neverHotels),
       transport: arr(limits.transport),
       scope: (limits.scope as Profile["limits"]["scope"]) ?? null,
     },
