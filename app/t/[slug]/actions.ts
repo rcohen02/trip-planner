@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { getViewer } from "@/auth";
 import { getStore } from "@/lib/store";
-import { getTrip } from "@/lib/trips";
+import { canOpenTrip, getTrip } from "@/lib/trips";
 import { buildSlots, cleanSlotLabel, type ExtraSlot } from "@/lib/plan/plan";
 import { cleanBooking, type Booking } from "@/lib/plan/booking";
 import { hoursTodoPlace } from "@/lib/plan/hours";
@@ -17,8 +17,8 @@ async function knownPlace(slug: string, trip: { places: { id: string }[] }, plac
 
 async function guard(slug: string) {
   const viewer = await getViewer();
-  const trip = getTrip(slug);
-  if (!viewer || !trip) throw new Error("Not allowed");
+  const trip = viewer ? await getTrip(slug) : null;
+  if (!viewer || !trip || !(viewer.dev || (await canOpenTrip(slug, viewer.email)))) throw new Error("Not allowed");
   return trip;
 }
 

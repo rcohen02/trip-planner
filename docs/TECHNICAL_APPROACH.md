@@ -282,7 +282,12 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 - [ ] **Edit on site:** add, edit and delete places, to-dos and logistics (replaces markdown import as the source of truth)
 - [ ] **Intake:** upload or paste confirmations, parsed by Claude (§4.7)
 - [ ] **Research agent** for new destinations (§4.8)
-- [ ] **New trip wizard:** destination, dates, homebase, family or adults scope
+- [ ] **New trip wizard:** destination, dates, homebase, family or adults scope. **Superseded Oct 5, 2026** by the profiles + new trips + voice plan in `docs/PRD_PROFILES_TRIPS_VOICE.md`, built in five phases:
+  - [ ] Phase 1 Foundation: users, invites, trips and places in the database; Lisbon migrated; pages unchanged (branch `profiles-and-new-trips`, no deploy before Oct 12)
+  - [ ] Phase 2 Profile: Profile page, `travel_context.md` import, typed setup flow
+  - [ ] Phase 3 New trip + "Add new places": conversation engine, read-back, research into Suggested cards, draft-or-build days
+  - [ ] Phase 4 Voice: browser listening and speaking on every flow (Qwen3-TTS later)
+  - [ ] Phase 5 Learning: signals, end-of-trip review, approved profile changes
 - [ ] **Done status + notes** during the trip
 - [ ] **ICS calendar feed** for flights and planned slots
 - [ ] **Add to calendar** from a booking (requested Oct 4, 2026): one tap on a booked place adds it to Google Calendar with the time, confirmation and note, plus a reminder; fallback is a downloadable `.ics` file. Bookings already store Lisbon date + time (`lib/plan/booking.ts`, `bookingInstant` gives the exact moment).

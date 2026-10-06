@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getViewer } from "@/auth";
 import { getStore } from "@/lib/store";
-import { getTrip } from "@/lib/trips";
+import { canOpenTrip, getTrip } from "@/lib/trips";
 import type { Trip } from "@/lib/content/types";
 import { applyHoursChecks, checkedPlaces } from "@/lib/plan/hours";
 import { routePlace } from "@/lib/routes/route";
@@ -17,14 +17,14 @@ export interface TripContext {
 export async function ownerContext(slug: string): Promise<TripContext> {
   const viewer = await getViewer();
   if (!viewer) redirect(`/signin?next=/t/${slug}`);
-  const trip = getTrip(slug);
-  if (!trip) notFound();
+  const trip = await getTrip(slug);
+  if (!trip || !(viewer.dev || (await canOpenTrip(slug, viewer.email)))) notFound();
   return { trip: await withChecks(trip), base: `/t/${slug}`, editable: true };
 }
 
 export async function shareContext(token: string): Promise<TripContext> {
   const slug = await getStore().resolveShare(token);
-  const trip = slug ? getTrip(slug) : null;
+  const trip = slug ? await getTrip(slug) : null;
   if (!trip) notFound();
   return { trip: await withChecks(trip), base: `/s/${token}`, editable: false };
 }

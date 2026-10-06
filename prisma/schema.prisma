@@ -103,3 +103,40 @@ model ShortlistItem {
 
   @@id([trip, placeId])
 }
+
+/// Someone who can sign in (replaces ALLOWED_EMAILS). Emails are lower-case.
+model User {
+  email     String   @id
+  name      String?
+  admin     Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+/// An invitation to join the app; accepted on first sign-in.
+model Invite {
+  email      String    @id
+  invitedBy  String
+  createdAt  DateTime  @default(now())
+  acceptedAt DateTime?
+}
+
+/// A whole trip (logistics + places) as one JSON document, the shape of lib/content/types Trip.
+/// Phase 1 keeps the document whole so place ids match existing plan rows; places split out in Phase 3.
+model Trip {
+  slug      String   @id
+  data      Json
+  startDate String
+  createdBy String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TripMember {
+  slug    String
+  email   String
+  role    String
+  addedAt DateTime @default(now())
+
+  @@id([slug, email])
+  @@index([email])
+}

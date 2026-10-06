@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getViewer, signOut } from "@/auth";
-import { listTrips } from "@/lib/trips";
+import { listAllTrips, listTripsFor } from "@/lib/trips";
 import { dateLabel } from "@/lib/format";
 
 export default async function Home() {
   const viewer = await getViewer();
   if (!viewer) redirect("/signin");
-  const trips = listTrips();
+  const trips = viewer.dev ? await listAllTrips() : await listTripsFor(viewer.email);
   return (
     <main className="mx-auto max-w-[720px] px-4 py-10 sm:px-6">
       <p className="tp-label m-0">T2T · Time 2 Travel</p>
