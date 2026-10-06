@@ -47,6 +47,8 @@ export function importNotes(raw: string): Profile {
   const hike = /hiking[^.\n]*?under\s+(\d+(?:\.\d+)?)\s*mi/i.exec(limits);
   const drive = /(\d+)[-\s]*minute\s+drive/i.exec(limits);
   if (drive) p.limits.driveMinutes = Number(drive[1]);
+  if (/with a car|have a car|rent a car/i.test(limits)) p.limits.transport = ["car"];
+  if (/public transport|by train|transit/i.test(limits)) p.limits.transport = [...new Set([...p.limits.transport, "transit" as const])];
   if (/stays in a house|not a hotel/i.test(limits)) p.limits.lodging = "house";
   if (/never suggest[^.\n]*hotel/i.test(limits)) p.limits.neverHotels = true;
 
@@ -61,22 +63,24 @@ export function importNotes(raw: string): Profile {
     if (/^no dietary restrictions/i.test(plain)) continue;
     const fav = /^(.+?)\s+(?:are|is) a standing favorite/i.exec(plain);
     if (fav) {
-      p.food.favorites.push(fav[1].trim());
+      p.food.loves.push(fav[1].trim());
       continue;
     }
     if (/local/i.test(plain) && /(tourist|marquee|headline)/i.test(plain)) {
       p.food.localFirst = true;
       continue;
     }
-    if (!/\*\*/.test(line) && !/:/.test(plain)) p.food.restrictions.push(...plain.split(/,\s*/).map((x) => x.trim()).filter(Boolean));
+    if (!/\*\*/.test(line) && !/:/.test(plain)) p.food.hates.push(...plain.split(/,\s*/).map((x) => x.trim()).filter(Boolean));
   }
 
   for (const m of find(s, "research", "interests", "priorities").matchAll(/^\s*\d+\.\s+\*\*(.+?)\*\*\s*[—–-]\s*([^.\n]+)/gm)) {
-    p.interests.push({ name: m[1].trim(), detail: m[2].trim() });
+    p.interests.push({ name: m[1].trim(), detail: m[2].trim(), tier: "must" });
   }
 
   p.avoid = bullets(find(s, "not to suggest", "never", "avoid")).map(clean);
 
+  if (p.travelers.length) p.party = "family";
+  else if (p.adults === 2) p.party = "couple";
   if (p.travelers.length) {
     const family: TravelGroup = {
       id: "g-family",

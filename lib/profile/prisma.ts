@@ -2,6 +2,7 @@ import type { PrismaClient } from "@/lib/generated/prisma/client";
 import { Prisma } from "@/lib/generated/prisma/client";
 import { norm } from "../trips/types";
 import { newChangeId, type ChangeReason, type ProfileChangeRow, type ProfileRepo } from "./repo";
+import { normalizeProfile } from "./normalize";
 import type { Profile } from "./types";
 
 type Json = Prisma.InputJsonValue;
@@ -12,7 +13,7 @@ export class PrismaProfileRepo implements ProfileRepo {
 
   async get(email: string) {
     const row = await this.db.profile.findUnique({ where: { email: norm(email) } });
-    return row ? (row.data as unknown as Profile) : null;
+    return row ? normalizeProfile(row.data) : null;
   }
 
   async save(email: string, profile: Profile, change: { reason: ChangeReason; summary: string }) {

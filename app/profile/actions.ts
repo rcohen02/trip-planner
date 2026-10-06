@@ -17,7 +17,10 @@ const STEP_IDS = SETUP_STEPS.map((s) => s.id);
 
 function answers(form: FormData): Answers {
   const out: Answers = {};
-  for (const [k, v] of form.entries()) if (typeof v === "string") out[k] = v;
+  for (const k of new Set(form.keys())) {
+    // Repeated fields (checkbox rows like transport) arrive as one value per line.
+    out[k] = form.getAll(k).filter((v): v is string => typeof v === "string").join("\n");
+  }
   return out;
 }
 

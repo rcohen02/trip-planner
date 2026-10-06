@@ -11,19 +11,28 @@ export interface TravelGroup {
   name: string;
   /** Children in the group (adults always come). */
   travelerIds: string[];
-  /** Daily hiking cap for this group, or null for none. */
+  /** Daily hiking cap for this group, or null for none. Set by imported notes; not asked in setup. */
   hikingMilesPerDay: number | null;
 }
+
+/** How much an interest matters: Must do, If I can fit it in, If I pass by. */
+export type Tier = "must" | "fit" | "pass";
 
 export interface Interest {
   name: string;
   detail: string;
+  tier: Tier;
 }
 
 export type Pace = "relaxed" | "packed" | "both";
+export type Party = "family" | "couple" | "solo" | "friends";
+export type Transport = "transit" | "car";
+/** Stay in the city, leave it (day trips), or both. */
+export type Scope = "city" | "leave" | "both";
 
 /** Everything that stays true from trip to trip. One per user; stored as one JSON document. */
 export interface Profile {
+  party: Party | null;
   adults: number;
   travelers: Traveler[];
   groups: TravelGroup[];
@@ -32,32 +41,36 @@ export interface Profile {
     driveMinutes: number | null;
     lodging: "house" | "any";
     neverHotels: boolean;
+    transport: Transport[];
+    scope: Scope | null;
   };
-  /** Ranked, most important first. */
+  /** Must do first, then If I can fit it in, then If I pass by; order within a tier is the user's. */
   interests: Interest[];
-  food: { restrictions: string[]; favorites: string[]; localFirst: boolean };
+  food: { loves: string[]; hates: string[]; localFirst: boolean };
   pace: Pace | null;
   avoid: string[];
-  sources: string[];
+  /** Free text: "Any special requests?" */
+  specialRequests: string;
   /** Setup steps the owner has answered or confirmed (lib/profile/setup), so they aren't asked again. */
   confirmed?: string[];
 }
 
 export function emptyProfile(): Profile {
   return {
+    party: null,
     adults: 1,
     travelers: [],
     groups: [],
-    limits: { driveMinutes: null, lodging: "any", neverHotels: false },
+    limits: { driveMinutes: null, lodging: "any", neverHotels: false, transport: [], scope: null },
     interests: [],
-    food: { restrictions: [], favorites: [], localFirst: false },
+    food: { loves: [], hates: [], localFirst: false },
     pace: null,
     avoid: [],
-    sources: [],
+    specialRequests: "",
   };
 }
 
-/** Age on a given ISO date (birthday assumed Jan 1, so this is the age during that year). */
+/** Age during the year of an ISO date. */
 export function ageOn(birthYear: number, isoDate: string): number {
   return Number(isoDate.slice(0, 4)) - birthYear;
 }

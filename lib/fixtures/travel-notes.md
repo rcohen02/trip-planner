@@ -13,7 +13,7 @@ Test fixture only. Not a real family.
 ## Mobility & Activity Limits
 
 - **Hiking cap:** total hiking on any given day must stay under 3 miles.
-- **Radius:** anything within a 60-minute drive of the homebase city is in scope.
+- **Radius:** the family is mobile with a car — anything within a 60-minute drive of the homebase city is in scope.
 - **Lodging:** the family stays in a house (not a hotel). Never suggest or research hotel options.
 
 ## Trip Pace

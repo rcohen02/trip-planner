@@ -25,19 +25,23 @@ describe("importNotes", () => {
     expect(p.groups[1].hikingMilesPerDay).toBeNull();
   });
 
-  it("reads the drive radius and the never-hotels rule", () => {
-    expect(p.limits).toEqual({ driveMinutes: 60, lodging: "house", neverHotels: true });
+  it("is a family trip when there are kids", () => {
+    expect(p.party).toBe("family");
   });
 
-  it("reads pace, food and the local-first rule", () => {
+  it("reads the drive radius, a car, and the never-hotels rule", () => {
+    expect(p.limits).toEqual({ driveMinutes: 60, lodging: "house", neverHotels: true, transport: ["car"], scope: null });
+  });
+
+  it("reads pace and food: favorites are loves, things they can't eat are hates", () => {
     expect(p.pace).toBe("both");
-    expect(p.food).toEqual({ restrictions: ["Vegetarian", "no peanuts"], favorites: ["Dumplings and noodle shops"], localFirst: true });
+    expect(p.food).toEqual({ loves: ["Dumplings and noodle shops"], hates: ["Vegetarian", "no peanuts"], localFirst: true });
   });
 
-  it("reads ranked interests with their details", () => {
+  it("reads ranked interests as Must do, keeping their details", () => {
     expect(p.interests).toEqual([
-      { name: "Science & Museums", detail: "hands-on science centers and planetariums" },
-      { name: "Water", detail: "beaches with calm water and tide pools" },
+      { name: "Science & Museums", detail: "hands-on science centers and planetariums", tier: "must" },
+      { name: "Water", detail: "beaches with calm water and tide pools", tier: "must" },
     ]);
   });
 
@@ -46,7 +50,7 @@ describe("importNotes", () => {
   });
 
   it("reads 'No dietary restrictions' as none", () => {
-    expect(importNotes("## Food Philosophy\n\n- No dietary restrictions.\n").food.restrictions).toEqual([]);
+    expect(importNotes("## Food Philosophy\n\n- No dietary restrictions.\n").food.hates).toEqual([]);
   });
 
   it("reads notes pasted into a form (browsers send \\r\\n line endings)", () => {

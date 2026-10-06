@@ -11,7 +11,7 @@ const prisma = dbUrl ? createPrisma(dbUrl) : null;
 const makers: [string, () => ProfileRepo][] = [["memory", () => new MemoryProfileRepo()]];
 if (prisma) makers.push(["postgres", () => new PrismaProfileRepo(prisma)]);
 
-const withDrive = (m: number): Profile => ({ ...emptyProfile(), limits: { driveMinutes: m, lodging: "house", neverHotels: true } });
+const withDrive = (m: number): Profile => ({ ...emptyProfile(), limits: { ...emptyProfile().limits, driveMinutes: m } });
 
 describe.each(makers)("ProfileRepo (%s)", (_name, make) => {
   beforeEach(async () => {
