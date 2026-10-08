@@ -4,14 +4,16 @@ import { getViewer, signOut } from "@/auth";
 import { listAllTrips, listTripsFor } from "@/lib/trips";
 import { getProfileRepo } from "@/lib/profile";
 import { nextStep } from "@/lib/profile/setup";
+import { getDraftRepo } from "@/lib/newtrip";
 import { dateLabel } from "@/lib/format";
 
 export default async function Home() {
   const viewer = await getViewer();
   if (!viewer) redirect("/signin");
-  const [trips, profile] = await Promise.all([
+  const [trips, profile, draft] = await Promise.all([
     viewer.dev ? listAllTrips() : listTripsFor(viewer.email),
     getProfileRepo().get(viewer.email),
+    getDraftRepo().get(viewer.email),
   ]);
   const setupLeft = profile && nextStep(profile) !== "review";
   return (
@@ -26,7 +28,17 @@ export default async function Home() {
         </Link>
       </div>
 
-      <section className="tp-card tp-card--compact mt-5 gap-2">
+      <Link
+        href="/new"
+        className="tp-btn tp-btn--primary mt-5 min-h-[56px] w-full justify-start gap-3 px-4 text-base font-semibold"
+      >
+        <svg className="tp-icon tp-icon-lg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14M12 5v14" />
+        </svg>
+        <span className="flex-1">{draft?.destination ? `Continue your ${draft.destination.label.split(",")[0]} trip` : "Start a new itinerary"}</span>
+      </Link>
+
+      <section className="tp-card tp-card--compact mt-4 gap-2">
         <div className="flex items-center justify-between gap-2">
           <span className="tp-label">Your travel profile</span>
           <Link href="/profile" className="tp-btn tp-btn--text">

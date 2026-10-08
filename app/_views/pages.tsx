@@ -54,7 +54,16 @@ export async function PlacesView({ ctx }: { ctx: TripContext }) {
   ]);
   return (
     <>
-      <PageTitle aside={<span className="t-caption">From the NYT · prices local first, then USD at {trip.usdRate}</span>}>Places</PageTitle>
+      <PageTitle
+        aside={
+          <span className="t-caption">
+            {trip.placesSource ? `${trip.placesSource} · ` : ""}
+            {trip.usdRateDate ? `prices local first, then USD at ${trip.usdRate}` : `prices in ${trip.localCurrency}`}
+          </span>
+        }
+      >
+        Places
+      </PageTitle>
       <PlacesList
         slug={trip.slug}
         base={base}
@@ -279,8 +288,17 @@ export function LogisticsView({ ctx }: { ctx: TripContext }) {
     <>
       <PageTitle>Logistics</PageTitle>
       <div className="grid gap-4 md:grid-cols-2">
-        <FlightCard flight={trip.flights[0]} trip={trip} title="Outbound" />
-        <FlightCard flight={trip.flights[trip.flights.length - 1]} trip={trip} title="Return" />
+        {trip.flights.length > 0 ? (
+          <>
+            <FlightCard flight={trip.flights[0]} trip={trip} title="Outbound" />
+            {trip.flights.length > 1 && <FlightCard flight={trip.flights[trip.flights.length - 1]} trip={trip} title="Return" />}
+          </>
+        ) : (
+          <section className="tp-card">
+            <h2 className="t-heading m-0">Flights</h2>
+            <p className="t-caption m-0">No flights on this trip yet.</p>
+          </section>
+        )}
         <section className="tp-card">
           <h2 className="t-heading m-0 flex items-center gap-2">
             <House className="tp-icon tp-icon-lg" aria-hidden /> {trip.homebase.label}

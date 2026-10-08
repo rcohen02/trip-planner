@@ -8,6 +8,7 @@ import { countdown, dateLabel, longDate, money, timeIn, weekdayOf } from "@/lib/
 import { describeCode, getForecast, toF } from "@/lib/weather";
 import { Alert, HoursLine, Thumb } from "@/app/_ui/bits";
 import { FlightCard } from "@/app/_ui/FlightCard";
+import { flightZone, seatReminder, tripCountdown } from "@/lib/trips/local";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -32,19 +33,19 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
   const nbPlace = nb ? byId.get(nb.placeId) : undefined;
   const next = nbPlace ?? planned.find((x) => x.p)?.p;
 
-  const [out, back] = [trip.flights[0], trip.flights[trip.flights.length - 1]];
-  const beforeTrip = now < new Date(out.depart);
-  const flight = beforeTrip ? out : back;
-  const toGo = countdown(flight.depart, now);
+  const cd = tripCountdown(trip, now);
+  const beforeTrip = cd.label === "Leaving in" || cd.label === "Trip starts in";
+  const toGo = cd.target ? countdown(cd.target, now) : null;
   const w = forecast[day.date];
 
   const info: string[] = [];
   for (const f of trip.flights) {
     const ms = new Date(f.checkInCloses).getTime() - now.getTime();
     if (ms > 0 && ms < 48 * 3600_000)
-      info.push(`${f.flightNo} check-in closes ${timeIn(f.checkInCloses, f.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}${f.from.code === "LIS" ? "" : " ET"}.`);
+      info.push(`${f.flightNo} check-in closes ${timeIn(f.checkInCloses, flightZone(trip, f.from.code).zone)}${flightZone(trip, f.from.code).suffix}.`);
   }
-  if (!beforeTrip || day.date === trip.days[trip.days.length - 1].date) info.push("Swap return seats at check-in: 22B is between you.");
+  const seats = seatReminder(trip);
+  if (seats && (!beforeTrip || day.date === trip.days[trip.days.length - 1].date)) info.push(seats);
 
   return (
     <div className="grid gap-6 min-[960px]:grid-cols-[minmax(0,1fr)_320px]">
@@ -147,7 +148,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
             {w ? (
               <>
                 <div className="tp-stat__value">{timeIn(`${w.sunset}:00Z`, "UTC")}</div>
-                <div className="tp-stat__sub">Senhora do Monte for the view</div>
+                {trip.sunsetTip && <div className="tp-stat__sub">{trip.sunsetTip}</div>}
               </>
             ) : (
               <div className="tp-stat__sub mt-1">With the forecast</div>
@@ -156,11 +157,19 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
         </div>
 
         <div className="tp-stat">
-          <div className="tp-label">{beforeTrip ? "Leaving in" : "Flight home in"}</div>
-          <div className="tp-stat__value">{toGo ?? "Departed"}</div>
+          <div className="tp-label">{cd.label}</div>
+          <div className="tp-stat__value">{cd.target ? (toGo ?? (trip.flights.length ? "Departed" : "Today")) : cd.detail}</div>
           <div className="tp-stat__sub">
-            {flight.flightNo} · {flight.from.code} {timeIn(flight.depart, flight.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}
-            {flight.from.code === "LIS" ? "" : " ET"}
+            {cd.flight ? (
+              <>
+                {cd.flight.flightNo} · {cd.flight.from.code} {timeIn(cd.flight.depart, flightZone(trip, cd.flight.from.code).zone)}
+                {flightZone(trip, cd.flight.from.code).suffix}
+              </>
+            ) : cd.target ? (
+              cd.detail
+            ) : (
+              trip.destination
+            )}
           </div>
         </div>
 
@@ -204,7 +213,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
           </Alert>
         ))}
 
-        {beforeTrip && <FlightCard flight={out} trip={trip} title="Outbound" />}
+        {beforeTrip && trip.flights[0] && <FlightCard flight={trip.flights[0]} trip={trip} title="Outbound" />}
       </aside>
     </div>
   );

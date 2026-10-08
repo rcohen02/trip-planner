@@ -132,7 +132,7 @@ function Field({ label, help, children }: { label: string; help?: string; childr
 }
 
 /** A row of buttons backed by radio inputs (one choice) or checkboxes (any). Works without JavaScript. */
-function ChoiceRow({
+export function ChoiceRow({
   name,
   legend,
   options,

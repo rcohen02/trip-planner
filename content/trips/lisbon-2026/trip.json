@@ -498,5 +498,7 @@
       "geoQuery": "Rua dos Poiais de São Bento 33, Lisboa",
       "noImages": true
     }
-  }
+  },
+  "sunsetTip": "Senhora do Monte for the view",
+  "placesSource": "From the NYT"
 }

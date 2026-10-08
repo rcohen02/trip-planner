@@ -7,12 +7,13 @@ import { emptyProfile } from "@/lib/profile/types";
 import { saveStep } from "../actions";
 import { ProfileSections, StepFields } from "../_parts";
 
-export default async function SetupPage({ searchParams }: { searchParams: Promise<{ step?: string; mode?: string }> }) {
+export default async function SetupPage({ searchParams }: { searchParams: Promise<{ step?: string; mode?: string; next?: string }> }) {
   const viewer = await getViewer();
   if (!viewer) redirect("/signin?next=/profile/setup");
   const params = await searchParams;
   const profile = (await getProfileRepo().get(viewer.email)) ?? emptyProfile();
   const edit = params.mode === "edit";
+  const then = params.next === "/new" ? "/new" : null;
   const step: SetupStepId = SETUP_STEPS.some((s) => s.id === params.step) ? (params.step as SetupStepId) : nextStep(profile);
   const info = SETUP_STEPS.find((s) => s.id === step)!;
   const questions = SETUP_STEPS.filter((s) => s.id !== "review");
@@ -38,6 +39,10 @@ export default async function SetupPage({ searchParams }: { searchParams: Promis
       <form action={saveStep} className="flex flex-1 flex-col gap-4 px-4 pb-8 pt-5">
         <input type="hidden" name="step" value={step} />
         {edit && <input type="hidden" name="mode" value="edit" />}
+        {then && <input type="hidden" name="next" value={then} />}
+        {then && step !== "review" && index === 0 && (
+          <div className="tp-alert tp-alert--info">First, a quick profile. It's saved for every trip, so next time you go straight to the trip questions.</div>
+        )}
         <h1 className="m-0 text-[28px] font-bold leading-[34px] tracking-[-0.01em]">{info.question}</h1>
         <p className="t-caption m-0">{info.hint}</p>
 
@@ -45,7 +50,7 @@ export default async function SetupPage({ searchParams }: { searchParams: Promis
 
         <div className="mt-auto flex flex-col gap-2 pt-4">
           <button className="tp-btn tp-btn--primary min-h-[52px] text-base font-semibold">
-            {step === "review" ? "Looks right, save" : edit ? "Save" : "Next"}
+            {step === "review" ? (then ? "Looks right, on to the trip" : "Looks right, save") : edit ? "Save" : "Next"}
           </button>
           {!edit && step !== "review" && later && (
             <p className="t-caption m-0 text-center">Next up: {later.question}</p>

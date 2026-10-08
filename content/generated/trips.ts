@@ -242,6 +242,8 @@ export const TRIPS: Record<string, Trip> = {
         "text": "Check Lisbon Marathon date: Av. Marginal closed ~07:30–12:00 on race morning (use the A5)"
       }
     ],
+    "sunsetTip": "Senhora do Monte for the view",
+    "placesSource": "From the NYT",
     "places": [
       {
         "id": "maat-museum-of-art-architecture-and-technology",

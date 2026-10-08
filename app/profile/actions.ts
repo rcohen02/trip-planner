@@ -38,8 +38,11 @@ export async function saveStep(form: FormData) {
   await repo.save(email, after, { reason: mode === "edit" ? "manual" : "setup", summary });
   revalidatePath("/profile");
   revalidatePath("/");
+  // Coming from "Start a new itinerary" without a profile: carry on into the new trip once the profile is saved.
+  const then = form.get("next") === "/new" ? "/new" : null;
+  if (step === "review" && then) redirect(then);
   if (mode === "edit" || step === "review") redirect("/profile");
-  redirect(`/profile/setup?step=${nextStep(after)}`);
+  redirect(`/profile/setup?step=${nextStep(after)}${then ? `&next=${then}` : ""}`);
 }
 
 /** Imports pasted travel notes. Anything found is pre-filled; setup then asks only what's missing. */
@@ -51,7 +54,8 @@ export async function importFromNotes(form: FormData) {
   const imported = importNotes(text);
   await repo.save(email, { ...imported, confirmed: [] }, { reason: "import", summary: before ? "Replaced from travel notes" : "Imported from travel notes" });
   revalidatePath("/profile");
-  redirect(`/profile/setup?step=${nextStep(imported)}`);
+  const then = form.get("next") === "/new" ? "&next=/new" : "";
+  redirect(`/profile/setup?step=${nextStep(imported)}${then}`);
 }
 
 export async function undoChange(form: FormData) {

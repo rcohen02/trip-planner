@@ -192,7 +192,7 @@ export function AddToDaySheet({
   );
 }
 
-/** The Booking step of the popup: date, time (Lisbon), confirmation and a note. */
+/** The Booking step of the popup: date, local time at the destination, confirmation and a note. */
 function BookingStep({
   place,
   days,
@@ -248,7 +248,7 @@ function BookingStep({
             </select>
           </label>
           <label className="tp-field">
-            Time (Lisbon)
+            Local time
             <input type="time" className="tp-input" value={time} onChange={(e) => setTime(e.target.value)} aria-invalid={tried && !clean} autoFocus={!booking} />
           </label>
         </div>

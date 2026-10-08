@@ -138,7 +138,11 @@ export function PlacesList({
       </ul>
       {shown.length === 0 && (
         <p className="t-caption">
-          {shortOnly && !short.count ? "Nothing on the shortlist yet. Tap Shortlist on a place to add it." : "No places match these filters. Choose All to see everything."}
+          {places.length === 0
+            ? "No places yet. Suggestions based on your profile are coming in the next update."
+            : shortOnly && !short.count
+              ? "Nothing on the shortlist yet. Tap Shortlist on a place to add it."
+              : "No places match these filters. Choose All to see everything."}
         </p>
       )}
       {sheet && (

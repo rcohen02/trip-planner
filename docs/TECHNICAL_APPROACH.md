@@ -286,6 +286,8 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
   - [ ] Phase 1 Foundation: users, invites, trips and places in the database; Lisbon migrated; pages unchanged (branch `profiles-and-new-trips`, no deploy before Oct 12)
   - [ ] Phase 2 Profile: Profile page, `travel_context.md` import, typed setup flow (built Oct 5 on the branch: `lib/profile/`, `/profile`, `/profile/setup`; travelers and groups live inside the profile document, not separate tables)
   - [ ] Phase 3 New trip + "Add new places": conversation engine, read-back, research into Suggested cards, draft-or-build days
+    - [x] 3a (Oct 8, on the branch): "Start a new itinerary", trip questions, read-back, trip created with empty Places
+    - [ ] 3b: research into Suggested cards, Add new places, draft days (needs an Anthropic API key)
   - [ ] Phase 4 Voice: browser listening and speaking on every flow (Qwen3-TTS later)
   - [ ] Phase 5 Learning: signals, end-of-trip review, approved profile changes
 - [ ] **Done status + notes** during the trip

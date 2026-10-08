@@ -160,3 +160,10 @@ model ProfileChange {
 
   @@index([email, createdAt])
 }
+
+/// A new trip being set up (lib/newtrip TripDraft), one per person, saved after each answer.
+model TripDraft {
+  email     String   @id
+  data      Json
+  updatedAt DateTime @updatedAt
+}

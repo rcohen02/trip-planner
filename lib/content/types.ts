@@ -99,6 +99,14 @@ export interface Todo {
   placeId?: string;
 }
 
+/** Answers from the new-trip questions, kept for research and drafting (Phase 3b). Absent on bundled trips. */
+export interface TripPlanning {
+  groupId: string;
+  overrides: string;
+  transport: string[];
+  plan: "draft" | "build";
+}
+
 export interface Trip {
   slug: string;
   name: string;
@@ -118,4 +126,9 @@ export interface Trip {
   clusters: Cluster[];
   todos: Todo[];
   places: Place[];
+  planning?: TripPlanning;
+  /** Where to watch the sunset, shown under the Day View's sunset time (e.g. "Senhora do Monte for the view"). */
+  sunsetTip?: string;
+  /** Where the place list came from, shown on Places ("From the NYT"). */
+  placesSource?: string;
 }
