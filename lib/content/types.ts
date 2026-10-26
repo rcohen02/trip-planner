@@ -1,3 +1,5 @@
+import type { Stay } from "@/lib/stays";
+
 export type Category = "art" | "food" | "bar" | "shop" | "tour" | "nature" | "history" | "festival" | "walk";
 
 /** 0 = Sunday … 6 = Saturday (JS Date#getDay). */
@@ -111,6 +113,8 @@ export interface Trip {
   travelers: { name: string; email?: string }[];
   bookingRef: string;
   homebase: { label: string; address: string; lat: number; lng: number; url?: string; phone?: string; email?: string };
+  /** Trips with several stops: each night belongs to one stay (see lib/stays.ts). Omit for a single base. */
+  stays?: Stay[];
   flights: Flight[];
   bags: string[];
   gettingAround: string[];
