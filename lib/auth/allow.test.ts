@@ -2,16 +2,15 @@ import { describe, expect, it } from "vitest";
 import { isAllowed, devBypass } from "./allow";
 
 describe("isAllowed", () => {
-  const list = " cohen.rl@gmail.com, dmindess@gmail.com ";
-  it("accepts allowlisted emails case-insensitively", () => {
-    expect(isAllowed("Cohen.RL@gmail.com", list)).toBe(true);
-    expect(isAllowed("dmindess@gmail.com", list)).toBe(true);
+  const list = " owner@example.com ";
+  it("accepts the allowlisted email case-insensitively", () => {
+    expect(isAllowed("Owner@Example.com", list)).toBe(true);
   });
   it("rejects anyone else, missing emails, and an empty list", () => {
-    expect(isAllowed("someone@gmail.com", list)).toBe(false);
+    expect(isAllowed("someone@example.com", list)).toBe(false);
     expect(isAllowed(null, list)).toBe(false);
-    expect(isAllowed("cohen.rl@gmail.com", "")).toBe(false);
-    expect(isAllowed("cohen.rl@gmail.com", undefined)).toBe(false);
+    expect(isAllowed("owner@example.com", "")).toBe(false);
+    expect(isAllowed("owner@example.com", undefined)).toBe(false);
   });
 });
 
