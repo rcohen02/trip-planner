@@ -279,6 +279,7 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 
 ## 8. v2 backlog
 
+- [ ] **Past trips archive and trip photos** (requested Oct 26, 2026): keep every finished trip browsable (Lisbon, Fernie and later trips) with its places, plan and bookings, and add a photo gallery per trip. Photos live outside the public repo (they're personal), so the site needs a private store for them.
 - [ ] **Edit on site:** add, edit and delete places, to-dos and logistics (replaces markdown import as the source of truth)
 - [ ] **Intake:** upload or paste confirmations, parsed by Claude (§4.7)
 - [ ] **Research agent** for new destinations (§4.8)
