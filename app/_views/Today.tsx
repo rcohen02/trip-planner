@@ -8,6 +8,8 @@ import { countdown, dateLabel, longDate, money, timeIn, weekdayOf } from "@/lib/
 import { describeCode, getForecast, toF } from "@/lib/weather";
 import { Alert, HoursLine, Thumb } from "@/app/_ui/bits";
 import { FlightCard } from "@/app/_ui/FlightCard";
+import { stayFor } from "@/lib/stays";
+import { nextFlight } from "@/lib/flights";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -15,13 +17,14 @@ const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; requestedDay?: string }) {
   const { trip, base } = ctx;
   const now = new Date();
+  const day = pickDay(trip.days, trip.timezone, requestedDay, now);
+  const stay = stayFor(trip, day.date);
   const [assignments, layout, bookings, forecast] = await Promise.all([
     getStore().assignments(trip.slug),
     getStore().layout(trip.slug),
     getStore().bookings(trip.slug),
-    getForecast(trip.homebase.lat, trip.homebase.lng, trip.timezone),
+    getForecast(stay?.lat ?? trip.homebase.lat, stay?.lng ?? trip.homebase.lng, trip.timezone),
   ]);
-  const day = pickDay(trip.days, trip.timezone, requestedDay, now);
   const home = todayFor(trip.days, trip.timezone, now);
   const index = trip.days.findIndex((d) => d.date === day.date);
   const rule = trip.days[index];
@@ -32,10 +35,9 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
   const nbPlace = nb ? byId.get(nb.placeId) : undefined;
   const next = nbPlace ?? planned.find((x) => x.p)?.p;
 
-  const [out, back] = [trip.flights[0], trip.flights[trip.flights.length - 1]];
-  const beforeTrip = now < new Date(out.depart);
-  const flight = beforeTrip ? out : back;
-  const toGo = countdown(flight.depart, now);
+  const nf = nextFlight(trip.flights, now);
+  const beforeTrip = nf?.outbound ?? false;
+  const toGo = nf ? countdown(nf.flight.depart, now) : null;
   const w = forecast[day.date];
 
   const info: string[] = [];
@@ -44,7 +46,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
     if (ms > 0 && ms < 48 * 3600_000)
       info.push(`${f.flightNo} check-in closes ${timeIn(f.checkInCloses, f.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}${f.from.code === "LIS" ? "" : " ET"}.`);
   }
-  if (!beforeTrip || day.date === trip.days[trip.days.length - 1].date) info.push("Swap return seats at check-in: 22B is between you.");
+  if (nf && (!beforeTrip || day.date === trip.days[trip.days.length - 1].date)) info.push("Check return seats at check-in.");
 
   return (
     <div className="grid gap-6 min-[960px]:grid-cols-[minmax(0,1fr)_320px]">
@@ -58,6 +60,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
             </p>
             <DayStep base={base} to={trip.days[index + 1]?.date} dir="next" />
           </nav>
+          {stay && <p className="m-0 mt-2 text-sm">Staying: {stay.label}</p>}
           <h1 className="t-display m-0 mt-1">{longDate(day.date)}</h1>
           {home.status === "today" && day.date !== home.date && (
             <Link className="t-caption" href={base}>
@@ -157,11 +160,13 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
 
         <div className="tp-stat">
           <div className="tp-label">{beforeTrip ? "Leaving in" : "Flight home in"}</div>
-          <div className="tp-stat__value">{toGo ?? "Departed"}</div>
-          <div className="tp-stat__sub">
-            {flight.flightNo} · {flight.from.code} {timeIn(flight.depart, flight.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}
-            {flight.from.code === "LIS" ? "" : " ET"}
-          </div>
+          <div className="tp-stat__value">{nf ? (toGo ?? "Departed") : "Not booked yet"}</div>
+          {nf && (
+            <div className="tp-stat__sub">
+              {nf.flight.flightNo} · {nf.flight.from.code} {timeIn(nf.flight.depart, nf.flight.from.code === "LIS" ? trip.timezone : trip.homeTimezone)}
+              {nf.flight.from.code === "LIS" ? "" : " ET"}
+            </div>
+          )}
         </div>
 
         <div className="tp-card tp-card--compact">
@@ -204,7 +209,7 @@ export async function TodayView({ ctx, requestedDay }: { ctx: TripContext; reque
           </Alert>
         ))}
 
-        {beforeTrip && <FlightCard flight={out} trip={trip} title="Outbound" />}
+        {beforeTrip && nf && <FlightCard flight={nf.flight} trip={trip} title="Outbound" />}
       </aside>
     </div>
   );

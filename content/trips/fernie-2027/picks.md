@@ -10,5 +10,14 @@ Stays: Banff (July 3–5), our house in Fernie (July 5–8), Glacier area (July 
 
 ## Nature
 
+- **Surveyors Lake** — Kikomun Creek Provincial Park, about 30 min south of Fernie. Sandy beaches, shade, and a day-use area beside the campground. Described as warm and good for families. [Info](https://tourismfernie.com/activities/swimming)
+- **Tie Lake** — BC Forest Recreation Site, about 45 min south of Fernie near Jaffray. Good for swimming, boating and camping. Facilities and water temperature not confirmed. [Info](https://tourismfernie.com/activities/swimming)
+- **Fairy Creek Falls Trail** — Fernie, about 4 km round trip, gentle. Cascading, misty waterfall, best in early summer. Starts at the Fernie Visitor Information Centre on Hwy 3. [Info](https://tourismfernie.com/blog/get-the-whole-family-out-on-these-easy-fernie-hikes)
+- **Peyto Lake Viewpoint** — Banff area, 2.6 km round trip, 80 m gain. Views of Peyto Lake from its second viewpoint. [Info](https://10adventures.com/10-best-family-hikes-in-banff-national-park/)
+- **Moraine Lake Rockpile** — Banff area, 3.4 km, 38 m gain. Moraine Lake and the Rockpile lookout. [Info](https://10adventures.com/10-best-family-hikes-in-banff-national-park/)
+- **Bow Lake Lakeshore** — Banff area, 3.4 km, flat. Lakeshore walk with Crowfoot Mountain views. [Info](https://10adventures.com/10-best-family-hikes-in-banff-national-park/)
+- **Johnston Canyon** — Banff area, 6.3 km, 122 m gain. Lower and Upper Falls, with an optional Ink Pots side loop. [Info](https://10adventures.com/10-best-family-hikes-in-banff-national-park/)
+- **Johnson Lake** — Banff area, 3 km lakeside loop, flat, open year-round. [Info](https://10adventures.com/10-best-family-hikes-in-banff-national-park/)
+- **Consolation Lakes** — Banff area, 5.8 km, 135 m gain. Lakes and the Tower of Babel. [Info](https://10adventures.com/10-best-family-hikes-in-banff-national-park/)
 - **Fernie Community Trail** — City multi-use trail along the Elk River in Fernie, also groomed in winter. Surface not confirmed as paved. [Info](https://www.fernie.ca/EN/main/residents/parks-recreation/outdoor-activities.html)
 - **Coal Creek Heritage Trail** — Mountain bike route to the old townsite near Fernie. Not paved; for stronger riders. [Info](https://www.fernie.ca/EN/main/residents/parks-recreation/outdoor-activities.html)

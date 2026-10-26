@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { stayOn, type Stay } from "./stays";
+import { stayFor, stayOn, type Stay } from "./stays";
 
 const stays: Stay[] = [
   { id: "banff", label: "Banff", address: "Banff, AB", lat: 51.1784, lng: -115.5708, from: "2027-07-03", to: "2027-07-05" },
@@ -38,5 +38,18 @@ describe("Fernie trip stays", () => {
       const covering = (trip?.stays ?? []).filter((s) => s.from <= night && night < s.to);
       expect(covering, night).toHaveLength(1);
     }
+  });
+});
+
+describe("stayFor", () => {
+  const home = { id: "home", label: "Home", address: "Somewhere", lat: 1, lng: 2, from: "", to: "" };
+  it("uses the stay covering the night", () => {
+    expect(stayFor({ stays, homebase: home }, "2027-07-06")?.id).toBe("fernie");
+  });
+  it("falls back to the home base for a trip without stays", () => {
+    expect(stayFor({ homebase: home }, "2027-07-06")).toEqual(home);
+  });
+  it("returns null for a night outside the trip's stays", () => {
+    expect(stayFor({ stays, homebase: home }, "2027-07-12")).toBeNull();
   });
 });

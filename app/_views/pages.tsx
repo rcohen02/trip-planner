@@ -216,6 +216,7 @@ export async function MapView({ ctx }: { ctx: TripContext }) {
         slug={trip.slug}
         base={base}
         homebase={trip.homebase}
+        stays={trip.stays}
         places={trip.places}
         clusters={trip.clusters}
         days={trip.days}
@@ -279,36 +280,52 @@ export function LogisticsView({ ctx }: { ctx: TripContext }) {
     <>
       <PageTitle>Logistics</PageTitle>
       <div className="grid gap-4 md:grid-cols-2">
-        <FlightCard flight={trip.flights[0]} trip={trip} title="Outbound" />
-        <FlightCard flight={trip.flights[trip.flights.length - 1]} trip={trip} title="Return" />
-        <section className="tp-card">
-          <h2 className="t-heading m-0 flex items-center gap-2">
-            <House className="tp-icon tp-icon-lg" aria-hidden /> {trip.homebase.label}
-          </h2>
-          <p className="m-0">{trip.homebase.address}</p>
-          {(trip.homebase.phone || trip.homebase.email) && (
-            <p className="m-0 text-sm">
-              {trip.homebase.phone && <a href={`tel:${trip.homebase.phone.replace(/\s/g, "")}`}>{trip.homebase.phone}</a>}
-              {trip.homebase.phone && trip.homebase.email && " · "}
-              {trip.homebase.email && <a href={`mailto:${trip.homebase.email}`}>{trip.homebase.email}</a>}
-            </p>
-          )}
-          <div className="flex flex-wrap gap-2">
-            {trip.homebase.url && (
-              <a className="tp-btn tp-btn--secondary" href={trip.homebase.url} target="_blank" rel="noreferrer">
-                Website
-              </a>
+        {trip.flights.length > 0 ? (
+          <>
+            <FlightCard flight={trip.flights[0]} trip={trip} title="Outbound" />
+            <FlightCard flight={trip.flights[trip.flights.length - 1]} trip={trip} title="Return" />
+          </>
+        ) : (
+          <section className="tp-card">
+            <h2 className="t-heading m-0">Flights</h2>
+            <p className="m-0 text-sm">Not booked yet. Flight details appear here once added.</p>
+          </section>
+        )}
+        {(trip.stays ?? [{ id: "home", from: "", to: "", ...trip.homebase }]).map((stay) => (
+          <section key={stay.id} className="tp-card">
+            <h2 className="t-heading m-0 flex items-center gap-2">
+              <House className="tp-icon tp-icon-lg" aria-hidden /> {stay.label}
+            </h2>
+            {stay.from && (
+              <p className="m-0 text-sm">
+                {stay.from} to {stay.to} (checkout)
+              </p>
             )}
-            <a
-              className="tp-btn tp-btn--secondary"
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${trip.homebase.label}, ${trip.homebase.address}`)}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open in Maps
-            </a>
-          </div>
-        </section>
+            <p className="m-0">{stay.address}</p>
+            {(stay.phone || stay.email) && (
+              <p className="m-0 text-sm">
+                {stay.phone && <a href={`tel:${stay.phone.replace(/\s/g, "")}`}>{stay.phone}</a>}
+                {stay.phone && stay.email && " · "}
+                {stay.email && <a href={`mailto:${stay.email}`}>{stay.email}</a>}
+              </p>
+            )}
+            <div className="flex flex-wrap gap-2">
+              {stay.url && (
+                <a className="tp-btn tp-btn--secondary" href={stay.url} target="_blank" rel="noreferrer">
+                  Website
+                </a>
+              )}
+              <a
+                className="tp-btn tp-btn--secondary"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${stay.label}, ${stay.address}`)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in Maps
+              </a>
+            </div>
+          </section>
+        ))}
         <section className="tp-card">
           <h2 className="t-heading m-0 flex items-center gap-2">
             <Luggage className="tp-icon tp-icon-lg" aria-hidden /> Bags and tickets

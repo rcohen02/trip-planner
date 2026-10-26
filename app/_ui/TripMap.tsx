@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import type { Stay } from "@/lib/stays";
 import "leaflet/dist/leaflet.css";
 import type { Category, Cluster, DayRule, Place, Trip } from "@/lib/content/types";
 import { visibleCategories, type Assignments, type SlotLayout } from "@/lib/plan/plan";
@@ -16,6 +17,7 @@ export default function TripMap({
   slug,
   base,
   homebase,
+  stays,
   places,
   clusters,
   days,
@@ -27,6 +29,7 @@ export default function TripMap({
   slug: string;
   base: string;
   homebase: Trip["homebase"];
+  stays?: Stay[];
   places: Place[];
   clusters: Cluster[];
   days: DayRule[];
@@ -65,17 +68,22 @@ export default function TripMap({
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
-      const pts: [number, number][] = [[homebase.lat, homebase.lng]];
-      L.marker([homebase.lat, homebase.lng], {
-        icon: L.divIcon({
-          className: "",
-          html: `<div style="width:34px;height:34px;border-radius:17px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
-          iconSize: [34, 34],
-          iconAnchor: [17, 17],
-        }),
-        title: `${homebase.label}: ${homebase.address}`,
-        zIndexOffset: 1000,
-      }).addTo(map);
+      const bases = stays?.length
+        ? stays
+        : [{ id: "home", label: homebase.label, address: homebase.address, lat: homebase.lat, lng: homebase.lng, from: "", to: "" }];
+      const pts: [number, number][] = bases.map((b) => [b.lat, b.lng]);
+      for (const b of bases) {
+        L.marker([b.lat, b.lng], {
+          icon: L.divIcon({
+            className: "",
+            html: `<div style="width:34px;height:34px;border-radius:17px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
+            iconSize: [34, 34],
+            iconAnchor: [17, 17],
+          }),
+          title: `${b.label}: ${b.address}`,
+          zIndexOffset: 1000,
+        }).addTo(map);
+      }
       for (const p of places) {
         if (p.lat == null || p.lng == null) continue;
         pts.push([p.lat, p.lng]);
@@ -117,7 +125,7 @@ export default function TripMap({
     };
     // Rebuild only when the places or their positions change, not on every data refresh (that would reset the zoom).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [homebase.lat, homebase.lng, placesKey]);
+  }, [homebase.lat, homebase.lng, stays, placesKey]);
 
   // "Shortlist only" hides the other pins; shortlisted pins get a ring either way.
   useEffect(() => {
