@@ -68,5 +68,35 @@
     "lat": 49.5328131,
     "lng": -115.0750688,
     "images": []
+  },
+  "bear-street-outfitters-bike-rental": {
+    "lat": 51.1769107,
+    "lng": -115.5728496,
+    "images": []
+  },
+  "gearhub-sports-bike-rental": {
+    "lat": 49.5020839,
+    "lng": -115.0615988,
+    "images": []
+  },
+  "canyon-raft-company": {
+    "lat": 49.3066406,
+    "lng": -115.1294811,
+    "images": []
+  },
+  "rocky-mountain-raft-tours": {
+    "lat": 51.1653333,
+    "lng": -115.5572073,
+    "images": []
+  },
+  "chinook-rafting": {
+    "lat": 51.1381161,
+    "lng": -115.051622,
+    "images": []
+  },
+  "black-tie-ski-bike-rentals-bike-rental": {
+    "lat": 51.1773245,
+    "lng": -115.5739308,
+    "images": []
   }
 }

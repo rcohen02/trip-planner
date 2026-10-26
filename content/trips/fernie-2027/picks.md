@@ -8,6 +8,13 @@ Stays: Banff (July 3–5), our house in Fernie (July 5–8), Glacier area (July 
 - **Tunnel49 Adventures** — Fernie, on the Elk River. Full-day whitewater (Class 2–4, 16 km through Elk Canyon) and a half-day Ghostrider family trip for ages 3+. Phone 250-423-5008. [Site](https://t49.ca/adventures/)
 - **Glacier Raft Company** — West Glacier, on the Middle Fork of the Flathead River. Half-day whitewater, 2–3.5 hours; from $50 USD per adult or child (12 and under) plus 8% service fee and guide tip. Minimum age varies by month (about 5–12) and 50 lb. Booking 1-406-888-5454. [Site](https://www.glacierparkcollection.com/activities/glacier-raft-co/half-day-trips/half-day-whitewater/)
 
+- **Bear Street Outfitters (bike rental)** — 203a Bear St, Banff. Standard and e-bikes, well reviewed for trail and Bow Valley rides. +1 877-447-1934. [Site](https://www.google.com/maps/search/?api=1&query=Bear+Street+Outfitters+Banff)
+- **Black Tie Ski & Bike Rentals (bike rental)** — 201 Lynx St, Banff, at Banff Park Lodge. E-bikes; reviewers say book early in summer. +1 825-398-9563. [Site](https://www.google.com/maps/search/?api=1&query=Black+Tie+Ski+Bike+Rentals+Banff)
+- **GearHub Sports (bike rental)** — 401 1st Ave, Fernie. Bikes and e-bikes, with trail advice from staff. +1 250-423-5555. [Site](https://www.google.com/maps/search/?api=1&query=GearHub+Sports+Fernie)
+- **Canyon Raft Company** — Elk River, Elko BC, about 30 min from Fernie. Guided Elk River float with cliff jumping; about 4 hours on the river, photos about $10 per person. +1 250-423-7226. [Site](https://www.google.com/maps/search/?api=1&query=Canyon+Raft+Company+Elko+BC)
+- **Rocky Mountain Raft Tours** — Bow River, Banff. Relaxed scenic float, about 45 minutes on the water, not whitewater. Good for families. +1 403-762-3632. [Site](https://www.google.com/maps/search/?api=1&query=Rocky+Mountain+Raft+Tours+Banff)
+- **Chinook Rafting** — Kananaskis River, about 1.5 hours from Banff. Grade 2–3 rapids, family-friendly, free photos from some guides. +1 866-330-7238. [Site](https://www.google.com/maps/search/?api=1&query=Chinook+Rafting+Riverbase+Kananaskis)
+
 ## Nature
 
 - **Surveyors Lake** — Kikomun Creek Provincial Park, about 30 min south of Fernie. Sandy beaches, shade, and a day-use area beside the campground. Described as warm and good for families. [Info](https://tourismfernie.com/activities/swimming)
