@@ -18,6 +18,18 @@ npm test             # unit tests; set TEST_DATABASE_URL to also run the store t
 
 After editing trip content: `npm run content` (and `npm run enrich -- lisbon-2026 --only=<place-id>` to refresh pins/photos for one place).
 
+## Add a new destination
+
+1. Create a branch from `main` (for example `trip/<slug>`).
+2. Create `content/trips/<slug>/` with `picks.md` (places to visit, one section per place), `trip.json` (flights, days, clusters, to-dos) and `enrichment.json`.
+3. Research places using the family preferences in `docs/travel_context.md`. Don't add hotels; the importer skips any "Hotels" section.
+4. Run `npm run content` to rebuild the trip from the markdown and JSON.
+5. Run `npm run enrich -- <slug>` to add map pins and photos. Use `--only=<place-id>` to refresh one place.
+6. Run `npm test` and `npm run lint`, then check the new trip in `npm run dev`.
+7. Commit and push the branch. Merge to `main` only when the trip is ready to go live, because Vercel deploys `main`.
+
+Conventions for trip content and code are in `AGENTS.md`. Rob's Claude setup uses the `add-places` skill for steps 3 to 5, `t2t-dev` for branches and deploys, and `t2t-ask` for questions about what's live.
+
 ## Deploy (Vercel, free `*.vercel.app` address)
 
 1. Vercel → Add New → Project → import `rcohen02/trip-planner`. Name the project `t2t` if available (gives `t2t.vercel.app`).
