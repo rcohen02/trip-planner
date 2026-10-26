@@ -13,12 +13,10 @@ export const TRIPS: Record<string, Trip> = {
     "usdRateDate": "2026-10-02",
     "travelers": [
       {
-        "name": "Rob",
-        "email": "cohen.rl@gmail.com"
+        "name": "Rob"
       },
       {
-        "name": "Danielle",
-        "email": "dmindess@gmail.com"
+        "name": "Danielle"
       }
     ],
     "bookingRef": "ZYKGWV",
