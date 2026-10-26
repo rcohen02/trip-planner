@@ -1,7 +1,7 @@
 /**
  * Adds coordinates (OpenStreetMap Nominatim) and freely licensed photos (Wikimedia Commons)
  * to every place in a trip. Writes content/trips/<slug>/enrichment.json; keeps existing entries
- * unless --force. Usage: npm run enrich -- lisbon-2026 [--force]
+ * unless --force. Usage: npm run enrich -- fernie-2027 [--force]
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
@@ -10,7 +10,7 @@ import type { Enrichment } from "../lib/content/buildTrip";
 import type { PlaceImage } from "../lib/content/types";
 
 const UA = "T2T-trip-planner/0.1 (personal trip planner; cohen.rl@gmail.com)";
-const slug = process.argv[2] ?? "lisbon-2026";
+const slug = process.argv[2] ?? "fernie-2027";
 const force = process.argv.includes("--force");
 const onlyArg = process.argv.find((a) => a.startsWith("--only="));
 const only = onlyArg ? onlyArg.slice(7).split(",") : null;
