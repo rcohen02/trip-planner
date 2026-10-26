@@ -9,7 +9,7 @@ import { parsePicks } from "../lib/content/parsePicks";
 import type { Enrichment } from "../lib/content/buildTrip";
 import type { PlaceImage } from "../lib/content/types";
 
-const UA = "T2T-trip-planner/0.1 (personal trip planner; cohen.rl@gmail.com)";
+const UA = "T2T-trip-planner/0.1 (personal trip planner; https://github.com/rcohen02/trip-planner)";
 const slug = process.argv[2] ?? "fernie-2027";
 const force = process.argv.includes("--force");
 const onlyArg = process.argv.find((a) => a.startsWith("--only="));

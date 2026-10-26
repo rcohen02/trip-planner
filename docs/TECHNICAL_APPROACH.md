@@ -123,7 +123,7 @@ WeatherCache tripId, date, json, fetchedAt
 2. **OAuth client:** create a Web client. Redirect URIs:
    - `https://<project>.vercel.app/api/auth/callback/google`
    - `http://localhost:3000/api/auth/callback/google`
-3. **Allowlist:** `ALLOWED_EMAILS=cohen.rl@gmail.com,dmindess@gmail.com`, checked in the `signIn` callback.
+3. **Allowlist:** `ALLOWED_EMAILS=<your Google address>`, checked in the `signIn` callback.
 4. **Previews:** PR preview URLs change each time, and Google needs exact redirect URIs. Either sign in on production only and use share links on previews, or add a fixed preview alias. **v1: production only.**
 
 ### 4.2 Read-only share links
@@ -225,7 +225,7 @@ Source markdown lives in the repo under `content/trips/lisbon-2026/`. Until v2 a
 | `ALLOWED_EMAILS` | ✓ | | Sign-in allowlist |
 | `SITE_URL` | ✓ | var | Production `vercel.app` URL |
 | `RESEND_API_KEY` | | secret | Job-failure alerts |
-| `ALERT_EMAIL` | | var | cohen.rl@gmail.com (Resend account owner) |
+| `ALERT_EMAIL` | | var | Resend account owner's address |
 | `ANTHROPIC_API_KEY` | v2 | v2 | Intake and research |
 | `BLOB_READ_WRITE_TOKEN` | v2 (Blob) | | Uploaded PDFs |
 
@@ -299,7 +299,7 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 
 - **Built and tested locally:**
   - Pages: Today, Days (drag and drop plus "Add to day"), Places, place detail, Map, Bookings & To-Do, Logistics.
-  - Google sign-in allowlist (`cohen.rl@gmail.com`, `dmindess@gmail.com`) and view-only share links.
+  - Google sign-in allowlist (the owner's Google address) and view-only share links.
   - Postgres storage.
 - **Data:** Lisbon has 26 places, all mapped, with photos for 15.
 - **Decided:**
