@@ -221,9 +221,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.1761183,
+        "lng": -115.6358386,
         "images": []
       },
       {
@@ -242,9 +242,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "fernie",
+        "lat": 49.5080066,
+        "lng": -115.0637696,
         "images": []
       },
       {
@@ -263,9 +263,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "glacier",
+        "lat": 48.4966073,
+        "lng": -113.9816469,
         "images": []
       },
       {
@@ -284,9 +284,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "fernie",
+        "lat": 49.2529857,
+        "lng": -115.2379031,
         "images": []
       },
       {
@@ -305,9 +305,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "fernie",
+        "lat": 49.4110766,
+        "lng": -115.3027008,
         "images": []
       },
       {
@@ -326,9 +326,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "fernie",
+        "lat": 49.5328131,
+        "lng": -115.0750688,
         "images": []
       },
       {
@@ -347,9 +347,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.7171414,
+        "lng": -116.507574,
         "images": []
       },
       {
@@ -368,9 +368,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.3282264,
+        "lng": -116.1795041,
         "images": []
       },
       {
@@ -389,9 +389,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.6733142,
+        "lng": -116.4499103,
         "images": []
       },
       {
@@ -410,9 +410,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.2455293,
+        "lng": -115.8398977,
         "images": []
       },
       {
@@ -431,9 +431,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.1966935,
+        "lng": -115.4825994,
         "images": []
       },
       {
@@ -452,9 +452,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "banff",
+        "lat": 51.3157482,
+        "lng": -116.1526461,
         "images": []
       },
       {
@@ -473,9 +473,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "fernie",
+        "lat": 49.5014607,
+        "lng": -115.066099,
         "images": []
       },
       {
@@ -494,9 +494,9 @@ export const TRIPS: Record<string, Trip> = {
         "hoursConfirmed": false,
         "openDays": null,
         "needsBooking": false,
-        "cluster": null,
-        "lat": null,
-        "lng": null,
+        "cluster": "fernie",
+        "lat": 49.5043094,
+        "lng": -115.0594256,
         "images": []
       }
     ]

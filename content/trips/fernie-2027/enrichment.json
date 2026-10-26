@@ -1,27 +1,72 @@
 {
   "banff-legacy-trail": {
-    "lat": null,
-    "lng": null,
+    "lat": 51.1761183,
+    "lng": -115.6358386,
     "images": []
   },
   "tunnel49-adventures": {
-    "lat": null,
-    "lng": null,
+    "lat": 49.5080066,
+    "lng": -115.0637696,
     "images": []
   },
   "glacier-raft-company": {
-    "lat": null,
-    "lng": null,
+    "lat": 48.4966073,
+    "lng": -113.9816469,
     "images": []
   },
   "fernie-community-trail": {
-    "lat": null,
-    "lng": null,
+    "lat": 49.5014607,
+    "lng": -115.066099,
     "images": []
   },
   "coal-creek-heritage-trail": {
-    "lat": null,
-    "lng": null,
+    "lat": 49.5043094,
+    "lng": -115.0594256,
+    "images": []
+  },
+  "peyto-lake-viewpoint": {
+    "lat": 51.7171414,
+    "lng": -116.507574,
+    "images": []
+  },
+  "moraine-lake-rockpile": {
+    "lat": 51.3282264,
+    "lng": -116.1795041,
+    "images": []
+  },
+  "bow-lake-lakeshore": {
+    "lat": 51.6733142,
+    "lng": -116.4499103,
+    "images": []
+  },
+  "johnston-canyon": {
+    "lat": 51.2455293,
+    "lng": -115.8398977,
+    "images": []
+  },
+  "johnson-lake": {
+    "lat": 51.1966935,
+    "lng": -115.4825994,
+    "images": []
+  },
+  "consolation-lakes": {
+    "lat": 51.3157482,
+    "lng": -116.1526461,
+    "images": []
+  },
+  "surveyors-lake": {
+    "lat": 49.2529857,
+    "lng": -115.2379031,
+    "images": []
+  },
+  "tie-lake": {
+    "lat": 49.4110766,
+    "lng": -115.3027008,
+    "images": []
+  },
+  "fairy-creek-falls-trail": {
+    "lat": 49.5328131,
+    "lng": -115.0750688,
     "images": []
   }
 }

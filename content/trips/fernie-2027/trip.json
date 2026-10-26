@@ -7,7 +7,14 @@
   "localCurrency": "CAD",
   "usdRate": 0.714,
   "usdRateDate": "2026-10-25",
-  "travelers": [{ "name": "Rob" }, { "name": "Danielle" }],
+  "travelers": [
+    {
+      "name": "Rob"
+    },
+    {
+      "name": "Danielle"
+    }
+  ],
   "bookingRef": "TBD",
   "homebase": {
     "label": "Our house in Fernie",
@@ -53,26 +60,160 @@
     "Fly out of Kalispell (FCA), about 1 h from West Glacier (estimate)"
   ],
   "days": [
-    { "date": "2027-07-03", "label": "Sat", "note": "Arrive Calgary, drive to Banff", "slots": ["afternoon", "dinner", "night"] },
-    { "date": "2027-07-04", "label": "Sun", "note": "Banff", "slots": ["morning", "lunch", "afternoon", "dinner", "night"] },
-    { "date": "2027-07-05", "label": "Mon", "note": "Drive to Fernie", "slots": ["morning", "lunch", "afternoon", "dinner", "night"] },
-    { "date": "2027-07-06", "label": "Tue", "note": "Fernie", "slots": ["morning", "lunch", "afternoon", "dinner", "night"] },
-    { "date": "2027-07-07", "label": "Wed", "note": "Fernie", "slots": ["morning", "lunch", "afternoon", "dinner", "night"] },
-    { "date": "2027-07-08", "label": "Thu", "note": "Drive to Glacier", "slots": ["morning", "lunch", "afternoon", "dinner", "night"] },
-    { "date": "2027-07-09", "label": "Fri", "note": "Glacier National Park", "slots": ["morning", "lunch", "afternoon", "dinner", "night"] },
-    { "date": "2027-07-10", "label": "Sat", "note": "Fly out of Kalispell", "slots": ["early", "morning", "lunch"] }
+    {
+      "date": "2027-07-03",
+      "label": "Sat",
+      "note": "Arrive Calgary, drive to Banff",
+      "slots": [
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-04",
+      "label": "Sun",
+      "note": "Banff",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-05",
+      "label": "Mon",
+      "note": "Drive to Fernie",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-06",
+      "label": "Tue",
+      "note": "Fernie",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-07",
+      "label": "Wed",
+      "note": "Fernie",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-08",
+      "label": "Thu",
+      "note": "Drive to Glacier",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-09",
+      "label": "Fri",
+      "note": "Glacier National Park",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-07-10",
+      "label": "Sat",
+      "note": "Fly out of Kalispell",
+      "slots": [
+        "early",
+        "morning",
+        "lunch"
+      ]
+    }
   ],
   "clusters": [
-    { "id": "banff", "name": "Banff", "note": "About 1.5 h from Calgary airport", "color": "#97D8B2" },
-    { "id": "fernie", "name": "Fernie", "note": "Our house", "color": "#F6C177" },
-    { "id": "glacier", "name": "Glacier", "note": "About 3 h from Fernie", "color": "#8FB8DE" }
+    {
+      "id": "banff",
+      "name": "Banff",
+      "note": "About 1.5 h from Calgary airport",
+      "color": "#97D8B2"
+    },
+    {
+      "id": "fernie",
+      "name": "Fernie",
+      "note": "Our house",
+      "color": "#F6C177"
+    },
+    {
+      "id": "glacier",
+      "name": "Glacier",
+      "note": "About 3 h from Fernie",
+      "color": "#8FB8DE"
+    }
   ],
-  "clusterOf": {},
+  "clusterOf": {
+    "banff-legacy-trail": "banff",
+    "peyto-lake-viewpoint": "banff",
+    "moraine-lake-rockpile": "banff",
+    "bow-lake-lakeshore": "banff",
+    "johnston-canyon": "banff",
+    "johnson-lake": "banff",
+    "consolation-lakes": "banff",
+    "surveyors-lake": "fernie",
+    "tie-lake": "fernie",
+    "fairy-creek-falls-trail": "fernie",
+    "coal-creek-heritage-trail": "fernie",
+    "fernie-community-trail": "fernie",
+    "tunnel49-adventures": "fernie",
+    "glacier-raft-company": "glacier"
+  },
   "todos": [
-    { "id": "book-banff-stay", "kind": "book", "text": "Book Banff accommodation for July 3–5 (house or apartment, not a hotel)" },
-    { "id": "book-glacier-stay", "kind": "book", "text": "Book Glacier-area accommodation for July 8–9 (house or cabin)" },
-    { "id": "book-flights", "kind": "book", "text": "Book flights into Calgary (YYC) and out of Kalispell (FCA)" },
-    { "id": "check-gtts", "kind": "check", "text": "Check Glacier's Going-to-the-Sun Road vehicle reservation rules for July 2027" },
-    { "id": "check-fernie-house", "kind": "check", "text": "Confirm the Fernie house is ready for July 5–8" }
+    {
+      "id": "book-banff-stay",
+      "kind": "book",
+      "text": "Book Banff accommodation for July 3–5 (house or apartment, not a hotel)"
+    },
+    {
+      "id": "book-glacier-stay",
+      "kind": "book",
+      "text": "Book Glacier-area accommodation for July 8–9 (house or cabin)"
+    },
+    {
+      "id": "book-flights",
+      "kind": "book",
+      "text": "Book flights into Calgary (YYC) and out of Kalispell (FCA)"
+    },
+    {
+      "id": "check-gtts",
+      "kind": "check",
+      "text": "Check Glacier's Going-to-the-Sun Road vehicle reservation rules for July 2027"
+    },
+    {
+      "id": "check-fernie-house",
+      "kind": "check",
+      "text": "Confirm the Fernie house is ready for July 5–8"
+    }
   ]
 }
