@@ -1,1 +1,27 @@
-{}
+{
+  "banff-legacy-trail": {
+    "lat": null,
+    "lng": null,
+    "images": []
+  },
+  "tunnel49-adventures": {
+    "lat": null,
+    "lng": null,
+    "images": []
+  },
+  "glacier-raft-company": {
+    "lat": null,
+    "lng": null,
+    "images": []
+  },
+  "fernie-community-trail": {
+    "lat": null,
+    "lng": null,
+    "images": []
+  },
+  "coal-creek-heritage-trail": {
+    "lat": null,
+    "lng": null,
+    "images": []
+  }
+}
