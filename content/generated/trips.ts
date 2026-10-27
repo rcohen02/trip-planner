@@ -196,7 +196,7 @@ export const TRIPS: Record<string, Trip> = {
       {
         "id": "check-gtts",
         "kind": "check",
-        "text": "Check Glacier's Going-to-the-Sun Road vehicle reservation rules for July 2027"
+        "text": "Check nps.gov Logan Pass and Going-to-the-Sun rules in spring 2027; shuttle tickets release on Recreation.gov"
       },
       {
         "id": "check-fernie-house",
@@ -245,7 +245,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5080066,
         "lng": -115.0637696,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJvZYy-Y9rZVMRULx8kB1ZYjA",
+            "thumb": "/api/place-photo/ChIJvZYy-Y9rZVMRULx8kB1ZYjA",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvZYy-Y9rZVMRULx8kB1ZYjA"
+          }
+        ]
       },
       {
         "id": "glacier-raft-company",
@@ -266,7 +274,189 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "glacier",
         "lat": 48.4966073,
         "lng": -113.9816469,
-        "images": []
+        "images": [
+          {
+            "url": "https://www.glacierparkcollection.com/GlacierParkInc/media/Images/Activities/Glacier-Raft-Co/MBN-Wide-Raft-Group.jpg?ext=.jpg",
+            "thumb": "https://www.glacierparkcollection.com/GlacierParkInc/media/Images/Activities/Glacier-Raft-Co/MBN-Wide-Raft-Group.jpg?ext=.jpg",
+            "credit": "Photo from Glacier Raft Company (Glacier Park Collection)",
+            "license": "Operator's own photo, used with credit",
+            "sourcePage": "https://www.glacierparkcollection.com/activities/glacier-raft-co/half-day-trips/half-day-whitewater/"
+          }
+        ]
+      },
+      {
+        "id": "bear-street-outfitters-bike-rental",
+        "name": "Bear Street Outfitters (bike rental)",
+        "category": "tour",
+        "location": "203a Bear St, Banff",
+        "details": "Standard and e-bikes, well reviewed for trail and Bow Valley rides. +1 877-447-1934.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.google.com/maps/search/?api=1&query=Bear+Street+Outfitters+Banff",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "",
+        "noteYear": null,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "banff",
+        "lat": 51.1769107,
+        "lng": -115.5728496,
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJB6iTIZ3LcFMRauT0s7sKl-8",
+            "thumb": "/api/place-photo/ChIJB6iTIZ3LcFMRauT0s7sKl-8",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJB6iTIZ3LcFMRauT0s7sKl-8"
+          }
+        ]
+      },
+      {
+        "id": "black-tie-ski-bike-rentals-bike-rental",
+        "name": "Black Tie Ski & Bike Rentals (bike rental)",
+        "category": "tour",
+        "location": "201 Lynx St, Banff, at Banff Park Lodge",
+        "details": "E-bikes; reviewers say book early in summer. +1 825-398-9563.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.google.com/maps/search/?api=1&query=Black+Tie+Ski+Bike+Rentals+Banff",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "",
+        "noteYear": null,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "banff",
+        "lat": 51.1773245,
+        "lng": -115.5739308,
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJGV_pGnvLcFMRX2Pevp9HE5A",
+            "thumb": "/api/place-photo/ChIJGV_pGnvLcFMRX2Pevp9HE5A",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJGV_pGnvLcFMRX2Pevp9HE5A"
+          }
+        ]
+      },
+      {
+        "id": "gearhub-sports-bike-rental",
+        "name": "GearHub Sports (bike rental)",
+        "category": "tour",
+        "location": "401 1st Ave, Fernie",
+        "details": "Bikes and e-bikes, with trail advice from staff. +1 250-423-5555.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.google.com/maps/search/?api=1&query=GearHub+Sports+Fernie",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "",
+        "noteYear": null,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "fernie",
+        "lat": 49.5020839,
+        "lng": -115.0615988,
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJ5-_Np3dsZVMR21sIjmKSlcg",
+            "thumb": "/api/place-photo/ChIJ5-_Np3dsZVMR21sIjmKSlcg",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ5-_Np3dsZVMR21sIjmKSlcg"
+          }
+        ]
+      },
+      {
+        "id": "canyon-raft-company",
+        "name": "Canyon Raft Company",
+        "category": "tour",
+        "location": "Elk River, Elko BC, about 30 min from Fernie",
+        "details": "Guided Elk River float with cliff jumping; about 4 hours on the river, photos about $10 per person. +1 250-423-7226.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.google.com/maps/search/?api=1&query=Canyon+Raft+Company+Elko+BC",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "",
+        "noteYear": null,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "fernie",
+        "lat": 49.3066406,
+        "lng": -115.1294811,
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJG1oIgohrZVMR24m_joeakFE",
+            "thumb": "/api/place-photo/ChIJG1oIgohrZVMR24m_joeakFE",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJG1oIgohrZVMR24m_joeakFE"
+          }
+        ]
+      },
+      {
+        "id": "rocky-mountain-raft-tours",
+        "name": "Rocky Mountain Raft Tours",
+        "category": "tour",
+        "location": "Bow River, Banff",
+        "details": "Relaxed scenic float, about 45 minutes on the water, not whitewater. Good for families. +1 403-762-3632.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.google.com/maps/search/?api=1&query=Rocky+Mountain+Raft+Tours+Banff",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "",
+        "noteYear": null,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "banff",
+        "lat": 51.1653333,
+        "lng": -115.5572073,
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJL6T898nLcFMRZAvjigREn14",
+            "thumb": "/api/place-photo/ChIJL6T898nLcFMRZAvjigREn14",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJL6T898nLcFMRZAvjigREn14"
+          }
+        ]
+      },
+      {
+        "id": "chinook-rafting",
+        "name": "Chinook Rafting",
+        "category": "tour",
+        "location": "Kananaskis River, about 1.5 hours from Banff",
+        "details": "Grade 2–3 rapids, family-friendly, free photos from some guides. +1 866-330-7238.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.google.com/maps/search/?api=1&query=Chinook+Rafting+Riverbase+Kananaskis",
+        "mapsUrl": null,
+        "phone": null,
+        "note": "",
+        "noteYear": null,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "banff",
+        "lat": 51.1381161,
+        "lng": -115.051622,
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJuQ49D1nYcFMR85EQgGce_Rk",
+            "thumb": "/api/place-photo/ChIJuQ49D1nYcFMR85EQgGce_Rk",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJuQ49D1nYcFMR85EQgGce_Rk"
+          }
+        ]
       },
       {
         "id": "surveyors-lake",
@@ -308,7 +498,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.4110766,
         "lng": -115.3027008,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1602557089158-f91c696af5fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8VGllJTIwTGFrZSUyMG1vdW50YWluJTIwbGFrZXxlbnwwfDB8fHwxNzkzMTA3MzU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1602557089158-f91c696af5fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8VGllJTIwTGFrZSUyMG1vdW50YWluJTIwbGFrZXxlbnwwfDB8fHwxNzkzMTA3MzU2fDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Intricate Explorer on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/body-of-water-near-mountain-during-daytime-YfuhiAIy5e0?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "fairy-creek-falls-trail",
@@ -329,7 +527,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5328131,
         "lng": -115.0750688,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1648075082931-50edfda0a856?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmFpcnklMjBDcmVlayUyMEZhbGxzJTIwd2F0ZXJmYWxsJTIwQ2FuYWRhfGVufDB8MHx8fDE3OTMxMDcyMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1648075082931-50edfda0a856?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmFpcnklMjBDcmVlayUyMEZhbGxzJTIwd2F0ZXJmYWxsJTIwQ2FuYWRhfGVufDB8MHx8fDE3OTMxMDcyMDd8MA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Hunter Reilly on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/a-large-waterfall-in-the-middle-of-a-forest-Yyo7Pl5AkK4?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "peyto-lake-viewpoint",
@@ -350,7 +556,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.7171414,
         "lng": -116.507574,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8UGV5dG8lMjBMYWtlJTIwQmFuZmZ8ZW58MHwwfHx8MTc5MzEwNzM0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8UGV5dG8lMjBMYWtlJTIwQmFuZmZ8ZW58MHwwfHx8MTc5MzEwNzM0OHww&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jelmer Borst on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/mountain-near-body-of-water-during-daytime-4l4h5_msufY?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "moraine-lake-rockpile",
@@ -371,7 +585,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.3282264,
         "lng": -116.1795041,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1561134643-668f9057cce4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8TW9yYWluZSUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1561134643-668f9057cce4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8TW9yYWluZSUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzQ5fDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jacky Huang on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/trees-near-a-mountain-beside-body-of-water-during-golden-hour-6rC8fmNW3pk?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "bow-lake-lakeshore",
@@ -413,7 +635,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.2455293,
         "lng": -115.8398977,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1717034220399-994d35adbc4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnN0b24lMjBDYW55b24lMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1717034220399-994d35adbc4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnN0b24lMjBDYW55b24lMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUxfDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Meressa Chartrand on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/a-river-running-through-a-lush-green-forest-xGtCwtGdeQY?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "johnson-lake",
@@ -434,7 +664,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.1966935,
         "lng": -115.4825994,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnNvbiUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnNvbiUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUzfDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jelmer Borst on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/mountain-near-body-of-water-during-daytime-4l4h5_msufY?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "consolation-lakes",
@@ -455,7 +693,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.3157482,
         "lng": -116.1526461,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1725358573456-ab33eba3c338?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Q29uc29sYXRpb24lMjBMYWtlcyUyMEJhbmZmfGVufDB8MHx8fDE3OTMxMDczNTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1725358573456-ab33eba3c338?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Q29uc29sYXRpb24lMjBMYWtlcyUyMEJhbmZmfGVufDB8MHx8fDE3OTMxMDczNTR8MA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Luc Santeramo on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/a-mountain-lake-surrounded-by-rocks-and-snow-YmZ0p_-EBdg?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "fernie-community-trail",
@@ -476,7 +722,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5014607,
         "lng": -115.066099,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/flagged/photo-1551567047-9415703c3c01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmVybmllJTIwQnJpdGlzaCUyMENvbHVtYmlhJTIwbW91bnRhaW5zJTIwdHJhaWx8ZW58MHwwfHx8MTc5MzEwNzIwMXww&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/flagged/photo-1551567047-9415703c3c01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmVybmllJTIwQnJpdGlzaCUyMENvbHVtYmlhJTIwbW91bnRhaW5zJTIwdHJhaWx8ZW58MHwwfHx8MTc5MzEwNzIwMXww&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jess Polley on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/landscape-tnTpN5Wo9gE?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "coal-creek-heritage-trail",

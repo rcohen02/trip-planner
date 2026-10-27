@@ -187,7 +187,13 @@
     "coal-creek-heritage-trail": "fernie",
     "fernie-community-trail": "fernie",
     "tunnel49-adventures": "fernie",
-    "glacier-raft-company": "glacier"
+    "glacier-raft-company": "glacier",
+    "bear-street-outfitters-bike-rental": "banff",
+    "gearhub-sports-bike-rental": "fernie",
+    "canyon-raft-company": "fernie",
+    "rocky-mountain-raft-tours": "banff",
+    "chinook-rafting": "banff",
+    "black-tie-ski-bike-rentals-bike-rental": "banff"
   },
   "todos": [
     {
@@ -208,7 +214,7 @@
     {
       "id": "check-gtts",
       "kind": "check",
-      "text": "Check Glacier's Going-to-the-Sun Road vehicle reservation rules for July 2027"
+      "text": "Check nps.gov Logan Pass and Going-to-the-Sun rules in spring 2027; shuttle tickets release on Recreation.gov"
     },
     {
       "id": "check-fernie-house",
