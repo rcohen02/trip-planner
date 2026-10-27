@@ -23,6 +23,15 @@ describe("Dominican Republic trip", () => {
     expect(stayFor(trip!, "2027-02-20")).toBeNull();
   });
 
+  it("pins the hotel at its Google Maps location", () => {
+    const pin = { lat: 19.6297313, lng: -69.9081141 };
+    const stay = stayFor(trip!, "2027-02-14");
+    expect(stay!.lat).toBeCloseTo(pin.lat, 4);
+    expect(stay!.lng).toBeCloseTo(pin.lng, 4);
+    expect(trip!.homebase.lat).toBeCloseTo(pin.lat, 4);
+    expect(trip!.homebase.lng).toBeCloseTo(pin.lng, 4);
+  });
+
   it("has the outbound and return United flights with the family's seats", () => {
     expect(trip!.flights.map((f) => f.flightNo)).toEqual(["UA1984", "UA2489"]);
     expect(trip!.flights[0].from.code).toBe("EWR");

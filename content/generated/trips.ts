@@ -29,16 +29,16 @@ export const TRIPS: Record<string, Trip> = {
     "homebase": {
       "label": "Casablanca Boutique Hotel",
       "address": "Calle Don Fructuoso Almonte 50, Cabrera 33000, Dominican Republic",
-      "lat": 19.63,
-      "lng": -69.9
+      "lat": 19.6297313,
+      "lng": -69.9081141
     },
     "stays": [
       {
         "id": "casablanca",
         "label": "Casablanca Boutique Hotel",
         "address": "Calle Don Fructuoso Almonte 50, Cabrera 33000, Dominican Republic",
-        "lat": 19.63,
-        "lng": -69.9,
+        "lat": 19.6297313,
+        "lng": -69.9081141,
         "from": "2027-02-13",
         "to": "2027-02-20"
       }
@@ -208,11 +208,6 @@ export const TRIPS: Record<string, Trip> = {
         "id": "book-transfer",
         "kind": "book",
         "text": "Book a transfer or rental car from Santo Domingo airport to Cabrera (about 3–4 h; estimate)"
-      },
-      {
-        "id": "check-hotel-pin",
-        "kind": "check",
-        "text": "Check the hotel's map pin: it is set to Cabrera's town center, not the exact hotel"
       },
       {
         "id": "check-in-times",
