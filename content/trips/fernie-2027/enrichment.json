@@ -226,5 +226,551 @@
         "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJGV_pGnvLcFMRX2Pevp9HE5A"
       }
     ]
+  },
+  "wolfies-dinette": {
+    "lat": 49.509158799999994,
+    "lng": -115.06392040000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJC2ZIkJhrZVMR3ZhKEfYoPzU",
+        "thumb": "/api/place-photo/ChIJC2ZIkJhrZVMR3ZhKEfYoPzU",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJC2ZIkJhrZVMR3ZhKEfYoPzU"
+      }
+    ]
+  },
+  "bridge-bistro": {
+    "lat": 49.504783200000006,
+    "lng": -115.06946169999998,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJV5KSyIdrZVMRVT4EnxupoyM",
+        "thumb": "/api/place-photo/ChIJV5KSyIdrZVMRVT4EnxupoyM",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJV5KSyIdrZVMRVT4EnxupoyM"
+      }
+    ]
+  },
+  "the-fernie-taphouse": {
+    "lat": 49.5043094,
+    "lng": -115.0594256,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ-fiZT-BnZVMRqPVfFb4A53c",
+        "thumb": "/api/place-photo/ChIJ-fiZT-BnZVMRqPVfFb4A53c",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ-fiZT-BnZVMRqPVfFb4A53c"
+      }
+    ]
+  },
+  "yamagoya-sushi": {
+    "lat": 49.507677,
+    "lng": -115.065592,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJs3F8H4lrZVMRG4GXhTn_ano",
+        "thumb": "/api/place-photo/ChIJs3F8H4lrZVMRG4GXhTn_ano",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJs3F8H4lrZVMRG4GXhTn_ano"
+      }
+    ]
+  },
+  "bramasole-restaurant-wine-bar": {
+    "lat": 49.508470499999994,
+    "lng": -115.0645189,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJV4dQdBZrZVMRd65-vCV90ek",
+        "thumb": "/api/place-photo/ChIJV4dQdBZrZVMRd65-vCV90ek",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJV4dQdBZrZVMRd65-vCV90ek"
+      }
+    ]
+  },
+  "white-birch-cafe-bistro": {
+    "lat": 49.5108819,
+    "lng": -115.06264110000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJwS1zQtFrZVMR3oFbzZRy1Jg",
+        "thumb": "/api/place-photo/ChIJwS1zQtFrZVMR3oFbzZRy1Jg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJwS1zQtFrZVMR3oFbzZRy1Jg"
+      }
+    ]
+  },
+  "himalayan-spice-bistro": {
+    "lat": 49.5015475,
+    "lng": -115.0632711,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJsV3JgndsZVMRjcS0hltQNOE",
+        "thumb": "/api/place-photo/ChIJsV3JgndsZVMRjcS0hltQNOE",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJsV3JgndsZVMRjcS0hltQNOE"
+      }
+    ]
+  },
+  "fernie-cattle-company": {
+    "lat": 49.5058708,
+    "lng": -115.06744379999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJzZWSfIhrZVMR0pWEmT4SYD4",
+        "thumb": "/api/place-photo/ChIJzZWSfIhrZVMR0pWEmT4SYD4",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJzZWSfIhrZVMR0pWEmT4SYD4"
+      }
+    ]
+  },
+  "good-folk": {
+    "lat": 51.1849785,
+    "lng": -115.5562028,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJSQOPTg7LcFMRQhjTRxjn2WM",
+        "thumb": "/api/place-photo/ChIJSQOPTg7LcFMRQhjTRxjn2WM",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJSQOPTg7LcFMRQhjTRxjn2WM"
+      }
+    ]
+  },
+  "the-maple-leaf-steak-seafood": {
+    "lat": 51.1765433,
+    "lng": -115.5712569,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJJ8_i30XKcFMRX4-EqsUwfec",
+        "thumb": "/api/place-photo/ChIJJ8_i30XKcFMRX4-EqsUwfec",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJJ8_i30XKcFMRX4-EqsUwfec"
+      }
+    ]
+  },
+  "the-prow-at-buffalo-mountain-lodge": {
+    "lat": 51.1839843,
+    "lng": -115.5504423,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJQWRK5yXLcFMRCzusvBoRgzE",
+        "thumb": "/api/place-photo/ChIJQWRK5yXLcFMRCzusvBoRgzE",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJQWRK5yXLcFMRCzusvBoRgzE"
+      }
+    ]
+  },
+  "tooloulous": {
+    "lat": 51.176705399999996,
+    "lng": -115.57154140000002,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJvdhE4UXKcFMR9rXbrbGrqvQ",
+        "thumb": "/api/place-photo/ChIJvdhE4UXKcFMR9rXbrbGrqvQ",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvdhE4UXKcFMR9rXbrbGrqvQ"
+      }
+    ]
+  },
+  "bare-bistro-by-fedoras-cakes-and-bakes": {
+    "lat": 51.190113399999994,
+    "lng": -115.56010629999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJU-_JYqvLcFMRbwQMkBvXbR8",
+        "thumb": "/api/place-photo/ChIJU-_JYqvLcFMRbwQMkBvXbR8",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJU-_JYqvLcFMRbwQMkBvXbR8"
+      }
+    ]
+  },
+  "farm-fire": {
+    "lat": 51.179797799999996,
+    "lng": -115.57027140000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJk4gFaPrLcFMR09wRRKwo-kg",
+        "thumb": "/api/place-photo/ChIJk4gFaPrLcFMR09wRRKwo-kg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJk4gFaPrLcFMR09wRRKwo-kg"
+      }
+    ]
+  },
+  "brazen": {
+    "lat": 51.1763305,
+    "lng": -115.57062119999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJR_LKC0bKcFMR7ExN_QMD51E",
+        "thumb": "/api/place-photo/ChIJR_LKC0bKcFMR7ExN_QMD51E",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJR_LKC0bKcFMR7ExN_QMD51E"
+      }
+    ]
+  },
+  "three-bears-brewery-restaurant": {
+    "lat": 51.176995899999994,
+    "lng": -115.57264599999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ0cdeKZvLcFMR0jSmXX0uyAI",
+        "thumb": "/api/place-photo/ChIJ0cdeKZvLcFMR0jSmXX0uyAI",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ0cdeKZvLcFMR0jSmXX0uyAI"
+      }
+    ]
+  },
+  "hankki": {
+    "lat": 51.1744919,
+    "lng": -115.5717953,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ_Zo6s_jLcFMR9nXYIb2CMrg",
+        "thumb": "/api/place-photo/ChIJ_Zo6s_jLcFMR9nXYIb2CMrg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ_Zo6s_jLcFMR9nXYIb2CMrg"
+      }
+    ]
+  },
+  "the-bison-restaurant-terrace": {
+    "lat": 51.177537799999996,
+    "lng": -115.5725896,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ25vxwEXKcFMRHwlTK6iPlaE",
+        "thumb": "/api/place-photo/ChIJ25vxwEXKcFMRHwlTK6iPlaE",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ25vxwEXKcFMRHwlTK6iPlaE"
+      }
+    ]
+  },
+  "wild-flour-bakery": {
+    "lat": 51.1771507,
+    "lng": -115.5726394,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ25vxwEXKcFMRe-vnMeqM680",
+        "thumb": "/api/place-photo/ChIJ25vxwEXKcFMRe-vnMeqM680",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ25vxwEXKcFMRe-vnMeqM680"
+      }
+    ]
+  },
+  "ramen-arashi": {
+    "lat": 51.1776221,
+    "lng": -115.57139129999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJtR997UXKcFMRI_VOnb_Pmjg",
+        "thumb": "/api/place-photo/ChIJtR997UXKcFMRI_VOnb_Pmjg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJtR997UXKcFMRI_VOnb_Pmjg"
+      }
+    ]
+  },
+  "block-kitchen-bar": {
+    "lat": 51.1767201,
+    "lng": -115.57131639999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJvdgr4UXKcFMRKRk7TDVlawQ",
+        "thumb": "/api/place-photo/ChIJvdgr4UXKcFMRKRk7TDVlawQ",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvdgr4UXKcFMRKRk7TDVlawQ"
+      }
+    ]
+  },
+  "the-fat-ox-of-banff": {
+    "lat": 51.1816651,
+    "lng": -115.56823139999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJq6oZBkHLcFMROQrULXNpMQg",
+        "thumb": "/api/place-photo/ChIJq6oZBkHLcFMROQrULXNpMQg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJq6oZBkHLcFMROQrULXNpMQg"
+      }
+    ]
+  },
+  "banff-tea-co": {
+    "lat": 51.176759,
+    "lng": -115.57193199999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJkz6n3EXKcFMRqJgjR3doyCk",
+        "thumb": "/api/place-photo/ChIJkz6n3EXKcFMRqJgjR3doyCk",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJkz6n3EXKcFMRqJgjR3doyCk"
+      }
+    ]
+  },
+  "jolene-s-tea-house": {
+    "lat": 51.1772336,
+    "lng": -115.572555,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJIV9tYOXLcFMRzM-ONq2YGmg",
+        "thumb": "/api/place-photo/ChIJIV9tYOXLcFMRzM-ONq2YGmg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJIV9tYOXLcFMRzM-ONq2YGmg"
+      }
+    ]
+  },
+  "evelyn-s-coffee-bar": {
+    "lat": 51.1775076,
+    "lng": -115.5712711,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJF1gM8kXKcFMRSr7GQwcm1uM",
+        "thumb": "/api/place-photo/ChIJF1gM8kXKcFMRSr7GQwcm1uM",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJF1gM8kXKcFMRSr7GQwcm1uM"
+      }
+    ]
+  },
+  "rocky-mountain-chocolate": {
+    "lat": 51.1754033,
+    "lng": -115.5712735,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw",
+        "thumb": "/api/place-photo/ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw"
+      }
+    ]
+  },
+  "the-grizzly-house-tourist-spot": {
+    "lat": 51.177072499999994,
+    "lng": -115.5710649,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJJ-Hz5UXKcFMRfYXnCkeIR_o",
+        "thumb": "/api/place-photo/ChIJJ-Hz5UXKcFMRfYXnCkeIR_o",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJJ-Hz5UXKcFMRfYXnCkeIR_o"
+      }
+    ]
+  },
+  "sky-bistro-tourist-spot": {
+    "lat": 51.144551899999996,
+    "lng": -115.57496350000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ9S3E0PnJcFMR8dn8aW1SQns",
+        "thumb": "/api/place-photo/ChIJ9S3E0PnJcFMR8dn8aW1SQns",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ9S3E0PnJcFMR8dn8aW1SQns"
+      }
+    ]
+  },
+  "banff-gondola": {
+    "lat": 51.1479321,
+    "lng": -115.555465,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJoXKdCWPJcFMRifTm8zB9kek",
+        "thumb": "/api/place-photo/ChIJoXKdCWPJcFMRifTm8zB9kek",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJoXKdCWPJcFMRifTm8zB9kek"
+      }
+    ]
+  },
+  "banff-upper-hot-springs": {
+    "lat": 51.150823700000004,
+    "lng": -115.56085750000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJY_1__x_KcFMRZsdws-Mivvs",
+        "thumb": "/api/place-photo/ChIJY_1__x_KcFMRZsdws-Mivvs",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJY_1__x_KcFMRZsdws-Mivvs"
+      }
+    ]
+  },
+  "lake-minnewanka": {
+    "lat": 51.264068599999995,
+    "lng": -115.37456739999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJzf76jpTScFMRxn5ES4dIhWQ",
+        "thumb": "/api/place-photo/ChIJzf76jpTScFMRxn5ES4dIhWQ",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJzf76jpTScFMRxn5ES4dIhWQ"
+      }
+    ]
+  },
+  "vermilion-lakes": {
+    "lat": 51.1807714,
+    "lng": -115.59417339999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJXQKMFWfKcFMRV5hcx6IWLog",
+        "thumb": "/api/place-photo/ChIJXQKMFWfKcFMRV5hcx6IWLog",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJXQKMFWfKcFMRV5hcx6IWLog"
+      }
+    ]
+  },
+  "banff-hoodoos": {
+    "lat": 51.167166,
+    "lng": -115.5589696,
+    "images": [
+      {
+        "url": "/api/place-photo/EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg",
+        "thumb": "/api/place-photo/EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg"
+      }
+    ]
+  },
+  "sundance-canyon": {
+    "lat": 51.152888,
+    "lng": -115.61244429999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ_4WZH_G1cFMRRu4K5P5HlyA",
+        "thumb": "/api/place-photo/ChIJ_4WZH_G1cFMRRu4K5P5HlyA",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ_4WZH_G1cFMRRu4K5P5HlyA"
+      }
+    ]
+  },
+  "cave-and-basin-national-historic-site": {
+    "lat": 51.1689655,
+    "lng": -115.59142220000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJvwXkmmvKcFMR0jQ8HRSSsqk",
+        "thumb": "/api/place-photo/ChIJvwXkmmvKcFMR0jQ8HRSSsqk",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvwXkmmvKcFMR0jQ8HRSSsqk"
+      }
+    ]
+  },
+  "lower-bankhead": {
+    "lat": 51.2331247,
+    "lng": -115.5212791,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJf8UEPjbNcFMRrzfY04lQusY",
+        "thumb": "/api/place-photo/ChIJf8UEPjbNcFMRrzfY04lQusY",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJf8UEPjbNcFMRrzfY04lQusY"
+      }
+    ]
+  },
+  "the-whyte-museum-of-the-canadian-rockies": {
+    "lat": 51.17518820000001,
+    "lng": -115.5732864,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJadzLf0bKcFMR9XLTxGWitO4",
+        "thumb": "/api/place-photo/ChIJadzLf0bKcFMR9XLTxGWitO4",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJadzLf0bKcFMR9XLTxGWitO4"
+      }
+    ]
+  },
+  "willock-sax-gallery": {
+    "lat": 51.1772,
+    "lng": -115.57198559999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ29auv0XKcFMRZvgvCdj-yUY",
+        "thumb": "/api/place-photo/ChIJ29auv0XKcFMRZvgvCdj-yUY",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ29auv0XKcFMRZvgvCdj-yUY"
+      }
+    ]
+  },
+  "canada-house-gallery": {
+    "lat": 51.176796,
+    "lng": -115.57285399999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJEyj2z0XKcFMRLF8mHKmOsnM",
+        "thumb": "/api/place-photo/ChIJEyj2z0XKcFMRLF8mHKmOsnM",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJEyj2z0XKcFMRLF8mHKmOsnM"
+      }
+    ]
+  },
+  "carter-ryan-gallery": {
+    "lat": 51.1783864,
+    "lng": -115.57246040000001,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJ80tRmEXKcFMRZCtoKCiPLjA",
+        "thumb": "/api/place-photo/ChIJ80tRmEXKcFMRZCtoKCiPLjA",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ80tRmEXKcFMRZCtoKCiPLjA"
+      }
+    ]
+  },
+  "brandon-t-brown-wilderness-gallery": {
+    "lat": 51.1772365,
+    "lng": -115.57299379999999,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJc3f2rXDLcFMR8GLu7y5220s",
+        "thumb": "/api/place-photo/ChIJc3f2rXDLcFMR8GLu7y5220s",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJc3f2rXDLcFMR8GLu7y5220s"
+      }
+    ]
+  },
+  "paper-den": {
+    "lat": 51.176987399999994,
+    "lng": -115.57226620000002,
+    "images": [
+      {
+        "url": "/api/place-photo/ChIJx54HoOvLcFMRlQmzdaZfYI8",
+        "thumb": "/api/place-photo/ChIJx54HoOvLcFMRlQmzdaZfYI8",
+        "credit": "Photo via Google",
+        "license": "Google Places photo",
+        "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJx54HoOvLcFMRlQmzdaZfYI8"
+      }
+    ]
   }
 }

@@ -42,6 +42,12 @@ describe("parsePicks", () => {
     expect(byName("Tram 12E").price).toEqual({ amount: 3, year: 2023 });
   });
 
+  it("reads Canadian dollar prices written as C$", () => {
+    const md = "## restaurants\n\n- **Test Bistro** — Main St. Good food. ~C$20–30 per person. Daily 9 am–9 pm.\n";
+    const [p] = parsePicks(md);
+    expect(p.price).toEqual({ amount: 20, max: 30, approx: true, unit: "per person" });
+  });
+
   it("flags confirmed hours and needed bookings", () => {
     expect(byName("Casa Fernando Pessoa").hoursConfirmed).toBe(true);
     expect(byName("MAAT").hoursConfirmed).toBe(false);
