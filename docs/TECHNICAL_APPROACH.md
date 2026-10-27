@@ -280,6 +280,7 @@ Red-green TDD applies, as in Small Hall: one failing test, then minimum code, fo
 ## 8. v2 backlog
 
 - [ ] **Past trips archive and trip photos** (requested Oct 26, 2026): keep every finished trip browsable (Lisbon, Fernie and later trips) with its places, plan and bookings, and add a photo gallery per trip. Photos live outside the public repo (they're personal), so the site needs a private store for them.
+- [ ] **Photo attribution before making the site public** (noted Oct 27, 2026): Google Places photos (`/api/place-photo/...`, live-loaded) currently show "Photo via Google". Google's policy requires crediting the photographer, so before the site is public, fetch `authorAttributions` (name, link) in the route, show it under each photo, and check Unsplash/operator credits too. Not needed while the site is private.
 - [ ] **Edit on site:** add, edit and delete places, to-dos and logistics (replaces markdown import as the source of truth)
 - [ ] **Intake:** upload or paste confirmations, parsed by Claude (§4.7)
 - [ ] **Research agent** for new destinations (§4.8)
