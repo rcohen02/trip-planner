@@ -1,0 +1,220 @@
+{
+  "slug": "dominican-republic-2027",
+  "name": "Dominican Republic",
+  "destination": "Newark → Santo Domingo → Cabrera, Dominican Republic → Newark",
+  "timezone": "America/Santo_Domingo",
+  "homeTimezone": "America/New_York",
+  "localCurrency": "DOP",
+  "usdRate": 0.01634,
+  "usdRateDate": "2026-10-23",
+  "travelers": [
+    {
+      "name": "Rob"
+    },
+    {
+      "name": "Danielle"
+    },
+    {
+      "name": "Cass"
+    },
+    {
+      "name": "Margot"
+    }
+  ],
+  "bookingRef": "MXV1XZ",
+  "homebase": {
+    "label": "Casablanca Boutique Hotel",
+    "address": "Calle Don Fructuoso Almonte 50, Cabrera 33000, Dominican Republic",
+    "lat": 19.63,
+    "lng": -69.9
+  },
+  "stays": [
+    {
+      "id": "casablanca",
+      "label": "Casablanca Boutique Hotel",
+      "address": "Calle Don Fructuoso Almonte 50, Cabrera 33000, Dominican Republic",
+      "lat": 19.63,
+      "lng": -69.9,
+      "from": "2027-02-13",
+      "to": "2027-02-20"
+    }
+  ],
+  "flights": [
+    {
+      "airline": "United Airlines",
+      "flightNo": "UA1984",
+      "from": {
+        "code": "EWR",
+        "name": "Newark",
+        "terminal": ""
+      },
+      "to": {
+        "code": "SDQ",
+        "name": "Santo Domingo",
+        "terminal": ""
+      },
+      "depart": "2027-02-13T08:45:00-05:00",
+      "arrive": "2027-02-13T13:41:00-04:00",
+      "checkInCloses": "2027-02-13T07:45:00-05:00",
+      "seats": {
+        "Rob": "29B",
+        "Danielle": "29C",
+        "Cass": "29D",
+        "Margot": "29E"
+      }
+    },
+    {
+      "airline": "United Airlines",
+      "flightNo": "UA2489",
+      "from": {
+        "code": "SDQ",
+        "name": "Santo Domingo",
+        "terminal": ""
+      },
+      "to": {
+        "code": "EWR",
+        "name": "Newark",
+        "terminal": ""
+      },
+      "depart": "2027-02-20T14:53:00-04:00",
+      "arrive": "2027-02-20T18:08:00-05:00",
+      "checkInCloses": "2027-02-20T13:53:00-04:00",
+      "seats": {
+        "Rob": "30C",
+        "Danielle": "30B",
+        "Cass": "30D",
+        "Margot": "30E"
+      }
+    }
+  ],
+  "bags": [
+    "Confirmation MXV1XZ (United, eTickets issued Sep 10, 2026)",
+    "Each way: 1st bag $50, 2nd bag $60 (USD). Up to 50 lb / 23 kg and 62 in / 157 cm per bag",
+    "Fare is non-refundable. Cancel before scheduled departure or the ticket has no value",
+    "Check in and drop bags at least 60 minutes before departure; board 30 minutes before. Bring passports and this eTicket receipt"
+  ],
+  "gettingAround": [
+    "Fly into Santo Domingo (SDQ, Las Américas). Transfer to Cabrera is roughly 3–4 hours by road (estimate; check before booking)",
+    "Fly home from SDQ at 2:53 pm; leave Cabrera with enough time for the transfer back (estimate)"
+  ],
+  "days": [
+    {
+      "date": "2027-02-13",
+      "label": "Sat",
+      "note": "Arrive Santo Domingo, transfer to Cabrera",
+      "slots": [
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-14",
+      "label": "Sun",
+      "note": "Cabrera",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-15",
+      "label": "Mon",
+      "note": "Cabrera",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-16",
+      "label": "Tue",
+      "note": "Cabrera",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-17",
+      "label": "Wed",
+      "note": "Cabrera",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-18",
+      "label": "Thu",
+      "note": "Cabrera",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-19",
+      "label": "Fri",
+      "note": "Cabrera; pack for the flight home",
+      "slots": [
+        "morning",
+        "lunch",
+        "afternoon",
+        "dinner",
+        "night"
+      ]
+    },
+    {
+      "date": "2027-02-20",
+      "label": "Sat",
+      "note": "Fly home from Santo Domingo",
+      "slots": [
+        "early",
+        "morning",
+        "lunch"
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cabrera",
+      "name": "Cabrera",
+      "note": "Hotel and the north coast",
+      "color": "#97D8B2"
+    }
+  ],
+  "todos": [
+    {
+      "id": "book-transfer",
+      "kind": "book",
+      "text": "Book a transfer or rental car from Santo Domingo airport to Cabrera (about 3–4 h; estimate)"
+    },
+    {
+      "id": "check-hotel-pin",
+      "kind": "check",
+      "text": "Check the hotel's map pin: it is set to Cabrera's town center, not the exact hotel"
+    },
+    {
+      "id": "check-in-times",
+      "kind": "check",
+      "text": "Check in at least 60 minutes before each flight (EWR Feb 13, SDQ Feb 20)"
+    }
+  ],
+  "places": []
+}

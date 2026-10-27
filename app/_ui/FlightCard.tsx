@@ -30,7 +30,8 @@ export function FlightCard({ flight, trip, title }: { flight: Flight; trip: Trip
           <div className="tp-code tp-num">{flight.from.code}</div>
           <div className="tp-caption">
             {timeIn(flight.depart, zoneFor(flight.from.code, trip))}
-            {zoneSuffix(flight.from.code)} · Terminal {flight.from.terminal}
+            {zoneSuffix(flight.from.code)}
+            {flight.from.terminal ? ` · Terminal ${flight.from.terminal}` : ""}
           </div>
         </div>
         <div className="tp-label text-center" style={{ letterSpacing: 0 }}>
@@ -43,7 +44,8 @@ export function FlightCard({ flight, trip, title }: { flight: Flight; trip: Trip
           <div className="tp-caption">
             {timeIn(flight.arrive, zoneFor(flight.to.code, trip))}
             {zoneSuffix(flight.to.code)}
-            {flight.arrive.slice(0, 10) !== flight.depart.slice(0, 10) ? ` ${dateLabel(flight.arrive.slice(0, 10)).slice(0, 3)}` : ""} · T{flight.to.terminal}
+            {flight.arrive.slice(0, 10) !== flight.depart.slice(0, 10) ? ` ${dateLabel(flight.arrive.slice(0, 10)).slice(0, 3)}` : ""}
+            {flight.to.terminal ? ` · T${flight.to.terminal}` : ""}
           </div>
         </div>
       </div>
