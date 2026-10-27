@@ -196,7 +196,7 @@ export const TRIPS: Record<string, Trip> = {
       {
         "id": "check-gtts",
         "kind": "check",
-        "text": "Check Glacier's Going-to-the-Sun Road vehicle reservation rules for July 2027"
+        "text": "Check nps.gov Logan Pass and Going-to-the-Sun rules in spring 2027; shuttle tickets release on Recreation.gov"
       },
       {
         "id": "check-fernie-house",
@@ -266,7 +266,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "glacier",
         "lat": 48.4966073,
         "lng": -113.9816469,
-        "images": []
+        "images": [
+          {
+            "url": "https://www.glacierparkcollection.com/GlacierParkInc/media/Images/Activities/Glacier-Raft-Co/MBN-Wide-Raft-Group.jpg?ext=.jpg",
+            "thumb": "https://www.glacierparkcollection.com/GlacierParkInc/media/Images/Activities/Glacier-Raft-Co/MBN-Wide-Raft-Group.jpg?ext=.jpg",
+            "credit": "Photo from Glacier Raft Company (Glacier Park Collection)",
+            "license": "Operator's own photo, used with credit",
+            "sourcePage": "https://www.glacierparkcollection.com/activities/glacier-raft-co/half-day-trips/half-day-whitewater/"
+          }
+        ]
       },
       {
         "id": "bear-street-outfitters-bike-rental",
@@ -434,7 +442,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.4110766,
         "lng": -115.3027008,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1602557089158-f91c696af5fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8VGllJTIwTGFrZSUyMG1vdW50YWluJTIwbGFrZXxlbnwwfDB8fHwxNzkzMTA3MzU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1602557089158-f91c696af5fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8VGllJTIwTGFrZSUyMG1vdW50YWluJTIwbGFrZXxlbnwwfDB8fHwxNzkzMTA3MzU2fDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Intricate Explorer on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/body-of-water-near-mountain-during-daytime-YfuhiAIy5e0?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "fairy-creek-falls-trail",
@@ -455,7 +471,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5328131,
         "lng": -115.0750688,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1648075082931-50edfda0a856?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmFpcnklMjBDcmVlayUyMEZhbGxzJTIwd2F0ZXJmYWxsJTIwQ2FuYWRhfGVufDB8MHx8fDE3OTMxMDcyMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1648075082931-50edfda0a856?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmFpcnklMjBDcmVlayUyMEZhbGxzJTIwd2F0ZXJmYWxsJTIwQ2FuYWRhfGVufDB8MHx8fDE3OTMxMDcyMDd8MA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Hunter Reilly on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/a-large-waterfall-in-the-middle-of-a-forest-Yyo7Pl5AkK4?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "peyto-lake-viewpoint",
@@ -476,7 +500,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.7171414,
         "lng": -116.507574,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8UGV5dG8lMjBMYWtlJTIwQmFuZmZ8ZW58MHwwfHx8MTc5MzEwNzM0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8UGV5dG8lMjBMYWtlJTIwQmFuZmZ8ZW58MHwwfHx8MTc5MzEwNzM0OHww&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jelmer Borst on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/mountain-near-body-of-water-during-daytime-4l4h5_msufY?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "moraine-lake-rockpile",
@@ -497,7 +529,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.3282264,
         "lng": -116.1795041,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1561134643-668f9057cce4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8TW9yYWluZSUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1561134643-668f9057cce4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8TW9yYWluZSUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzQ5fDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jacky Huang on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/trees-near-a-mountain-beside-body-of-water-during-golden-hour-6rC8fmNW3pk?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "bow-lake-lakeshore",
@@ -539,7 +579,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.2455293,
         "lng": -115.8398977,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1717034220399-994d35adbc4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnN0b24lMjBDYW55b24lMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1717034220399-994d35adbc4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnN0b24lMjBDYW55b24lMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUxfDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Meressa Chartrand on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/a-river-running-through-a-lush-green-forest-xGtCwtGdeQY?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "johnson-lake",
@@ -560,7 +608,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.1966935,
         "lng": -115.4825994,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnNvbiUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/flagged/photo-1561805108-04d5124771dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Sm9obnNvbiUyMExha2UlMjBCYW5mZnxlbnwwfDB8fHwxNzkzMTA3MzUzfDA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jelmer Borst on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/mountain-near-body-of-water-during-daytime-4l4h5_msufY?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "consolation-lakes",
@@ -581,7 +637,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.3157482,
         "lng": -116.1526461,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1725358573456-ab33eba3c338?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Q29uc29sYXRpb24lMjBMYWtlcyUyMEJhbmZmfGVufDB8MHx8fDE3OTMxMDczNTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/photo-1725358573456-ab33eba3c338?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8Q29uc29sYXRpb24lMjBMYWtlcyUyMEJhbmZmfGVufDB8MHx8fDE3OTMxMDczNTR8MA&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Luc Santeramo on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/a-mountain-lake-surrounded-by-rocks-and-snow-YmZ0p_-EBdg?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "fernie-community-trail",
@@ -602,7 +666,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5014607,
         "lng": -115.066099,
-        "images": []
+        "images": [
+          {
+            "url": "https://images.unsplash.com/flagged/photo-1551567047-9415703c3c01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmVybmllJTIwQnJpdGlzaCUyMENvbHVtYmlhJTIwbW91bnRhaW5zJTIwdHJhaWx8ZW58MHwwfHx8MTc5MzEwNzIwMXww&ixlib=rb-4.1.0&q=80&w=1080",
+            "thumb": "https://images.unsplash.com/flagged/photo-1551567047-9415703c3c01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE1MTQ3fDB8MXxzZWFyY2h8MXx8RmVybmllJTIwQnJpdGlzaCUyMENvbHVtYmlhJTIwbW91bnRhaW5zJTIwdHJhaWx8ZW58MHwwfHx8MTc5MzEwNzIwMXww&ixlib=rb-4.1.0&q=80&w=400",
+            "credit": "Photo by Jess Polley on Unsplash",
+            "license": "Unsplash License",
+            "sourcePage": "https://unsplash.com/photos/landscape-tnTpN5Wo9gE?utm_source=t2t&utm_medium=referral"
+          }
+        ]
       },
       {
         "id": "coal-creek-heritage-trail",
