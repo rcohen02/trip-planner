@@ -245,7 +245,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5080066,
         "lng": -115.0637696,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJvZYy-Y9rZVMRULx8kB1ZYjA",
+            "thumb": "/api/place-photo/ChIJvZYy-Y9rZVMRULx8kB1ZYjA",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvZYy-Y9rZVMRULx8kB1ZYjA"
+          }
+        ]
       },
       {
         "id": "glacier-raft-company",
@@ -295,7 +303,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.1769107,
         "lng": -115.5728496,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJB6iTIZ3LcFMRauT0s7sKl-8",
+            "thumb": "/api/place-photo/ChIJB6iTIZ3LcFMRauT0s7sKl-8",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJB6iTIZ3LcFMRauT0s7sKl-8"
+          }
+        ]
       },
       {
         "id": "black-tie-ski-bike-rentals-bike-rental",
@@ -316,7 +332,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.1773245,
         "lng": -115.5739308,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJGV_pGnvLcFMRX2Pevp9HE5A",
+            "thumb": "/api/place-photo/ChIJGV_pGnvLcFMRX2Pevp9HE5A",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJGV_pGnvLcFMRX2Pevp9HE5A"
+          }
+        ]
       },
       {
         "id": "gearhub-sports-bike-rental",
@@ -337,7 +361,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.5020839,
         "lng": -115.0615988,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJ5-_Np3dsZVMR21sIjmKSlcg",
+            "thumb": "/api/place-photo/ChIJ5-_Np3dsZVMR21sIjmKSlcg",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ5-_Np3dsZVMR21sIjmKSlcg"
+          }
+        ]
       },
       {
         "id": "canyon-raft-company",
@@ -358,7 +390,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "fernie",
         "lat": 49.3066406,
         "lng": -115.1294811,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJG1oIgohrZVMR24m_joeakFE",
+            "thumb": "/api/place-photo/ChIJG1oIgohrZVMR24m_joeakFE",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJG1oIgohrZVMR24m_joeakFE"
+          }
+        ]
       },
       {
         "id": "rocky-mountain-raft-tours",
@@ -379,7 +419,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.1653333,
         "lng": -115.5572073,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJL6T898nLcFMRZAvjigREn14",
+            "thumb": "/api/place-photo/ChIJL6T898nLcFMRZAvjigREn14",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJL6T898nLcFMRZAvjigREn14"
+          }
+        ]
       },
       {
         "id": "chinook-rafting",
@@ -400,7 +448,15 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "banff",
         "lat": 51.1381161,
         "lng": -115.051622,
-        "images": []
+        "images": [
+          {
+            "url": "/api/place-photo/ChIJuQ49D1nYcFMR85EQgGce_Rk",
+            "thumb": "/api/place-photo/ChIJuQ49D1nYcFMR85EQgGce_Rk",
+            "credit": "Photo via Google",
+            "license": "Google Places photo",
+            "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJuQ49D1nYcFMR85EQgGce_Rk"
+          }
+        ]
       },
       {
         "id": "surveyors-lake",
