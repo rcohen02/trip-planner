@@ -34,7 +34,7 @@ export function Carousel({ images, name }: { images: PlaceImage[]; name: string 
         <a href={img.sourcePage} target="_blank" rel="noreferrer">
           {img.credit}
         </a>
-        , {img.license}, via Wikimedia Commons
+        , {img.license}
       </figcaption>
     </figure>
   );

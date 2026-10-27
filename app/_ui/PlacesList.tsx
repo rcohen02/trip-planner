@@ -5,6 +5,7 @@ import type { Category, Cluster, DayRule, Place } from "@/lib/content/types";
 import type { Assignments, SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, HoursLine, StatusPill } from "./bits";
 import { AddToDaySheet, usePlanAssignments, usePlanBookings } from "./AddToDay";
+import { addToDayLabel } from "@/lib/plan/addToDayLabel";
 import { ShortlistFilter, ShortlistToggle, useShortlist } from "./Shortlist";
 import type { Booking } from "@/lib/plan/booking";
 
@@ -127,7 +128,7 @@ export function PlacesList({
                   </span>
                   {editable && (
                     <button className="tp-btn tp-btn--secondary" style={{ fontSize: 13, padding: "0 12px" }} onClick={() => setSheet(p)}>
-                      {planned.has(p.id) ? "Move" : "Add to day"}
+                      {addToDayLabel(planned.has(p.id))}
                     </button>
                   )}
                 </div>
