@@ -748,6 +748,1594 @@
       "lat": 49.5043094,
       "lng": -115.0594256,
       "images": []
+    },
+    {
+      "id": "banff-gondola",
+      "name": "Banff Gondola",
+      "category": "nature",
+      "location": "100 Mountain Ave, Banff",
+      "details": "Gondola up Sulphur Mountain. Check current ticket prices and times. about C$66 per person (2025 article; check). Daily 10 am–9 pm. Phone +1 866 756 1904.",
+      "price": {
+        "amount": 66,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJoXKdCWPJcFMRifTm8zB9kek",
+      "phone": "+1 866 756 1904",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1479321,
+      "lng": -115.555465,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJoXKdCWPJcFMRifTm8zB9kek",
+          "thumb": "/api/place-photo/ChIJoXKdCWPJcFMRifTm8zB9kek",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJoXKdCWPJcFMRifTm8zB9kek"
+        }
+      ]
+    },
+    {
+      "id": "banff-upper-hot-springs",
+      "name": "Banff Upper Hot Springs",
+      "category": "nature",
+      "location": "1 Mountain Ave, Banff",
+      "details": "Hot springs pool. Parking costs extra. about C$20 per person (reviews). Hours not on Google; check before going. Phone +1 800 767 1611.",
+      "price": {
+        "amount": 20,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJY_1__x_KcFMRZsdws-Mivvs",
+      "phone": "+1 800 767 1611",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.150823700000004,
+      "lng": -115.56085750000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJY_1__x_KcFMRZsdws-Mivvs",
+          "thumb": "/api/place-photo/ChIJY_1__x_KcFMRZsdws-Mivvs",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJY_1__x_KcFMRZsdws-Mivvs"
+        }
+      ]
+    },
+    {
+      "id": "lake-minnewanka",
+      "name": "Lake Minnewanka",
+      "category": "nature",
+      "location": "Lake Minnewanka Scenic Dr, Banff National Park",
+      "details": "Lake in Banff National Park. Hours not listed.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJzf76jpTScFMRxn5ES4dIhWQ",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.264068599999995,
+      "lng": -115.37456739999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJzf76jpTScFMRxn5ES4dIhWQ",
+          "thumb": "/api/place-photo/ChIJzf76jpTScFMRxn5ES4dIhWQ",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJzf76jpTScFMRxn5ES4dIhWQ"
+        }
+      ]
+    },
+    {
+      "id": "vermilion-lakes",
+      "name": "Vermilion Lakes",
+      "category": "nature",
+      "location": "Vermilion Lakes Rd, Banff",
+      "details": "Lakeside walk on the edge of Banff.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJXQKMFWfKcFMRV5hcx6IWLog",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1807714,
+      "lng": -115.59417339999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJXQKMFWfKcFMRV5hcx6IWLog",
+          "thumb": "/api/place-photo/ChIJXQKMFWfKcFMRV5hcx6IWLog",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJXQKMFWfKcFMRV5hcx6IWLog"
+        }
+      ]
+    },
+    {
+      "id": "banff-hoodoos",
+      "name": "Banff Hoodoos",
+      "category": "nature",
+      "location": "Hoodoos Trail, Tunnel Mountain, Banff",
+      "details": "Hoodoos Trail. Check the round-trip distance against the 5-mile hike limit.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.167166,
+      "lng": -115.5589696,
+      "images": [
+        {
+          "url": "/api/place-photo/EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg",
+          "thumb": "/api/place-photo/EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:EiBIb29kb29zIFRyYWlsLCBCYW5mZiwgQUIsIENhbmFkYSIuKiwKFAoSCbWBuL-1y3BTEbRH99XuUfnyEhQKEgn9SgyRRcpwUxFjlKzavq6vyg"
+        }
+      ]
+    },
+    {
+      "id": "sundance-canyon",
+      "name": "Sundance Canyon",
+      "category": "nature",
+      "location": "Sundance Canyon trail, Banff",
+      "details": "Canyon trail. Check the round-trip distance against the 5-mile hike limit.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ_4WZH_G1cFMRRu4K5P5HlyA",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.152888,
+      "lng": -115.61244429999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ_4WZH_G1cFMRRu4K5P5HlyA",
+          "thumb": "/api/place-photo/ChIJ_4WZH_G1cFMRRu4K5P5HlyA",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ_4WZH_G1cFMRRu4K5P5HlyA"
+        }
+      ]
+    },
+    {
+      "id": "wolfies-dinette",
+      "name": "WOLFIES dinette",
+      "category": "food",
+      "location": "931 7 Ave, Fernie",
+      "details": "Small table-service spot. Strong seafood: calamari, mackerel, arctic char and clams. Reviews rate it 4.9. Book ahead; groups of 6+ reserve by email. ~C$50–90 per person. Mon–Sat 5–10 pm, Sun closed.",
+      "price": {
+        "amount": 50,
+        "max": 90,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJC2ZIkJhrZVMR3ZhKEfYoPzU",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": true,
+      "cluster": "fernie",
+      "lat": 49.509158799999994,
+      "lng": -115.06392040000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJC2ZIkJhrZVMR3ZhKEfYoPzU",
+          "thumb": "/api/place-photo/ChIJC2ZIkJhrZVMR3ZhKEfYoPzU",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJC2ZIkJhrZVMR3ZhKEfYoPzU"
+        }
+      ]
+    },
+    {
+      "id": "bridge-bistro",
+      "name": "Bridge Bistro",
+      "category": "food",
+      "location": "301 BC-3, by the Elk River, Fernie",
+      "details": "Riverside bistro. Fish and chips, clam chowder, full bar. Takes reservations. ~C$20–30 per person. Daily 9 am–9 pm. Phone +1 250 423 3002.",
+      "price": {
+        "amount": 20,
+        "max": 30,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJV5KSyIdrZVMRVT4EnxupoyM",
+      "phone": "+1 250 423 3002",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.504783200000006,
+      "lng": -115.06946169999998,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJV5KSyIdrZVMRVT4EnxupoyM",
+          "thumb": "/api/place-photo/ChIJV5KSyIdrZVMRVT4EnxupoyM",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJV5KSyIdrZVMRVT4EnxupoyM"
+        }
+      ]
+    },
+    {
+      "id": "the-fernie-taphouse",
+      "name": "The Fernie Taphouse",
+      "category": "food",
+      "location": "691 1st Ave, Fernie",
+      "details": "Locals' pub known for Fernie Famous Fish & Chips. Family-friendly, with a patio. The Google listing shows a recent name change, so confirm it is the same place. Daily 11 am–midnight (Fri–Sat to 12:30 am). Phone +1 250 423 6444.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ-fiZT-BnZVMRqPVfFb4A53c",
+      "phone": "+1 250 423 6444",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.5043094,
+      "lng": -115.0594256,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ-fiZT-BnZVMRqPVfFb4A53c",
+          "thumb": "/api/place-photo/ChIJ-fiZT-BnZVMRqPVfFb4A53c",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ-fiZT-BnZVMRqPVfFb4A53c"
+        }
+      ]
+    },
+    {
+      "id": "yamagoya-sushi",
+      "name": "Yamagoya Sushi",
+      "category": "food",
+      "location": "741 7 Ave, Fernie",
+      "details": "Sushi, seafood and ramen. Expect a wait at peak hours; reservations accepted. ~C$30–60 per person. Daily 5–10 pm. Phone +1 250 430 0090.",
+      "price": {
+        "amount": 30,
+        "max": 60,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJs3F8H4lrZVMRG4GXhTn_ano",
+      "phone": "+1 250 430 0090",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.507677,
+      "lng": -115.065592,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJs3F8H4lrZVMRG4GXhTn_ano",
+          "thumb": "/api/place-photo/ChIJs3F8H4lrZVMRG4GXhTn_ano",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJs3F8H4lrZVMRG4GXhTn_ano"
+        }
+      ]
+    },
+    {
+      "id": "bramasole-restaurant-wine-bar",
+      "name": "Bramasole Restaurant & Wine Bar",
+      "category": "food",
+      "location": "851 7 Ave, Fernie",
+      "details": "Italian wine bar and local favourite. Reserve ahead. ~C$30–90 per person. Daily 5–10 pm. Phone +1 250 430 0526.",
+      "price": {
+        "amount": 30,
+        "max": 90,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJV4dQdBZrZVMRd65-vCV90ek",
+      "phone": "+1 250 430 0526",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.508470499999994,
+      "lng": -115.0645189,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJV4dQdBZrZVMRd65-vCV90ek",
+          "thumb": "/api/place-photo/ChIJV4dQdBZrZVMRd65-vCV90ek",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJV4dQdBZrZVMRd65-vCV90ek"
+        }
+      ]
+    },
+    {
+      "id": "white-birch-cafe-bistro",
+      "name": "White Birch Cafe & Bistro",
+      "category": "food",
+      "location": "1101 7 Ave, Fernie",
+      "details": "Breakfast, including creative Eggs Benedict. ~C$20–30 per person. Daily 7 am–1 pm. Phone +1 250 430 4570.",
+      "price": {
+        "amount": 20,
+        "max": 30,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJwS1zQtFrZVMR3oFbzZRy1Jg",
+      "phone": "+1 250 430 4570",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.5108819,
+      "lng": -115.06264110000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJwS1zQtFrZVMR3oFbzZRy1Jg",
+          "thumb": "/api/place-photo/ChIJwS1zQtFrZVMR3oFbzZRy1Jg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJwS1zQtFrZVMR3oFbzZRy1Jg"
+        }
+      ]
+    },
+    {
+      "id": "himalayan-spice-bistro",
+      "name": "Himalayan Spice Bistro",
+      "category": "food",
+      "location": "301 2 Ave, Fernie",
+      "details": "Long-running Himalayan and Indian restaurant, named among the area's best by Avenue Calgary. ~C$20–30 per person. Daily 4–10 pm. Phone +1 250 430 0399.",
+      "price": {
+        "amount": 20,
+        "max": 30,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJsV3JgndsZVMRjcS0hltQNOE",
+      "phone": "+1 250 430 0399",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.5015475,
+      "lng": -115.0632711,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJsV3JgndsZVMRjcS0hltQNOE",
+          "thumb": "/api/place-photo/ChIJsV3JgndsZVMRjcS0hltQNOE",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJsV3JgndsZVMRjcS0hltQNOE"
+        }
+      ]
+    },
+    {
+      "id": "fernie-cattle-company",
+      "name": "Fernie Cattle Company",
+      "category": "food",
+      "location": "561 BC-3, Fernie",
+      "details": "Steakhouse that also serves rainbow trout and seafood. Reservations recommended. Tables of 6 or more get a 20% service charge. ~C$30–80 per person. Daily 4:30–9:30 pm. Phone +1 250 423 7498.",
+      "price": {
+        "amount": 30,
+        "max": 80,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJzZWSfIhrZVMR0pWEmT4SYD4",
+      "phone": "+1 250 423 7498",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "fernie",
+      "lat": 49.5058708,
+      "lng": -115.06744379999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJzZWSfIhrZVMR0pWEmT4SYD4",
+          "thumb": "/api/place-photo/ChIJzZWSfIhrZVMR0pWEmT4SYD4",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJzZWSfIhrZVMR0pWEmT4SYD4"
+        }
+      ]
+    },
+    {
+      "id": "good-folk",
+      "name": "Good Folk",
+      "category": "food",
+      "location": "600 Banff Ave, Banff",
+      "details": "Farm-to-table: oysters, Hokkaido scallops, West Coast sablefish. Book dinner ahead. Daily 7 am–noon and 4–10 pm. Phone +1 403 760 8505.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJSQOPTg7LcFMRQhjTRxjn2WM",
+      "phone": "+1 403 760 8505",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1849785,
+      "lng": -115.5562028,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJSQOPTg7LcFMRQhjTRxjn2WM",
+          "thumb": "/api/place-photo/ChIJSQOPTg7LcFMRQhjTRxjn2WM",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJSQOPTg7LcFMRQhjTRxjn2WM"
+        }
+      ]
+    },
+    {
+      "id": "the-maple-leaf-steak-seafood",
+      "name": "The Maple Leaf Steak & Seafood",
+      "category": "food",
+      "location": "137 Banff Ave, Banff",
+      "details": "Maple salmon, prawns, lobster tail, king crab and oysters. Reservations recommended. Tue–Sun 10 am–2:30 pm and 4–9 pm, Mon closed. Phone +1 403 760 7680.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJJ8_i30XKcFMRX4-EqsUwfec",
+      "phone": "+1 403 760 7680",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1765433,
+      "lng": -115.5712569,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJJ8_i30XKcFMRX4-EqsUwfec",
+          "thumb": "/api/place-photo/ChIJJ8_i30XKcFMRX4-EqsUwfec",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJJ8_i30XKcFMRX4-EqsUwfec"
+        }
+      ]
+    },
+    {
+      "id": "the-prow-at-buffalo-mountain-lodge",
+      "name": "The Prow at Buffalo Mountain Lodge",
+      "category": "food",
+      "location": "700 Tunnel Mountain Rd, Banff",
+      "details": "Lemon conchigliette with seafood and clam chowder, in a lodge setting. Reserve dinner. ~C$20–70 per person. Daily 7 am–10 pm. Phone +1 403 760 4484.",
+      "price": {
+        "amount": 20,
+        "max": 70,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJQWRK5yXLcFMRCzusvBoRgzE",
+      "phone": "+1 403 760 4484",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1839843,
+      "lng": -115.5504423,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJQWRK5yXLcFMRCzusvBoRgzE",
+          "thumb": "/api/place-photo/ChIJQWRK5yXLcFMRCzusvBoRgzE",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJQWRK5yXLcFMRCzusvBoRgzE"
+        }
+      ]
+    },
+    {
+      "id": "tooloulous",
+      "name": "Tooloulous",
+      "category": "food",
+      "location": "204 Caribou St, Banff",
+      "details": "Cajun: crab, shrimp and grits, fish and chips. Dinner reservations strongly recommended. ~C$20–30 per person. Tue–Fri 8 am–9 pm per the Google listing; confirm. Phone +1 403 762 2633.",
+      "price": {
+        "amount": 20,
+        "max": 30,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvdhE4UXKcFMR9rXbrbGrqvQ",
+      "phone": "+1 403 762 2633",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.176705399999996,
+      "lng": -115.57154140000002,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJvdhE4UXKcFMR9rXbrbGrqvQ",
+          "thumb": "/api/place-photo/ChIJvdhE4UXKcFMR9rXbrbGrqvQ",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvdhE4UXKcFMR9rXbrbGrqvQ"
+        }
+      ]
+    },
+    {
+      "id": "bare-bistro-by-fedoras-cakes-and-bakes",
+      "name": "Bare Bistro by Fedoras cakes and bakes",
+      "category": "food",
+      "location": "100 Owl St (off Banff Ave), Banff",
+      "details": "Family-run breakfast spot, rated 4.9. Free parking. ~C$20–30 per person. Mon–Fri 6:30 am–2 pm, Sat–Sun closed. Phone +1 403 760 2677.",
+      "price": {
+        "amount": 0
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJU-_JYqvLcFMRbwQMkBvXbR8",
+      "phone": "+1 403 760 2677",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.190113399999994,
+      "lng": -115.56010629999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJU-_JYqvLcFMRbwQMkBvXbR8",
+          "thumb": "/api/place-photo/ChIJU-_JYqvLcFMRbwQMkBvXbR8",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJU-_JYqvLcFMRbwQMkBvXbR8"
+        }
+      ]
+    },
+    {
+      "id": "farm-fire",
+      "name": "Farm & Fire",
+      "category": "food",
+      "location": "333 Banff Ave, Banff",
+      "details": "Farm-to-table, with rotisserie chicken and a patio fireplace. Reserve brunch and dinner. Mixed reviews. ~C$20–30 per person. Daily 7 am–2 pm and 5–9 pm. Phone +1 403 760 3298.",
+      "price": {
+        "amount": 20,
+        "max": 30,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJk4gFaPrLcFMR09wRRKwo-kg",
+      "phone": "+1 403 760 3298",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.179797799999996,
+      "lng": -115.57027140000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJk4gFaPrLcFMR09wRRKwo-kg",
+          "thumb": "/api/place-photo/ChIJk4gFaPrLcFMR09wRRKwo-kg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJk4gFaPrLcFMR09wRRKwo-kg"
+        }
+      ]
+    },
+    {
+      "id": "brazen",
+      "name": "Brazen",
+      "category": "food",
+      "location": "138 Banff Ave, Banff",
+      "details": "Local dishes with Banff-area ingredients, including bison kofta and smoked striploin. Dinner reservations recommended. ~C$20–80 per person. Daily 7 am–9 pm. Phone +1 403 760 8540.",
+      "price": {
+        "amount": 20,
+        "max": 80,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJR_LKC0bKcFMR7ExN_QMD51E",
+      "phone": "+1 403 760 8540",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1763305,
+      "lng": -115.57062119999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJR_LKC0bKcFMR7ExN_QMD51E",
+          "thumb": "/api/place-photo/ChIJR_LKC0bKcFMR7ExN_QMD51E",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJR_LKC0bKcFMR7ExN_QMD51E"
+        }
+      ]
+    },
+    {
+      "id": "three-bears-brewery-restaurant",
+      "name": "Three Bears Brewery & Restaurant",
+      "category": "food",
+      "location": "205 Bear St, Banff",
+      "details": "Brewpub that locals use. Reserve on weekends. ~C$20–60 per person. Daily 11:30 am–9 pm (Fri–Sat to 9:30 pm). Phone +1 403 985 8038.",
+      "price": {
+        "amount": 20,
+        "max": 60,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0cdeKZvLcFMR0jSmXX0uyAI",
+      "phone": "+1 403 985 8038",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.176995899999994,
+      "lng": -115.57264599999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ0cdeKZvLcFMR0jSmXX0uyAI",
+          "thumb": "/api/place-photo/ChIJ0cdeKZvLcFMR0jSmXX0uyAI",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ0cdeKZvLcFMR0jSmXX0uyAI"
+        }
+      ]
+    },
+    {
+      "id": "hankki",
+      "name": "Hankki",
+      "category": "food",
+      "location": "206 Buffalo St, Banff",
+      "details": "Counter service, cheap takeout. ~C$10–20 per person. Daily 11:30 am–9 pm. Phone +1 403 762 0332.",
+      "price": {
+        "amount": 10,
+        "max": 20,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ_Zo6s_jLcFMR9nXYIb2CMrg",
+      "phone": "+1 403 762 0332",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1744919,
+      "lng": -115.5717953,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ_Zo6s_jLcFMR9nXYIb2CMrg",
+          "thumb": "/api/place-photo/ChIJ_Zo6s_jLcFMR9nXYIb2CMrg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ_Zo6s_jLcFMR9nXYIb2CMrg"
+        }
+      ]
+    },
+    {
+      "id": "the-bison-restaurant-terrace",
+      "name": "The Bison Restaurant & Terrace",
+      "category": "food",
+      "location": "211 Bear St, Banff",
+      "details": "Splurge. Regional Alberta food, octopus, halibut. Reserve; expect a wait. ~C$100+ per person. Daily 5–9 pm (Fri–Sat from 4:30 pm). Phone +1 403 762 5550.",
+      "price": {
+        "amount": 100,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ25vxwEXKcFMRHwlTK6iPlaE",
+      "phone": "+1 403 762 5550",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.177537799999996,
+      "lng": -115.5725896,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ25vxwEXKcFMRHwlTK6iPlaE",
+          "thumb": "/api/place-photo/ChIJ25vxwEXKcFMRHwlTK6iPlaE",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ25vxwEXKcFMRHwlTK6iPlaE"
+        }
+      ]
+    },
+    {
+      "id": "wild-flour-bakery",
+      "name": "Wild Flour Bakery",
+      "category": "food",
+      "location": "211 Bear St, Banff",
+      "details": "Bakery on Bear Street. Daily 7 am–5 pm. Phone +1 403 760 5074.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ25vxwEXKcFMRe-vnMeqM680",
+      "phone": "+1 403 760 5074",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1771507,
+      "lng": -115.5726394,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ25vxwEXKcFMRe-vnMeqM680",
+          "thumb": "/api/place-photo/ChIJ25vxwEXKcFMRe-vnMeqM680",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ25vxwEXKcFMRe-vnMeqM680"
+        }
+      ]
+    },
+    {
+      "id": "ramen-arashi",
+      "name": "Ramen Arashi",
+      "category": "food",
+      "location": "213 Sundance Mall, 215 Banff Ave (2nd floor), Banff",
+      "details": "Ramen. No reservations. Black arashi bowl about C$19. Daily 11:30 am–9 pm. Phone +1 403 760 0908.",
+      "price": {
+        "amount": 19
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJtR997UXKcFMRI_VOnb_Pmjg",
+      "phone": "+1 403 760 0908",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1776221,
+      "lng": -115.57139129999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJtR997UXKcFMRI_VOnb_Pmjg",
+          "thumb": "/api/place-photo/ChIJtR997UXKcFMRI_VOnb_Pmjg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJtR997UXKcFMRI_VOnb_Pmjg"
+        }
+      ]
+    },
+    {
+      "id": "block-kitchen-bar",
+      "name": "Block Kitchen + Bar",
+      "category": "food",
+      "location": "5 Banff Ave, Banff",
+      "details": "Restaurant and bar on Banff Avenue. Daily 11:30 am–11 pm. Phone +1 403 985 2887.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvdgr4UXKcFMRKRk7TDVlawQ",
+      "phone": "+1 403 985 2887",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1767201,
+      "lng": -115.57131639999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJvdgr4UXKcFMRKRk7TDVlawQ",
+          "thumb": "/api/place-photo/ChIJvdgr4UXKcFMRKRk7TDVlawQ",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvdgr4UXKcFMRKRk7TDVlawQ"
+        }
+      ]
+    },
+    {
+      "id": "the-fat-ox-of-banff",
+      "name": "The Fat Ox of Banff",
+      "category": "food",
+      "location": "415 Banff Ave, Banff",
+      "details": "Northern Italian. ~C$25–45 per person (approximate). Daily 12–10 pm (Mon–Fri from 2 pm). Phone +1 403 762 3848.",
+      "price": {
+        "amount": 25,
+        "max": 45,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJq6oZBkHLcFMROQrULXNpMQg",
+      "phone": "+1 403 762 3848",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1816651,
+      "lng": -115.56823139999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJq6oZBkHLcFMROQrULXNpMQg",
+          "thumb": "/api/place-photo/ChIJq6oZBkHLcFMROQrULXNpMQg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJq6oZBkHLcFMROQrULXNpMQg"
+        }
+      ]
+    },
+    {
+      "id": "banff-tea-co",
+      "name": "Banff Tea Co.",
+      "category": "food",
+      "location": "208 Caribou St, Banff",
+      "details": "Tea shop. Daily 10 am–8 pm. Phone +1 403 762 8322.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJkz6n3EXKcFMRqJgjR3doyCk",
+      "phone": "+1 403 762 8322",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.176759,
+      "lng": -115.57193199999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJkz6n3EXKcFMRqJgjR3doyCk",
+          "thumb": "/api/place-photo/ChIJkz6n3EXKcFMRqJgjR3doyCk",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJkz6n3EXKcFMRqJgjR3doyCk"
+        }
+      ]
+    },
+    {
+      "id": "jolene-s-tea-house",
+      "name": "Jolene's Tea House",
+      "category": "food",
+      "location": "211A Bear St, Banff",
+      "details": "Tea house on Bear Street. Daily 9 am–8 pm. Phone +1 403 985 5500.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJIV9tYOXLcFMRzM-ONq2YGmg",
+      "phone": "+1 403 985 5500",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1772336,
+      "lng": -115.572555,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJIV9tYOXLcFMRzM-ONq2YGmg",
+          "thumb": "/api/place-photo/ChIJIV9tYOXLcFMRzM-ONq2YGmg",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJIV9tYOXLcFMRzM-ONq2YGmg"
+        }
+      ]
+    },
+    {
+      "id": "evelyn-s-coffee-bar",
+      "name": "Evelyn's Coffee Bar",
+      "category": "food",
+      "location": "215 Banff Ave, Banff",
+      "details": "Coffee bar on Banff Avenue. Daily 7 am–7 pm. Phone +1 403 762 2000.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJF1gM8kXKcFMRSr7GQwcm1uM",
+      "phone": "+1 403 762 2000",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1775076,
+      "lng": -115.5712711,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJF1gM8kXKcFMRSr7GQwcm1uM",
+          "thumb": "/api/place-photo/ChIJF1gM8kXKcFMRSr7GQwcm1uM",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJF1gM8kXKcFMRSr7GQwcm1uM"
+        }
+      ]
+    },
+    {
+      "id": "rocky-mountain-chocolate",
+      "name": "Rocky Mountain Chocolate",
+      "category": "food",
+      "location": "117B Banff Ave, Banff",
+      "details": "Chocolate shop. To confirm: the 2002 article lists Mountain Chocolates at 119 Banff Ave. Daily 10 am–9 pm. Phone +1 403 985 0987.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw",
+      "phone": "+1 403 985 0987",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1754033,
+      "lng": -115.5712735,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw",
+          "thumb": "/api/place-photo/ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ3dwYlZjLcFMRBJ7_WwJF5Aw"
+        }
+      ]
+    },
+    {
+      "id": "the-grizzly-house-tourist-spot",
+      "name": "The Grizzly House (tourist spot)",
+      "category": "food",
+      "location": "207 Banff Ave, Banff",
+      "details": "Landmark fondue and seafood restaurant, with hot-stone cooking of scallop, beef and lobster. Popular with visitors. Reservations strongly recommended. ~C$40–90 per person. Daily 11 am–9 pm (Fri–Sat to 9:30 pm). Phone +1 403 762 4055.",
+      "price": {
+        "amount": 40,
+        "max": 90,
+        "approx": true,
+        "unit": "per person"
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJJ-Hz5UXKcFMRfYXnCkeIR_o",
+      "phone": "+1 403 762 4055",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.177072499999994,
+      "lng": -115.5710649,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJJ-Hz5UXKcFMRfYXnCkeIR_o",
+          "thumb": "/api/place-photo/ChIJJ-Hz5UXKcFMRfYXnCkeIR_o",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJJ-Hz5UXKcFMRfYXnCkeIR_o"
+        }
+      ]
+    },
+    {
+      "id": "sky-bistro-tourist-spot",
+      "name": "Sky Bistro (tourist spot)",
+      "category": "food",
+      "location": "100 Mountain Ave, top of the Banff Gondola",
+      "details": "Mountain-top Canadian restaurant with seafood chowder, bison and duck frites. Gondola ticket required; reserve lunch or dinner. Daily 11 am–7:30 pm. Phone +1 403 762 7486.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ9S3E0PnJcFMR8dn8aW1SQns",
+      "phone": "+1 403 762 7486",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.144551899999996,
+      "lng": -115.57496350000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ9S3E0PnJcFMR8dn8aW1SQns",
+          "thumb": "/api/place-photo/ChIJ9S3E0PnJcFMR8dn8aW1SQns",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ9S3E0PnJcFMR8dn8aW1SQns"
+        }
+      ]
+    },
+    {
+      "id": "cave-and-basin-national-historic-site",
+      "name": "Cave and Basin National Historic Site",
+      "category": "history",
+      "location": "311 Cave Ave, Banff",
+      "details": "National Historic Site. Check current admission. Daily 9:30 am–5 pm. Phone +1 403 762 1566.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvwXkmmvKcFMR0jQ8HRSSsqk",
+      "phone": "+1 403 762 1566",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1689655,
+      "lng": -115.59142220000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJvwXkmmvKcFMR0jQ8HRSSsqk",
+          "thumb": "/api/place-photo/ChIJvwXkmmvKcFMR0jQ8HRSSsqk",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJvwXkmmvKcFMR0jQ8HRSSsqk"
+        }
+      ]
+    },
+    {
+      "id": "lower-bankhead",
+      "name": "Lower Bankhead",
+      "category": "history",
+      "location": "Lake Minnewanka Scenic Dr, Banff National Park",
+      "details": "Ruins of a former mining town. Bear country, with stairs.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJf8UEPjbNcFMRrzfY04lQusY",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.2331247,
+      "lng": -115.5212791,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJf8UEPjbNcFMRrzfY04lQusY",
+          "thumb": "/api/place-photo/ChIJf8UEPjbNcFMRrzfY04lQusY",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJf8UEPjbNcFMRrzfY04lQusY"
+        }
+      ]
+    },
+    {
+      "id": "the-whyte-museum-of-the-canadian-rockies",
+      "name": "The Whyte Museum of the Canadian Rockies",
+      "category": "art",
+      "location": "111 Bear St, Banff",
+      "details": "Museum about the Canadian Rockies. about C$15 per adult. Daily 10 am–5 pm. Phone +1 403 762 2291.",
+      "price": {
+        "amount": 15
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJadzLf0bKcFMR9XLTxGWitO4",
+      "phone": "+1 403 762 2291",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.17518820000001,
+      "lng": -115.5732864,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJadzLf0bKcFMR9XLTxGWitO4",
+          "thumb": "/api/place-photo/ChIJadzLf0bKcFMR9XLTxGWitO4",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJadzLf0bKcFMR9XLTxGWitO4"
+        }
+      ]
+    },
+    {
+      "id": "willock-sax-gallery",
+      "name": "Willock & Sax Gallery",
+      "category": "art",
+      "location": "210 Bear St, Banff",
+      "details": "Art gallery. Daily 11 am–4 pm. Phone +1 403 762 2214.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ29auv0XKcFMRZvgvCdj-yUY",
+      "phone": "+1 403 762 2214",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1772,
+      "lng": -115.57198559999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ29auv0XKcFMRZvgvCdj-yUY",
+          "thumb": "/api/place-photo/ChIJ29auv0XKcFMRZvgvCdj-yUY",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ29auv0XKcFMRZvgvCdj-yUY"
+        }
+      ]
+    },
+    {
+      "id": "canada-house-gallery",
+      "name": "Canada House Gallery",
+      "category": "art",
+      "location": "201 Bear St, Banff",
+      "details": "Art gallery. Daily 10 am–5 pm (Fri–Sat to 7 pm). Phone +1 403 762 3757.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJEyj2z0XKcFMRLF8mHKmOsnM",
+      "phone": "+1 403 762 3757",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.176796,
+      "lng": -115.57285399999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJEyj2z0XKcFMRLF8mHKmOsnM",
+          "thumb": "/api/place-photo/ChIJEyj2z0XKcFMRLF8mHKmOsnM",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJEyj2z0XKcFMRLF8mHKmOsnM"
+        }
+      ]
+    },
+    {
+      "id": "carter-ryan-gallery",
+      "name": "Carter-Ryan Gallery",
+      "category": "art",
+      "location": "229 Bear St, Banff",
+      "details": "Art gallery. Wed–Sun 10 am–5 pm, Mon–Tue closed. Phone +1 403 985 5556.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ80tRmEXKcFMRZCtoKCiPLjA",
+      "phone": "+1 403 985 5556",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1783864,
+      "lng": -115.57246040000001,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJ80tRmEXKcFMRZCtoKCiPLjA",
+          "thumb": "/api/place-photo/ChIJ80tRmEXKcFMRZCtoKCiPLjA",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJ80tRmEXKcFMRZCtoKCiPLjA"
+        }
+      ]
+    },
+    {
+      "id": "brandon-t-brown-wilderness-gallery",
+      "name": "Brandon T. Brown Wilderness Gallery",
+      "category": "art",
+      "location": "211 Bear St, Banff",
+      "details": "Wilderness art gallery. Daily 10 am–5 pm (Fri–Sat to 6 pm). Phone +1 403 953 0119.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJc3f2rXDLcFMR8GLu7y5220s",
+      "phone": "+1 403 953 0119",
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.1772365,
+      "lng": -115.57299379999999,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJc3f2rXDLcFMR8GLu7y5220s",
+          "thumb": "/api/place-photo/ChIJc3f2rXDLcFMR8GLu7y5220s",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJc3f2rXDLcFMR8GLu7y5220s"
+        }
+      ]
+    },
+    {
+      "id": "paper-den",
+      "name": "Paper Den",
+      "category": "shop",
+      "location": "208 Bear St, Banff",
+      "details": "A reviewer reported an online order that was never fulfilled, so pay in store. Daily 10 am–8:30 pm.",
+      "price": null,
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJx54HoOvLcFMRlQmzdaZfYI8",
+      "phone": null,
+      "note": "",
+      "noteYear": null,
+      "hoursConfirmed": false,
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "needsBooking": false,
+      "cluster": "banff",
+      "lat": 51.176987399999994,
+      "lng": -115.57226620000002,
+      "images": [
+        {
+          "url": "/api/place-photo/ChIJx54HoOvLcFMRlQmzdaZfYI8",
+          "thumb": "/api/place-photo/ChIJx54HoOvLcFMRlQmzdaZfYI8",
+          "credit": "Photo via Google",
+          "license": "Google Places photo",
+          "sourcePage": "https://www.google.com/maps/place/?q=place_id:ChIJx54HoOvLcFMRlQmzdaZfYI8"
+        }
+      ]
     }
   ]
 }

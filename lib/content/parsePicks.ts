@@ -59,7 +59,7 @@ function link(text: string, label: string): string | null {
 
 function price(text: string): Price | null {
   if (/(^|[.—]\s*)Free\b/.test(text)) return { amount: 0 };
-  const m = text.match(/(~)?€\s?(\d+(?:[.,]\d+)?)(?:\s*[–-]\s*(\d+(?:[.,]\d+)?))?([^.]*)/);
+  const m = text.match(/(~)?(?:€|C\$)\s?(\d+(?:[.,]\d+)?)(?:\s*[–-]\s*(\d+(?:[.,]\d+)?))?([^.]*)/);
   if (!m) return null;
   const out: Price = { amount: Number(m[2].replace(",", ".")) };
   if (m[3]) out.max = Number(m[3].replace(",", "."));
