@@ -55,3 +55,39 @@ Stay: Casablanca Boutique Hotel, Cabrera. Nature first; family-friendly; nothing
 
 - **Ke Lo Ke Kafe** — Catalina 3300, Cabrera, about 5–10 min from the hotel (est.). Coffee shop with a 4.9 rating from 80 reviews. RD$500–1,000 per person (≈ US$8–16). [Maps](https://www.google.com/maps/place/Ke+Lo+Ke+Kafe/@19.6482302,-69.9376833,15z/data=!4m6!3m5!1s0x8eae6fb2bae760ff:0x2e939007e364ffd2!8m2!3d19.6482303!4d-69.9303749!16s%2Fg%2F11txcg7hrd?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D)
   *2026:* Known for pastries, Turkish eggs and avocado toast. Reviewers praise the service. Closed today, opens 8 am Wednesday; other hours not confirmed. LGBTQ+ friendly. No phone or website listed.
+
+- **El Babunuco** — Calle J No. 4 Camino Del Saltadero, Cabrera, about 5–10 min from the hotel (est.). Daily local menu: a main protein and sides. RD$730–920 per plate (≈ US$12–15, one reviewer's estimate). [Maps](https://www.google.com/maps/search/?api=1&query=El+Babunuco+Cabrera)
+  *2026:* Known for crab, fried fish and fresh juices. Listed hours Sun, Mon, Wed–Sat 12–10 pm, closed Tue (unconfirmed). Phone +1 829-338-8707.
+
+- **Casa Grande, Playa Grande** — Playa Grande, Río San Juan, about 30 min (est.). Island-style seafood: grilled shrimp, salmon tiradito, extensive wine list. Reservations recommended, smart casual. Price not listed. [Info](https://www.enprimeurclub.com/restaurants/casa-grande-playa-grande-restaurant) [Maps](https://www.google.com/maps/search/?api=1&query=Casa+Grande+Playa+Grande)
+  *2026:* Phone (809) 589-2888. Hours not listed. The listing links to aman.com, so confirm it is the same business.
+
+- **Taco Star** — Playa Grande, about 30 min (est.). Open-air beachfront spot with fresh fish tacos. Price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=Taco+Star+Playa+Grande)
+  *2026:* Beach access, hours and phone not confirmed.
+
+- **Upstairs** — Inside the Rip Jack Inn, Playa Grande, about 30 min (est.). Seafood and steakhouse-style meats. Price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=Rip+Jack+Inn+Playa+Grande)
+  *2026:* Beach access and hours not confirmed.
+
+- **El Huerto** — Playa Grande, about 30 min (est.). Dependable continental menu. Price not listed. [Info](https://elhuertodeplayagrande.com) [Maps](https://www.google.com/maps/search/?api=1&query=El+Huerto+Playa+Grande)
+  *2026:* Phone listed as 2653-1259 with no area code, so verify. Beach access and hours not confirmed.
+
+- **The Beer Garden at ONDA** — At ONDA, Playa Grande, about 30 min (est.). International comfort food with craft beer and cocktails. Price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=The+Beer+Garden+at+ONDA+Playa+Grande)
+  *2026:* Listed phone 4002-2779 looks mistyped, so verify. Hours not listed.
+
+- **NLB Nelson's Lounge & Bistro** — Calle Antonio Javier, Sosúa, about 1 hr (est.). Seafood, meats and pastas, with a kids' play area. $$ tier, price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=NLB+Nelson%27s+Lounge+Bistro+Sosua)
+  *2026:* Phone +1 809-571-3253. Hours not listed.
+
+- **Waterfront Playa Alicia** — Playa Alicia, Dr. Rosen 1, Sosúa, about 1 hr (est.). Beachfront Caribbean food, known for sunsets, cocktails and paella. $ tier, price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=Waterfront+Playa+Alicia+Sosua)
+  *2026:* Phone +1 809-571-3024. Hours not listed.
+
+- **Natura Restaurant** — Paseo del Sol 5, Cabarete, about 1 hr (est.). Oceanfront seafood, vegetarian and vegan options, house-made pasta. $$$ tier, price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=Natura+Restaurant+Cabarete)
+  *2026:* Phone +1 849-214-7010. Hours not listed.
+
+- **Restaurant Tuvá** — SeaWinds Condominiums, Cabarete, about 1 hr (est.). Mediterranean-style pasta, seafood and grilled meats. $$ tier, price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=Restaurant+Tuva+Cabarete)
+  *2026:* Phone +1 849-925-8818. Hours not listed.
+
+- **Bliss** — Callejón de la Loma 1, Cabarete, about 1 hr (est.). Italian. Mahi and salmon carpaccio, lobster linguine. $$$ tier, price not listed. [Maps](https://www.google.com/maps/search/?api=1&query=Bliss+Cabarete)
+  *2026:* Closed Sundays, no lunch service. Phone +1 829-701-7215.
+
+- **Woke Foods** — Cabarete residential zone, about 1 hr (est.). Plant-based Dominican dishes, fresh juice and coconut water. $ tier, prices in pesos. [Maps](https://www.google.com/maps/search/?api=1&query=Woke+Foods+Cabarete)
+  *2026:* Vegetarian option. Phone and hours not listed.

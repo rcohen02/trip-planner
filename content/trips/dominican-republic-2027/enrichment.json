@@ -78,5 +78,65 @@
     "lat": 19.6482303,
     "lng": -69.9303749,
     "images": []
+  },
+  "el-babunuco": {
+    "lat": 19.6410272,
+    "lng": -69.9171019,
+    "images": []
+  },
+  "casa-grande-playa-grande": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "taco-star": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "upstairs": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "el-huerto": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "the-beer-garden-at-onda": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "nlb-nelson-s-lounge-bistro": {
+    "lat": 19.75,
+    "lng": -70.52,
+    "images": []
+  },
+  "waterfront-playa-alicia": {
+    "lat": 19.75,
+    "lng": -70.52,
+    "images": []
+  },
+  "natura-restaurant": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "restaurant-tuva": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "bliss": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "woke-foods": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
   }
 }

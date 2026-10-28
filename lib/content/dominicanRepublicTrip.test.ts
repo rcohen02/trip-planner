@@ -60,6 +60,18 @@ describe("Dominican Republic trip", () => {
       "Yasica River Kayak Tour",
       "Private Kayak or Paddleboard Tour, La Boca",
       "Ke Lo Ke Kafe",
+      "El Babunuco",
+      "Casa Grande, Playa Grande",
+      "Taco Star",
+      "Upstairs",
+      "El Huerto",
+      "The Beer Garden at ONDA",
+      "NLB Nelson's Lounge & Bistro",
+      "Waterfront Playa Alicia",
+      "Natura Restaurant",
+      "Restaurant Tuvá",
+      "Bliss",
+      "Woke Foods",
     ]);
     const unmapped = trip!.places.filter((p) => p.lat == null || p.lng == null).map((p) => p.name);
     const unclustered = trip!.places.filter((p) => !p.cluster).map((p) => p.name);
