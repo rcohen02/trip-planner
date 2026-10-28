@@ -585,6 +585,32 @@
       "lat": 19.75111,
       "lng": -70.40833,
       "images": []
+    },
+    {
+      "id": "ke-lo-ke-kafe",
+      "name": "Ke Lo Ke Kafe",
+      "category": "food",
+      "location": "Catalina 3300, Cabrera, about 5–10 min from the hotel (est.)",
+      "details": "Coffee shop with a 4.9 rating from 80 reviews. RD$500–1,000 per person (≈ US$8–16).",
+      "price": {
+        "amount": 500,
+        "max": 1000,
+        "unit": "per person",
+        "year": 2026
+      },
+      "hours": null,
+      "url": null,
+      "mapsUrl": "https://www.google.com/maps/place/Ke+Lo+Ke+Kafe/@19.6482302,-69.9376833,15z/data=!4m6!3m5!1s0x8eae6fb2bae760ff:0x2e939007e364ffd2!8m2!3d19.6482303!4d-69.9303749!16s%2Fg%2F11txcg7hrd?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D",
+      "phone": null,
+      "note": "Known for pastries, Turkish eggs and avocado toast. Reviewers praise the service. Closed today, opens 8 am Wednesday; other hours not confirmed. LGBTQ+ friendly. No phone or website listed.",
+      "noteYear": 2026,
+      "hoursConfirmed": false,
+      "openDays": null,
+      "needsBooking": false,
+      "cluster": "cabrera",
+      "lat": 19.6482303,
+      "lng": -69.9303749,
+      "images": []
     }
   ]
 }

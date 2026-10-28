@@ -50,3 +50,8 @@ Stay: Casablanca Boutique Hotel, Cabrera. Nature first; family-friendly; nothing
 
 - **Private Kayak or Paddleboard Tour, La Boca** — La Boca, Cabarete, about 1 hr from the hotel (est.). Private 2-hour tour, maximum 8 people. Kayak or paddleboard. ~RD$3,977 per person (≈ US$65). [Info](https://www.expedia.com.my/things-to-do/2-hour-private-kayak-or-paddleboard-tour-in-cabarete-la-boca.a46422224.activity-details) [Maps](https://www.google.com/maps/search/?api=1&query=La+Boca+Cabarete+kayak)
   *2026:* Times not listed.
+
+## Restaurants
+
+- **Ke Lo Ke Kafe** — Catalina 3300, Cabrera, about 5–10 min from the hotel (est.). Coffee shop with a 4.9 rating from 80 reviews. RD$500–1,000 per person (≈ US$8–16). [Maps](https://www.google.com/maps/place/Ke+Lo+Ke+Kafe/@19.6482302,-69.9376833,15z/data=!4m6!3m5!1s0x8eae6fb2bae760ff:0x2e939007e364ffd2!8m2!3d19.6482303!4d-69.9303749!16s%2Fg%2F11txcg7hrd?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D)
+  *2026:* Known for pastries, Turkish eggs and avocado toast. Reviewers praise the service. Closed today, opens 8 am Wednesday; other hours not confirmed. LGBTQ+ friendly. No phone or website listed.

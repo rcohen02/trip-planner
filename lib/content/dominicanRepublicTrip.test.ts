@@ -59,6 +59,7 @@ describe("Dominican Republic trip", () => {
       "Four-Wheeler Tour",
       "Yasica River Kayak Tour",
       "Private Kayak or Paddleboard Tour, La Boca",
+      "Ke Lo Ke Kafe",
     ]);
     const unmapped = trip!.places.filter((p) => p.lat == null || p.lng == null).map((p) => p.name);
     const unclustered = trip!.places.filter((p) => !p.cluster).map((p) => p.name);
