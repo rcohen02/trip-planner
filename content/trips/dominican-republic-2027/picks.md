@@ -91,3 +91,8 @@ Stay: Casablanca Boutique Hotel, Cabrera. Nature first; family-friendly; nothing
 
 - **Woke Foods** — Cabarete residential zone, about 1 hr (est.). Plant-based Dominican dishes, fresh juice and coconut water. $ tier, prices in pesos. [Maps](https://www.google.com/maps/search/?api=1&query=Woke+Foods+Cabarete)
   *2026:* Vegetarian option. Phone and hours not listed.
+
+## Shopping
+
+- **Nagua Market** — Nagua town center, about 40 min from the hotel (est.). Produce and food market with fruit, plantains and cheese, plus mango, passion fruit and cacao from the hills. Cheap breakfast and lunch, with nobody selling to tourists. RD$120–250 per meal (≈ US$2–4). [Maps](https://www.google.com/maps/search/?api=1&query=Nagua+Market)
+  *2026:* Hours not listed. Go before noon; the market gets hot by late morning. Allow about 45 minutes.

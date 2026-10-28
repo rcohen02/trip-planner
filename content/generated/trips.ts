@@ -879,6 +879,31 @@ export const TRIPS: Record<string, Trip> = {
         "lat": 19.75111,
         "lng": -70.40833,
         "images": []
+      },
+      {
+        "id": "nagua-market",
+        "name": "Nagua Market",
+        "category": "shop",
+        "location": "Nagua town center, about 40 min from the hotel (est.)",
+        "details": "Produce and food market with fruit, plantains and cheese, plus mango, passion fruit and cacao from the hills. Cheap breakfast and lunch, with nobody selling to tourists. RD$120–250 per meal (≈ US$2–4).",
+        "price": {
+          "amount": 120,
+          "max": 250,
+          "year": 2026
+        },
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagua+Market",
+        "phone": null,
+        "note": "Hours not listed. Go before noon; the market gets hot by late morning. Allow about 45 minutes.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cabrera",
+        "lat": 19.38,
+        "lng": -69.85,
+        "images": []
       }
     ]
   },

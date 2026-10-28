@@ -72,6 +72,7 @@ describe("Dominican Republic trip", () => {
       "Restaurant Tuvá",
       "Bliss",
       "Woke Foods",
+      "Nagua Market",
     ]);
     const unmapped = trip!.places.filter((p) => p.lat == null || p.lng == null).map((p) => p.name);
     const unclustered = trip!.places.filter((p) => !p.cluster).map((p) => p.name);
