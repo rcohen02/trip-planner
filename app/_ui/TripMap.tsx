@@ -2,7 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import type { Stay } from "@/lib/stays";
 import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
 import type { Category, Cluster, DayRule, Place, Trip } from "@/lib/content/types";
+import { clusterSize } from "@/lib/map/cluster";
 import { visibleCategories, type Assignments, type SlotLayout } from "@/lib/plan/plan";
 import { Alert, CATEGORY, StatusPill } from "./bits";
 import { ShortlistFilter, ShortlistToggle, useShortlist } from "./Shortlist";
@@ -12,6 +14,16 @@ import { dateLabel } from "@/lib/format";
 
 const HOUSE_SVG =
   '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
+
+/** A category-coloured pin; the ring marks shortlisted places. */
+function pinIcon(L: typeof import("leaflet"), category: Category, shortlisted: boolean) {
+  return L.divIcon({
+    className: "",
+    html: `<div class="tp-pin c-${category}${shortlisted ? " tp-pin--short" : ""}"></div>`,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+  });
+}
 
 export default function TripMap({
   slug,
@@ -39,8 +51,12 @@ export default function TripMap({
   editable: boolean;
 }) {
   const el = useRef<HTMLDivElement>(null);
+  /** Route lines, one group per category. Pins live in the cluster group instead. */
   const layers = useRef<Map<Category, import("leaflet").LayerGroup>>(new Map());
   const mapRef = useRef<import("leaflet").Map | null>(null);
+  /** All place pins go here, so pins that sit close together collapse into one numbered bubble. */
+  const clusterRef = useRef<import("leaflet").MarkerClusterGroup | null>(null);
+  const leaflet = useRef<typeof import("leaflet") | null>(null);
   const [picked, setPicked] = useState<Place | null>(null);
   const cats = [...new Set(places.map((p) => p.category))];
   const [only, setOnly] = useState<Category | null>(null);
@@ -50,7 +66,7 @@ export default function TripMap({
   const short = useShortlist(slug, places);
   const shortKey = places.filter(short.is).map((p) => p.id).join("|");
   /** placeId → its pin (and route line), so the shortlist filter can hide single places. */
-  const items = useRef<Map<string, { group: import("leaflet").LayerGroup; layers: import("leaflet").Layer[]; pin: import("leaflet").Marker }>>(new Map());
+  const items = useRef<Map<string, { group: import("leaflet").LayerGroup; routes: import("leaflet").Layer[]; pin: import("leaflet").Marker }>>(new Map());
   const [sheet, setSheet] = useState<Place | null>(null);
   const { assignments, assign, unassign, error: planError } = usePlanAssignments(slug, initial);
   const { bookings, saveBooking, clearBooking, error: bookingError } = usePlanBookings(slug, initialBookings);
@@ -62,28 +78,48 @@ export default function TripMap({
     (async () => {
       const L = await import("leaflet");
       if (cancelled || !el.current) return;
+      leaflet.current = L;
       const map = L.map(el.current);
       mapRef.current = map;
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
+      // Home bases sit in their own pane, under the pins and clusters, so they never hide a place.
+      map.createPane("homes").style.zIndex = "450";
       const bases = stays?.length
         ? stays
         : [{ id: "home", label: homebase.label, address: homebase.address, lat: homebase.lat, lng: homebase.lng, from: "", to: "" }];
       const pts: [number, number][] = bases.map((b) => [b.lat, b.lng]);
       for (const b of bases) {
         L.marker([b.lat, b.lng], {
+          pane: "homes",
           icon: L.divIcon({
             className: "",
-            html: `<div style="width:34px;height:34px;border-radius:17px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
-            iconSize: [34, 34],
-            iconAnchor: [17, 17],
+            html: `<div style="width:30px;height:30px;border-radius:15px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)">${HOUSE_SVG}</div>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
           }),
           title: `${b.label}: ${b.address}`,
-          zIndexOffset: 1000,
         }).addTo(map);
       }
+      await import("leaflet.markercluster");
+      // The plugin adds markerClusterGroup to Leaflet's CommonJS export, which the namespace import doesn't show.
+      const LC = (L as unknown as { default?: typeof L }).default ?? L;
+      const cluster = LC.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 40,
+        iconCreateFunction: (c) => {
+          const n = c.getChildCount();
+          const s = clusterSize(n);
+          return L.divIcon({
+            className: "",
+            html: `<div class="tp-cluster" style="width:${s}px;height:${s}px;line-height:${s}px">${n}</div>`,
+            iconSize: [s, s],
+          });
+        },
+      }).addTo(map);
+      clusterRef.current = cluster;
       for (const p of places) {
         if (p.lat == null || p.lng == null) continue;
         pts.push([p.lat, p.lng]);
@@ -92,9 +128,9 @@ export default function TripMap({
           group = L.layerGroup().addTo(map);
           layers.current.set(p.category, group);
         }
-        const own: import("leaflet").Layer[] = [];
+        const routes: import("leaflet").Layer[] = [];
         if (p.route) {
-          own.push(
+          routes.push(
             L.polyline(p.route.line, { className: "tp-route", weight: 5, opacity: 0.85 })
               .on("click", () => setPicked(p))
               .addTo(group),
@@ -102,14 +138,12 @@ export default function TripMap({
           pts.push(...p.route.line);
         }
         const pin = L.marker([p.lat, p.lng], {
-          icon: L.divIcon({ className: "", html: `<div class="tp-pin c-${p.category}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] }),
+          icon: pinIcon(L, p.category, false),
           title: `${p.name} (${CATEGORY[p.category].label})`,
           keyboard: true,
-        })
-          .on("click", () => setPicked(p))
-          .addTo(group);
-        own.push(pin);
-        items.current.set(p.id, { group, layers: own, pin });
+        }).on("click", () => setPicked(p));
+        cluster.addLayer(pin);
+        items.current.set(p.id, { group, routes, pin });
       }
       map.fitBounds(L.latLngBounds(pts), { padding: [30, 30] });
       setReady((n) => n + 1);
@@ -120,6 +154,7 @@ export default function TripMap({
       cancelled = true;
       mapRef.current?.remove();
       mapRef.current = null;
+      clusterRef.current = null;
       groups.clear();
       placed.clear();
     };
@@ -127,20 +162,29 @@ export default function TripMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [homebase.lat, homebase.lng, stays, placesKey]);
 
-  // "Shortlist only" hides the other pins; shortlisted pins get a ring either way.
+  // One pass decides what is on the map: a tapped category shows only itself, "Shortlist only" hides
+  // the rest, and shortlisted pins get a ring. Pins that are hidden leave the cluster group entirely.
   useEffect(() => {
+    const c = clusterRef.current;
+    const L = leaflet.current;
+    if (!c || !L) return;
+    const shown = new Set(visibleCategories([...layers.current.keys()], only));
     for (const p of places) {
       const it = items.current.get(p.id);
       if (!it) continue;
       const on = short.is(p);
-      for (const l of it.layers) {
-        if (shortOnly && !on) it.group.removeLayer(l);
-        else it.group.addLayer(l);
+      const visible = shown.has(p.category) && (!shortOnly || on);
+      if (visible) c.addLayer(it.pin);
+      else c.removeLayer(it.pin);
+      it.pin.setIcon(pinIcon(L, p.category, on));
+      for (const r of it.routes) {
+        if (visible) it.group.addLayer(r);
+        else it.group.removeLayer(r);
       }
-      it.pin.getElement()?.firstElementChild?.classList.toggle("tp-pin--short", on);
     }
+    if (picked && !shown.has(picked.category)) setPicked(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shortOnly, shortKey, ready]);
+  }, [only, shortOnly, shortKey, picked, ready]);
 
   // Picking a walk zooms the map to its line (it's a squiggle at trip-wide zoom).
   useEffect(() => {
@@ -148,18 +192,6 @@ export default function TripMap({
     if (!m || !picked?.route) return;
     m.fitBounds(picked.route.line, { padding: [40, 40], maxZoom: 16 });
   }, [picked]);
-
-  // Tapping a category shows only that one; tapping it again (or Reset) shows everything.
-  useEffect(() => {
-    const m = mapRef.current;
-    if (!m) return;
-    const shown = new Set(visibleCategories([...layers.current.keys()], only));
-    for (const [c, g] of layers.current) {
-      if (shown.has(c)) g.addTo(m);
-      else m.removeLayer(g);
-    }
-    if (picked && !shown.has(picked.category)) setPicked(null);
-  }, [only, picked, ready]);
 
   return (
     <div className="flex flex-col gap-5 min-[960px]:flex-row">

@@ -107,6 +107,18 @@ button.tp-slot__empty { background: none; font: inherit; font-size: 12px; cursor
 /* Shortlisted map pin: a ring in the accent color around the category dot. */
 .tp-pin.tp-pin--short { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent); }
 
+/* Map cluster: several nearby pins become one numbered bubble (size set inline by lib/map/cluster.ts). */
+.tp-cluster {
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--surface);
+  font-weight: 600;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
+}
+
 /* Place card footer: let Shortlist and "Add to day" wrap as whole buttons instead of squeezing the text. */
 .tp-place__foot { flex-wrap: wrap; row-gap: 8px; }
 .tp-place__foot .tp-btn { white-space: nowrap; }

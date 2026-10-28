@@ -19,6 +19,7 @@ import { MapLoader } from "@/app/_ui/MapLoader";
 import { RemoveRouteButton } from "@/app/_ui/RemoveRoute";
 import { RouteSketch } from "@/app/_ui/RouteSketch";
 import { ShortlistButton } from "@/app/_ui/Shortlist";
+import { PlaceAddToDay } from "@/app/_ui/PlaceAddToDay";
 
 export async function DaysView({ ctx }: { ctx: TripContext }) {
   const { trip, editable } = ctx;
@@ -75,7 +76,11 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
   const { trip, base, editable } = ctx;
   const p = trip.places.find((x) => x.id === id);
   if (!p) notFound();
-  const assignments = await getStore().assignments(trip.slug);
+  const [assignments, layout, bookings] = await Promise.all([
+    getStore().assignments(trip.slug),
+    getStore().layout(trip.slug),
+    getStore().bookings(trip.slug),
+  ]);
   const slotId = Object.entries(assignments).find(([, v]) => v === p.id)?.[0];
   const cluster = trip.clusters.find((c) => c.id === p.cluster);
   const prices = priceMap(trip);
@@ -166,8 +171,19 @@ export async function PlaceDetailView({ ctx, id }: { ctx: TripContext; id: strin
             )}
           </dl>
           <div className="flex flex-wrap gap-2">
+            {editable && (
+              <PlaceAddToDay
+                slug={trip.slug}
+                place={p}
+                days={trip.days}
+                layout={layout}
+                assignments={assignments}
+                bookings={bookings}
+                placeNames={Object.fromEntries(trip.places.map((x) => [x.id, x.name]))}
+              />
+            )}
             {p.mapsUrl && (
-              <a className="tp-btn tp-btn--primary" href={p.mapsUrl} target="_blank" rel="noreferrer">
+              <a className={`tp-btn ${editable ? "tp-btn--secondary" : "tp-btn--primary"}`} href={p.mapsUrl} target="_blank" rel="noreferrer">
                 {p.route ? "Walking directions" : "Open in Maps"}
               </a>
             )}
