@@ -95,4 +95,4 @@ Stay: Casablanca Boutique Hotel, Cabrera. Nature first; family-friendly; nothing
 ## Shopping
 
 - **Nagua Market** — Nagua town center, about 40 min from the hotel (est.). Produce and food market with fruit, plantains and cheese, plus mango, passion fruit and cacao from the hills. Cheap breakfast and lunch, with nobody selling to tourists. RD$120–250 per meal (≈ US$2–4). [Maps](https://www.google.com/maps/search/?api=1&query=Nagua+Market)
-  *2026:* Hours not listed. Go before noon; the market gets hot by late morning. Allow about 45 minutes.
+  *2026:* Hours not listed. Go before noon; the market gets hot by late morning. Allow about 45 minutes. [Video](https://www.youtube.com/watch?v=V_lXM91KmwE) Video tour by Carolina Beato (Feb 2025).

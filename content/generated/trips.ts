@@ -895,7 +895,7 @@ export const TRIPS: Record<string, Trip> = {
         "url": null,
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagua+Market",
         "phone": null,
-        "note": "Hours not listed. Go before noon; the market gets hot by late morning. Allow about 45 minutes.",
+        "note": "Hours not listed. Go before noon; the market gets hot by late morning. Allow about 45 minutes. [Video](https://www.youtube.com/watch?v=V_lXM91KmwE) Video tour by Carolina Beato (Feb 2025).",
         "noteYear": 2026,
         "hoursConfirmed": false,
         "openDays": null,
