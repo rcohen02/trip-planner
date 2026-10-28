@@ -25,7 +25,7 @@ const existing: Enrichment = existsSync(out) ? JSON.parse(readFileSync(out, "utf
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function geocode(q: string): Promise<{ lat: number; lng: number } | null> {
-  const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=${encodeURIComponent(q)}`;
+  const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=${process.env.GEO_COUNTRY ?? "pt"}&q=${encodeURIComponent(q)}`;
   const res = await fetch(url, { headers: { "User-Agent": UA } });
   await sleep(1100); // Nominatim policy: max 1 request/second
   if (!res.ok) return null;

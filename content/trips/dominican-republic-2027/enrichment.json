@@ -1,1 +1,67 @@
-{}
+{
+  "playa-grande": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "playa-caleton": {
+    "lat": 19.64,
+    "lng": -70.08,
+    "images": []
+  },
+  "playa-cabarete-kite-beach": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "playa-sosua": {
+    "lat": 19.75,
+    "lng": -70.52,
+    "images": []
+  },
+  "playa-encuentro": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "blue-lagoon": {
+    "lat": 19.5568583,
+    "lng": -69.9100329,
+    "images": []
+  },
+  "cuevas-de-cabarete": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "parque-nacional-el-choco": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "monkey-jungle-zip-line-adventures": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "2-person-dune-buggy-tour": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "four-wheeler-tour": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "yasica-river-kayak-tour": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  },
+  "private-kayak-or-paddleboard-tour-la-boca": {
+    "lat": 19.75111,
+    "lng": -70.40833,
+    "images": []
+  }
+}

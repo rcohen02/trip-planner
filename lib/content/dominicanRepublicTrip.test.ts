@@ -42,6 +42,28 @@ describe("Dominican Republic trip", () => {
     expect(trip!.flights[1].seats.Rob).toBe("30C");
   });
 
+  it("lists the approved places, each with a pin and a cluster", () => {
+    expect(trip!.places.map((p) => p.name)).toEqual([
+      "Playa Grande",
+      "Playa Caleton",
+      "Playa Cabarete (Kite Beach)",
+      "Playa Sosúa",
+      "Playa Encuentro",
+      "Blue Lagoon",
+      "Cuevas de Cabarete",
+      "Parque Nacional El Choco",
+      "Monkey Jungle & Zip Line Adventures",
+      "2-Person Dune Buggy Tour",
+      "Four-Wheeler Tour",
+      "Yasica River Kayak Tour",
+      "Private Kayak or Paddleboard Tour, La Boca",
+    ]);
+    const unmapped = trip!.places.filter((p) => p.lat == null || p.lng == null).map((p) => p.name);
+    const unclustered = trip!.places.filter((p) => !p.cluster).map((p) => p.name);
+    expect(unmapped).toEqual([]);
+    expect(unclustered).toEqual([]);
+  });
+
   it("covers each day from arrival to departure", () => {
     expect(trip!.days.map((d) => d.date)).toEqual([
       "2027-02-13",

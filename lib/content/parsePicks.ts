@@ -57,12 +57,17 @@ function link(text: string, label: string): string | null {
   return m ? m[1] : null;
 }
 
+/** "1,530" is a thousands separator; "12,50" is a decimal comma. */
+function parseAmount(s: string): number {
+  return Number(s.replace(/,(?=\d{3}(?!\d))/g, "").replace(",", "."));
+}
+
 function price(text: string): Price | null {
   if (/(^|[.—]\s*)Free\b/.test(text)) return { amount: 0 };
-  const m = text.match(/(~)?(?:€|C\$)\s?(\d+(?:[.,]\d+)?)(?:\s*[–-]\s*(\d+(?:[.,]\d+)?))?([^.]*)/);
+  const m = text.match(/(~)?(?:€|C\$|RD\$)\s?(\d+(?:[.,]\d+)?)(?:\s*[–-]\s*(\d+(?:[.,]\d+)?))?([^.]*)/);
   if (!m) return null;
-  const out: Price = { amount: Number(m[2].replace(",", ".")) };
-  if (m[3]) out.max = Number(m[3].replace(",", "."));
+  const out: Price = { amount: parseAmount(m[2]) };
+  if (m[3]) out.max = parseAmount(m[3]);
   if (m[1]) out.approx = true;
   const tail = m[4] ?? "";
   if (/\/\s*person|per person/.test(tail)) out.unit = "per person";

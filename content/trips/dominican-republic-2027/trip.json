@@ -195,11 +195,31 @@
     {
       "id": "cabrera",
       "name": "Cabrera",
-      "note": "Hotel and the north coast",
+      "note": "Near the hotel, 10–30 min (est.)",
       "color": "#97D8B2"
+    },
+    {
+      "id": "cabarete",
+      "name": "Cabarete & Sosúa",
+      "note": "About 1 hr from the hotel (est.)",
+      "color": "#F6C177"
     }
   ],
-  "clusterOf": {},
+  "clusterOf": {
+    "playa-cabarete-kite-beach": "cabarete",
+    "playa-sosua": "cabarete",
+    "playa-encuentro": "cabarete",
+    "cuevas-de-cabarete": "cabarete",
+    "parque-nacional-el-choco": "cabarete",
+    "monkey-jungle-zip-line-adventures": "cabarete",
+    "2-person-dune-buggy-tour": "cabarete",
+    "four-wheeler-tour": "cabarete",
+    "yasica-river-kayak-tour": "cabarete",
+    "private-kayak-or-paddleboard-tour-la-boca": "cabarete",
+    "playa-grande": "cabrera",
+    "playa-caleton": "cabrera",
+    "blue-lagoon": "cabrera"
+  },
   "todos": [
     {
       "id": "book-transfer",

@@ -1,5 +1,5 @@
 import type { Price } from "./content/types";
-const SYMBOLS: Record<string, string> = { EUR: "€", USD: "$", GBP: "£", CAD: "C$", JPY: "¥" };
+const SYMBOLS: Record<string, string> = { EUR: "€", USD: "$", GBP: "£", CAD: "C$", JPY: "¥", DOP: "RD$" };
 
 
 function amount(n: number): string {
