@@ -364,6 +364,27 @@ export const TRIPS: Record<string, Trip> = {
         "images": []
       },
       {
+        "id": "balneario-el-saltadero",
+        "name": "Balneario El Saltadero",
+        "category": "nature",
+        "location": "Cabrera, about 5–10 min from the hotel (est.)",
+        "details": "Natural waterfall with a large swimming pool, surrounded by rocky cliffs and vegetation. Stairs lead down to the lake, and locals jump in. Trails nearby lead to small ponds and caves. Price not found.",
+        "price": null,
+        "hours": null,
+        "url": null,
+        "mapsUrl": "https://www.google.com/maps/place/Balneario+El+Saltadero/@19.6417741,-69.993574,12z/data=!4m16!1m8!2m7!1sThings+to+do!3m5!2sBlue+Lagoon!3s0x8eae69d30279b22d:0x6609e9713921a481!4m2!1d-69.9100329!2d19.5568583!3m6!1s0x8eae69ae9de0b6b1:0x68ba8a398b3895a2!8m2!3d19.6410272!4d-69.9171019!15sCgxUaGluZ3MgdG8gZG9aDiIMdGhpbmdzIHRvIGRvkgESdG91cmlzdF9hdHRyYWN0aW9umgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4YU5rNHhPRFZVTTFVeldsYzVNRk50YTNSVmJrSkVWRU14VTFaWFl4QULgAQD6AQQIQhAw!16s%2Fg%2F11gp3sc58v?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D",
+        "phone": null,
+        "note": "Hours not found. No entrance fee listed in sources.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": null,
+        "needsBooking": false,
+        "cluster": "cabrera",
+        "lat": 19.6410272,
+        "lng": -69.9171019,
+        "images": []
+      },
+      {
         "id": "cuevas-de-cabarete",
         "name": "Cuevas de Cabarete",
         "category": "nature",
@@ -411,6 +432,35 @@ export const TRIPS: Record<string, Trip> = {
         "cluster": "cabarete",
         "lat": 19.75111,
         "lng": -70.40833,
+        "images": []
+      },
+      {
+        "id": "laguna-gri-gri",
+        "name": "Laguna Gri-Gri",
+        "category": "tour",
+        "location": "Río San Juan, about 30 min from the hotel (est.)",
+        "details": "Boat tour through a mangrove lagoon and bird sanctuary. The tour stops at Cueva de Las Golondrinas for a swim in a shallow turquoise cove and ends at Playa Caleton. Daily guided tours. Price not found.",
+        "price": null,
+        "hours": null,
+        "url": "https://www.godominicanrepublic.com/things-to-do/laguna-gri-gri",
+        "mapsUrl": "https://www.google.com/maps/place/Laguna+Gri-Gri/@19.6464676,-70.2650089,10z/data=!4m6!3m5!1s0x8eae1497084f047b:0xe19a634b506ca344!8m2!3d19.6467714!4d-70.0775141!16s%2Fg%2F11c528qjwb?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D",
+        "phone": null,
+        "note": "Best at sunset for egrets and vultures over the mangroves. Prices and hours not found.",
+        "noteYear": 2026,
+        "hoursConfirmed": false,
+        "openDays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "needsBooking": false,
+        "cluster": "cabrera",
+        "lat": 19.6467714,
+        "lng": -70.0775141,
         "images": []
       },
       {

@@ -63,5 +63,15 @@
     "lat": 19.75111,
     "lng": -70.40833,
     "images": []
+  },
+  "balneario-el-saltadero": {
+    "lat": 19.6410272,
+    "lng": -69.9171019,
+    "images": []
+  },
+  "laguna-gri-gri": {
+    "lat": 19.6467714,
+    "lng": -70.0775141,
+    "images": []
   }
 }
